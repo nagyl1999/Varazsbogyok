@@ -1,3 +1,9 @@
+# Egyéni mappák
+#/Dokumentáció
+
+# Bak files
+*.bak
+
 # Compiled class file
 *.class
 
