@@ -2,9 +2,10 @@
 #/Dokumentáció
 
 # Egyéni fájlkiterjesztések
-.~ml
-.jpg
-.png
+*.~ml
+*.jpg
+*.png
+*.jpeg
 
 # Bak files
 *.bak
