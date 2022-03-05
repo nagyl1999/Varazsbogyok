@@ -2155,7 +2155,7 @@
 <XPD:OBJ name="NameLabel" type="EdgeLabelView" guid="6gbxDTp2vUCIVlCDq8djfwAA">
 <XPD:ATTR name="Alpha" type="real">1.5707963267949</XPD:ATTR>
 <XPD:ATTR name="Distance" type="real">10</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">InteractWithTile()</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">interactWithTile()</XPD:ATTR>
 <XPD:REF name="Model">F7uSCKFuZESd+3nzL2fcGQAA</XPD:REF>
 <XPD:REF name="HostEdge">5iPDJg1UPUy+m8T6Dv9b4wAA</XPD:REF>
 </XPD:OBJ>
@@ -2191,7 +2191,7 @@
 <XPD:OBJ name="NameLabel" type="EdgeLabelView" guid="znvA1WAy2kuou1ac/BtC3gAA">
 <XPD:ATTR name="Alpha" type="real">1.5707963267949</XPD:ATTR>
 <XPD:ATTR name="Distance" type="real">10</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">InteractedWtih()</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">interactedWtih()</XPD:ATTR>
 <XPD:REF name="Model">izXjlWluikSV3hjungKK1gAA</XPD:REF>
 <XPD:REF name="HostEdge">VIzIOeNqTEKMnZoB+2qCtAAA</XPD:REF>
 </XPD:OBJ>
@@ -2227,7 +2227,7 @@
 <XPD:OBJ name="NameLabel" type="EdgeLabelView" guid="LD7om5n36kKxR1464vUcRgAA">
 <XPD:ATTR name="Alpha" type="real">1.5707963267949</XPD:ATTR>
 <XPD:ATTR name="Distance" type="real">10</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">GetReceipt(v)</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">getReceipt(v)</XPD:ATTR>
 <XPD:REF name="Model">0ZTws5jqekiyMwivoK6WKAAA</XPD:REF>
 <XPD:REF name="HostEdge">bhNr7fsdwU+v7mda6xQUaQAA</XPD:REF>
 </XPD:OBJ>
@@ -2263,7 +2263,7 @@
 <XPD:OBJ name="NameLabel" type="EdgeLabelView" guid="iiT6uraR2EunWvVRRtzbFgAA">
 <XPD:ATTR name="Alpha" type="real">2.84735751899308</XPD:ATTR>
 <XPD:ATTR name="Distance" type="real">34.4818792991333</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">AddReceipt(r)</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">addReceipt(r)</XPD:ATTR>
 <XPD:REF name="Model">Rseegjd44ku4dsxcfDElrAAA</XPD:REF>
 <XPD:REF name="HostEdge">y+zI4M2Nd0Sao3Q8m0JKdAAA</XPD:REF>
 </XPD:OBJ>
@@ -2373,7 +2373,7 @@
 <XPD:OBJ name="NameLabel" type="EdgeLabelView" guid="s7RObuWpvk+jh2O01oCfqwAA">
 <XPD:ATTR name="Alpha" type="real">1.5707953267949</XPD:ATTR>
 <XPD:ATTR name="Distance" type="real">36</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">CheckWin()</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">checkWin()</XPD:ATTR>
 <XPD:REF name="Model">baf6ENULeEu7PYu9f3VsZQAA</XPD:REF>
 <XPD:REF name="HostEdge">3iPKYR2idkilSr0QXYUOZAAA</XPD:REF>
 </XPD:OBJ>
@@ -2476,7 +2476,7 @@
 </XPD:OBJ>
 <XPD:ATTR name="#ParticipatingStimuli" type="integer">9</XPD:ATTR>
 <XPD:OBJ name="ParticipatingStimuli[0]" type="UMLStimulus" guid="F7uSCKFuZESd+3nzL2fcGQAA">
-<XPD:ATTR name="Name" type="string">InteractWithTile</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">interactWithTile</XPD:ATTR>
 <XPD:REF name="Sender">fxkOh0QlNEq6rwfhrPI+iQAA</XPD:REF>
 <XPD:REF name="Receiver">J8XMm1Iv5U2FE8JdlVezFAAA</XPD:REF>
 <XPD:OBJ name="Action" type="UMLCallAction" guid="DH4IYanW/0aSV/G0xU9dVgAA">
@@ -2490,7 +2490,7 @@
 <XPD:REF name="Views[3]">1Clij1pgEkiUk4yI4zGrSgAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="ParticipatingStimuli[1]" type="UMLStimulus" guid="izXjlWluikSV3hjungKK1gAA">
-<XPD:ATTR name="Name" type="string">InteractedWtih</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">interactedWtih</XPD:ATTR>
 <XPD:REF name="Sender">J8XMm1Iv5U2FE8JdlVezFAAA</XPD:REF>
 <XPD:REF name="Receiver">u+0d0qwDIky+QfjZFYTq/AAA</XPD:REF>
 <XPD:OBJ name="Action" type="UMLCallAction" guid="5GF7BJkHekWWqOtyW7KTYAAA">
@@ -2504,7 +2504,7 @@
 <XPD:REF name="Views[3]">nr+u28zE+0enOhuORiKEWgAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="ParticipatingStimuli[2]" type="UMLStimulus" guid="0ZTws5jqekiyMwivoK6WKAAA">
-<XPD:ATTR name="Name" type="string">GetReceipt</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">getReceipt</XPD:ATTR>
 <XPD:ATTR name="Arguments" type="string">v</XPD:ATTR>
 <XPD:REF name="Sender">u+0d0qwDIky+QfjZFYTq/AAA</XPD:REF>
 <XPD:REF name="Receiver">v/VW0NKMfk6K29VGnMhAKQAA</XPD:REF>
@@ -2519,7 +2519,7 @@
 <XPD:REF name="Views[3]">nYzjGLXGBE+o4YbjeSdMhwAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="ParticipatingStimuli[3]" type="UMLStimulus" guid="Rseegjd44ku4dsxcfDElrAAA">
-<XPD:ATTR name="Name" type="string">AddReceipt</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">addReceipt</XPD:ATTR>
 <XPD:ATTR name="Arguments" type="string">r</XPD:ATTR>
 <XPD:REF name="Sender">v/VW0NKMfk6K29VGnMhAKQAA</XPD:REF>
 <XPD:REF name="Receiver">J8XMm1Iv5U2FE8JdlVezFAAA</XPD:REF>
@@ -2560,7 +2560,7 @@
 <XPD:REF name="Views[3]">K6PKoXKmrEyqMA9s/F3ozQAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="ParticipatingStimuli[6]" type="UMLStimulus" guid="baf6ENULeEu7PYu9f3VsZQAA">
-<XPD:ATTR name="Name" type="string">CheckWin</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">checkWin</XPD:ATTR>
 <XPD:REF name="Sender">J8XMm1Iv5U2FE8JdlVezFAAA</XPD:REF>
 <XPD:REF name="Receiver">J8XMm1Iv5U2FE8JdlVezFAAA</XPD:REF>
 <XPD:OBJ name="Action" type="UMLCallAction" guid="yS07PGDt/0S65ubSnaKABQAA">
