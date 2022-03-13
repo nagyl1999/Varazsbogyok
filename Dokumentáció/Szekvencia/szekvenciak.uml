@@ -291,7 +291,8 @@
 <XPD:REF name="Head">T3SAq1+G+0CF8VIOtM6xSgAA</XPD:REF>
 <XPD:REF name="Tail">6JZojJYEjEeQLhRXzeKEAgAA</XPD:REF>
 <XPD:OBJ name="NameLabel" type="EdgeLabelView" guid="SYG4p5dSjESyCtYkiesonwAA">
-<XPD:ATTR name="Distance" type="real">10</XPD:ATTR>
+<XPD:ATTR name="Alpha" type="real">0,999458341546272</XPD:ATTR>
+<XPD:ATTR name="Distance" type="real">16,6433169770932</XPD:ATTR>
 <XPD:ATTR name="Text" type="string">loop()</XPD:ATTR>
 <XPD:REF name="Model">VitzFaNn1EeliH8Cs80qAQAA</XPD:REF>
 <XPD:REF name="HostEdge">i2TjAQCLq0GLgFbxUwyCBwAA</XPD:REF>
