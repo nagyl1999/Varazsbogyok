@@ -7578,7 +7578,7 @@
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="LineStyle" type="LineStyleKind">lsRectilinear</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">234,556;264,556;264,576;241,576</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">234,550;264,550;264,570;241,570</XPD:ATTR>
 <XPD:REF name="Model">mr8HZd8D60Sg23g7knl+lQAA</XPD:REF>
 <XPD:REF name="Head">evC+VGmYMUm/LU8+wtJDJgAA</XPD:REF>
 <XPD:REF name="Tail">evC+VGmYMUm/LU8+wtJDJgAA</XPD:REF>
@@ -7605,7 +7605,7 @@
 </XPD:OBJ>
 <XPD:OBJ name="Activation" type="UMLActivationView" guid="GsNZh75DSUGlevch0YZfeQAA">
 <XPD:ATTR name="Left" type="integer">228</XPD:ATTR>
-<XPD:ATTR name="Top" type="integer">576</XPD:ATTR>
+<XPD:ATTR name="Top" type="integer">570</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">14</XPD:ATTR>
 <XPD:ATTR name="Height" type="integer">29</XPD:ATTR>
 </XPD:OBJ>
