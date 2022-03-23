@@ -13,7 +13,7 @@ package item;/*
 import inventory.IInventoryVisitor;
 
 /** */
-public class RPalaryzer extends Recipe {
+public class RParalyzer extends Recipe {
 	/** */
 	public bool hasEnoughMaterial(inventorySorterVisitor i) {
 	}

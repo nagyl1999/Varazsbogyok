@@ -14,13 +14,14 @@ package entity;
 
 import inventory.IStorable;
 
-/** */
+/** Játékos döntéseit reprezentáló osztály */
 public class Player extends Virologist {
-	/** */
+
+	/** A játékos döntéseit végrehajtó függvény */
 	public void step() {
 	}
 	
-	/** */
+	/** A játékos egy item felvételéről döntő függvény */
 	public void pickUp(IStorable s) {
 	}
 

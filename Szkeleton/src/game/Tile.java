@@ -12,39 +12,41 @@ package game;
 */
 
 
+import entity.Virologist;
 
-/** */
+import java.util.ArrayList;
+
+/** Mező ősosztály */
 public abstract class Tile {
-	/** */
-	protected Virologist virologist;
-	
-	/** */
-	protected Tile neighbours;
-	
-	/** */
-	public abstract void acceptVirologist(Virologist v);
-	
-	/** */
+	/** A mezőn tartózkodó virológusok */
+	protected ArrayList<Virologist> virologists;
+	/** A mező szomszédai */
+	protected ArrayList<Tile> neighbours;
+
+	/** Getter - szomszédok */
+	public ArrayList<Tile> getNeighbours() {
+		return neighbours;
+	}
+
+	/** Getter - virológusok */
+	public ArrayList<Virologist> getVirologist() {
+		return virologists;
+	}
+
+	/** Virológus hozzáadása a mezőhöz */
 	public void addVirologist(Virologist v) {
 	}
 	
-	/** */
+	/** Virológus törlése a mezőről */
 	public void removeVirologist(Virologist v) {
 	}
 	
-	/** */
+	/** Szomszéd hozzáadása */
 	public void addNeighbour(Tile t) {
 	}
 	
-	/** */
-	public Tile[0..*] getNeighbours() {
-	}
-	
-	/** */
-	public Virologist[0..*] getVirologist() {
-	}
-	
-	/** */
-	public void interactedWith(Virologist v) {
-	}
+	/** A virológus így nézi meg, hogy mi található a mezőn */
+	public abstract void interactedWith(Virologist v);
+	/** Virológus befogadása, leszármazott definiálja a viselkedést */
+	public abstract void acceptVirologist(Virologist v);
 }

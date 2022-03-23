@@ -12,21 +12,23 @@ package game;
 */
 
 
+import java.util.ArrayList;
 
-/** */
+/** Időzítő osztály, a léptethető dolgok léptetéséért felel */
 public class Timer {
-	/** */
-	private Steppable steppables;
+	/** Léptethető objektumok listája */
+	private ArrayList<Steppable> steppables;
 	
-	/** */
+	/** A léptethető objektumokon egyszer
+	 * meghívjuk a lépést */
 	public void tick() {
 	}
 	
-	/** */
+	/** Léptethető objektum hozzáadása */
 	public void addSteppable(Steppable s) {
 	}
 	
-	/** */
+	/** Léptethető objektum törlése */
 	public void removeSteppable(Steppable s) {
 	}
 }
