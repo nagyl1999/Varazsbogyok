@@ -13,9 +13,8 @@ package game;
 
 
 
-/** */
-public class Steppable {
-	/** */
-	public void step() {
-	}
+/** Léptethető dolgokat összefoglalő interfész */
+public interface Steppable {
+	/** A lépést szimuláló függvény */
+	public void step();
 }

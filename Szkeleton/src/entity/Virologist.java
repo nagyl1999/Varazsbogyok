@@ -20,57 +20,67 @@ import inventory.Inventory;
 import item.Agent;
 import item.Recipe;
 
-/** */
+import java.util.ArrayList;
+
+/** Egy közös entitás működését szimuláló osztály */
 public abstract class Virologist implements Steppable, IInventoryHolder {
-	/** */
-	private boolean paralyzed;
-	
-	/** */
+	/** Mező, amelyen a virológus jelenleg áll */
 	protected Tile tile;
+	/** A virológusunk állapotát tároló változó */
+	protected boolean paralyzed;
+	/** A virológushoz tartozó inventory */
+	protected Inventory inventory;
+	/** A virológusra felkent ágensek */
+	protected ArrayList<Agent> applied;
 	
-	/** */
-	private Agent applied;
-	
-	/** */
+	/** Getter - Inventory */
 	public Inventory getInventory() {
+		return inventory;
 	}
 	
-	/** */
-	public Agent[0..*] getApplied() {
+	/** Getter - Felkent ágensek */
+	public ArrayList<Agent> getApplied() {
+		return applied;
 	}
 	
-	/** */
+	/** Ágens felkenése a virológusra */
 	public void applyAgent(Agent a) {
 	}
 	
-	/** */
+	/** Ágens leszedése a virológusról */
 	public void removeApplied(Agent a) {
 	}
 	
-	/** */
-	public void setParalyzed(bool b) {
+	/** A virológus bénult állapotának beállítása */
+	public void setParalyzed(boolean p) {
+		paralyzed = p;
 	}
 	
-	/** */
+	/** Felkent ágensek lejárati idő szerinti növekvő sorbarendezése */
 	public void sortApplied() {
 	}
 	
-	/** */
+	/** A virológus másik mezőre léptetése */
 	public void move(Tile t) {
 	}
 	
-	/** */
+	/** Egy másik virológus kirablása */
 	public void robVirologist(Virologist v) {
 	}
 	
-	/** */
+	/** Egy ágens recept alapján való létrehozása */
 	public void makeAgent(Recipe r) {
 	}
 	
-	/** */
+	/** Ágens felhasználása a virológus által
+	 * @param v A célpont
+	 * @param a A felhasználni kívánt ágens
+	 * */
 	public void useAgent(Virologist v, Agent a) {
 	}
-	
-	/** */
+
+	/** Leszármazottak által definiálandó működés */
+	public abstract void step();
+	/** Leszármazott általi döntés egy item felvételéről */
 	public abstract void pickUp(IStorable s);
 }

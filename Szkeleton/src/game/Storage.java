@@ -12,14 +12,20 @@ package game;
 */
 
 
+import entity.Virologist;
 
-/** */
+/** Raktár mező, a rálépő virológusnak egy
+ * véletlenszerű anyagot kínál fel */
+
 public class Storage extends Tile {
-	/** */
-	public void acceptVirologist(Virologist v) {
+
+	/** A virológus így nézi meg, hogy mi található a mezőn */
+	public void interactedWith(Virologist v) {
 	}
 	
-	/** */
+	/** Egy virológus fogadása a mezőre, itt felkínálunk
+	 * neki egy véletlenszerű anyagot
+	 * */
 	public void acceptVirologist(Virologist v) {
 	}
 }

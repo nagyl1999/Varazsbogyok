@@ -12,16 +12,18 @@ package game;
 */
 
 
+import java.util.ArrayList;
 
-/** */
+/** Pálya objektum, a mezőket és a léptethető
+ * objektumokat tartalmazza
+ * */
 public class Map {
-	/** */
-	private Tile tiles;
+	/** A pályán lévő mezők */
+	private ArrayList<Tile> tiles;
+	/** A pályán lévő léptethető objektumok */
+	private ArrayList<Steppable> steppables;
 	
-	/** */
-	private Steppable steppables;
-	
-	/** */
+	/** Mező hozzáadása a páylához */
 	public void addTile(Tile t) {
 	}
 }
