@@ -17,7 +17,7 @@ import item.Agent;
 /** A védőfelszerelések ősosztálya.A virológusok ezek védelem céljából veszik fel*/
 public abstract class Gear implements IStorable {
 	/** Tárolja, hogy az aktuális védőfelszerelés használatban van. */
-	protected bool equipped;
+	protected boolean equipped;
 	
 	/**A paraméterben kapott virológust megvédi a paraméterben kapott ágens ellen.*/
 	public abstract void protect(Virologist v, Agent a);

@@ -13,8 +13,9 @@ package item;
 
 import inventory.IStorable;
 
-/** */
+/** A játék során elkészíthető ágensek receptjének az ősosztálya.*/
 public abstract class Recipe implements IStorable {
-	/** */
-	public abstract bool hasEnoughMaterial(inventorySorterVisitor i);
+	/**A visitor tervezési mintát kihasználva a visitor megnézi, hogy az  ágens recepjéhez van-e
+	 elegendő alapanyag. */
+	public abstract boolean hasEnoughMaterial(inventorySorterVisitor i);
 }

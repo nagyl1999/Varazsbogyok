@@ -13,33 +13,23 @@ package item;
 
 import inventory.IInventoryVisitor;
 
-/** */
+/** A játékban a kabát tipusú védőfelszerelés. */
 public class Jacket extends Gear {
-	/** */
+	/** A paraméterben kapott virológust megvédi a paraméterben kapott ágens ellen.*/
 	public void protect(Virologist v, Agent a) {
 	}
 	
-	/** */
+	/** A paraméterben kapott virológus kiválasztja a kabátot.*/
 	public void equip(Virologist v) {
 	}
 	
-	/** */
+	/**A paraméterben kapott virológus másik védőfelszerelésre vált. */
 	public void unequip(Virologist v) {
 	}
 	
-	/** */
+	/** A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a kabát típust.*/
 	public void accept(IInventoryVisitor i) {
 	}
 	
-	/** */
-	public void protect(Virologist v, Agent a) {
-	}
-	
-	/** */
-	public void equip(Virologist v) {
-	}
-	
-	/** */
-	public void unequip(Virologist v) {
-	}
+
 }

@@ -13,17 +13,17 @@ package item;
 
 import inventory.IInventoryVisitor;
 
-/** */
+/** A védelem  ágens receptje. */
 public class RProtector extends Recipe {
-	/** */
-	public bool hasEnoughMaterial(inventorySorterVisitor i) {
+	/** A visitor tervezési mintát kihasználva a visitor megnézi, hogy a védelem ágens recepjéhez van-e
+	 elegendő alapanyag. */
+	public boolean hasEnoughMaterial(inventorySorterVisitor i) {
+		return true;
 	}
 	
-	/** */
+	/**A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a védelem ágens receptje típust. */
 	public void accept(IInventoryVisitor i) {
 	}
 	
-	/** */
-	public bool hasEnoughMaterial(inventorySorterVisitor i) {
-	}
+
 }

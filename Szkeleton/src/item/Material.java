@@ -11,8 +11,11 @@ package item;
 
 */
 
+import inventory.IInventoryVisitor;
 import inventory.IStorable;
 
-/** */
+/** A játék során felvehető anyagok ősosztálya.*/
 public abstract class Material implements IStorable {
+
+    public abstract void accept(IInventoryVisitor i);
 }

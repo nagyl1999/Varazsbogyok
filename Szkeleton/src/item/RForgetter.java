@@ -13,17 +13,17 @@ package item;
 
 import inventory.IInventoryVisitor;
 
-/** */
+/** A felejtést okozó ágens receptje. */
 public class RForgetter extends Recipe {
-	/** */
-	public bool hasEnoughMaterial(inventorySorterVisitor i) {
+	/** A visitor tervezési mintát kihasználva a visitor megnézi, hogy a felejtést okozó ágens recepjéhez van-e
+	 elegendő alapanyag. */
+	public boolean hasEnoughMaterial(inventorySorterVisitor i) {
+		return true;
 	}
 	
-	/** */
+	/** A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a felejtő ágens receptje típust. */
 	public void accept(IInventoryVisitor i) {
 	}
 	
-	/** */
-	public bool hasEnoughMaterial(inventorySorterVisitor i) {
-	}
+
 }
