@@ -14,13 +14,14 @@ package entity;
 
 import inventory.IStorable;
 
-/** */
+/** A Bot döntéseit megvalósító osztály */
 public class Bot extends Virologist {
-	/** */
+
+	/** A Bot lépését szimuláló függvény */
 	public void step() {
 	}
 	
-	/** */
+	/** A Bot egy item felvételéről dönt */
 	public void pickUp(IStorable s) {
 	}
 

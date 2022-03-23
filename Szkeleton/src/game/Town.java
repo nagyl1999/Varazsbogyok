@@ -12,14 +12,17 @@ package game;
 */
 
 
+import entity.Virologist;
 
-/** */
+/** Város mező, általános célú terep, nincs
+ * konkrét funkciója */
 public class Town extends Tile {
-	/** */
-	public void acceptVirologist(Virologist v) {
+
+	/** A virológus így nézi meg, hogy mi található a mezőn */
+	public void interactedWith(Virologist v) {
 	}
 	
-	/** */
+	/** Egy virológus fogadása a mezőre */
 	public void acceptVirologist(Virologist v) {
 	}
 }
