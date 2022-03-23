@@ -11,6 +11,8 @@ package item;
 
 */
 
+import entity.Virologist;
+import game.Steppable;
 import inventory.IInventoryVisitor;
 import inventory.IStorable;
 

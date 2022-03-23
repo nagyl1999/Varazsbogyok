@@ -12,12 +12,13 @@ package item;
 */
 
 import inventory.IInventoryVisitor;
+import inventory.InventorySorterVisitor;
 
 /** A vitustáncot okozó ágens receptje.*/
 public class RDancer extends Recipe {
 	/** A visitor tervezési mintát kihasználva a visitor megnézi, hogy a vitus táncot okozó ágens recepjéhez van-e
 	 elegendő alapanyag. */
-	public boolean hasEnoughMaterial(inventorySorterVisitor i) {
+	public boolean hasEnoughMaterial(InventorySorterVisitor i) {
 		return true;
 	}
 	

@@ -11,6 +11,7 @@ package item;
 
 */
 
+import entity.Virologist;
 import inventory.IInventoryVisitor;
 import item.Agent;
 

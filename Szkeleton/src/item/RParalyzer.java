@@ -12,12 +12,13 @@ package item;
 */
 
 import inventory.IInventoryVisitor;
+import inventory.InventorySorterVisitor;
 
 /** A bénulást okozó ágens receptje. */
 public class RParalyzer extends Recipe {
 	/** A visitor tervezési mintát kihasználva a visitor megnézi, hogy a bénulást okozó ágens recepjéhez van-e
 	 elegendő alapanyag. */
-	public boolean hasEnoughMaterial(inventorySorterVisitor i) {
+	public boolean hasEnoughMaterial(InventorySorterVisitor i) {
 		return false; // TODO
 	}
 	

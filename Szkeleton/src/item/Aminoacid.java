@@ -12,7 +12,6 @@ package item;
 */
 
 import inventory.IInventoryVisitor;
-import inventory.IStorablable;
 
 /** A material leszármazottja, egy gyűjthető anyag.*/
 public class Aminoacid extends Material  {

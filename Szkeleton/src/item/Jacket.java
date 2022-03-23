@@ -11,6 +11,7 @@ package item;
 
 */
 
+import entity.Virologist;
 import inventory.IInventoryVisitor;
 
 /** A játékban a kabát tipusú védőfelszerelés. */

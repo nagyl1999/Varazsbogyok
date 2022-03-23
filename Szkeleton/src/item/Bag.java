@@ -11,6 +11,7 @@ package item;
 
 */
 
+import entity.Virologist;
 import inventory.IInventoryHolder;
 import inventory.IInventoryVisitor;
 import inventory.Inventory;
@@ -36,5 +37,6 @@ public class Bag extends Gear implements IInventoryHolder {
 
 	/** Visszaadja a zsák tartalmát.*/
 	public Inventory getInventory() {
+		return null;
 	}
 }
