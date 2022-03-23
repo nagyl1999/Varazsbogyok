@@ -1,6 +1,11 @@
 # Egyéni mappák
 #/Dokumentáció
 
+# Egyéni fájlkiterjesztések
+*.jpg
+*.png
+*.jpeg
+
 # Bak files
 *.bak
 
