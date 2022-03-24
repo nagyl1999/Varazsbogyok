@@ -25,14 +25,23 @@ public class Inventory {
 	
 	/** Tárolandó dolog hozzáfűzése a listához, amennyiben
 	 * van elég hely */
-	public void addItem(IStorable i) {
+	public void addItem(IStorable i) throws NotEnoughSpaceException {
+		if(items.size() == maxSize)
+			throw new NotEnoughSpaceException("Nincs elég hely!");
+		items.add(i);
 	}
 	
 	/** Tárolt dolog kivétele az inventory-ból */
-	public void removeItem(IStorable i) {
+	public void removeItem(IStorable i) throws ItemNotFoundException {
+		if(!items.contains(i))
+			throw new ItemNotFoundException("Az objektum nem található az inventory-ban!");
+		items.remove(i);
 	}
 	
 	/** Az inventory tartalmát feltérképező visitor fogadása */
 	public void accept(IInventoryVisitor i) {
+		for (IStorable item : items) {
+			item.accept(i);
+		}
 	}
 }

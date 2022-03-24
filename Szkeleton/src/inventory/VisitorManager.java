@@ -25,9 +25,16 @@ import java.util.ArrayList;
  * elkerülve a TypeCheck-et */
 public class VisitorManager {
 
-	/** Egy inventory tartalmának szétválogatása */
+	/** Egy inventory tartalmának szétválogatása, amennyiben van zsák, azét is megnézzük */
 	public InventorySorterVisitor sortInventory(IInventoryHolder e) {
-		return null; // TODO
+		InventorySorterVisitor i = new InventorySorterVisitor();
+		e.getInventory().accept(i);
+		if(i.getBagItems().size() > 0) {
+			for (Bag b : i.getBagItems()) {
+				b.getInventory().accept(i);
+			}
+		}
+		return i;
 	}
 	
 	/** Megvizsgáljuk, hogy egy adott virológus minden
