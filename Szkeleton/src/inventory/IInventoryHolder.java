@@ -12,10 +12,13 @@ package inventory;
 */
 
 
-
-/** Minden inventory-val rendelkező objektum
- * összefoglaló interfésze */
+/**
+ * Minden inventory-val rendelkező objektum
+ * összefoglaló interfésze
+ */
 public interface IInventoryHolder {
-	/** Az objektum kötelezően visszaad egy inventory-t */
-	public Inventory getInventory();
+    /**
+     * Az objektum kötelezően visszaad egy inventory-t
+     */
+    public Inventory getInventory();
 }

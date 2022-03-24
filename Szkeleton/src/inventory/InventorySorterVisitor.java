@@ -17,180 +17,276 @@ import item.*;
 
 import java.util.ArrayList;
 
-/** Visitor, amely a kapott inventory szétválogatásáért,
- * illetve a kapott objektumokon végzett műveletekért felel */
+/**
+ * Visitor, amely a kapott inventory szétválogatásáért,
+ * illetve a kapott objektumokon végzett műveletekért felel
+ */
 public class InventorySorterVisitor implements IInventoryVisitor {
-	/** Vitustáncot okozó ágensek */
-	private ArrayList<Dancer> dancerItems;
-	/** Vitustáncot okozó ágen receptek */
-	private ArrayList<RDancer> rdancerItems;
-	/** Felejtő ágensek */
-	private ArrayList<Forgetter> forgetterItems;
-	/** Felejtő ágens receptek */
-	private ArrayList<RForgetter> rforgetterItems;
-	/** Bénító ágensek */
-	private ArrayList<Paralyzer> paralyzerItems;
-	/** Bénító ágens receptek */
-	private ArrayList<RParalyzer> rpalaryzerItems;
-	/** Védő vakcinák */
-	private ArrayList<Protector> protectorItems;
-	/** Védő vakcina receptek */
-	private ArrayList<RProtector> rprotectorItems;
-	/** Zsákok */
-	private ArrayList<Bag> bagItems;
-	/** Kesztyűk */
-	private ArrayList<Glove> gloveItems;
-	/** Köpenyek */
-	private ArrayList<Jacket> jacketItems;
-	/** Aminosavak */
-	private ArrayList<Aminoacid> aminoacidItems;
-	/** Nukleoidok */
-	private ArrayList<Nucleoid> nucleoidItems;
 
-	/** Konstruktor, listák létrehozása */
-	public InventorySorterVisitor() {
-		dancerItems = new ArrayList<>();
-		rdancerItems = new ArrayList<>();
-		forgetterItems = new ArrayList<>();
-		rforgetterItems = new ArrayList<>();
-		paralyzerItems = new ArrayList<>();
-		rpalaryzerItems = new ArrayList<>();
-		protectorItems = new ArrayList<>();
-		rprotectorItems = new ArrayList<>();
-		bagItems = new ArrayList<>();
-		gloveItems = new ArrayList<>();
-		jacketItems = new ArrayList<>();
-		aminoacidItems = new ArrayList<>();
-		nucleoidItems = new ArrayList<>();
-	}
+    //region Attributes
 
-	/** Getter - Dancerek */
-	public ArrayList<Dancer> getDancerItems() {
-		return dancerItems;
-	}
+    /**
+     * Vitustáncot okozó ágensek
+     */
+    private ArrayList<Dancer> dancerItems;
+    /**
+     * Vitustáncot okozó ágen receptek
+     */
+    private ArrayList<RDancer> rdancerItems;
+    /**
+     * Felejtő ágensek
+     */
+    private ArrayList<Forgetter> forgetterItems;
+    /**
+     * Felejtő ágens receptek
+     */
+    private ArrayList<RForgetter> rforgetterItems;
+    /**
+     * Bénító ágensek
+     */
+    private ArrayList<Paralyzer> paralyzerItems;
+    /**
+     * Bénító ágens receptek
+     */
+    private ArrayList<RParalyzer> rpalaryzerItems;
+    /**
+     * Védő vakcinák
+     */
+    private ArrayList<Protector> protectorItems;
+    /**
+     * Védő vakcina receptek
+     */
+    private ArrayList<RProtector> rprotectorItems;
+    /**
+     * Zsákok
+     */
+    private ArrayList<Bag> bagItems;
+    /**
+     * Kesztyűk
+     */
+    private ArrayList<Glove> gloveItems;
+    /**
+     * Köpenyek
+     */
+    private ArrayList<Jacket> jacketItems;
+    /**
+     * Aminosavak
+     */
+    private ArrayList<Aminoacid> aminoacidItems;
+    /**
+     * Nukleoidok
+     */
+    private ArrayList<Nucleoid> nucleoidItems;
 
-	/** Getter - RDancerek */
-	public ArrayList<RDancer> getRdancerItems() {
-		return rdancerItems;
-	}
+    //endregion
 
-	/** Getter - Forgetterek */
-	public ArrayList<Forgetter> getForgetterItems() {
-		return forgetterItems;
-	}
+    /**
+     * Konstruktor, listák létrehozása
+     */
+    public InventorySorterVisitor() {
+        dancerItems = new ArrayList<>();
+        rdancerItems = new ArrayList<>();
+        forgetterItems = new ArrayList<>();
+        rforgetterItems = new ArrayList<>();
+        paralyzerItems = new ArrayList<>();
+        rpalaryzerItems = new ArrayList<>();
+        protectorItems = new ArrayList<>();
+        rprotectorItems = new ArrayList<>();
+        bagItems = new ArrayList<>();
+        gloveItems = new ArrayList<>();
+        jacketItems = new ArrayList<>();
+        aminoacidItems = new ArrayList<>();
+        nucleoidItems = new ArrayList<>();
+    }
 
-	/** Getter - RForgetterek */
-	public ArrayList<RForgetter> getRforgetterItems() {
-		return rforgetterItems;
-	}
+    //region Getters
 
-	/** Getter - Paralyzerek */
-	public ArrayList<Paralyzer> getParalyzerItems() {
-		return paralyzerItems;
-	}
+    /**
+     * Getter - Dancerek
+     */
+    public ArrayList<Dancer> getDancerItems() {
+        return dancerItems;
+    }
 
-	/** Getter - RParalyzerek */
-	public ArrayList<RParalyzer> getRpalaryzerItems() {
-		return rpalaryzerItems;
-	}
+    /**
+     * Getter - RDancerek
+     */
+    public ArrayList<RDancer> getRdancerItems() {
+        return rdancerItems;
+    }
 
-	/** Getter - Protektorok */
-	public ArrayList<Protector> getProtectorItems() {
-		return protectorItems;
-	}
+    /**
+     * Getter - Forgetterek
+     */
+    public ArrayList<Forgetter> getForgetterItems() {
+        return forgetterItems;
+    }
 
-	/** Getter - RProtektorok */
-	public ArrayList<RProtector> getRprotectorItems() {
-		return rprotectorItems;
-	}
+    /**
+     * Getter - RForgetterek
+     */
+    public ArrayList<RForgetter> getRforgetterItems() {
+        return rforgetterItems;
+    }
 
-	/** Getter - Zsákok */
-	public ArrayList<Bag> getBagItems() {
-		return bagItems;
-	}
+    /**
+     * Getter - Paralyzerek
+     */
+    public ArrayList<Paralyzer> getParalyzerItems() {
+        return paralyzerItems;
+    }
 
-	/** Getter - Kesztyűk */
-	public ArrayList<Glove> getGloveItems() {
-		return gloveItems;
-	}
+    /**
+     * Getter - RParalyzerek
+     */
+    public ArrayList<RParalyzer> getRpalaryzerItems() {
+        return rpalaryzerItems;
+    }
 
-	/** Getter - Köpenyek */
-	public ArrayList<Jacket> getJacketItems() {
-		return jacketItems;
-	}
+    /**
+     * Getter - Protektorok
+     */
+    public ArrayList<Protector> getProtectorItems() {
+        return protectorItems;
+    }
 
-	/** Getter - Aminosavak */
-	public ArrayList<Aminoacid> getAminoacidItems() {
-		return aminoacidItems;
-	}
+    /**
+     * Getter - RProtektorok
+     */
+    public ArrayList<RProtector> getRprotectorItems() {
+        return rprotectorItems;
+    }
 
-	/** Getter - Nukleoidok */
-	public ArrayList<Nucleoid> getNucleoidItems() {
-		return nucleoidItems;
-	}
+    /**
+     * Getter - Zsákok
+     */
+    public ArrayList<Bag> getBagItems() {
+        return bagItems;
+    }
 
-	/** A vitustáncot okozó ágens számlálója */
-	public void visit(Dancer i) {
-		dancerItems.add(i);
-	}
+    /**
+     * Getter - Kesztyűk
+     */
+    public ArrayList<Glove> getGloveItems() {
+        return gloveItems;
+    }
 
-	/** A vitustáncot okozó ágens receptjének számlálója */
-	public void visit(RDancer i) {
-		rdancerItems.add(i);
-	}
+    /**
+     * Getter - Köpenyek
+     */
+    public ArrayList<Jacket> getJacketItems() {
+        return jacketItems;
+    }
 
-	/** A felejtő ágens számlálója */
-	public void visit(Forgetter i) {
-		forgetterItems.add(i);
-	}
+    /**
+     * Getter - Aminosavak
+     */
+    public ArrayList<Aminoacid> getAminoacidItems() {
+        return aminoacidItems;
+    }
 
-	/** A felejtő ágens receptjének számlálója */
-	public void visit(RForgetter i) {
-		rforgetterItems.add(i);
-	}
+    /**
+     * Getter - Nukleoidok
+     */
+    public ArrayList<Nucleoid> getNucleoidItems() {
+        return nucleoidItems;
+    }
 
-	/** A bénító ágens számlálója*/
-	public void visit(Paralyzer i) {
-		paralyzerItems.add(i);
-	}
+    //endregion
 
-	/** A bénító ágens receptjének számlálója */
-	public void visit(RParalyzer i) {
-		rpalaryzerItems.add(i);
-	}
+    //region Public methods
 
-	/** A védő vakcina számlálója */
-	public void visit(Protector i) {
-		protectorItems.add(i);
-	}
+    /**
+     * A vitustáncot okozó ágens számlálója
+     */
+    public void visit(Dancer i) {
+        dancerItems.add(i);
+    }
 
-	/** A védő vakcina receptjének számlálója */
-	public void visit(RProtector i) {
-		rprotectorItems.add(i);
-	}
+    /**
+     * A vitustáncot okozó ágens receptjének számlálója
+     */
+    public void visit(RDancer i) {
+        rdancerItems.add(i);
+    }
 
-	/** A táska számlálója */
-	public void visit(Bag i) {
-		bagItems.add(i);
-	}
+    /**
+     * A felejtő ágens számlálója
+     */
+    public void visit(Forgetter i) {
+        forgetterItems.add(i);
+    }
 
-	/** A kesztyű számlálója */
-	public void visit(Glove i) {
-		gloveItems.add(i);
-	}
+    /**
+     * A felejtő ágens receptjének számlálója
+     */
+    public void visit(RForgetter i) {
+        rforgetterItems.add(i);
+    }
 
-	/** A köpeny számlálója */
-	public void visit(Jacket i) {
-		jacketItems.add(i);
-	}
+    /**
+     * A bénító ágens számlálója
+     */
+    public void visit(Paralyzer i) {
+        paralyzerItems.add(i);
+    }
 
-	/** Az aminosav számlálója */
-	public void visit(Aminoacid i) {
-		aminoacidItems.add(i);
-	}
+    /**
+     * A bénító ágens receptjének számlálója
+     */
+    public void visit(RParalyzer i) {
+        rpalaryzerItems.add(i);
+    }
 
-	/** A nukleoid számlálója */
-	public void visit(Nucleoid i) {
-		nucleoidItems.add(i);
-	}
+    /**
+     * A védő vakcina számlálója
+     */
+    public void visit(Protector i) {
+        protectorItems.add(i);
+    }
+
+    /**
+     * A védő vakcina receptjének számlálója
+     */
+    public void visit(RProtector i) {
+        rprotectorItems.add(i);
+    }
+
+    /**
+     * A táska számlálója
+     */
+    public void visit(Bag i) {
+        bagItems.add(i);
+    }
+
+    /**
+     * A kesztyű számlálója
+     */
+    public void visit(Glove i) {
+        gloveItems.add(i);
+    }
+
+    /**
+     * A köpeny számlálója
+     */
+    public void visit(Jacket i) {
+        jacketItems.add(i);
+    }
+
+    /**
+     * Az aminosav számlálója
+     */
+    public void visit(Aminoacid i) {
+        aminoacidItems.add(i);
+    }
+
+    /**
+     * A nukleoid számlálója
+     */
+    public void visit(Nucleoid i) {
+        nucleoidItems.add(i);
+    }
+
+    //endregion
+
 }
