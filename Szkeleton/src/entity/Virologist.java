@@ -17,70 +17,126 @@ import game.Tile;
 import inventory.IInventoryHolder;
 import inventory.IStorable;
 import inventory.Inventory;
+import inventory.VisitorManager;
 import item.Agent;
 import item.Recipe;
 
 import java.util.ArrayList;
 
-/** Egy közös entitás működését szimuláló osztály */
+/**
+ * Egy közös entitás működését szimuláló osztály
+ */
 public abstract class Virologist implements Steppable, IInventoryHolder {
-	/** Mező, amelyen a virológus jelenleg áll */
-	protected Tile tile;
-	/** A virológusunk állapotát tároló változó */
-	protected boolean paralyzed;
-	/** A virológushoz tartozó inventory */
-	protected Inventory inventory;
-	/** A virológusra felkent ágensek */
-	protected ArrayList<Agent> applied;
-	
-	/** Getter - Inventory */
-	public Inventory getInventory() {
-		return inventory;
-	}
-	
-	/** Getter - Felkent ágensek */
-	public ArrayList<Agent> getApplied() {
-		return applied;
-	}
-	
-	/** Ágens felkenése a virológusra */
-	public void applyAgent(Agent a) {
-	}
-	
-	/** Ágens leszedése a virológusról */
-	public void removeApplied(Agent a) {
-	}
-	
-	/** A virológus bénult állapotának beállítása */
-	public void setParalyzed(boolean p) {
-		paralyzed = p;
-	}
-	
-	/** Felkent ágensek lejárati idő szerinti növekvő sorbarendezése */
-	public void sortApplied() {
-	}
-	
-	/** A virológus másik mezőre léptetése */
-	public void move(Tile t) {
-	}
-	
-	/** Egy másik virológus kirablása */
-	public void robVirologist(Virologist v) {
-	}
-	
-	/** Egy ágens recept alapján való létrehozása */
-	public void makeAgent(Recipe r) {
-	}
-	
-	/** Ágens felhasználása a virológus által
-	 * @param v A célpont
-	 * @param a A felhasználni kívánt ágens
-	 * */
-	public void useAgent(Virologist v, Agent a) {
-	}
+    /**
+     * Mező, amelyen a virológus jelenleg áll
+     */
+    protected Tile tile;
+    /**
+     * A virológusunk állapotát tároló változó
+     */
+    protected boolean paralyzed;
+    /**
+     * A virológushoz tartozó inventory
+     */
+    protected Inventory inventory;
+    /**
+     * A virológusra felkent ágensek
+     */
+    protected ArrayList<Agent> applied;
 
-	/** Leszármazottak által definiálandó működés */
-	public abstract void step();
-	/** Leszármazott általi döntés egy item felvételéről */
-	public abstract void pickUp(IStorable s);
+    /**
+     * Getter - Inventory
+     */
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    /**
+     * Getter - Felkent ágensek
+     */
+    public ArrayList<Agent> getApplied() {
+        return applied;
+    }
+
+    /**
+     * Getter - Paralyzed
+     */
+    public boolean getParalyzed() {
+        return paralyzed;
+    }
+
+    /**
+     * Ágens felkenése a virológusra
+     */
+    public void applyAgent(Agent a) {
+    }
+
+    /**
+     * Ágens leszedése a virológusról
+     */
+    public void removeApplied(Agent a) {
+    }
+
+    /**
+     * A virológus bénult állapotának beállítása
+     */
+    public void setParalyzed(boolean p) {
+        paralyzed = p;
+    }
+
+    /**
+     * Felkent ágensek lejárati idő szerinti növekvő sorbarendezése
+     */
+    public void sortApplied() {
+    }
+
+    /**
+     * A virológus másik mezőre léptetése
+     */
+    public void move(Tile t) {
+        if (getParalyzed())
+            return;
+        tile.removeVirologist(this);
+        t.acceptVirologist(this);
+    }
+
+    /**
+     * Egy másik virológus kirablása
+     */
+    public void robVirologist(Virologist v) {
+        if (!v.getParalyzed())
+            return;
+        Inventory i = v.getInventory();
+        // TODO - while van hely az inventory-ban & van lopható cucc addig pakoljuk ki egyesével
+    }
+
+    /**
+     * Egy ágens recept alapján való létrehozása
+     */
+    public void makeAgent(Recipe r) {
+        if (!VisitorManager.craftRecipe(this, r))
+            return;
+        // TODO - recepttől le kellene kérni, hogy mégis milyen ágenst kraftoltunk, elvesszük a material-t
+    }
+
+    /**
+     * Ágens felhasználása a virológus által
+     *
+     * @param v A célpont
+     * @param a A felhasználni kívánt ágens
+     */
+    public void useAgent(Virologist v, Agent a) throws inventory.ItemNotFoundException {
+        getInventory().removeItem(a);
+        a.use(this, v);
+    }
+
+    /**
+     * Leszármazottak által definiálandó működés
+     */
+    public abstract void step();
+
+    /**
+     * Leszármazott általi döntés egy item felvételéről
+     */
+    public abstract void pickUp(IStorable s);
 }
