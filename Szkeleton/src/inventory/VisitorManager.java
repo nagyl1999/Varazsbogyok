@@ -11,7 +11,6 @@ package inventory;
 
 */
 
-
 import entity.Virologist;
 import game.Game;
 import item.Bag;
