@@ -33,4 +33,8 @@ public class Map {
 		timer = t;
 	}
 
+	public ArrayList<Tile> getTiles(){
+		return tiles;
+	}
+
 }

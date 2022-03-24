@@ -11,42 +11,55 @@ package game;
 
 */
 
-
 import entity.Virologist;
-
+import java.util.ArrayList;
 import java.util.Random;
 
 /** Játék objektum, felelőssége a játék elindítása, kiléptetése */
 public class Game {
 	/** Játéktér */
-	private Map map;
+	private static Map map;
+	/** Ennek segitségével állitunk be szomszédokat az egyes pályaelemeknek. */
+	private static  ArrayList<Integer> neighbours;
 	/** A játékban a pályaelemek száma */
 	public static int tileCount = 50;
+	/** A játékban a botok száma */
 	public static int botCount = 3;
+	/** A játékban az egyes pályaelemek maximális szomszéda */
+	public static int maxNeighbours = 4;
 
 	/** Új játék indítása, pályagenerálás */
-	public void newGame() {
+	public static void newGame() {
+		//itt generálunk valamely konkrét pályaelemet
+		for (int i = 0; i < tileCount; i++) map.addTile(randomTile());
 		for (int i = 0; i < tileCount; i++) {
-			map.addTile(randomTile());
+			// itt felépitjuk az esetleges szomszédok listáját, kivéve a soron lévo elemet
+			for (int j = 0; j < tileCount; j++) if(i != j) neighbours.add(j);
+			/** Itt fogjuk a szomszédokat beállitani, egy pályaelemnek legfeljebb
+			 * maxNeighbours szomszédja lehet, ezután hozzáadunk a neighbours listábol egyet,
+			 * miután hozzáadtuk kivesszük a neighbours listábol az elemet, igy a listában
+			 * csak olyan elemek maradnak amik még nem szomszédosak az adott pályaelemmek*/
+			Random r = new Random();
+			for (int j = 0; j < r.nextInt(maxNeighbours); j++) {
+				int n = r.nextInt(tileCount-j-1);
+				map.getTiles().get(i).addNeighbour(map.getTiles().get(n));
+				neighbours.remove(n);
+				}
 			}
-		for (int i = 0; i < tileCount; i++) {
-			// szomszédok generálása, egy listában az ooszes tile és amikor az 5. tilenak kell szomszéd akkor
-			//kipoppolom az 5.-ket a listábol és a maradadek tileok kozul lesz az egyik a szomszédja.
 		}
-	}
-	
+
 	/** Játékból való kilépés */
-	public void exitGame() {
+	public static void exitGame() {
 		map = null;
 		System.out.println("A játéknak vége :/");
 	}
 	
 	/** Egy virológus megnyerte a játékot */
-	public void winGame(Virologist v) {
+	public static void winGame(Virologist v) {
 		System.out.println("A játékot " + v.toString() + "nyerte");
 	}
-
-	public Tile randomTile(){
+	/** Egy véletlenszeru pályaelemet generál */
+	public static Tile randomTile(){
 		Random r = new Random();
 		int n = r.nextInt(3);
 		switch(n){
