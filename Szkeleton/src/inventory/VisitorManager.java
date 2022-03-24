@@ -11,8 +11,8 @@ package inventory;
 
 */
 
-
 import entity.Virologist;
+import game.Game;
 import item.Bag;
 import item.Glove;
 import item.Jacket;
@@ -20,51 +20,84 @@ import item.Recipe;
 
 import java.util.ArrayList;
 
-/** A VisitorManager osztály felel minden olyan kérdésre,
+/**
+ * A VisitorManager osztály felel minden olyan kérdésre,
  * amely az inventory tartalmával kapcsolatosan vetődik fel
- * elkerülve a TypeCheck-et */
+ * elkerülve a TypeCheck-et
+ */
 public class VisitorManager {
 
-	/** Egy inventory tartalmának szétválogatása */
-	public InventorySorterVisitor sortInventory(IInventoryHolder e) {
-		return null; // TODO
-	}
-	
-	/** Megvizsgáljuk, hogy egy adott virológus minden
-	 * receptel rendelkezik-e, amennyiben igen, meghívjuk
-	 * a Game.WinGame függvényt */
-	public void hasWonTheGame(Virologist e) {
-	}
-	
-	/** Recept létrehozásához szükséges anyagmennyiség
-	 * ellenőrzése */
-	public int checkMaterialCount(Virologist e) {
-		return 0; // TODO
-	}
-	
-	/** Egy recept előállítása az inventory-ban található
-	 * anyagok, és a kapott recept segítségével */
-	public boolean craftRecipe(Virologist v, Recipe r) {
-		return false; // TODO
-	}
-	
-	/** Ellopható objektumok a birtokos inventory-jából */
-	public ArrayList<IStorable> getStealable(Virologist v) {
-		return null; // TODO
-	}
-	
-	/** Van-e táska az inventory-ban */
-	public boolean containsGear(Virologist v, Bag g) {
-		return false; // TODO
-	}
+    /**
+     * Egy inventory tartalmának szétválogatása, amennyiben van zsák, azét is megnézzük
+     */
+    public static InventorySorterVisitor sortInventory(IInventoryHolder e) {
+        InventorySorterVisitor i = new InventorySorterVisitor();
+        e.getInventory().accept(i);
+        if (i.getBagItems().size() > 0) {
+            for (Bag b : i.getBagItems()) {
+                b.getInventory().accept(i);
+            }
+        }
+        return i;
+    }
 
-	/** Van-e kesztyű az inventory-ban */
-	public boolean containsGear(Virologist v, Glove g) {
-		return false; // TODO
-	}
+    /**
+     * Megvizsgáljuk, hogy egy adott virológus minden
+     * receptel rendelkezik-e, amennyiben igen, meghívjuk
+     * a Game.WinGame függvényt
+     */
+    public static void hasWonTheGame(Virologist e) {
+        InventorySorterVisitor i = sortInventory(e);
+        if (i.getRdancerItems().size() > 0 && i.getRforgetterItems().size() > 0 && i.getRpalaryzerItems().size() > 0 && i.getRprotectorItems().size() > 0)
+            Game.winGame(e);
 
-	/** Van-e köpeny az inventory-ban */
-	public boolean containsGear(Virologist v, Jacket g) {
-		return false; // TODO
-	}
+    }
+
+    /**
+     * Egy recept előállítása az inventory-ban található
+     * anyagok, és a kapott recept segítségével
+     */
+    public static boolean craftRecipe(Virologist v, Recipe r) {
+        InventorySorterVisitor i = sortInventory(v);
+        return r.hasEnoughMaterial(i);
+    }
+
+    /**
+     * Ellopható objektumok a birtokos inventory-jából,
+     * ide tartoznak az anyagok és a védőfelszerelések
+     */
+    public static ArrayList<IStorable> getStealable(Virologist v) {
+        InventorySorterVisitor i = sortInventory(v);
+        ArrayList<IStorable> items = new ArrayList<>();
+        items.addAll(i.getBagItems());
+        items.addAll(i.getGloveItems());
+        items.addAll(i.getJacketItems());
+        items.addAll(i.getNucleoidItems());
+        items.addAll(i.getAminoacidItems());
+        return items;
+    }
+
+    /**
+     * Van-e táska az inventory-ban
+     */
+    public static boolean containsGear(Virologist v, Bag g) {
+        InventorySorterVisitor i = sortInventory(v);
+        return i.getBagItems().size() > 0;
+    }
+
+    /**
+     * Van-e kesztyű az inventory-ban
+     */
+    public static boolean containsGear(Virologist v, Glove g) {
+        InventorySorterVisitor i = sortInventory(v);
+        return i.getGloveItems().size() > 0;
+    }
+
+    /**
+     * Van-e köpeny az inventory-ban
+     */
+    public static boolean containsGear(Virologist v, Jacket g) {
+        InventorySorterVisitor i = sortInventory(v);
+        return i.getJacketItems().size() > 0;
+    }
 }

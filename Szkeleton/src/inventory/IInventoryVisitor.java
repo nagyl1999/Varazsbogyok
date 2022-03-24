@@ -14,34 +14,80 @@ package inventory;
 
 import item.*;
 
-/** Az inventory-t bejáró visitorok interfésze,
+/**
+ * Az inventory-t bejáró visitorok interfésze,
  * tartalmaz minden tárolható objektumhoz
- * tartozó visitet */
+ * tartozó visitet
+ */
 public interface IInventoryVisitor {
-	/** A vitustáncot okozó ágens számlálója */
-	public void visit(Dancer i);
-	/** A vitustáncot okozó ágens receptjének számlálója */
-	public void visit(RDancer i);
-	/** A felejtő ágens számlálója */
-	public void visit(Forgetter i);
-	/** A felejtő ágens receptjének számlálója */
-	public void visit(RForgetter i);
-	/** A bénító ágens számlálója*/
-	public void visit(Paralyzer i);
-	/** A bénító ágens receptjének számlálója */
-	public void visit(RParalyzer i);
-	/** A védő vakcina számlálója */
-	public void visit(Protector i);
-	/** A védő vakcina receptjének számlálója */
-	public void visit(RProtector i);
-	/** A táska számlálója */
-	public void visit(Bag i);
-	/** A kesztyű számlálója */
-	public void visit(Glove i);
-	/** A köpeny számlálója */
-	public void visit(Jacket i);
-	/** Az aminosav számlálója */
-	public void visit(Aminoacid i);
-	/** A nukleoid számlálója */
-	public void visit(Nucleoid i);
+
+    //region Public methods
+
+    /**
+     * A vitustáncot okozó ágens számlálója
+     */
+    public void visit(Dancer i);
+
+    /**
+     * A vitustáncot okozó ágens receptjének számlálója
+     */
+    public void visit(RDancer i);
+
+    /**
+     * A felejtő ágens számlálója
+     */
+    public void visit(Forgetter i);
+
+    /**
+     * A felejtő ágens receptjének számlálója
+     */
+    public void visit(RForgetter i);
+
+    /**
+     * A bénító ágens számlálója
+     */
+    public void visit(Paralyzer i);
+
+    /**
+     * A bénító ágens receptjének számlálója
+     */
+    public void visit(RParalyzer i);
+
+    /**
+     * A védő vakcina számlálója
+     */
+    public void visit(Protector i);
+
+    /**
+     * A védő vakcina receptjének számlálója
+     */
+    public void visit(RProtector i);
+
+    /**
+     * A táska számlálója
+     */
+    public void visit(Bag i);
+
+    /**
+     * A kesztyű számlálója
+     */
+    public void visit(Glove i);
+
+    /**
+     * A köpeny számlálója
+     */
+    public void visit(Jacket i);
+
+    /**
+     * Az aminosav számlálója
+     */
+    public void visit(Aminoacid i);
+
+    /**
+     * A nukleoid számlálója
+     */
+    public void visit(Nucleoid i);
+
+    //endregion
+
 }

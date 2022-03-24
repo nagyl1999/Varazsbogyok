@@ -12,11 +12,14 @@ package inventory;
 */
 
 
-
-/** Minden tárolható objektum összefoglaló interfésze */
+/**
+ * Minden tárolható objektum összefoglaló interfésze
+ */
 public interface IStorable {
-	/** Kötelezően fogadandó visitor, az implementáló
-	 * objektumok saját magukkal hívják a visitor
-	 * visit függvényét */
-	public void accept(IInventoryVisitor i);
+    /**
+     * Kötelezően fogadandó visitor, az implementáló
+     * objektumok saját magukkal hívják a visitor
+     * visit függvényét
+     */
+    public void accept(IInventoryVisitor i);
 }
