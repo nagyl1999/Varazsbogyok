@@ -14,10 +14,7 @@ package entity;
 
 import game.Steppable;
 import game.Tile;
-import inventory.IInventoryHolder;
-import inventory.IStorable;
-import inventory.Inventory;
-import inventory.VisitorManager;
+import inventory.*;
 import item.Agent;
 import item.Recipe;
 
@@ -69,12 +66,18 @@ public abstract class Virologist implements Steppable, IInventoryHolder {
      * Ágens felkenése a virológusra
      */
     public void applyAgent(Agent a) {
+        // TODO - vakcina + védőfelszerelés protect
+        applied.add(a);
+        a.effect(this);
     }
 
     /**
      * Ágens leszedése a virológusról
      */
-    public void removeApplied(Agent a) {
+    public void removeApplied(Agent a) throws ItemNotFoundException {
+        if(!applied.contains(a))
+            throw new ItemNotFoundException("Ilyen ágens nincs felkenve!");
+        applied.remove(a);
     }
 
     /**
@@ -88,6 +91,7 @@ public abstract class Virologist implements Steppable, IInventoryHolder {
      * Felkent ágensek lejárati idő szerinti növekvő sorbarendezése
      */
     public void sortApplied() {
+        // TODO - Agent osztálynak implementálnia kell egy Comparator-t
     }
 
     /**
@@ -125,7 +129,9 @@ public abstract class Virologist implements Steppable, IInventoryHolder {
      * @param v A célpont
      * @param a A felhasználni kívánt ágens
      */
-    public void useAgent(Virologist v, Agent a) throws inventory.ItemNotFoundException {
+    public void useAgent(Virologist v, Agent a) throws ItemNotFoundException {
+        if (getParalyzed())
+            return;
         getInventory().removeItem(a);
         a.use(this, v);
     }
