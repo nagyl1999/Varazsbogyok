@@ -13,6 +13,7 @@ package game;
 
 
 import entity.Virologist;
+import item.RDancer;
 
 /** Laboratórium mező, rálépéskor egy receptet kínál
  * fel a virológus számára
@@ -21,12 +22,15 @@ public class Laboratory extends Tile {
 
 	/** A virológus így nézi meg, hogy mi található a mezőn */
 	public void interactedWith(Virologist v) {
+
 	}
 
 	/** Egy virológus fogadása a mezőre, itt felkínálunk
 	 * neki egy véletlenszerű receptet
 	 * */
 	public void acceptVirologist(Virologist v) {
+
+
 	}
 
 }

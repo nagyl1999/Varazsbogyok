@@ -14,20 +14,48 @@ package game;
 
 import entity.Virologist;
 
+import java.util.Random;
+
 /** Játék objektum, felelőssége a játék elindítása, kiléptetése */
 public class Game {
 	/** Játéktér */
 	private Map map;
+	/** A játékban a pályaelemek száma */
+	public static int tileCount = 50;
+	public static int botCount = 3;
 
 	/** Új játék indítása, pályagenerálás */
 	public void newGame() {
+		for (int i = 0; i < tileCount; i++) {
+			map.addTile(randomTile());
+			}
+		for (int i = 0; i < tileCount; i++) {
+			// szomszédok generálása, egy listában az ooszes tile és amikor az 5. tilenak kell szomszéd akkor
+			//kipoppolom az 5.-ket a listábol és a maradadek tileok kozul lesz az egyik a szomszédja.
+		}
 	}
 	
 	/** Játékból való kilépés */
 	public void exitGame() {
+		map = null;
+		System.out.println("A játéknak vége :/");
 	}
 	
 	/** Egy virológus megnyerte a játékot */
 	public void winGame(Virologist v) {
+		System.out.println("A játékot " + v.toString() + "nyerte");
 	}
+
+	public Tile randomTile(){
+		Random r = new Random();
+		int n = r.nextInt(3);
+		switch(n){
+			case 0: return new Laboratory();
+			case 1: return new Safehouse();
+			case 2: return new Storage();
+			default: return new Town();
+		}
+	}
+
+
 }

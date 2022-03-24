@@ -21,9 +21,16 @@ public class Map {
 	/** A pályán lévő mezők */
 	private ArrayList<Tile> tiles;
 	/** A pályán lévő léptethető objektumok */
-	private ArrayList<Steppable> steppables;
+	private Timer timer;
 	
 	/** Mező hozzáadása a páylához */
 	public void addTile(Tile t) {
+		tiles.add(t);
 	}
+
+	/** Timer hozzáadása a páylához */
+	public void setTimer(Timer t){
+		timer = t;
+	}
+
 }
