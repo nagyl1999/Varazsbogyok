@@ -35,6 +35,8 @@ public class Paralyzer extends Agent {
 	
 	/**Az ágens vírus típusú, így nincs védő hatása. */
 	public void protect(Virologist v, Agent a) {
+		System.out.println("protect(v,a)");
+		return;
 	}
 	
 	/**Az ágens felhasználására irányuló függvény.
@@ -42,6 +44,9 @@ public class Paralyzer extends Agent {
 	 * @param v2 Az elszenvedő
 	 * */
 	public void use(Virologist v1, Virologist v2) {
+		System.out.println("use(v1,v2)");
+		v2.applyAgent(this);
+		return;
 	}
 
 }

@@ -23,6 +23,7 @@ public class Forgetter extends Agent {
 	
 	/** A függvény paraméterben kapott virológuson fogja kifejteni a hatását az ágens.*/
 	public void effect(Virologist v) {
+		System.out.println("effect(v)");
 	}
 	
 	/**A függvény paraméterben kapott virológuson szünteti meg a felkent ágens hatását. */
@@ -35,6 +36,8 @@ public class Forgetter extends Agent {
 	
 	/** Az ágens vírus típusú, így nincs védő hatása.*/
 	public void protect(Virologist v, Agent a) {
+		System.out.println("protect(v,a)");
+		return;
 	}
 	
 	/**Az ágens felhasználására irányuló függvény.
@@ -42,6 +45,9 @@ public class Forgetter extends Agent {
 	 * @param v2 Az elszenvedő
 	 * */
 	public void use(Virologist v1, Virologist v2) {
+		System.out.println("use(v1,v2)");
+		v2.applyAgent(this);
+		return;
 	}
 
 }
