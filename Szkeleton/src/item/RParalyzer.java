@@ -19,7 +19,7 @@ public class RParalyzer extends Recipe {
 	/** A visitor tervezési mintát kihasználva a visitor megnézi, hogy a bénulást okozó ágens recepjéhez van-e
 	 elegendő alapanyag. */
 	public boolean hasEnoughMaterial(InventorySorterVisitor i) {
-		if(i.aminoacidItems.size() >= 4 && i.nucleoidItems.size() >= 2){
+		if(i.getAminoacidItems.size() >= 4 && i.getNucleoidItems.size() >= 2){
 			return true;
 		}
 		else{

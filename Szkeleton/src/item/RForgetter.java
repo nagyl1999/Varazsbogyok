@@ -19,7 +19,7 @@ public class RForgetter extends Recipe {
 	/** A visitor tervezési mintát kihasználva a visitor megnézi, hogy a felejtést okozó ágens recepjéhez van-e
 	 elegendő alapanyag. */
 	public boolean hasEnoughMaterial(InventorySorterVisitor i) {
-		if(i.aminoacidItems.size() >= 2 && i.nucleoidItems.size() >= 4){
+		if(i.getAminoacidItems.size() >= 2 && i.getNucleoidItems.size() >= 4){
 			return true;
 		}
 		else{

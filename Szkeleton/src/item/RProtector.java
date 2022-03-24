@@ -19,7 +19,7 @@ public class RProtector extends Recipe {
 	/** A visitor tervezési mintát kihasználva a visitor megnézi, hogy a védelem ágens recepjéhez van-e
 	 elegendő alapanyag. */
 	public boolean hasEnoughMaterial(InventorySorterVisitor i) {
-		if(i.aminoacidItems.size() >= 2 && i.nucleoidItems.size() >= 3){
+		if(i.getAminoacidItems.size() >= 2 && i.nucleoidItems.size() >= 3){
 			return true;
 		}
 		else{

@@ -19,7 +19,7 @@ public class RDancer extends Recipe {
 	/** A visitor tervezési mintát kihasználva a visitor megnézi, hogy a vitus táncot okozó ágens recepjéhez van-e
 	 elegendő alapanyag. */
 	public boolean hasEnoughMaterial(InventorySorterVisitor i) {
-		if(i.aminoacidItems.size() >= 3 && i.nucleoidItems.size() >= 2){
+		if(i.getAminoacidItems.size() >= 3 && i.getNucleoidItems.size() >= 2){
 			return true;
 		}
 		else{
