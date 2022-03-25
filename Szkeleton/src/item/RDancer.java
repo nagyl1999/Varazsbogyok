@@ -14,23 +14,52 @@ package item;
 import inventory.IInventoryVisitor;
 import inventory.InventorySorterVisitor;
 
-/** A vitustáncot okozó ágens receptje.*/
+/**
+ * A vitustáncot okozó ágens receptje.
+ */
 public class RDancer extends Recipe {
-	/** A visitor tervezési mintát kihasználva a visitor megnézi, hogy a vitus táncot okozó ágens recepjéhez van-e
-	 elegendő alapanyag. */
-	public boolean hasEnoughMaterial(InventorySorterVisitor i) {
-		if(i.getAminoacidItems.size() >= 3 && i.getNucleoidItems.size() >= 2){
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
-	
-	/** A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a vitustánc ágens receptje típust. */
-	public void accept(IInventoryVisitor i) {
-		i.visit(this);
-	}
-	
 
+    /**
+     * A vitustáncot okozó ágenshez szükséges anyagok számai.
+     */
+    private final int numberOfAminoAcid = 3;
+    private final int numberOfNucleoid = 2;
+
+    /**
+     * A visitor tervezési mintát kihasználva a visitor megnézi, hogy a vitus táncot okozó ágens recepjéhez van-e
+     * elegendő alapanyag.
+     */
+    public boolean hasEnoughMaterial(InventorySorterVisitor i) {
+        if (i.getAminoacidItems.size() >= numberOfAminoAcid && i.getNucleoidItems.size() >= numberOfNucleoid) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a vitustánc ágens receptje típust.
+     */
+    public void accept(IInventoryVisitor i) {
+        i.visit(this);
+    }
+
+    /**
+     * Az anyagok számainak lekérdezéséhez szükséges függvények.
+     */
+    public int getNumberOfAminoAcid() {
+        return numberOfAminoAcid;
+    }
+
+    public int getNumberOfNucleoid() {
+        return numberOfNucleoid;
+    }
+
+    /**
+     * A recept használata után az visszaadja a kész ágenst.
+     */
+    @Override
+    public Agent addAgent() {
+        return new Dancer();
+    }
 }
