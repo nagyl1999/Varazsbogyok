@@ -29,7 +29,8 @@ public class Paralyzer extends Agent {
 	
 	/**A függvény paraméterben kapott virológuson szünteti meg a felkent ágens hatását. */
 	public void decompose(Virologist v) {
-
+		v.setParalyzed(false);
+		v.removeApplied(this);
 	}
 	
 	/**A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a bénító ágens típust.  */
