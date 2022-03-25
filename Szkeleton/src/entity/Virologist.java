@@ -16,9 +16,13 @@ import game.Steppable;
 import game.Tile;
 import inventory.*;
 import item.Agent;
+import item.Gear;
 import item.Recipe;
+import item.AgentComparator;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Egy közös entitás működését szimuláló osztály
@@ -63,19 +67,23 @@ public abstract class Virologist implements Steppable, IInventoryHolder {
     }
 
     /**
-     * Ágens felkenése a virológusra
+     * Ágens felkenése a virológusra, ágensek rendezése a konzisztens
+     * állapot fenttartása érdekében, mielőtt
      */
     public void applyAgent(Agent a) {
-        // TODO - vakcina + védőfelszerelés protect
         applied.add(a);
-        a.effect(this);
+        for (Gear g : VisitorManager.getGear(this))
+            g.protect(this, a);
+        for (Agent g : getApplied())
+            g.protect(this, a);
+        sortApplied();
     }
 
     /**
      * Ágens leszedése a virológusról
      */
     public void removeApplied(Agent a) throws ItemNotFoundException {
-        if(!applied.contains(a))
+        if (!applied.contains(a))
             throw new ItemNotFoundException("Ilyen ágens nincs felkenve!");
         applied.remove(a);
     }
@@ -91,7 +99,7 @@ public abstract class Virologist implements Steppable, IInventoryHolder {
      * Felkent ágensek lejárati idő szerinti növekvő sorbarendezése
      */
     public void sortApplied() {
-        // TODO - Agent osztálynak implementálnia kell egy Comparator-t
+        applied.sort(new AgentComparator());
     }
 
     /**
@@ -107,11 +115,15 @@ public abstract class Virologist implements Steppable, IInventoryHolder {
     /**
      * Egy másik virológus kirablása
      */
-    public void robVirologist(Virologist v) {
+    public void robVirologist(Virologist v) throws ItemNotFoundException, NotEnoughSpaceException {
         if (!v.getParalyzed())
             return;
         Inventory i = v.getInventory();
-        // TODO - while van hely az inventory-ban & van lopható cucc addig pakoljuk ki egyesével
+        while (getInventory().hasSpace() && i.hasNext()) {
+            IStorable item = i.next();
+            i.removeItem(item);
+            getInventory().addItem(item);
+        }
     }
 
     /**

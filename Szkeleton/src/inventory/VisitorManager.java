@@ -13,10 +13,7 @@ package inventory;
 
 import entity.Virologist;
 import game.Game;
-import item.Bag;
-import item.Glove;
-import item.Jacket;
-import item.Recipe;
+import item.*;
 
 import java.util.ArrayList;
 
@@ -74,6 +71,19 @@ public class VisitorManager {
         items.addAll(i.getJacketItems());
         items.addAll(i.getNucleoidItems());
         items.addAll(i.getAminoacidItems());
+        return items;
+    }
+
+    /**
+     * Gear típusú objektumok lekérése a virológusnál
+     * található dolgok közül
+     */
+    public static ArrayList<Gear> getGear(Virologist v) {
+        InventorySorterVisitor i = sortInventory(v);
+        ArrayList<Gear> items = new ArrayList<>();
+        items.addAll(i.getBagItems());
+        items.addAll(i.getJacketItems());
+        items.addAll(i.getGloveItems());
         return items;
     }
 
