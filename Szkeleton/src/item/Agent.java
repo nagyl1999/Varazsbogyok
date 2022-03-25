@@ -19,21 +19,29 @@ import inventory.IStorable;
 /** A játékban található ágensek őosztálya. A virológusok ezeket használhatják fel egymás gyengítése illetve
  * saját maguk megsegítése céljából.
  * */
-public abstract class Agent implements  IStorable, Steppable {
+public abstract class Agent implements  IStorable, Steppable, Comparable<Agent> {
 	/** Az ágens elbomlásáig visszamaradt idő. */
 	protected int expire;
 	/**A virológusra van felkenve az ágens. */
 	private Virologist virologist;
+
+	/** Getter - expire */
+	public int getExpire() {
+		return expire;
+	}
+
+	/** Ágensek lejárata szerinti összehasonlítás */
+	public int compareTo(Agent a) {
+		return Integer.compare(getExpire(), a.getExpire());
+	}
 	
 	/** A paraméterben kapott virológuson hajtja végre a hatást.*/
 	public abstract void effect(Virologist v);
-	
 	/** Egyel csökkenti az expire értékét.*/
 	public abstract void decompose(Virologist v);
-	
 	/** A protector ágens fogja megvédeni a virológust.  */
 	public abstract void protect(Virologist v, Agent a);
-	
+
 	/** Melyik virológus fog felkenni a másikra ágenst
 	 * @param v1 Felkenő virológus
 	 * @param v2 Elszenvedő virológus
