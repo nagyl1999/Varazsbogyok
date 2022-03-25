@@ -43,5 +43,6 @@ public class Safehouse extends Tile {
 	 * neki egy véletlenszerű védőfelszerelést
 	 * */
 	public void acceptVirologist(Virologist v) {
+		//TODO
 	}
 }

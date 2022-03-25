@@ -27,17 +27,13 @@ public class Laboratory extends Tile {
 		switch (n) {
 			case 0:
 				RDancer dancer = new RDancer();
-				//dancer.getRecipe();
 				break;
 			case 1:
 				RForgetter forgetter = new RForgetter();
-				//forgetter.getRecipe();
 			case 2:
 				RParalyzer paralyzer = new RParalyzer();
-				//paralyzer.getRecipe();
 			default:
 				RProtector protector = new RProtector();
-				//protector.getRecipe();
 		}
 	}
 
@@ -46,7 +42,7 @@ public class Laboratory extends Tile {
 		 * neki egy véletlenszerű receptet
 		 */
 		public void acceptVirologist (Virologist v){
-
+		//TODO
 		}
 
 
