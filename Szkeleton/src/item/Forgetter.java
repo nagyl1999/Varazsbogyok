@@ -13,6 +13,8 @@ package item;
 
 import entity.Virologist;
 import inventory.IInventoryVisitor;
+import inventory.Inventory;
+import inventory.InventorySorterVisitor;
 import item.Agent;
 
 /** Felejtést okozó ágens */
@@ -24,6 +26,8 @@ public class Forgetter extends Agent {
 	/** A függvény paraméterben kapott virológuson fogja kifejteni a hatását az ágens.*/
 	public void effect(Virologist v) {
 		System.out.println("effect(v)");
+
+
 	}
 	
 	/**A függvény paraméterben kapott virológuson szünteti meg a felkent ágens hatását. */

@@ -23,6 +23,7 @@ public class Protector extends Agent {
 	
 	/**A függvény paraméterben kapott virológuson fogja kifejteni a hatását az ágens. */
 	public void effect(Virologist v) {
+
 	}
 	
 	/**A függvény paraméterben kapott virológuson szünteti meg a felkent ágens hatását. */

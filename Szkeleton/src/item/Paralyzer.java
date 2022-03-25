@@ -23,10 +23,13 @@ public class Paralyzer extends Agent {
 	
 	/**A függvény paraméterben kapott virológuson fogja kifejteni a hatását az ágens. */
 	public void effect(Virologist v) {
+		System.out.println("effect(v)");
+		v.setParalyzed(true);
 	}
 	
 	/**A függvény paraméterben kapott virológuson szünteti meg a felkent ágens hatását. */
 	public void decompose(Virologist v) {
+
 	}
 	
 	/**A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a bénító ágens típust.  */

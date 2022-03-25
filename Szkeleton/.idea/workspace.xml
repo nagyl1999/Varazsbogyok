@@ -1,7 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cd9a30a9-209e-4845-90c0-d2d5a150f0a2" name="Changes" comment="" />
+    <list default="true" id="cd9a30a9-209e-4845-90c0-d2d5a150f0a2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/project-template.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/project-template.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Szkeleton.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Szkeleton.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Bot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Virologist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Virologist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Laboratory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Laboratory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Safehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Safehouse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Steppable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Steppable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Storage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Storage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Timer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Timer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Town.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Town.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inventory/IInventoryHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inventory/IInventoryHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inventory/IInventoryVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inventory/IInventoryVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inventory/IStorable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inventory/IStorable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inventory/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inventory/Inventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inventory/InventorySorterVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inventory/InventorySorterVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inventory/ItemNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inventory/ItemNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inventory/NotEnoughSpaceException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inventory/NotEnoughSpaceException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inventory/VisitorManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inventory/VisitorManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/item/Agent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/Agent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/item/AgentComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/AgentComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/item/Aminoacid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/Aminoacid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/item/Bag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/Bag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/item/Dancer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/Dancer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/item/Forgetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/Forgetter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/item/Gear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/Gear.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/item/Glove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/Glove.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/item/Jacket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/Jacket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/item/Material.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/Material.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/item/Nucleoid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/Nucleoid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/item/Paralyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/Paralyzer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/item/Protector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/Protector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/item/RDancer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/RDancer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/item/RForgetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/RForgetter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/item/RParalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/RParalyzer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/item/RProtector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/RProtector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/item/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/Recipe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/SkeletonTesterMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/SkeletonTesterMenu.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
