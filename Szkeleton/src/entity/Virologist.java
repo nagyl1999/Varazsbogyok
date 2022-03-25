@@ -14,73 +14,147 @@ package entity;
 
 import game.Steppable;
 import game.Tile;
-import inventory.IInventoryHolder;
-import inventory.IStorable;
-import inventory.Inventory;
+import inventory.*;
 import item.Agent;
+import item.Gear;
 import item.Recipe;
+import item.AgentComparator;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
-/** Egy közös entitás működését szimuláló osztály */
+/**
+ * Egy közös entitás működését szimuláló osztály
+ */
 public abstract class Virologist implements Steppable, IInventoryHolder {
-	/** Mező, amelyen a virológus jelenleg áll */
-	protected Tile tile;
-	/** A virológusunk állapotát tároló változó */
-	protected boolean paralyzed;
-	/** A virológushoz tartozó inventory */
-	protected Inventory inventory;
-	/** A virológusra felkent ágensek */
-	protected ArrayList<Agent> applied;
-	
-	/** Getter - Inventory */
-	public Inventory getInventory() {
-		return inventory;
-	}
-	
-	/** Getter - Felkent ágensek */
-	public ArrayList<Agent> getApplied() {
-		return applied;
-	}
-	
-	/** Ágens felkenése a virológusra */
-	public void applyAgent(Agent a) {
-	}
-	
-	/** Ágens leszedése a virológusról */
-	public void removeApplied(Agent a) {
-	}
-	
-	/** A virológus bénult állapotának beállítása */
-	public void setParalyzed(boolean p) {
-		paralyzed = p;
-	}
-	
-	/** Felkent ágensek lejárati idő szerinti növekvő sorbarendezése */
-	public void sortApplied() {
-	}
-	
-	/** A virológus másik mezőre léptetése */
-	public void move(Tile t) {
-	}
-	
-	/** Egy másik virológus kirablása */
-	public void robVirologist(Virologist v) {
-	}
-	
-	/** Egy ágens recept alapján való létrehozása */
-	public void makeAgent(Recipe r) {
-	}
-	
-	/** Ágens felhasználása a virológus által
-	 * @param v A célpont
-	 * @param a A felhasználni kívánt ágens
-	 * */
-	public void useAgent(Virologist v, Agent a) {
-	}
+    /**
+     * Mező, amelyen a virológus jelenleg áll
+     */
+    protected Tile tile;
+    /**
+     * A virológusunk állapotát tároló változó
+     */
+    protected boolean paralyzed;
+    /**
+     * A virológushoz tartozó inventory
+     */
+    protected Inventory inventory;
+    /**
+     * A virológusra felkent ágensek
+     */
+    protected ArrayList<Agent> applied;
 
-	/** Leszármazottak által definiálandó működés */
-	public abstract void step();
-	/** Leszármazott általi döntés egy item felvételéről */
-	public abstract void pickUp(IStorable s);
+    /**
+     * Getter - Inventory
+     */
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    /**
+     * Getter - Felkent ágensek
+     */
+    public ArrayList<Agent> getApplied() {
+        return applied;
+    }
+
+    /**
+     * Getter - Paralyzed
+     */
+    public boolean getParalyzed() {
+        return paralyzed;
+    }
+
+    /**
+     * Ágens felkenése a virológusra, ágensek rendezése a konzisztens
+     * állapot fenttartása érdekében, mielőtt
+     */
+    public void applyAgent(Agent a) {
+        applied.add(a);
+        for (Gear g : VisitorManager.getGear(this))
+            g.protect(this, a);
+        for (Agent g : getApplied())
+            g.protect(this, a);
+        sortApplied();
+    }
+
+    /**
+     * Ágens leszedése a virológusról
+     */
+    public void removeApplied(Agent a) throws ItemNotFoundException {
+        if (!applied.contains(a))
+            throw new ItemNotFoundException("Ilyen ágens nincs felkenve!");
+        applied.remove(a);
+    }
+
+    /**
+     * A virológus bénult állapotának beállítása
+     */
+    public void setParalyzed(boolean p) {
+        paralyzed = p;
+    }
+
+    /**
+     * Felkent ágensek lejárati idő szerinti növekvő sorbarendezése
+     */
+    public void sortApplied() {
+        applied.sort(new AgentComparator());
+    }
+
+    /**
+     * A virológus másik mezőre léptetése
+     */
+    public void move(Tile t) {
+        if (getParalyzed())
+            return;
+        tile.removeVirologist(this);
+        t.acceptVirologist(this);
+    }
+
+    /**
+     * Egy másik virológus kirablása
+     */
+    public void robVirologist(Virologist v) throws ItemNotFoundException, NotEnoughSpaceException {
+        if (!v.getParalyzed())
+            return;
+        Inventory i = v.getInventory();
+        while (getInventory().hasSpace() && i.hasNext()) {
+            IStorable item = i.next();
+            i.removeItem(item);
+            getInventory().addItem(item);
+        }
+    }
+
+    /**
+     * Egy ágens recept alapján való létrehozása
+     */
+    public void makeAgent(Recipe r) {
+        if (!VisitorManager.craftRecipe(this, r))
+            return;
+        // TODO - recepttől le kellene kérni, hogy mégis milyen ágenst kraftoltunk, elvesszük a material-t
+    }
+
+    /**
+     * Ágens felhasználása a virológus által
+     *
+     * @param v A célpont
+     * @param a A felhasználni kívánt ágens
+     */
+    public void useAgent(Virologist v, Agent a) throws ItemNotFoundException {
+        if (getParalyzed())
+            return;
+        getInventory().removeItem(a);
+        a.use(this, v);
+    }
+
+    /**
+     * Leszármazottak által definiálandó működés
+     */
+    public abstract void step();
+
+    /**
+     * Leszármazott általi döntés egy item felvételéről
+     */
+    public abstract void pickUp(IStorable s);
 }

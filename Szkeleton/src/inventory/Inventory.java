@@ -13,11 +13,12 @@ package inventory;
 
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Készlet, amely játékon belül tárolható objektumok tárolásáért felel
  */
-public class Inventory {
+public class Inventory implements Iterator<IStorable> {
     /**
      * Az inventory-ban elférő dolgok maximális száma
      */
@@ -32,11 +33,25 @@ public class Inventory {
     private ArrayList<IStorable> items;
 
     /**
+     * Inventory jelenlegi mérete
+     */
+    public int size() {
+        return items.size();
+    }
+
+    /**
+     * Van-e hely az inventory-ban
+     */
+    public boolean hasSpace() {
+        return size() < maxSize;
+    }
+
+    /**
      * Tárolandó dolog hozzáfűzése a listához, amennyiben
      * van elég hely
      */
     public void addItem(IStorable i) throws NotEnoughSpaceException {
-        if (items.size() == maxSize)
+        if (!hasSpace())
             throw new NotEnoughSpaceException("Nincs elég hely!");
         items.add(i);
     }
@@ -58,5 +73,24 @@ public class Inventory {
             item.accept(i);
         }
     }
+
+    //region Iterator
+
+    /** Ciklus pozíció */
+    private int pos = 0;
+
+    /** Jelenlegi pozíció kisebb-e mint az inventory-ban található elemek száma */
+    @Override
+    public boolean hasNext() {
+        return pos < size() - 1;
+    }
+
+    /** Jelenlegi posíción lévő objektum visszaadása */
+    @Override
+    public IStorable next() {
+        return items.get(pos++);
+    }
+
+    //endregion
 
 }
