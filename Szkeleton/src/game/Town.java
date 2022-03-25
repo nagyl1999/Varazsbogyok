@@ -11,7 +11,6 @@ package game;
 
 */
 
-
 import entity.Virologist;
 
 /** Város mező, általános célú terep, nincs

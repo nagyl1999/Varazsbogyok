@@ -11,7 +11,6 @@ package game;
 
 */
 
-
 import java.util.ArrayList;
 
 /** Pálya objektum, a mezőket és a léptethető
@@ -33,6 +32,7 @@ public class Map {
 		timer = t;
 	}
 
+	/** Visszaadja a pálya mezőit. */
 	public ArrayList<Tile> getTiles(){
 		return tiles;
 	}

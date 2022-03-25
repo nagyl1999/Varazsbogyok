@@ -11,6 +11,8 @@ package game;
 
 */
 
+import entity.Bot;
+import entity.Player;
 import entity.Virologist;
 import java.util.ArrayList;
 import java.util.Random;
@@ -27,9 +29,12 @@ public class Game {
 	public static int botCount = 3;
 	/** A játékban az egyes pályaelemek maximális szomszéda */
 	public static int maxNeighbours = 4;
+	/** A játékban az időzítő*/
+	public static  Timer timer;
 
-	/** Új játék indítása, pályagenerálás */
+	/** Új játék indítása, pályagenerálás  */
 	public static void newGame() {
+		map = new Map();
 		//itt generálunk valamely konkrét pályaelemet
 		for (int i = 0; i < tileCount; i++) map.addTile(randomTile());
 		for (int i = 0; i < tileCount; i++) {
@@ -46,7 +51,17 @@ public class Game {
 				neighbours.remove(n);
 				}
 			}
+		//játékos létrehozása, és hozzáadaása a léptethető osztályhoz
+		map.getTiles().get(0).addVirologist(new Player());
+		timer.addSteppable(map.getTiles().get(0).getVirologist().get(0));
+		//botok létrehozása és hozzáadása a léptethető dolgokhoz
+		for (int i = 1; i <= botCount; i++) {
+			map.getTiles().get(i).addVirologist(new Bot());
+			timer.addSteppable(map.getTiles().get(i).getVirologist().get(0));
 		}
+		//timer elindítása
+		while(true) timer.tick();
+	}
 
 	/** Játékból való kilépés */
 	public static void exitGame() {
@@ -58,6 +73,7 @@ public class Game {
 	public static void winGame(Virologist v) {
 		System.out.println("A játékot " + v.toString() + "nyerte");
 	}
+
 	/** Egy véletlenszeru pályaelemet generál */
 	public static Tile randomTile(){
 		Random r = new Random();

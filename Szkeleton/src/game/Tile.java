@@ -11,7 +11,6 @@ package game;
 
 */
 
-
 import entity.Virologist;
 
 import java.util.ArrayList;

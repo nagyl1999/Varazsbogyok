@@ -11,7 +11,6 @@ package game;
 
 */
 
-
 import java.util.ArrayList;
 
 /** Időzítő osztály, a léptethető dolgok léptetéséért felel */

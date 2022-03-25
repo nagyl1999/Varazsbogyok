@@ -11,26 +11,43 @@ package game;
 
 */
 
-
 import entity.Virologist;
-import item.RDancer;
+import item.*;
+import java.util.Random;
 
 /** Laboratórium mező, rálépéskor egy receptet kínál
  * fel a virológus számára
  * */
 public class Laboratory extends Tile {
 
-	/** A virológus így nézi meg, hogy mi található a mezőn */
+	/** Itt generálunk egy véletlenszerű receptet. */
 	public void interactedWith(Virologist v) {
-
+		Random r = new Random();
+		int n = r.nextInt(3);
+		switch (n) {
+			case 0:
+				RDancer dancer = new RDancer();
+				//dancer.getRecipe();
+				break;
+			case 1:
+				RForgetter forgetter = new RForgetter();
+				//forgetter.getRecipe();
+			case 2:
+				RParalyzer paralyzer = new RParalyzer();
+				//paralyzer.getRecipe();
+			default:
+				RProtector protector = new RProtector();
+				//protector.getRecipe();
+		}
 	}
 
-	/** Egy virológus fogadása a mezőre, itt felkínálunk
-	 * neki egy véletlenszerű receptet
-	 * */
-	public void acceptVirologist(Virologist v) {
+		/**
+		 * Egy virológus fogadása a mezőre, itt felkínálunk
+		 * neki egy véletlenszerű receptet
+		 */
+		public void acceptVirologist (Virologist v){
 
+		}
 
-	}
 
 }
