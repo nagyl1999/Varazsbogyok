@@ -17,25 +17,52 @@ import inventory.IInventoryVisitor;
 import inventory.Inventory;
 import item.Agent;
 
-/** A jÃ¡tÃ©kban a zsÃ¡k tipusÃº vÃ©dÅ‘felszerelÃ©s. Egy zsÃ¡kban nem lehet mÃ©g egy szÃ¡k.*/
+/** A játékban a zsák tipusú védõfelszerelés. Egy zsákban nem lehet még egy zsák.*/
 public class Bag extends Gear implements IInventoryHolder {
-	/** A paramÃ©terben kapott virolÃ³gust megvÃ©di a paramÃ©terben kapott Ã¡gens ellen. */
-	public void protect(Virologist v, Agent a) {
+	/** A paraméterben kapott virológust megvédi a paraméterben kapott ágens ellen. */
+	public void protect(Virologist v1, Virologist v2, Agent a) {
+		// Nem védi meg
 	}
 
-	/** A paramÃ©terben kapott virolÃ³gus kivÃ¡lasztja a zsÃ¡kot. */
+	/** A paraméterben kapott virológus kiválasztja a zsákot.
+	 *
+	 * @param v A Virológus aki felveszi a zsákot
+	 *
+	 * */
 	public void equip(Virologist v) {
+
+		Inventory inventory = v.getInventory();
+		try{
+			inventory.addItem(this);
+			this.accept((IInventoryVisitor) inventory);
+		}  catch (Exception e){
+			System.out.println("Nem lehet a zsákot felvenni!");
+		}
+
 	}
 	
-	/** A paramÃ©terben kapott virolÃ³gus mÃ¡sik vÃ©dÅ‘felszerelÃ©sre vÃ¡lt. */
+	/** A paraméterben kapott virológus másik védõfelszerelésre vált.
+	 *
+	 * @param v A Virológus aki leadja a zsákot
+	 *
+	 * */
 	public void unequip(Virologist v) {
+
+		Inventory inventory = v.getInventory();
+		try{
+			inventory.removeItem(this);
+		}catch (Exception e){
+			System.out.println("Nem lehet a zsákot leadni mert az nincs a virológusnál");
+		}
+
 	}
 
-	/**A visitor tervezÃ©si mintÃ¡t ez a fÃ¼ggvÃ©ny valÃ³sÃ­tja meg, ez fogja fogadni a zsÃ¡k tÃ­pust. */
+	/**A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a zsák típust. */
 	public void accept(IInventoryVisitor i) {
+		i.visit(this);
 	}
 
-	/** Visszaadja a zsÃ¡k tartalmÃ¡t.*/
+	/** Visszaadja a zsák tartalmát.*/
 	public Inventory getInventory() {
 		return null;
 	}
