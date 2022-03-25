@@ -11,20 +11,38 @@ package game;
 
 */
 
-
 import entity.Virologist;
+import item.*;
+import java.util.Random;
 
 /** Óvóhely típusú mező, védőfelszerelést
  * kínál a virológusoknak */
 public class Safehouse extends Tile {
 
-	/** A virológus így nézi meg, hogy mi található a mezőn */
+	/** Itt generálunk egy véletlenszerű védőfelszerelést. */
 	public void interactedWith(Virologist v) {
+		Random r = new Random();
+		int n = r.nextInt(2);
+		switch (n) {
+			case 0:
+				Bag bag = new Bag();
+				bag.equip(v);
+				break;
+			case 1:
+				Jacket jacket = new Jacket();
+				jacket.equip(v);
+				break;
+			default:
+				Glove glove = new Glove();
+				glove.equip(v);
+				break;
+		}
 	}
 	
 	/** Egy virológus fogadása a mezőre, itt felkínálunk
 	 * neki egy véletlenszerű védőfelszerelést
 	 * */
 	public void acceptVirologist(Virologist v) {
+		//TODO
 	}
 }

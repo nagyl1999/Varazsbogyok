@@ -11,21 +11,27 @@ package game;
 
 */
 
-
 import entity.Virologist;
+import item.*;
+import java.util.Random;
 
 /** Raktár mező, a rálépő virológusnak egy
  * véletlenszerű anyagot kínál fel */
 
 public class Storage extends Tile {
 
-	/** A virológus így nézi meg, hogy mi található a mezőn */
+	/** Itt generálunk egy véletlenszerű anyagot. */
 	public void interactedWith(Virologist v) {
+		Random r = new Random();
+		int n = r.nextInt(2);
+		if(n == 0) v.getInventory().addItem(new Aminoacid());
+		if(n == 1) v.getInventory().addItem(new Nucleoid());
 	}
 	
 	/** Egy virológus fogadása a mezőre, itt felkínálunk
 	 * neki egy véletlenszerű anyagot
 	 * */
 	public void acceptVirologist(Virologist v) {
+		//TODO
 	}
 }
