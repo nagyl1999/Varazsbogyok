@@ -13,9 +13,14 @@ package item;
 
 import inventory.IInventoryVisitor;
 
-/** */
+/**
+ * A material leszármazottja, egy gyűjthető anyag.
+ */
 public class Nucleoid extends Material {
-	/**A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a nukleotid típust. */
-	public void accept(IInventoryVisitor i) {
-	}
+    /**
+     * A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a nukleotid típust.
+     */
+    public void accept(IInventoryVisitor i) {
+        i.visit(this);
+    }
 }

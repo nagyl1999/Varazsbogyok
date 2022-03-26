@@ -14,15 +14,48 @@ package item;
 import inventory.IInventoryVisitor;
 import inventory.InventorySorterVisitor;
 
-/** A bénulást okozó ágens receptje. */
+/**
+ * A bénulást okozó ágens receptje.
+ */
 public class RParalyzer extends Recipe {
-	/** A visitor tervezési mintát kihasználva a visitor megnézi, hogy a bénulást okozó ágens recepjéhez van-e
-	 elegendő alapanyag. */
-	public boolean hasEnoughMaterial(InventorySorterVisitor i) {
-		return false; // TODO
-	}
-	
-	/** A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a bénulás ágens receptje típust. */
-	public void accept(IInventoryVisitor i) {
-	}
+
+    /**
+     * A vitustáncot okozó ágenshez szükséges anyagok számai.
+     */
+    public static int numberOfAminoAcid = 4;
+    public static int numberOfNucleoid = 2;
+
+    /**
+     * Konstruktor
+     */
+    public RParalyzer() {
+        super(RParalyzer.numberOfAminoAcid, RParalyzer.numberOfNucleoid);
+    }
+
+    /**
+     * A visitor tervezési mintát kihasználva a visitor megnézi, hogy a bénulást okozó ágens recepjéhez van-e
+     * elegendő alapanyag.
+     */
+    public boolean hasEnoughMaterial(InventorySorterVisitor i) {
+        if (i.getAminoacidItems.size() >= numberOfAminoAcid && i.getNucleoidItems.size() >= numberOfNucleoid) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a bénulás ágens receptje típust.
+     */
+    public void accept(IInventoryVisitor i) {
+        i.visit(this);
+    }
+
+    /**
+     * A recept használata után az visszaadja a kész ágenst.
+     */
+    @Override
+    public Agent addAgent() {
+        return new Paralyzer();
+    }
 }
