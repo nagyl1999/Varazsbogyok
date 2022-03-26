@@ -22,8 +22,15 @@ public class RParalyzer extends Recipe {
     /**
      * A vitustáncot okozó ágenshez szükséges anyagok számai.
      */
-    private final int numberOfAminoAcid = 4;
-    private final int numberOfNucleoid = 2;
+    public static int numberOfAminoAcid = 4;
+    public static int numberOfNucleoid = 2;
+
+    /**
+     * Konstruktor
+     */
+    public RParalyzer() {
+        super(RParalyzer.numberOfAminoAcid, RParalyzer.numberOfNucleoid);
+    }
 
     /**
      * A visitor tervezési mintát kihasználva a visitor megnézi, hogy a bénulást okozó ágens recepjéhez van-e
@@ -42,17 +49,6 @@ public class RParalyzer extends Recipe {
      */
     public void accept(IInventoryVisitor i) {
         i.visit(this);
-    }
-
-    /**
-     * Az anyagok számainak lekérdezéséhez szükséges függvények.
-     */
-    public int getNumberOfAminoAcid() {
-        return numberOfAminoAcid;
-    }
-
-    public int getNumberOfNucleoid() {
-        return numberOfNucleoid;
     }
 
     /**

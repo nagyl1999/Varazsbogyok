@@ -22,8 +22,15 @@ public class RForgetter extends Recipe {
     /**
      * A vitustáncot okozó ágenshez szükséges anyagok számai.
      */
-    private final int numberOfAminoAcid = 2;
-    private final int numberOfNucleoid = 4;
+    public static int numberOfAminoAcid = 2;
+    public static int numberOfNucleoid = 4;
+
+    /**
+     * Konstruktor
+     */
+    public RForgetter() {
+        super(RForgetter.numberOfAminoAcid, RForgetter.numberOfNucleoid);
+    }
 
     /**
      * A visitor tervezési mintát kihasználva a visitor megnézi, hogy a felejtést okozó ágens recepjéhez van-e
@@ -42,17 +49,6 @@ public class RForgetter extends Recipe {
      */
     public void accept(IInventoryVisitor i) {
         i.visit(this);
-    }
-
-    /**
-     * Az anyagok számainak lekérdezéséhez szükséges függvények.
-     */
-    public int getNumberOfAminoAcid() {
-        return numberOfAminoAcid;
-    }
-
-    public int getNumberOfNucleoid() {
-        return numberOfNucleoid;
     }
 
     /**

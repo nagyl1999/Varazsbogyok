@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cd9a30a9-209e-4845-90c0-d2d5a150f0a2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/item/Aminoacid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/Aminoacid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/item/Material.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/Material.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/item/Nucleoid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/Nucleoid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/item/RDancer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/RDancer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/item/RForgetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/RForgetter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/item/RParalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/RParalyzer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/item/RProtector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/RProtector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/item/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/item/Recipe.java" afterDir="false" />
-    </list>
+    <list default="true" id="cd9a30a9-209e-4845-90c0-d2d5a150f0a2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,15 +43,6 @@
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="test.Main" />
-      <module name="Szkeleton" />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -70,6 +50,15 @@
         </value>
       </option>
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="test.Main" />
+      <module name="Szkeleton" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

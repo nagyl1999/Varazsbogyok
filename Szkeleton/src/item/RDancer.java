@@ -22,8 +22,15 @@ public class RDancer extends Recipe {
     /**
      * A vitustáncot okozó ágenshez szükséges anyagok számai.
      */
-    private final int numberOfAminoAcid = 3;
-    private final int numberOfNucleoid = 2;
+    public static int numberOfAminoAcid = 3;
+    public static int numberOfNucleoid = 2;
+
+    /**
+     * Konstruktor
+     */
+    public RDancer() {
+        super(RDancer.numberOfAminoAcid, RDancer.numberOfNucleoid);
+    }
 
     /**
      * A visitor tervezési mintát kihasználva a visitor megnézi, hogy a vitus táncot okozó ágens recepjéhez van-e
@@ -44,16 +51,6 @@ public class RDancer extends Recipe {
         i.visit(this);
     }
 
-    /**
-     * Az anyagok számainak lekérdezéséhez szükséges függvények.
-     */
-    public int getNumberOfAminoAcid() {
-        return numberOfAminoAcid;
-    }
-
-    public int getNumberOfNucleoid() {
-        return numberOfNucleoid;
-    }
 
     /**
      * A recept használata után az visszaadja a kész ágenst.
