@@ -13,16 +13,31 @@ package entity;
 
 
 import inventory.IStorable;
+import item.Agent;
 
-/** Játékos döntéseit reprezentáló osztály */
+/**
+ * Játékos döntéseit reprezentáló osztály
+ */
 public class Player extends Virologist {
 
-	/** A játékos döntéseit végrehajtó függvény */
-	public void step() {
-	}
-	
-	/** A játékos egy item felvételéről döntő függvény */
-	public void pickUp(IStorable s) {
-	}
+    /**
+     * A játékos döntéseit végrehajtó függvény
+     */
+    public void step() {
+        System.out.println("Player.step");
+        for (Agent a : applied)
+            a.effect(this);
+    }
+
+    /**
+     * A játékos egy item felvételéről döntő függvény
+     */
+    public void pickUp(IStorable s) {
+        System.out.println("Player.pickUp");
+        try {
+            tile.interactedWith(this);
+        } catch (Exception ignored) {
+        }
+    }
 
 }

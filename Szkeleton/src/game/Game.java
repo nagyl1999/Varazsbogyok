@@ -60,7 +60,7 @@ public class Game {
 			timer.addSteppable(map.getTiles().get(i).getVirologist().get(0));
 		}
 		//timer elindítása
-		while(true) timer.tick();
+		while(true) timer.tick(); // TODO - szerintem ez így nem fog működni a grafikus felülettel
 	}
 
 	/** Játékból való kilépés */
@@ -71,7 +71,7 @@ public class Game {
 	
 	/** Egy virológus megnyerte a játékot */
 	public static void winGame(Virologist v) {
-		System.out.println("A játékot " + v.toString() + "nyerte");
+		System.out.println("A játékot " + v.toString() + " nyerte");
 	}
 
 	/** Egy véletlenszeru pályaelemet generál */

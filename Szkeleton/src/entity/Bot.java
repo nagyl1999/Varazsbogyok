@@ -13,16 +13,31 @@ package entity;
 
 
 import inventory.IStorable;
+import item.Agent;
 
-/** A Bot döntéseit megvalósító osztály */
+/**
+ * A Bot döntéseit megvalósító osztály
+ */
 public class Bot extends Virologist {
 
-	/** A Bot lépését szimuláló függvény */
-	public void step() {
-	}
-	
-	/** A Bot egy item felvételéről dönt */
-	public void pickUp(IStorable s) {
-	}
+    /**
+     * A Bot lépését szimuláló függvény
+     */
+    public void step() {
+        System.out.println("Bot.step");
+        for (Agent a : applied)
+            a.effect(this);
+    }
+
+    /**
+     * A Bot egy item felvételéről dönt
+     */
+    public void pickUp(IStorable s) {
+        System.out.println("Bot.pickUp");
+        try {
+            tile.interactedWith(this);
+        } catch (Exception ignored) {
+        }
+    }
 
 }

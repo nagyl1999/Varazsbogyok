@@ -33,6 +33,6 @@ public class Storage extends Tile {
 	 * neki egy véletlenszerű anyagot
 	 * */
 	public void acceptVirologist(Virologist v) {
-		//TODO
+		// TODO
 	}
 }

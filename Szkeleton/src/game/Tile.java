@@ -23,6 +23,12 @@ public abstract class Tile {
 	/** A mező szomszédai */
 	protected ArrayList<Tile> neighbours;
 
+	/** Konstruktor */
+	public Tile() {
+		virologists = new ArrayList<>();
+		neighbours = new ArrayList<>();
+	}
+
 	/** Getter - szomszédok */
 	public ArrayList<Tile> getNeighbours() {
 		return neighbours;
@@ -36,6 +42,7 @@ public abstract class Tile {
 	/** Virológus hozzáadása a mezőhöz */
 	public void addVirologist(Virologist v) {
 		virologists.add(v);
+		v.setTile(this);
 	}
 	
 	/** Virológus törlése a mezőről */

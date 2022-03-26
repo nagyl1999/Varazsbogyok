@@ -13,6 +13,6 @@ public class Main {
 
     public static void main(String[] args) {
         menu = new SkeletonTesterMenu();
-        System.out.println("Hello World!");
+        menu.run();
     }
 }

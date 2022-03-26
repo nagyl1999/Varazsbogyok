@@ -33,6 +33,14 @@ public class Inventory implements Iterator<IStorable> {
     private ArrayList<IStorable> items;
 
     /**
+     * Konstruktor
+     */
+    public Inventory(int size) {
+        maxSize = size;
+        items = new ArrayList<>();
+    }
+
+    /**
      * Inventory jelenlegi mérete
      */
     public int size() {
@@ -51,6 +59,7 @@ public class Inventory implements Iterator<IStorable> {
      * van elég hely
      */
     public void addItem(IStorable i) throws NotEnoughSpaceException {
+        // TODO - jelenleg nem tudunk a zsák inventory-jába rakni, lehet visitor intézze
         if (!hasSpace())
             throw new NotEnoughSpaceException("Nincs elég hely!");
         items.add(i);
@@ -76,16 +85,29 @@ public class Inventory implements Iterator<IStorable> {
 
     //region Iterator
 
-    /** Ciklus pozíció */
+    /**
+     * Ciklus pozíció
+     */
     private int pos = 0;
 
-    /** Jelenlegi pozíció kisebb-e mint az inventory-ban található elemek száma */
+    /**
+     * Ciklus nullázása
+     */
+    public void reset() {
+        pos = 0;
+    }
+
+    /**
+     * Jelenlegi pozíció kisebb-e mint az inventory-ban található elemek száma
+     */
     @Override
     public boolean hasNext() {
         return pos < size() - 1;
     }
 
-    /** Jelenlegi posíción lévő objektum visszaadása */
+    /**
+     * Jelenlegi posíción lévő objektum visszaadása
+     */
     @Override
     public IStorable next() {
         return items.get(pos++);

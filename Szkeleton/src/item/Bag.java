@@ -15,55 +15,78 @@ import entity.Virologist;
 import inventory.IInventoryHolder;
 import inventory.IInventoryVisitor;
 import inventory.Inventory;
-import item.Agent;
 
-/** A játékban a zsák tipusú védõfelszerelés. Egy zsákban nem lehet még egy zsák.*/
+/**
+ * A játékban a zsák tipusú védõfelszerelés. Egy zsákban nem lehet még egy zsák.
+ */
 public class Bag extends Gear implements IInventoryHolder {
-	/** A paraméterben kapott virológust megvédi a paraméterben kapott ágens ellen. */
-	public void protect(Virologist v1, Virologist v2, Agent a) {
-		// Nem védi meg
-	}
+    /**
+     * A zsákhoz tartozó inventory
+     */
+    protected Inventory inventory;
+    /**
+     * Inventory méret
+     */
+    public static int inventorySize = 25;
 
-	/** A paraméterben kapott virológus kiválasztja a zsákot.
-	 *
-	 * @param v A Virológus aki felveszi a zsákot
-	 *
-	 * */
-	public void equip(Virologist v) {
+    /**
+     * Konstruktor
+     */
+    public Bag() {
+        inventory = new Inventory(Bag.inventorySize);
+    }
 
-		Inventory inventory = v.getInventory();
-		try{
-			inventory.addItem(this);
-			this.accept((IInventoryVisitor) inventory);
-		}  catch (Exception e){
-			System.out.println("Nem lehet a zsákot felvenni!");
-		}
+    /**
+     * A paraméterben kapott virológust megvédi a paraméterben kapott ágens ellen.
+     */
+    public void protect(Virologist v1, Virologist v2, Agent a) {
+        // Nem védi meg
+    }
 
-	}
-	
-	/** A paraméterben kapott virológus másik védõfelszerelésre vált.
-	 *
-	 * @param v A Virológus aki leadja a zsákot
-	 *
-	 * */
-	public void unequip(Virologist v) {
+    /**
+     * A paraméterben kapott virológus kiválasztja a zsákot.
+     *
+     * @param v A Virológus aki felveszi a zsákot
+     */
+    public void equip(Virologist v) {
 
-		Inventory inventory = v.getInventory();
-		try{
-			inventory.removeItem(this);
-		}catch (Exception e){
-			System.out.println("Nem lehet a zsákot leadni mert az nincs a virológusnál");
-		}
+        Inventory inventory = v.getInventory();
+        try {
+            inventory.addItem(this);
+            this.accept((IInventoryVisitor) inventory);
+        } catch (Exception e) {
+            System.out.println("Nem lehet a zsákot felvenni!");
+        }
 
-	}
+    }
 
-	/**A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a zsák típust. */
-	public void accept(IInventoryVisitor i) {
-		i.visit(this);
-	}
+    /**
+     * A paraméterben kapott virológus másik védõfelszerelésre vált.
+     *
+     * @param v A Virológus aki leadja a zsákot
+     */
+    public void unequip(Virologist v) {
 
-	/** Visszaadja a zsák tartalmát.*/
-	public Inventory getInventory() {
-		return null;
-	}
+        Inventory inventory = v.getInventory();
+        try {
+            inventory.removeItem(this);
+        } catch (Exception e) {
+            System.out.println("Nem lehet a zsákot leadni mert az nincs a virológusnál");
+        }
+
+    }
+
+    /**
+     * A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a zsák típust.
+     */
+    public void accept(IInventoryVisitor i) {
+        i.visit(this);
+    }
+
+    /**
+     * Visszaadja a zsák tartalmát.
+     */
+    public Inventory getInventory() {
+        return inventory;
+    }
 }
