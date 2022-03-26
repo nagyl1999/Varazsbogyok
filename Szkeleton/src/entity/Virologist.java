@@ -15,14 +15,10 @@ package entity;
 import game.Steppable;
 import game.Tile;
 import inventory.*;
-import item.Agent;
-import item.Gear;
-import item.Recipe;
+import item.*;
 import item.AgentComparator;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 
 /**
  * Egy közös entitás működését szimuláló osztály
@@ -129,10 +125,17 @@ public abstract class Virologist implements Steppable, IInventoryHolder {
     /**
      * Egy ágens recept alapján való létrehozása
      */
-    public void makeAgent(Recipe r) {
+    public void makeAgent(Recipe r) throws ItemNotFoundException {
         if (!VisitorManager.craftRecipe(this, r))
             return;
-        // TODO - recepttől le kellene kérni, hogy mégis milyen ágenst kraftoltunk, elvesszük a material-t
+        InventorySorterVisitor i = VisitorManager.sortInventory(this);
+        for (int j = 0; j < r.getNumberOfAminoacid(); j++) {
+            inventory.removeItem(i.getAminoacidItems().get(j));
+        }
+        for (int j = 0; j < r.getNumberOfNucleoid(); j++) {
+            inventory.removeItem(i.getNucleoidItems().get(j));
+        }
+        inventory.addItem(r.addAgent());
     }
 
     /**
