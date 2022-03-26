@@ -19,14 +19,19 @@ import item.Agent;
 public class Paralyzer extends Agent {
 	/**A bénulás ágens léptetését szimuláló fügvény. */
 	public void step() {
+		this.expire--;
 	}
 	
 	/**A függvény paraméterben kapott virológuson fogja kifejteni a hatását az ágens. */
 	public void effect(Virologist v) {
+		System.out.println("effect(v)");
+		v.setParalyzed(true);
 	}
 	
 	/**A függvény paraméterben kapott virológuson szünteti meg a felkent ágens hatását. */
 	public void decompose(Virologist v) {
+		v.setParalyzed(false);
+		v.removeApplied(this);
 	}
 	
 	/**A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a bénító ágens típust.  */
@@ -35,6 +40,8 @@ public class Paralyzer extends Agent {
 	
 	/**Az ágens vírus típusú, így nincs védő hatása. */
 	public void protect(Virologist v, Agent a) {
+		System.out.println("protect(v,a)");
+		return;
 	}
 	
 	/**Az ágens felhasználására irányuló függvény.
@@ -42,6 +49,9 @@ public class Paralyzer extends Agent {
 	 * @param v2 Az elszenvedő
 	 * */
 	public void use(Virologist v1, Virologist v2) {
+		System.out.println("use(v1,v2)");
+		v2.applyAgent(this);
+		return;
 	}
 
 }

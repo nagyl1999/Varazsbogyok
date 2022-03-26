@@ -19,14 +19,17 @@ import item.Agent;
 public class Protector extends Agent {
 	/**A védelem ágens léptetését szimuláló fügvény. */
 	public void step() {
+		this.expire--;
 	}
 	
 	/**A függvény paraméterben kapott virológuson fogja kifejteni a hatását az ágens. */
 	public void effect(Virologist v) {
+
 	}
 	
 	/**A függvény paraméterben kapott virológuson szünteti meg a felkent ágens hatását. */
 	public void decompose(Virologist v) {
+		v.removeApplied(this);
 	}
 	
 	/**A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a védelem ágens típust. */
@@ -35,6 +38,9 @@ public class Protector extends Agent {
 	
 	/**A paraméterben kapott ágenst eltávolítjuk a paraméterben kapott virológusról. */
 	public void protect(Virologist v, Agent a) {
+		System.out.println("protect(v,a)");
+		v.removeApplied(a);
+		return;
 	}
 	
 	/** Az ágens felhasználására irányuló függvény.
@@ -42,6 +48,9 @@ public class Protector extends Agent {
 	 * @param v2 Az elszenvedő
 	 * */
 	public void use(Virologist v1, Virologist v2) {
+		System.out.println("use(v1,v2)");
+		v2.applyAgent(this);
+		return;
 	}
 
 }
