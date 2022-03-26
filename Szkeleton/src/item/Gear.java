@@ -21,7 +21,7 @@ public abstract class Gear implements IStorable {
 	protected boolean equipped;
 	
 	/**A paraméterben kapott virológust megvédi a paraméterben kapott ágens ellen.*/
-	public abstract void protect(Virologist v, Agent a);
+	public abstract void protect(Virologist v1, Virologist v2,  Agent a);
 	
 	/** A paraméterben kapott virológus kiválasztja a védőfelszerelést*/
 	public abstract void equip(Virologist v);

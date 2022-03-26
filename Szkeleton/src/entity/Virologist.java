@@ -65,11 +65,14 @@ public abstract class Virologist implements Steppable, IInventoryHolder {
     /**
      * Ágens felkenése a virológusra, ágensek rendezése a konzisztens
      * állapot fenttartása érdekében, mielőtt
+     *
+     * @param v Virológus aki felkeni az ágenst
+     * @param a Agéns amit felkennek
      */
-    public void applyAgent(Agent a) {
+    public void applyAgent(Virologist v, Agent a) {
         applied.add(a);
         for (Gear g : VisitorManager.getGear(this))
-            g.protect(this, a);
+            g.protect(this, v, a);
         for (Agent g : getApplied())
             g.protect(this, a);
         sortApplied();
