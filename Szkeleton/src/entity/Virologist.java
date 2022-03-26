@@ -19,8 +19,6 @@ import item.*;
 import item.AgentComparator;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 
 /**
  * Egy közös entitás működését szimuláló osztály
@@ -127,28 +125,17 @@ public abstract class Virologist implements Steppable, IInventoryHolder {
     /**
      * Egy ágens recept alapján való létrehozása
      */
-    public void makeAgent(Recipe r) {
-        if (!VisitorManager.craftRecipe(this, r)) {
+    public void makeAgent(Recipe r) throws ItemNotFoundException {
+        if (!VisitorManager.craftRecipe(this, r))
             return;
-        } else {
-            int numberOfAminoacid = r.getNumberOfAminoacid();
-            int numberOfNucleoid = r.getNumberOfNucleoid();
-
-            for (int i = 0; i < numberOfAminoacid; i++) {
-                InventorySorterVisitor inventorySorterVisitor = VisitorManager.sortInventory(this);
-                ArrayList<Aminoacid> aminoacidItems = inventorySorterVisitor.getAminoacidItems();
-                inventory.removeItem(aminoacidItems.get(aminoacidItems.size() - 1));
-            }
-
-            for (int i = 0; i < numberOfNucleoid; i++) {
-                InventorySorterVisitor inventorySorterVisitor = VisitorManager.sortInventory(this);
-                ArrayList<Nucleoid> nucleoidItems = inventorySorterVisitor.getNucleoidItems();
-                inventory.removeItem(nucleoidItems.get(nucleoidItems.size() - 1));
-            }
-
-            inventory.addItem(r.addAgent());
-            return;
+        InventorySorterVisitor i = VisitorManager.sortInventory(this);
+        for (int j = 0; j < r.getNumberOfAminoacid(); j++) {
+            inventory.removeItem(i.getAminoacidItems().get(j));
         }
+        for (int j = 0; j < r.getNumberOfNucleoid(); j++) {
+            inventory.removeItem(i.getNucleoidItems().get(j));
+        }
+        inventory.addItem(r.addAgent());
     }
 
     /**
