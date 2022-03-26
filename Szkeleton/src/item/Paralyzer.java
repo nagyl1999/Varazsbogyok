@@ -19,6 +19,7 @@ import item.Agent;
 public class Paralyzer extends Agent {
 	/**A bénulás ágens léptetését szimuláló fügvény. */
 	public void step() {
+		this.expire--;
 	}
 	
 	/**A függvény paraméterben kapott virológuson fogja kifejteni a hatását az ágens. */

@@ -12,21 +12,44 @@ package item;
 */
 
 import entity.Virologist;
-import inventory.IInventoryVisitor;
-import inventory.Inventory;
-import inventory.InventorySorterVisitor;
+import inventory.*;
 import item.Agent;
 
 /** Felejtést okozó ágens */
 public class Forgetter extends Agent {
 	/** A felejtő ágens léptetését szimuláló fügvény.*/
 	public void step() {
+		this.expire--;
 	}
 	
 	/** A függvény paraméterben kapott virológuson fogja kifejteni a hatását az ágens.*/
 	public void effect(Virologist v) {
 		System.out.println("effect(v)");
+		InventorySorterVisitor isv= VisitorManager.sortInventory(v);
 
+		for(RDancer r:isv.getRdancerItems()){
+			try {
+				v.getInventory().removeItem(r);
+			}catch (ItemNotFoundException e){
+				e.printStackTrace();
+			}
+		}
+
+		for(RForgetter r:isv.getRforgetterItems()){
+			try {
+				v.getInventory().removeItem(r);
+			}catch (ItemNotFoundException e){
+				e.printStackTrace();
+			}
+		}
+
+		for(RParalyzer r:isv.getRpalaryzerItems()){
+			try {
+				v.getInventory().removeItem(r);
+			}catch (ItemNotFoundException e){
+				e.printStackTrace();
+			}
+		}
 
 	}
 	
