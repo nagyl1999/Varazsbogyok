@@ -54,28 +54,27 @@ public class Forgetter extends Agent {
 	}
 	
 	/**A függvény paraméterben kapott virológuson szünteti meg a felkent ágens hatását. */
-	public void decompose(Virologist v) {
+	public void decompose(Virologist v) throws ItemNotFoundException {
 		v.removeApplied(this);
 	}
 	
 	/**A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a felejtő ágens típust.  */
 	public void accept(IInventoryVisitor i) {
+		i.visit(this);
 	}
 	
 	/** Az ágens vírus típusú, így nincs védő hatása.*/
 	public void protect(Virologist v, Agent a) {
 		System.out.println("protect(v,a)");
-		return;
 	}
 	
 	/**Az ágens felhasználására irányuló függvény.
 	 * @param v1 A felhasználó
 	 * @param v2 Az elszenvedő
 	 * */
-	public void use(Virologist v1, Virologist v2) {
+	public void use(Virologist v1, Virologist v2) throws ItemNotFoundException {
 		System.out.println("use(v1,v2)");
-		v2.applyAgent(this);
-		return;
+		v2.applyAgent(v2, this);
 	}
 
 }

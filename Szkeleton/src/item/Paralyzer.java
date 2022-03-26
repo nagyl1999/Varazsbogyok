@@ -13,6 +13,7 @@ package item;
 
 import entity.Virologist;
 import inventory.IInventoryVisitor;
+import inventory.ItemNotFoundException;
 import item.Agent;
 
 /**Bénulást okozó ágens */
@@ -29,29 +30,28 @@ public class Paralyzer extends Agent {
 	}
 	
 	/**A függvény paraméterben kapott virológuson szünteti meg a felkent ágens hatását. */
-	public void decompose(Virologist v) {
+	public void decompose(Virologist v) throws ItemNotFoundException {
 		v.setParalyzed(false);
 		v.removeApplied(this);
 	}
 	
 	/**A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a bénító ágens típust.  */
 	public void accept(IInventoryVisitor i) {
+		i.visit(this);
 	}
 	
 	/**Az ágens vírus típusú, így nincs védő hatása. */
 	public void protect(Virologist v, Agent a) {
 		System.out.println("protect(v,a)");
-		return;
 	}
 	
 	/**Az ágens felhasználására irányuló függvény.
 	 * @param v1 A felhasználó
 	 * @param v2 Az elszenvedő
 	 * */
-	public void use(Virologist v1, Virologist v2) {
+	public void use(Virologist v1, Virologist v2) throws ItemNotFoundException {
 		System.out.println("use(v1,v2)");
-		v2.applyAgent(this);
-		return;
+		v2.applyAgent(v2, this);
 	}
 
 }

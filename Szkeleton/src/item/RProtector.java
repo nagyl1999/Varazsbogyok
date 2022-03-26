@@ -38,7 +38,7 @@ public class RProtector extends Recipe {
      */
     @Override
     public boolean hasEnoughMaterial(InventorySorterVisitor i) {
-        if (i.getAminoacidItems.size() >= numberOfAminoAcid && i.nucleoidItems.size() >= numberOfNucleoid) {
+        if (i.getAminoacidItems().size() >= numberOfAminoAcid && i.getNucleoidItems().size() >= numberOfNucleoid) {
             return true;
         } else {
             return false;

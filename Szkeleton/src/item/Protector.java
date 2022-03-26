@@ -13,6 +13,7 @@ package item;
 
 import entity.Virologist;
 import inventory.IInventoryVisitor;
+import inventory.ItemNotFoundException;
 import item.Agent;
 
 /**Védelmet nyújtó ágens */
@@ -24,11 +25,10 @@ public class Protector extends Agent {
 	
 	/**A függvény paraméterben kapott virológuson fogja kifejteni a hatását az ágens. */
 	public void effect(Virologist v) {
-
 	}
 	
 	/**A függvény paraméterben kapott virológuson szünteti meg a felkent ágens hatását. */
-	public void decompose(Virologist v) {
+	public void decompose(Virologist v) throws ItemNotFoundException {
 		v.removeApplied(this);
 	}
 	
@@ -37,20 +37,18 @@ public class Protector extends Agent {
 	}
 	
 	/**A paraméterben kapott ágenst eltávolítjuk a paraméterben kapott virológusról. */
-	public void protect(Virologist v, Agent a) {
+	public void protect(Virologist v, Agent a) throws ItemNotFoundException {
 		System.out.println("protect(v,a)");
 		v.removeApplied(a);
-		return;
 	}
 	
 	/** Az ágens felhasználására irányuló függvény.
 	 * @param v1 A felhasználó
 	 * @param v2 Az elszenvedő
 	 * */
-	public void use(Virologist v1, Virologist v2) {
+	public void use(Virologist v1, Virologist v2) throws ItemNotFoundException {
 		System.out.println("use(v1,v2)");
-		v2.applyAgent(this);
-		return;
+		v2.applyAgent(v1, this);
 	}
 
 }

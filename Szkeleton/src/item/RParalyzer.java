@@ -37,7 +37,7 @@ public class RParalyzer extends Recipe {
      * elegendő alapanyag.
      */
     public boolean hasEnoughMaterial(InventorySorterVisitor i) {
-        if (i.getAminoacidItems.size() >= numberOfAminoAcid && i.getNucleoidItems.size() >= numberOfNucleoid) {
+        if (i.getAminoacidItems().size() >= numberOfAminoAcid && i.getNucleoidItems().size() >= numberOfNucleoid) {
             return true;
         } else {
             return false;

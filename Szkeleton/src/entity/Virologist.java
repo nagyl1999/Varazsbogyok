@@ -69,7 +69,7 @@ public abstract class Virologist implements Steppable, IInventoryHolder {
      * @param v Virológus aki felkeni az ágenst
      * @param a Agéns amit felkennek
      */
-    public void applyAgent(Virologist v, Agent a) {
+    public void applyAgent(Virologist v, Agent a) throws ItemNotFoundException {
         applied.add(a);
         for (Gear g : VisitorManager.getGear(this))
             g.protect(this, v, a);
@@ -128,7 +128,7 @@ public abstract class Virologist implements Steppable, IInventoryHolder {
     /**
      * Egy ágens recept alapján való létrehozása
      */
-    public void makeAgent(Recipe r) throws ItemNotFoundException {
+    public void makeAgent(Recipe r) throws ItemNotFoundException, NotEnoughSpaceException {
         if (!VisitorManager.craftRecipe(this, r))
             return;
         InventorySorterVisitor i = VisitorManager.sortInventory(this);
