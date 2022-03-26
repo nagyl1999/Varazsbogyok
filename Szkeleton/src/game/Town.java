@@ -11,7 +11,6 @@ package game;
 
 */
 
-
 import entity.Virologist;
 
 /** Város mező, általános célú terep, nincs
@@ -24,5 +23,6 @@ public class Town extends Tile {
 	
 	/** Egy virológus fogadása a mezőre */
 	public void acceptVirologist(Virologist v) {
+		//TODO
 	}
 }

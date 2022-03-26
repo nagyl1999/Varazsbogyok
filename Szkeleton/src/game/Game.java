@@ -11,23 +11,80 @@ package game;
 
 */
 
-
+import entity.Bot;
+import entity.Player;
 import entity.Virologist;
+import java.util.ArrayList;
+import java.util.Random;
 
 /** Játék objektum, felelőssége a játék elindítása, kiléptetése */
 public class Game {
 	/** Játéktér */
-	private Map map;
+	private static Map map;
+	/** Ennek segitségével állitunk be szomszédokat az egyes pályaelemeknek. */
+	private static  ArrayList<Integer> neighbours;
+	/** A játékban a pályaelemek száma */
+	public static int tileCount = 50;
+	/** A játékban a botok száma */
+	public static int botCount = 3;
+	/** A játékban az egyes pályaelemek maximális szomszéda */
+	public static int maxNeighbours = 4;
+	/** A játékban az időzítő*/
+	public static  Timer timer;
 
-	/** Új játék indítása, pályagenerálás */
-	public void newGame() {
+	/** Új játék indítása, pályagenerálás  */
+	public static void newGame() {
+		map = new Map();
+		//itt generálunk valamely konkrét pályaelemet
+		for (int i = 0; i < tileCount; i++) map.addTile(randomTile());
+		for (int i = 0; i < tileCount; i++) {
+			// itt felépitjuk az esetleges szomszédok listáját, kivéve a soron lévo elemet
+			for (int j = 0; j < tileCount; j++) if(i != j) neighbours.add(j);
+			/** Itt fogjuk a szomszédokat beállitani, egy pályaelemnek legfeljebb
+			 * maxNeighbours szomszédja lehet, ezután hozzáadunk a neighbours listábol egyet,
+			 * miután hozzáadtuk kivesszük a neighbours listábol az elemet, igy a listában
+			 * csak olyan elemek maradnak amik még nem szomszédosak az adott pályaelemmek*/
+			Random r = new Random();
+			for (int j = 0; j < r.nextInt(maxNeighbours); j++) {
+				int n = r.nextInt(tileCount-j-1);
+				map.getTiles().get(i).addNeighbour(map.getTiles().get(n));
+				neighbours.remove(n);
+				}
+			}
+		//játékos létrehozása, és hozzáadaása a léptethető osztályhoz
+		map.getTiles().get(0).addVirologist(new Player());
+		timer.addSteppable(map.getTiles().get(0).getVirologist().get(0));
+		//botok létrehozása és hozzáadása a léptethető dolgokhoz
+		for (int i = 1; i <= botCount; i++) {
+			map.getTiles().get(i).addVirologist(new Bot());
+			timer.addSteppable(map.getTiles().get(i).getVirologist().get(0));
+		}
+		//timer elindítása
+		while(true) timer.tick();
 	}
-	
+
 	/** Játékból való kilépés */
-	public void exitGame() {
+	public static void exitGame() {
+		map = null;
+		System.out.println("A játéknak vége :/");
 	}
 	
 	/** Egy virológus megnyerte a játékot */
-	public void winGame(Virologist v) {
+	public static void winGame(Virologist v) {
+		System.out.println("A játékot " + v.toString() + "nyerte");
 	}
+
+	/** Egy véletlenszeru pályaelemet generál */
+	public static Tile randomTile(){
+		Random r = new Random();
+		int n = r.nextInt(3);
+		switch(n){
+			case 0: return new Laboratory();
+			case 1: return new Safehouse();
+			case 2: return new Storage();
+			default: return new Town();
+		}
+	}
+
+
 }

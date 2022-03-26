@@ -11,7 +11,6 @@ package game;
 
 */
 
-
 import entity.Virologist;
 
 import java.util.ArrayList;
@@ -35,14 +34,17 @@ public abstract class Tile {
 
 	/** Virológus hozzáadása a mezőhöz */
 	public void addVirologist(Virologist v) {
+		virologists.add(v);
 	}
 	
 	/** Virológus törlése a mezőről */
 	public void removeVirologist(Virologist v) {
+		virologists.remove(v);
 	}
 	
 	/** Szomszéd hozzáadása */
 	public void addNeighbour(Tile t) {
+		neighbours.add(t);
 	}
 	
 	/** A virológus így nézi meg, hogy mi található a mezőn */
