@@ -25,33 +25,38 @@ public abstract class Tile {
 
 	/** Konstruktor */
 	public Tile() {
-		virologists = new ArrayList<>();
-		neighbours = new ArrayList<>();
+		virologists = new ArrayList<Virologist>();
+		neighbours = new ArrayList<Tile>();
 	}
 
 	/** Getter - szomszédok */
 	public ArrayList<Tile> getNeighbours() {
+		System.out.println("Tile.getNeighbours");
 		return neighbours;
 	}
 
 	/** Getter - virológusok */
 	public ArrayList<Virologist> getVirologist() {
+		System.out.println("Tile.getVirologist");
 		return virologists;
 	}
 
 	/** Virológus hozzáadása a mezőhöz */
 	public void addVirologist(Virologist v) {
+		System.out.println("Tile.addNeighbours");
 		virologists.add(v);
 		v.setTile(this);
 	}
 	
 	/** Virológus törlése a mezőről */
 	public void removeVirologist(Virologist v) {
+		System.out.println("Tile.getNeighbours");
 		virologists.remove(v);
 	}
 	
 	/** Szomszéd hozzáadása */
 	public void addNeighbour(Tile t) {
+		System.out.println("Tile.addNeighbours");
 		neighbours.add(t);
 	}
 	

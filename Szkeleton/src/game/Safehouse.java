@@ -21,6 +21,7 @@ public class Safehouse extends Tile {
 
 	/** Itt generálunk egy véletlenszerű védőfelszerelést. */
 	public void interactedWith(Virologist v) {
+		System.out.println("Safehouse.interactedWith");
 		Random r = new Random();
 		int n = r.nextInt(2);
 		switch (n) {

@@ -22,7 +22,7 @@ public class Game {
 	/** Játéktér */
 	private static Map map;
 	/** Ennek segitségével állitunk be szomszédokat az egyes pályaelemeknek. */
-	private static  ArrayList<Integer> neighbours;
+	public static ArrayList<Integer> neighbours;
 	/** A játékban a pályaelemek száma */
 	public static int tileCount = 50;
 	/** A játékban a botok száma */
@@ -32,12 +32,23 @@ public class Game {
 	/** A játékban az időzítő*/
 	public static  Timer timer;
 
+	/** Konstruktor */
+	public Game(){
+		//neighbours = new ArrayList<>();
+		//timer = new Timer();
+		//map = new Map();
+	}
+
 	/** Új játék indítása, pályagenerálás  */
 	public static void newGame() {
+		System.out.println("Game.newGame");
+		neighbours = new ArrayList<>();
 		map = new Map();
+		timer = new Timer();
 		//itt generálunk valamely konkrét pályaelemet
 		for (int i = 0; i < tileCount; i++) map.addTile(randomTile());
 		for (int i = 0; i < tileCount; i++) {
+			neighbours.clear();
 			// itt felépitjuk az esetleges szomszédok listáját, kivéve a soron lévo elemet
 			for (int j = 0; j < tileCount; j++) if(i != j) neighbours.add(j);
 			/** Itt fogjuk a szomszédokat beállitani, egy pályaelemnek legfeljebb
@@ -60,17 +71,19 @@ public class Game {
 			timer.addSteppable(map.getTiles().get(i).getVirologist().get(0));
 		}
 		//timer elindítása
-		while(true) timer.tick(); // TODO - szerintem ez így nem fog működni a grafikus felülettel
+		//while(true) timer.tick(); // TODO - szerintem ez így nem fog működni a grafikus felülettel
 	}
 
 	/** Játékból való kilépés */
 	public static void exitGame() {
+		System.out.println("Game.exitGame");
 		map = null;
 		System.out.println("A játéknak vége :/");
 	}
 	
 	/** Egy virológus megnyerte a játékot */
 	public static void winGame(Virologist v) {
+		System.out.println("Game.winGame");
 		System.out.println("A játékot " + v.toString() + " nyerte");
 	}
 
