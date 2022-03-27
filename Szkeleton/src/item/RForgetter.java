@@ -37,6 +37,7 @@ public class RForgetter extends Recipe {
      * elegendő alapanyag.
      */
     public boolean hasEnoughMaterial(InventorySorterVisitor i) {
+        System.out.println("RForgetter.hasEnoughMaterial");
         if (i.getAminoacidItems().size() >= numberOfAminoAcid && i.getNucleoidItems().size() >= numberOfNucleoid) {
             return true;
         } else {
@@ -48,6 +49,7 @@ public class RForgetter extends Recipe {
      * A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a felejtő ágens receptje típust.
      */
     public void accept(IInventoryVisitor i) {
+        System.out.println("RForgetter.accept");
         i.visit(this);
     }
 

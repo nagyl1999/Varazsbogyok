@@ -38,6 +38,7 @@ public class RProtector extends Recipe {
      */
     @Override
     public boolean hasEnoughMaterial(InventorySorterVisitor i) {
+        System.out.println("RProtector.hasEnoughMaterial");
         if (i.getAminoacidItems().size() >= numberOfAminoAcid && i.getNucleoidItems().size() >= numberOfNucleoid) {
             return true;
         } else {
@@ -57,6 +58,7 @@ public class RProtector extends Recipe {
      * A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a védelem ágens receptje típust.
      */
     public void accept(IInventoryVisitor i) {
+        System.out.println("RProtector.accept");
         i.visit(this);
     }
 

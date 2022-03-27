@@ -21,6 +21,7 @@ public class Aminoacid extends Material {
      * A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni az aminósav típust.
      */
     public void accept(IInventoryVisitor i) {
+        System.out.println("Aminoacid.accept");
         i.visit(this);
     }
 }
