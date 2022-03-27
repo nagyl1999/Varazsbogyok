@@ -17,10 +17,16 @@ import java.util.ArrayList;
 public class Timer {
 	/** Léptethető objektumok listája */
 	private ArrayList<Steppable> steppables;
+
+	/** Konstruktor */
+	public Timer(){
+		steppables = new ArrayList<Steppable>();
+	}
 	
 	/** A léptethető objektumokon egyszer
 	 * meghívjuk a lépést */
 	public void tick() {
+		System.out.println("Timer.tick");
 		for(Steppable s : steppables){
 			s.step();
 		}
@@ -28,11 +34,13 @@ public class Timer {
 	
 	/** Léptethető objektum hozzáadása */
 	public void addSteppable(Steppable s) {
+		System.out.println("Timer.addSteppable");
 		steppables.add(s);
 	}
 	
 	/** Léptethető objektum törlése */
 	public void removeSteppable(Steppable s) {
+		System.out.println("Timer.removeSteppable");
 		steppables.remove(s);
 	}
 }

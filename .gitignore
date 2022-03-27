@@ -1,13 +1,14 @@
 # Egyéni mappák
 #/Dokumentáció
 *.idea
-*.iml
 
 
 # Egyéni fájlkiterjesztések
 *.jpg
 *.png
 *.jpeg
+*.classpath
+*.project
 
 # Bak files
 *.bak

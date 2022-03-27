@@ -22,6 +22,7 @@ public class Laboratory extends Tile {
 
 	/** Itt generálunk egy véletlenszerű receptet. */
 	public void interactedWith(Virologist v) {
+		System.out.println("Laboratory.interactedWith");
 		Random r = new Random();
 		int n = r.nextInt(3);
 		switch (n) {

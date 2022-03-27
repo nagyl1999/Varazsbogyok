@@ -19,6 +19,7 @@ public class Town extends Tile {
 
 	/** A virológus így nézi meg, hogy mi található a mezőn */
 	public void interactedWith(Virologist v) {
+		System.out.println("Town.interactedWith");
 	}
 	
 	/** Egy virológus fogadása a mezőre */
