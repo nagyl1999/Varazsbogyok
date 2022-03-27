@@ -26,8 +26,10 @@ public class Storage extends Tile {
 		System.out.println("Storage.interactedWith");
 		Random r = new Random();
 		int n = r.nextInt(2);
+		System.out.println("v.getInventory");
 		if(n == 0) v.getInventory().addItem(new Aminoacid());
 		if(n == 1) v.getInventory().addItem(new Nucleoid());
+		System.out.println("i.addItem");
 	}
 	
 	/** Egy virológus fogadása a mezőre, itt felkínálunk

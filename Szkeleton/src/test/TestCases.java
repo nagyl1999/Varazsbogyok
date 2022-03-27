@@ -5,7 +5,6 @@ import entity.Player;
 import entity.Virologist;
 import game.*;
 import inventory.IStorable;
-import inventory.VisitorManager;
 import item.*;
 
 import java.util.Scanner;
@@ -79,11 +78,11 @@ public class TestCases {
      */
     public static void pickUpMaterial() {
         Virologist v = new Bot();
-        Tile t1 = new Town();
-        Tile t2 = new Storage();
+        Tile t1 = new Storage();
         t1.addVirologist(v);
-        v.move(t2);
-        System.out.println(v.getInventory().size());
+        System.out.println("Inventenroy.size: " + v.getInventory().size());
+        v.pickUp(new Nucleoid());
+        System.out.println("Inventenroy.size: " + v.getInventory().size());
     }
 
     /**
@@ -103,11 +102,11 @@ public class TestCases {
      */
     public static void pickUpRecipe() {
         Virologist v = new Bot();
-        Tile t1 = new Town();
-        Tile t2 = new Laboratory();
+        Tile t1 = new Laboratory();
         t1.addVirologist(v);
-        v.move(t2);
-        System.out.println(v.getInventory().size());
+        System.out.println("Inventenroy.size: " + v.getInventory().size());
+        v.pickUp(new RDancer());
+        System.out.println("Inventenroy.size: " + v.getInventory().size());
     }
 
     /**

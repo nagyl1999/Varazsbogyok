@@ -12,6 +12,7 @@ package game;
 */
 
 import entity.Virologist;
+import inventory.NotEnoughSpaceException;
 import item.*;
 import java.util.Random;
 
@@ -21,21 +22,30 @@ import java.util.Random;
 public class Laboratory extends Tile {
 
 	/** Itt generálunk egy véletlenszerű receptet. */
-	public void interactedWith(Virologist v) {
+	public void interactedWith(Virologist v) throws NotEnoughSpaceException {
 		System.out.println("Laboratory.interactedWith");
 		Random r = new Random();
 		int n = r.nextInt(3);
+		System.out.println("v.getInventory");
 		switch (n) {
 			case 0:
 				RDancer dancer = new RDancer();
+				v.getInventory().addItem(dancer);
 				break;
 			case 1:
 				RForgetter forgetter = new RForgetter();
+				v.getInventory().addItem(forgetter);
+				break;
 			case 2:
 				RParalyzer paralyzer = new RParalyzer();
+				v.getInventory().addItem(paralyzer);
+				break;
 			default:
 				RProtector protector = new RProtector();
+				v.getInventory().addItem(protector);
 		}
+		System.out.println("i.addItem");
+
 	}
 
 		/**
