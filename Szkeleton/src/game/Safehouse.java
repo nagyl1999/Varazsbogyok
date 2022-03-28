@@ -39,11 +39,4 @@ public class Safehouse extends Tile {
 				break;
 		}
 	}
-	
-	/** Egy virológus fogadása a mezőre, itt felkínálunk
-	 * neki egy véletlenszerű védőfelszerelést
-	 * */
-	public void acceptVirologist(Virologist v) {
-		//TODO
-	}
 }

@@ -130,7 +130,7 @@ public abstract class Virologist implements Steppable, IInventoryHolder {
         if (getParalyzed())
             return;
         tile.removeVirologist(this);
-        t.acceptVirologist(this);
+        t.addVirologist(this);
     }
 
     /**

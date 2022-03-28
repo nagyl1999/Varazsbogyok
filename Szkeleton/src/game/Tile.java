@@ -62,6 +62,5 @@ public abstract class Tile {
 	
 	/** A virológus így nézi meg, hogy mi található a mezőn */
 	public abstract void interactedWith(Virologist v) throws NotEnoughSpaceException;
-	/** Virológus befogadása, leszármazott definiálja a viselkedést */
-	public abstract void acceptVirologist(Virologist v);
+	
 }

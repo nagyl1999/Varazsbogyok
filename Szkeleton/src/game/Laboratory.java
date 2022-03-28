@@ -48,13 +48,4 @@ public class Laboratory extends Tile {
 
 	}
 
-		/**
-		 * Egy virológus fogadása a mezőre, itt felkínálunk
-		 * neki egy véletlenszerű receptet
-		 */
-		public void acceptVirologist (Virologist v){
-		//TODO
-		}
-
-
 }

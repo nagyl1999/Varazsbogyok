@@ -21,9 +21,4 @@ public class Town extends Tile {
 	public void interactedWith(Virologist v) {
 		System.out.println("Town.interactedWith");
 	}
-	
-	/** Egy virológus fogadása a mezőre */
-	public void acceptVirologist(Virologist v) {
-		//TODO
-	}
 }

@@ -31,11 +31,4 @@ public class Storage extends Tile {
 		if(n == 1) v.getInventory().addItem(new Nucleoid());
 		System.out.println("i.addItem");
 	}
-	
-	/** Egy virológus fogadása a mezőre, itt felkínálunk
-	 * neki egy véletlenszerű anyagot
-	 * */
-	public void acceptVirologist(Virologist v) {
-		// TODO
-	}
 }
