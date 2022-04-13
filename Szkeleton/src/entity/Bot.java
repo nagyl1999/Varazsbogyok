@@ -24,7 +24,6 @@ public class Bot extends Virologist {
      * A Bot lépését szimuláló függvény
      */
     public void step() {
-        System.out.println("Bot.step");
         for (Agent a : applied)
             a.effect(this);
     }
@@ -33,7 +32,6 @@ public class Bot extends Virologist {
      * A Bot egy item felvételéről dönt
      */
     public void pickUp(IStorable s) {
-        System.out.println("Bot.pickUp");
         try {
             tile.interactedWith(this);
         } catch (Exception ignored) {

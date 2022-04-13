@@ -21,7 +21,6 @@ public class Nucleoid extends Material {
      * A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a nukleotid típust.
      */
     public void accept(IInventoryVisitor i) {
-        System.out.println("Nucleoid.accept");
         i.visit(this);
     }
 }

@@ -75,7 +75,9 @@ public abstract class Virologist implements Steppable, IInventoryHolder {
         return paralyzed;
     }
 
-    /** Setter - Mező */
+    /**
+     * Setter - Mező
+     */
     public void setTile(Tile t) {
         tile = t;
     }
@@ -88,7 +90,6 @@ public abstract class Virologist implements Steppable, IInventoryHolder {
      * @param a Agéns amit felkennek
      */
     public void applyAgent(Virologist v, Agent a) throws ItemNotFoundException {
-        System.out.println("Virologist.applyAgent");
         applied.add(a);
         for (Gear g : VisitorManager.getGear(this))
             g.protect(this, v, a);
@@ -101,7 +102,6 @@ public abstract class Virologist implements Steppable, IInventoryHolder {
      * Ágens leszedése a virológusról
      */
     public void removeApplied(Agent a) throws ItemNotFoundException {
-        System.out.println("Virologist.removeApplied");
         if (!applied.contains(a))
             throw new ItemNotFoundException("Ilyen ágens nincs felkenve!");
         applied.remove(a);
@@ -118,7 +118,6 @@ public abstract class Virologist implements Steppable, IInventoryHolder {
      * Felkent ágensek lejárati idő szerinti növekvő sorbarendezése
      */
     public void sortApplied() {
-        System.out.println("Virologist.sortApplied");
         applied.sort(new AgentComparator());
     }
 
@@ -126,7 +125,6 @@ public abstract class Virologist implements Steppable, IInventoryHolder {
      * A virológus másik mezőre léptetése
      */
     public void move(Tile t) {
-        System.out.println("Virologist.move");
         if (getParalyzed())
             return;
         tile.removeVirologist(this);
@@ -137,15 +135,14 @@ public abstract class Virologist implements Steppable, IInventoryHolder {
      * Egy másik virológus kirablása
      */
     public void robVirologist(Virologist v) {
-        System.out.println("Virologist.robVirologist");
         if (!v.getParalyzed())
             return;
         for (IStorable i : VisitorManager.getStealable(v)) {
             try {
                 getInventory().addItem(i);
-            }catch (NotEnoughSpaceException n) {
+            } catch (NotEnoughSpaceException n) {
                 return; // Elfogyott a hely a mi inventory-nkban
-            }catch (Exception ignore) {
+            } catch (Exception ignore) {
             }
         }
 
@@ -155,7 +152,6 @@ public abstract class Virologist implements Steppable, IInventoryHolder {
      * Egy ágens recept alapján való létrehozása
      */
     public void makeAgent(Recipe r) throws ItemNotFoundException, NotEnoughSpaceException {
-        System.out.println("Virologist.makeAgent");
         if (!VisitorManager.craftRecipe(this, r))
             return;
         InventorySorterVisitor i = VisitorManager.sortInventory(this);
@@ -175,7 +171,6 @@ public abstract class Virologist implements Steppable, IInventoryHolder {
      * @param a A felhasználni kívánt ágens
      */
     public void useAgent(Virologist v, Agent a) throws ItemNotFoundException {
-        System.out.println("Virologist.useAgent");
         if (getParalyzed())
             return;
         getInventory().removeItem(a);

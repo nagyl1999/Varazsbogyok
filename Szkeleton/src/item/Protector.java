@@ -12,43 +12,63 @@ package item;
 */
 
 import entity.Virologist;
+import game.Tile;
 import inventory.IInventoryVisitor;
 import inventory.ItemNotFoundException;
 import item.Agent;
 
-/**Védelmet nyújtó ágens */
+/**
+ * Védelmet nyújtó ágens
+ */
 public class Protector extends Agent {
-	/**A védelem ágens léptetését szimuláló fügvény. */
-	public void step() {
-		this.expire--;
-	}
-	
-	/**A függvény paraméterben kapott virológuson fogja kifejteni a hatását az ágens. */
-	public void effect(Virologist v) {
-	}
-	
-	/**A függvény paraméterben kapott virológuson szünteti meg a felkent ágens hatását. */
-	public void decompose(Virologist v) throws ItemNotFoundException {
-		v.removeApplied(this);
-	}
-	
-	/**A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a védelem ágens típust. */
-	public void accept(IInventoryVisitor i) {
-	}
-	
-	/**A paraméterben kapott ágenst eltávolítjuk a paraméterben kapott virológusról. */
-	public void protect(Virologist v, Agent a) throws ItemNotFoundException {
-		System.out.println("protect(v,a)");
-		v.removeApplied(a);
-	}
-	
-	/** Az ágens felhasználására irányuló függvény.
-	 * @param v1 A felhasználó
-	 * @param v2 Az elszenvedő
-	 * */
-	public void use(Virologist v1, Virologist v2) throws ItemNotFoundException {
-		System.out.println("use(v1,v2)");
-		v2.applyAgent(v1, this);
-	}
+    /**
+     * A védelem ágens léptetését szimuláló fügvény.
+     */
+    public void step() {
+        this.expire--;
+    }
+
+    /**
+     * A függvény paraméterben kapott virológuson fogja kifejteni a hatását az ágens.
+     */
+    public void effect(Virologist v) {
+    }
+
+    /**
+     * A függvény paraméterben kapott virológuson szünteti meg a felkent ágens hatását.
+     */
+    public void decompose(Virologist v) throws ItemNotFoundException {
+        v.removeApplied(this);
+    }
+
+    /**
+     * A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a védelem ágens típust.
+     */
+    public void accept(IInventoryVisitor i) {
+        i.visit(this);
+    }
+
+    /**
+     * A paraméterben kapott ágenst eltávolítjuk a paraméterben kapott virológusról.
+     */
+    public void protect(Virologist v, Agent a) throws ItemNotFoundException {
+        v.removeApplied(a);
+    }
+
+    /**
+     * Az ágens felhasználására irányuló függvény.
+     *
+     * @param v1 A felhasználó
+     * @param v2 Az elszenvedő
+     */
+    public void use(Virologist v1, Virologist v2) throws ItemNotFoundException {
+        v2.applyAgent(v1, this);
+    }
+
+    /**
+     * Az ágens nincs hatással a rálépett mezőre
+     */
+    public void effect(Tile t) {
+    }
 
 }

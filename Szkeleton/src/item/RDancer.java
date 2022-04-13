@@ -37,19 +37,13 @@ public class RDancer extends Recipe {
      * elegendő alapanyag.
      */
     public boolean hasEnoughMaterial(InventorySorterVisitor i) {
-        System.out.println("RDancer.hasEnoughMaterial");
-        if (i.getAminoacidItems().size() >= numberOfAminoAcid && i.getNucleoidItems().size() >= numberOfNucleoid) {
-            return true;
-        } else {
-            return false;
-        }
+        return (i.getAminoacidItems().size() >= numberOfAminoAcid && i.getNucleoidItems().size() >= numberOfNucleoid);
     }
 
     /**
      * A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a vitustánc ágens receptje típust.
      */
     public void accept(IInventoryVisitor i) {
-        System.out.println("RDancer.accept");
         i.visit(this);
     }
 

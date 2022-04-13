@@ -19,5 +19,8 @@ import inventory.IStorable;
  */
 public abstract class Material implements IStorable {
 
+    /**
+     * A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni az ágens típust.
+     */
     public abstract void accept(IInventoryVisitor i);
 }
