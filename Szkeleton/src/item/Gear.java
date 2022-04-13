@@ -12,20 +12,41 @@ package item;
 */
 
 import entity.Virologist;
+import inventory.IInventoryVisitor;
 import inventory.IStorable;
 import item.Agent;
 
-/** A védőfelszerelések ősosztálya.A virológusok ezek védelem céljából veszik fel*/
+/**
+ * A védőfelszerelések ősosztálya.A virológusok ezek védelem céljából veszik fel
+ */
 public abstract class Gear implements IStorable {
-	/** Tárolja, hogy az aktuális védőfelszerelés használatban van. */
-	protected boolean equipped;
-	
-	/**A paraméterben kapott virológust megvédi a paraméterben kapott ágens ellen.*/
-	public abstract void protect(Virologist v1, Virologist v2,  Agent a);
-	
-	/** A paraméterben kapott virológus kiválasztja a védőfelszerelést*/
-	public abstract void equip(Virologist v);
-	
-	/** A paraméterben kapott virológus másik védőfelszerelésre vált.*/
-	public abstract void unequip(Virologist v);
+    /**
+     * Tárolja, hogy az aktuális védőfelszerelés használatban van.
+     */
+    protected boolean equipped;
+    /**
+     * Elkopásig hátralévő használatok száma
+     */
+    protected int durability;
+
+    /**
+     * A paraméterben kapott virológust megvédi a paraméterben kapott ágens ellen.
+     */
+    public abstract void protect(Virologist v1, Virologist v2, Agent a);
+
+    /**
+     * A paraméterben kapott virológus kiválasztja a védőfelszerelést
+     */
+    public abstract void equip(Virologist v);
+
+    /**
+     * A paraméterben kapott virológus másik védőfelszerelésre vált.
+     */
+    public abstract void unequip(Virologist v);
+
+    /**
+     * A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni az ágens típust.
+     */
+    public abstract void accept(IInventoryVisitor i);
+
 }

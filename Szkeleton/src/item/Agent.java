@@ -13,44 +13,75 @@ package item;
 
 import entity.Virologist;
 import game.Steppable;
+import game.Tile;
 import inventory.IInventoryVisitor;
 import inventory.IStorable;
 import inventory.ItemNotFoundException;
 
-/** A játékban található ágensek őosztálya. A virológusok ezeket használhatják fel egymás gyengítése illetve
+/**
+ * A játékban található ágensek őosztálya. A virológusok ezeket használhatják fel egymás gyengítése illetve
  * saját maguk megsegítése céljából.
- * */
-public abstract class Agent implements  IStorable, Steppable, Comparable<Agent> {
-	/** Az ágens elbomlásáig visszamaradt idő. */
-	protected int expire;
-	/**A virológusra van felkenve az ágens. */
-	private Virologist virologist;
+ */
+public abstract class Agent implements IStorable, Steppable, Comparable<Agent> {
+    /**
+     * Az ágens elbomlásáig visszamaradt idő.
+     */
+    protected int expire;
+    /**
+     * A virológusra van felkenve az ágens.
+     */
+    private Virologist virologist;
 
-	/** Getter - expire */
-	public int getExpire() {
-		return expire;
-	}
+    /**
+     * Getter - expire
+     */
+    public int getExpire() {
+        return expire;
+    }
 
-	/** Ágensek lejárata szerinti összehasonlítás */
-	public int compareTo(Agent a) {
-		return Integer.compare(getExpire(), a.getExpire());
-	}
-	
-	/** A paraméterben kapott virológuson hajtja végre a hatást.*/
-	public abstract void effect(Virologist v);
-	/** Egyel csökkenti az expire értékét.*/
-	public abstract void decompose(Virologist v) throws ItemNotFoundException;
-	/** A protector ágens fogja megvédeni a virológust.  */
-	public abstract void protect(Virologist v, Agent a) throws ItemNotFoundException;
+    /**
+     * Ágensek lejárata szerinti összehasonlítás
+     */
+    public int compareTo(Agent a) {
+        return Integer.compare(getExpire(), a.getExpire());
+    }
 
-	/** Melyik virológus fog felkenni a másikra ágenst
-	 * @param v1 Felkenő virológus
-	 * @param v2 Elszenvedő virológus
-	 * */
-	public abstract void use(Virologist v1, Virologist v2) throws ItemNotFoundException;
-	/** Az ágens léptetését szimuláló fügvény. */
-	public abstract void step();
-	/** A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni az ágens típust. */
-	public abstract void accept(IInventoryVisitor i);
+    /**
+     * A paraméterben kapott virológuson hajtja végre a hatást.
+     */
+    public abstract void effect(Virologist v);
+
+    /**
+     * Egyel csökkenti az expire értékét.
+     */
+    public abstract void decompose(Virologist v) throws ItemNotFoundException;
+
+    /**
+     * A protector ágens fogja megvédeni a virológust.
+     */
+    public abstract void protect(Virologist v, Agent a) throws ItemNotFoundException;
+
+    /**
+     * Melyik virológus fog felkenni a másikra ágenst
+     *
+     * @param v1 Felkenő virológus
+     * @param v2 Elszenvedő virológus
+     */
+    public abstract void use(Virologist v1, Virologist v2) throws ItemNotFoundException;
+
+    /**
+     * Ágens hatása a mezőre, absztrakt, ágensek definiálják
+     */
+    public abstract void effect(Tile t);
+
+    /**
+     * Az ágens léptetését szimuláló fügvény.
+     */
+    public abstract void step();
+
+    /**
+     * A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni az ágens típust.
+     */
+    public abstract void accept(IInventoryVisitor i);
 
 }

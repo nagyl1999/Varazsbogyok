@@ -15,67 +15,71 @@ import entity.Virologist;
 import inventory.IInventoryVisitor;
 import inventory.Inventory;
 
-/** A játékban a kabát tipusú védőfelszerelés. */
+/**
+ * A játékban a kabát tipusú védőfelszerelés.
+ */
 public class Jacket extends Gear {
-	/** A paraméterben kapott virológust megvédi a paraméterben kapott ágens ellen 82,3%-os hatásfokkal
-	 *
-	 *
-	 * @param v1 A Virológus aki az ágenst keni
-	 * @param v2 A Virológus akire az ágenst kenik
-	 * @param a Az Ágens amit kennek a virológusra
-	 *
-	 * */
-	public void protect(Virologist v1, Virologist v2, Agent a) {
+    /** Sikeres védekezés valószínűsége */
+    private double success = 0.823;
 
-		double d = Math.random();
+    /**
+     * A paraméterben kapott virológust megvédi a paraméterben kapott ágens ellen 82,3%-os hatásfokkal
+     *
+     * @param v1 A Virológus aki az ágenst keni
+     * @param v2 A Virológus akire az ágenst kenik
+     * @param a  Az Ágens amit kennek a virológusra
+     */
+    public void protect(Virologist v1, Virologist v2, Agent a) {
 
-		if(d < 0.823)
-			try{
-				v2.removeApplied(a);
-			} catch (Exception e){
-				System.out.println("Már nincs rajta az ágens.");
-			}
+        double d = Math.random();
 
-	}
-	
-	/** A paraméterben kapott virológus kiválasztja a kabátot.
-	 *
-	 * @param v A Virológus aki felveszi a kabátot
-	 *
-	 * */
-	public void equip(Virologist v) {
+        if (d < success)
+            try {
+                v2.removeApplied(a);
+            } catch (Exception e) {
+                System.out.println("Már nincs rajta az ágens.");
+            }
 
-		Inventory inventory = v.getInventory();
-		try{
-			inventory.addItem(this);
-			this.accept((IInventoryVisitor) inventory);
-		}  catch (Exception e){
-			System.out.println("Nem lehet a kabátot felvenni!");
-		}
+    }
 
-	}
-	
-	/**A paraméterben kapott virológus másik védőfelszerelésre vált.
-	 *
-	 *
-	 * @param v A Virológus aki leadja a zsákot
-	 *
-	 * */
-	public void unequip(Virologist v) {
+    /**
+     * A paraméterben kapott virológus kiválasztja a kabátot.
+     *
+     * @param v A Virológus aki felveszi a kabátot
+     */
+    public void equip(Virologist v) {
 
-		Inventory inventory = v.getInventory();
-		try{
-			inventory.removeItem(this);
-		}catch (Exception e){
-			System.out.println("Nem lehet a kabátot leadni mert az nincs a virológusnál");
-		}
+        Inventory inventory = v.getInventory();
+        try {
+            inventory.addItem(this);
+            this.accept((IInventoryVisitor) inventory);
+        } catch (Exception e) {
+            System.out.println("Nem lehet a kabátot felvenni!");
+        }
 
-	}
-	
-	/** A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a kabát típust.*/
-	public void accept(IInventoryVisitor i) {
-		i.visit(this);
-	}
-	
+    }
+
+    /**
+     * A paraméterben kapott virológus másik védőfelszerelésre vált.
+     *
+     * @param v A Virológus aki leadja a zsákot
+     */
+    public void unequip(Virologist v) {
+        Inventory inventory = v.getInventory();
+        try {
+            inventory.removeItem(this);
+        } catch (Exception e) {
+            System.out.println("Nem lehet a kabátot leadni mert az nincs a virológusnál");
+        }
+
+    }
+
+    /**
+     * A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a kabát típust.
+     */
+    public void accept(IInventoryVisitor i) {
+        i.visit(this);
+    }
+
 
 }

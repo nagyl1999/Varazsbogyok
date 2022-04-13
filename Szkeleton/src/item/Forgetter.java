@@ -12,69 +12,87 @@ package item;
 */
 
 import entity.Virologist;
+import game.Tile;
 import inventory.*;
 import item.Agent;
 
-/** Felejtést okozó ágens */
+/**
+ * Felejtést okozó ágens
+ */
 public class Forgetter extends Agent {
-	/** A felejtő ágens léptetését szimuláló fügvény.*/
-	public void step() {
-		this.expire--;
-	}
-	
-	/** A függvény paraméterben kapott virológuson fogja kifejteni a hatását az ágens.*/
-	public void effect(Virologist v) {
-		System.out.println("effect(v)");
-		InventorySorterVisitor isv= VisitorManager.sortInventory(v);
+    /**
+     * A felejtő ágens léptetését szimuláló fügvény.
+     */
+    public void step() {
+        this.expire--;
+    }
 
-		for(RDancer r:isv.getRdancerItems()){
-			try {
-				v.getInventory().removeItem(r);
-			}catch (ItemNotFoundException e){
-				e.printStackTrace();
-			}
-		}
+    /**
+     * A függvény paraméterben kapott virológuson fogja kifejteni a hatását az ágens.
+     */
+    public void effect(Virologist v) {
+        InventorySorterVisitor isv = VisitorManager.sortInventory(v);
 
-		for(RForgetter r:isv.getRforgetterItems()){
-			try {
-				v.getInventory().removeItem(r);
-			}catch (ItemNotFoundException e){
-				e.printStackTrace();
-			}
-		}
+        for (RDancer r : isv.getRdancerItems()) {
+            try {
+                v.getInventory().removeItem(r);
+            } catch (ItemNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
 
-		for(RParalyzer r:isv.getRpalaryzerItems()){
-			try {
-				v.getInventory().removeItem(r);
-			}catch (ItemNotFoundException e){
-				e.printStackTrace();
-			}
-		}
+        for (RForgetter r : isv.getRforgetterItems()) {
+            try {
+                v.getInventory().removeItem(r);
+            } catch (ItemNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
 
-	}
-	
-	/**A függvény paraméterben kapott virológuson szünteti meg a felkent ágens hatását. */
-	public void decompose(Virologist v) throws ItemNotFoundException {
-		v.removeApplied(this);
-	}
-	
-	/**A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a felejtő ágens típust.  */
-	public void accept(IInventoryVisitor i) {
-		i.visit(this);
-	}
-	
-	/** Az ágens vírus típusú, így nincs védő hatása.*/
-	public void protect(Virologist v, Agent a) {
-		System.out.println("protect(v,a)");
-	}
-	
-	/**Az ágens felhasználására irányuló függvény.
-	 * @param v1 A felhasználó
-	 * @param v2 Az elszenvedő
-	 * */
-	public void use(Virologist v1, Virologist v2) throws ItemNotFoundException {
-		System.out.println("use(v1,v2)");
-		v2.applyAgent(v2, this);
-	}
+        for (RParalyzer r : isv.getRpalaryzerItems()) {
+            try {
+                v.getInventory().removeItem(r);
+            } catch (ItemNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    /**
+     * A függvény paraméterben kapott virológuson szünteti meg a felkent ágens hatását.
+     */
+    public void decompose(Virologist v) throws ItemNotFoundException {
+        v.removeApplied(this);
+    }
+
+    /**
+     * A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a felejtő ágens típust.
+     */
+    public void accept(IInventoryVisitor i) {
+        i.visit(this);
+    }
+
+    /**
+     * Az ágens vírus típusú, így nincs védő hatása.
+     */
+    public void protect(Virologist v, Agent a) {
+    }
+
+    /**
+     * Az ágens nincs hatással a rálépett mezőre
+     */
+    public void effect(Tile t) {
+    }
+
+    /**
+     * Az ágens felhasználására irányuló függvény.
+     *
+     * @param v1 A felhasználó
+     * @param v2 Az elszenvedő
+     */
+    public void use(Virologist v1, Virologist v2) throws ItemNotFoundException {
+        v2.applyAgent(v2, this);
+    }
 
 }

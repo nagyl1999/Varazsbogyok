@@ -11,6 +11,7 @@ package item;
 
 */
 
+import inventory.IInventoryVisitor;
 import inventory.IStorable;
 import inventory.InventorySorterVisitor;
 
@@ -59,4 +60,10 @@ public abstract class Recipe implements IStorable {
      * A recept használata után az visszaadja a kész ágenst.
      */
     public abstract Agent addAgent();
+
+    /**
+     * A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni az ágens típust.
+     */
+    public abstract void accept(IInventoryVisitor i);
+
 }

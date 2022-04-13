@@ -28,7 +28,6 @@ public class VisitorManager {
      * Egy inventory tartalmának szétválogatása, amennyiben van zsák, azét is megnézzük
      */
     public static InventorySorterVisitor sortInventory(IInventoryHolder e) {
-        System.out.println("VisitorManager.sortInventory");
         InventorySorterVisitor i = new InventorySorterVisitor();
         e.getInventory().accept(i);
         if (i.getBagItems().size() > 0) {
@@ -45,7 +44,6 @@ public class VisitorManager {
      * a Game.WinGame függvényt
      */
     public static void hasWonTheGame(Virologist e) {
-        System.out.println("VisitorManager.hasWonTheGame");
         InventorySorterVisitor i = sortInventory(e);
         if (i.getRdancerItems().size() > 0 && i.getRforgetterItems().size() > 0 && i.getRpalaryzerItems().size() > 0 && i.getRprotectorItems().size() > 0)
             Game.winGame(e);
@@ -57,7 +55,6 @@ public class VisitorManager {
      * anyagok, és a kapott recept segítségével
      */
     public static boolean craftRecipe(Virologist v, Recipe r) {
-        System.out.println("VisitorManager.craftRecipe");
         InventorySorterVisitor i = sortInventory(v);
         return r.hasEnoughMaterial(i);
     }
@@ -67,7 +64,6 @@ public class VisitorManager {
      * ide tartoznak az anyagok és a védőfelszerelések
      */
     public static ArrayList<IStorable> getStealable(Virologist v) {
-        System.out.println("VisitorManager.getStealable");
         InventorySorterVisitor i = sortInventory(v);
         ArrayList<IStorable> items = new ArrayList<>();
         items.addAll(i.getBagItems());
@@ -83,7 +79,6 @@ public class VisitorManager {
      * található dolgok közül
      */
     public static ArrayList<Gear> getGear(Virologist v) {
-        System.out.println("VisitorManager.getGear");
         InventorySorterVisitor i = sortInventory(v);
         ArrayList<Gear> items = new ArrayList<>();
         items.addAll(i.getBagItems());
@@ -96,7 +91,6 @@ public class VisitorManager {
      * Van-e táska az inventory-ban
      */
     public static boolean containsGear(Virologist v, Bag g) {
-        System.out.println("VisitorManager.containsGear(Bag)");
         InventorySorterVisitor i = sortInventory(v);
         return i.getBagItems().size() > 0;
     }
@@ -105,7 +99,6 @@ public class VisitorManager {
      * Van-e kesztyű az inventory-ban
      */
     public static boolean containsGear(Virologist v, Glove g) {
-        System.out.println("VisitorManager.containsGear(Glove)");
         InventorySorterVisitor i = sortInventory(v);
         return i.getGloveItems().size() > 0;
     }
@@ -114,7 +107,6 @@ public class VisitorManager {
      * Van-e köpeny az inventory-ban
      */
     public static boolean containsGear(Virologist v, Jacket g) {
-        System.out.println("VisitorManager.containsGear(Jacket)");
         InventorySorterVisitor i = sortInventory(v);
         return i.getJacketItems().size() > 0;
     }
