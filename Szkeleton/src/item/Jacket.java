@@ -75,6 +75,12 @@ public class Jacket extends Gear {
     }
 
     /**
+     * A felszerelést nem lehet használni
+     */
+    public void use(Virologist v) {
+    }
+
+    /**
      * A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a kabát típust.
      */
     public void accept(IInventoryVisitor i) {

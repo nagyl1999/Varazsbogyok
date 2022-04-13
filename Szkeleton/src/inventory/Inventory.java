@@ -55,6 +55,17 @@ public class Inventory implements Iterator<IStorable> {
     }
 
     /**
+     * Az inventory egy kapott pozicióján lévő item visszaadása
+     */
+    public IStorable at(int i) throws ItemNotFoundException {
+        try {
+            return items.get(i);
+        } catch (Exception e) {
+            throw new ItemNotFoundException("Ilyen pozició nem létezik!");
+        }
+    }
+
+    /**
      * Tárolandó dolog hozzáfűzése a listához, amennyiben
      * van elég hely
      */

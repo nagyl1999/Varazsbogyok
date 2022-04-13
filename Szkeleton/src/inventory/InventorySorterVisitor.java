@@ -77,6 +77,14 @@ public class InventorySorterVisitor implements IInventoryVisitor {
      * Nukleoidok
      */
     private ArrayList<Nucleoid> nucleoidItems;
+    /**
+     * Balták
+     */
+    private ArrayList<Axe> axeItems;
+    /**
+     * Medve ágensek
+     */
+    private ArrayList<Bear> bearItems;
 
     //endregion
 
@@ -97,6 +105,8 @@ public class InventorySorterVisitor implements IInventoryVisitor {
         jacketItems = new ArrayList<>();
         aminoacidItems = new ArrayList<>();
         nucleoidItems = new ArrayList<>();
+        axeItems = new ArrayList<>();
+        bearItems = new ArrayList<>();
     }
 
     //region Getters
@@ -192,6 +202,20 @@ public class InventorySorterVisitor implements IInventoryVisitor {
         return nucleoidItems;
     }
 
+    /**
+     * Getter - Balták
+     */
+    public ArrayList<Axe> getAxeItems() {
+        return axeItems;
+    }
+
+    /**
+     * Getter - Medveágensek
+     */
+    public ArrayList<Bear> getBearItems() {
+        return bearItems;
+    }
+
     //endregion
 
     //region Public methods
@@ -285,6 +309,20 @@ public class InventorySorterVisitor implements IInventoryVisitor {
      */
     public void visit(Nucleoid i) {
         nucleoidItems.add(i);
+    }
+
+    /**
+     * A balták számlálója
+     */
+    public void visit(Axe i) {
+        axeItems.add(i);
+    }
+
+    /**
+     * A Medveágensek számlálója
+     */
+    public void visit(Bear i) {
+        bearItems.add(i);
     }
 
     //endregion

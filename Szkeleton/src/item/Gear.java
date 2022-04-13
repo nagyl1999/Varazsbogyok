@@ -49,4 +49,7 @@ public abstract class Gear implements IStorable {
      */
     public abstract void accept(IInventoryVisitor i);
 
+    /** A felszerelés használata, ezt a felszerelések külön definiálják */
+    public abstract void use(Virologist v);
+
 }

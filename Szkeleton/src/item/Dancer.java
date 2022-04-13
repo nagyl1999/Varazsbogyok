@@ -16,6 +16,8 @@ import game.Tile;
 import inventory.IInventoryVisitor;
 import inventory.ItemNotFoundException;
 
+import java.util.Random;
+
 /**
  * A vitustáncot okozó ágens.
  */
@@ -28,9 +30,19 @@ public class Dancer extends Agent {
     }
 
     /**
+     * Véletlenszerű szomszéd index generálás
+     */
+    private Tile getRandomTile(Virologist v, int min, int max) {
+        Random r = new Random();
+        return v.getTile().getNeighbours().get(r.nextInt(max - min) + min);
+    }
+
+    /**
      * A függvény paraméterben kapott virológuson fogja kifejteni a hatását az ágens.
      */
     public void effect(Virologist v) {
+        Tile t = getRandomTile(v, 0, v.getTile().getNeighbours().size());
+        v.move(t);
     }
 
     /**

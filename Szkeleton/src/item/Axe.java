@@ -21,4 +21,8 @@ public class Axe extends Gear {
     public void accept(IInventoryVisitor i) {
 
     }
+
+    public void use(Virologist v) {
+
+    }
 }

@@ -66,14 +66,18 @@ public class Bag extends Gear implements IInventoryHolder {
      * @param v A Virológus aki leadja a zsákot
      */
     public void unequip(Virologist v) {
-
         Inventory inventory = v.getInventory();
         try {
             inventory.removeItem(this);
         } catch (Exception e) {
             System.out.println("Nem lehet a zsákot leadni mert az nincs a virológusnál");
         }
+    }
 
+    /**
+     * A felszerelést nem lehet használni
+     */
+    public void use(Virologist v) {
     }
 
     /**

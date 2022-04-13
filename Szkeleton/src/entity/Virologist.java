@@ -76,6 +76,13 @@ public abstract class Virologist implements Steppable, IInventoryHolder {
     }
 
     /**
+     * Getter - Mező
+     */
+    public Tile getTile() {
+        return tile;
+    }
+
+    /**
      * Setter - Mező
      */
     public void setTile(Tile t) {

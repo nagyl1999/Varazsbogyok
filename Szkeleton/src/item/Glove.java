@@ -53,6 +53,12 @@ public class Glove extends Gear {
     }
 
     /**
+     * A felszerelést nem lehet használni
+     */
+    public void use(Virologist v) {
+    }
+
+    /**
      * A paraméterben kapott virológus másik védőfelszerelésre vált.
      *
      * @param v A Virológus aki leadja a kesztyűt

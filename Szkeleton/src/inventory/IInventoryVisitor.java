@@ -88,6 +88,16 @@ public interface IInventoryVisitor {
      */
     public void visit(Nucleoid i);
 
+    /**
+     * A balta számlálója
+     */
+    public void visit(Axe i);
+
+    /**
+     * A Bear ágens számlálója
+     */
+    public void visit(Bear i);
+
     //endregion
 
 }
