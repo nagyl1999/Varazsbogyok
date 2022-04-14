@@ -14,6 +14,7 @@ package item;
 import entity.Virologist;
 import inventory.IInventoryVisitor;
 import inventory.Inventory;
+import inventory.ItemNotFoundException;
 
 /**
  * A játékban a kesztyű tipusú védőfelszerelés.
@@ -42,10 +43,11 @@ public class Glove extends Gear {
         try {
             v2.removeApplied(a);
             v1.getApplied().add(a);
+            v1.getInventory().removeItem(this);
+        } catch (ItemNotFoundException ignore) {
         } catch (Exception e) {
             System.out.println("Nincs ilyen felkent ágens a virológuson");
         }
-        // TODO - elkopás, ha elkopott ki kell venni mindenhonnan
     }
 
     /**

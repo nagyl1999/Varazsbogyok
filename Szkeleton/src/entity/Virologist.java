@@ -89,7 +89,8 @@ public abstract class Virologist implements Steppable, IInventoryHolder {
         tile = t;
     }
 
-    /** Felszerelés használata más virológuson
+    /**
+     * Felszerelés használata más virológuson
      *
      * @param g A felhasznált felszerelés
      * @param v A megtámadott virológus
@@ -141,7 +142,7 @@ public abstract class Virologist implements Steppable, IInventoryHolder {
      * A virológus másik mezőre léptetése
      */
     public void move(Tile t) {
-        if (getParalyzed())
+        if (VisitorManager.hasParalyzer(this))
             return;
         tile.removeVirologist(this);
         t.addVirologist(this);
@@ -151,7 +152,7 @@ public abstract class Virologist implements Steppable, IInventoryHolder {
      * Egy másik virológus kirablása
      */
     public void robVirologist(Virologist v) {
-        if (!v.getParalyzed())
+        if (!VisitorManager.hasParalyzer(v))
             return;
         for (IStorable i : VisitorManager.getStealable(v)) {
             try {
@@ -187,16 +188,16 @@ public abstract class Virologist implements Steppable, IInventoryHolder {
      * @param a A felhasználni kívánt ágens
      */
     public void useAgent(Virologist v, Agent a) throws ItemNotFoundException {
-        if (getParalyzed())
+        if (VisitorManager.hasParalyzer(this))
             return;
         getInventory().removeItem(a);
         a.use(this, v);
     }
 
-    /** A virológus meghal */
-    public void die() {
-        // TODO - kivesszük mindenhonnan, ha az utolsó játékos akkor játék vége
-    }
+    /**
+     * A virológus meghal
+     */
+    public abstract void die();
 
     /**
      * Leszármazottak által definiálandó működés

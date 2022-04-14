@@ -12,6 +12,8 @@ package entity;
 */
 
 
+import game.Game;
+import game.Timer;
 import inventory.IStorable;
 import item.Agent;
 
@@ -36,6 +38,14 @@ public class Bot extends Virologist {
             tile.interactedWith(this);
         } catch (Exception ignored) {
         }
+    }
+
+    /**
+     * A bot meghal, így kitörlődik mindennel együtt a pályáról
+     */
+    public void die() {
+        tile.removeVirologist(this);
+        // TODO - steppable-k közül kiszedni
     }
 
 }

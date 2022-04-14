@@ -12,6 +12,7 @@ package entity;
 */
 
 
+import game.Game;
 import inventory.IStorable;
 import item.Agent;
 
@@ -36,6 +37,14 @@ public class Player extends Virologist {
             tile.interactedWith(this);
         } catch (Exception ignored) {
         }
+    }
+
+    /**
+     * A játékos meghal, mivel egy játékost generálunk
+     * a pályára, a játéknak vége
+     */
+    public void die() {
+        Game.exitGame();
     }
 
 }

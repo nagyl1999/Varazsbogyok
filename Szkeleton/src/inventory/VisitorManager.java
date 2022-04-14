@@ -110,4 +110,25 @@ public class VisitorManager {
         InventorySorterVisitor i = sortInventory(v);
         return i.getJacketItems().size() > 0;
     }
+
+    /**
+     * A virológusunk medvevírussal fertőzött-e
+     */
+    public static boolean hasBear(Virologist v) {
+        InventorySorterVisitor i = new InventorySorterVisitor();
+        for (Agent a : v.getApplied())
+            a.accept(i);
+        return i.getBearItems().size() > 0;
+    }
+
+    /**
+     * A virológusunk bénítóágensel fertőzött-e
+     */
+    public static boolean hasParalyzer(Virologist v) {
+        InventorySorterVisitor i = new InventorySorterVisitor();
+        for (Agent a : v.getApplied())
+            a.accept(i);
+        return i.getParalyzerItems().size() > 0;
+    }
+
 }

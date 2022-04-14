@@ -3,6 +3,7 @@ package item;
 import entity.Virologist;
 import inventory.IInventoryVisitor;
 import inventory.IStorable;
+import inventory.VisitorManager;
 
 public class Axe extends Gear {
     /**
@@ -50,9 +51,8 @@ public class Axe extends Gear {
      * @param v A fertőzöttnek gondolt játékos
      */
     public void use(Virologist v) {
-        if(durability == 0)
+        if(durability == 0 || !VisitorManager.hasBear(v))
             return;
-        // TODO - van-e rajta medvevírus?
         v.die();
         durability--;
     }
