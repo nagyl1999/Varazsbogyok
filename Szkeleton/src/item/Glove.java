@@ -45,7 +45,7 @@ public class Glove extends Gear {
         } catch (Exception e) {
             System.out.println("Nincs ilyen felkent ágens a virológuson");
         }
-
+        // TODO - elkopás, ha elkopott ki kell venni mindenhonnan
     }
 
     /**

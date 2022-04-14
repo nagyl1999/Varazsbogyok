@@ -13,13 +13,19 @@ import game.Game;
 import java.util.HashMap;
 import java.util.Scanner;
 
-/** A szkeleton működésére létrehozott teszter menü */
+/**
+ * A szkeleton működésére létrehozott teszter menü
+ */
 public class SkeletonTesterMenu implements Runnable {
-    /** Parancsok, és a hozzá tartozó azonosítók,
-     * később ez alapján hívjuk őket */
+    /**
+     * Parancsok, és a hozzá tartozó azonosítók,
+     * később ez alapján hívjuk őket
+     */
     private final HashMap<Integer, Runnable> commands;
 
-    /** Menüpontok hozzáadása */
+    /**
+     * Menüpontok hozzáadása
+     */
     private void init() {
         commands.put(0, TestCases::exit);
         commands.put(1, TestCases::newGame);
@@ -36,24 +42,28 @@ public class SkeletonTesterMenu implements Runnable {
         commands.put(12, TestCases::winGame);
     }
 
-    /** Konstruktor */
+    /**
+     * Konstruktor
+     */
     public SkeletonTesterMenu() {
         commands = new HashMap<>();
         init();
     }
 
-    /** Konzolról bekérendő adat, majd a megfelelő metódus futtatása */
+    /**
+     * Konzolról bekérendő adat, majd a megfelelő metódus futtatása
+     */
     public void run() {
         int cmd;
-        while(true) {
+        while (true) {
             System.out.print("Parancs: ");
             try {
                 cmd = new Scanner(System.in).nextInt();
-            }catch (Exception e) {
+            } catch (Exception e) {
                 System.out.println("Nem megfelelő bemenet!");
                 continue;
             }
-            if(!commands.containsKey(cmd)) {
+            if (!commands.containsKey(cmd)) {
                 System.out.println("Ilyen parancs nem található!");
                 continue;
             }

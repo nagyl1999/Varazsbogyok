@@ -193,6 +193,11 @@ public abstract class Virologist implements Steppable, IInventoryHolder {
         a.use(this, v);
     }
 
+    /** A virológus meghal */
+    public void die() {
+        // TODO - kivesszük mindenhonnan, ha az utolsó játékos akkor játék vége
+    }
+
     /**
      * Leszármazottak által definiálandó működés
      */
