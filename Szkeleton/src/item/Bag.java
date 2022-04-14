@@ -28,11 +28,16 @@ public class Bag extends Gear implements IInventoryHolder {
      * Inventory méret
      */
     public static int inventorySize = 25;
+    /**
+     * Hátralévõ használatok száma
+     */
+    public static int DURABILITY = -1;
 
     /**
      * Konstruktor
      */
     public Bag() {
+        super(Bag.DURABILITY);
         inventory = new Inventory(Bag.inventorySize);
     }
 
@@ -49,15 +54,7 @@ public class Bag extends Gear implements IInventoryHolder {
      * @param v A Virológus aki felveszi a zsákot
      */
     public void equip(Virologist v) {
-
-        Inventory inventory = v.getInventory();
-        try {
-            inventory.addItem(this);
-            this.accept((IInventoryVisitor) inventory);
-        } catch (Exception e) {
-            System.out.println("Nem lehet a zsákot felvenni!");
-        }
-
+        equipped = true;
     }
 
     /**
@@ -66,12 +63,7 @@ public class Bag extends Gear implements IInventoryHolder {
      * @param v A Virológus aki leadja a zsákot
      */
     public void unequip(Virologist v) {
-        Inventory inventory = v.getInventory();
-        try {
-            inventory.removeItem(this);
-        } catch (Exception e) {
-            System.out.println("Nem lehet a zsákot leadni mert az nincs a virológusnál");
-        }
+        equipped = false;
     }
 
     /**

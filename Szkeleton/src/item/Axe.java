@@ -5,6 +5,17 @@ import inventory.IInventoryVisitor;
 import inventory.IStorable;
 
 public class Axe extends Gear {
+    /**
+     * Hátralévő használatok száma
+     */
+    public static int DURABILITY = -1;
+
+    /**
+     * Konstruktor
+     */
+    public Axe() {
+        super(Axe.DURABILITY);
+    }
 
     public void protect(Virologist v1, Virologist v2, Agent a) {
 

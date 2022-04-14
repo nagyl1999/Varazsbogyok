@@ -21,10 +21,24 @@ import item.Agent;
  */
 public class Forgetter extends Agent {
     /**
+     * Ágnes élettartama
+     */
+    public static int EXPIRE = 12;
+
+    /**
+     * Konstruktor
+     */
+    public Forgetter() {
+        super(Forgetter.EXPIRE);
+    }
+
+    /**
      * A felejtő ágens léptetését szimuláló fügvény.
      */
-    public void step() {
+    public void step() throws ItemNotFoundException {
         this.expire--;
+        if(expire == 0)
+            decompose(virologist);
     }
 
     /**
@@ -64,6 +78,7 @@ public class Forgetter extends Agent {
      */
     public void decompose(Virologist v) throws ItemNotFoundException {
         v.removeApplied(this);
+        virologist = null;
     }
 
     /**
@@ -92,6 +107,7 @@ public class Forgetter extends Agent {
      * @param v2 Az elszenvedő
      */
     public void use(Virologist v1, Virologist v2) throws ItemNotFoundException {
+        virologist = v2;
         v2.applyAgent(v2, this);
     }
 

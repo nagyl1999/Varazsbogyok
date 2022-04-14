@@ -22,10 +22,24 @@ import item.Agent;
  */
 public class Paralyzer extends Agent {
     /**
+     * Ágnes élettartama
+     */
+    public static int EXPIRE = 8;
+
+    /**
+     * Konstruktor
+     */
+    public Paralyzer() {
+        super(Paralyzer.EXPIRE);
+    }
+
+    /**
      * A bénulás ágens léptetését szimuláló fügvény.
      */
-    public void step() {
+    public void step() throws ItemNotFoundException {
         this.expire--;
+        if(expire == 0)
+            decompose(virologist);
     }
 
     /**
@@ -41,6 +55,7 @@ public class Paralyzer extends Agent {
     public void decompose(Virologist v) throws ItemNotFoundException {
         v.setParalyzed(false);
         v.removeApplied(this);
+        virologist = null;
     }
 
     /**
@@ -69,6 +84,7 @@ public class Paralyzer extends Agent {
      * @param v2 Az elszenvedő
      */
     public void use(Virologist v1, Virologist v2) throws ItemNotFoundException {
+        virologist = v2;
         v2.applyAgent(v2, this);
     }
 

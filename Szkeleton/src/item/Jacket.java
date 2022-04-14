@@ -19,8 +19,21 @@ import inventory.Inventory;
  * A játékban a kabát tipusú védőfelszerelés.
  */
 public class Jacket extends Gear {
-    /** Sikeres védekezés valószínűsége */
+    /**
+     * Sikeres védekezés valószínűsége
+     */
     private double success = 0.823;
+    /**
+     * Hátralévő használatok száma
+     */
+    public static int DURABILITY = -1;
+
+    /**
+     * Konstruktor
+     */
+    public Jacket() {
+        super(Jacket.DURABILITY);
+    }
 
     /**
      * A paraméterben kapott virológust megvédi a paraméterben kapott ágens ellen 82,3%-os hatásfokkal
@@ -48,15 +61,7 @@ public class Jacket extends Gear {
      * @param v A Virológus aki felveszi a kabátot
      */
     public void equip(Virologist v) {
-
-        Inventory inventory = v.getInventory();
-        try {
-            inventory.addItem(this);
-            this.accept((IInventoryVisitor) inventory);
-        } catch (Exception e) {
-            System.out.println("Nem lehet a kabátot felvenni!");
-        }
-
+        equipped = true;
     }
 
     /**
@@ -65,13 +70,7 @@ public class Jacket extends Gear {
      * @param v A Virológus aki leadja a zsákot
      */
     public void unequip(Virologist v) {
-        Inventory inventory = v.getInventory();
-        try {
-            inventory.removeItem(this);
-        } catch (Exception e) {
-            System.out.println("Nem lehet a kabátot leadni mert az nincs a virológusnál");
-        }
-
+        equipped = false;
     }
 
     /**

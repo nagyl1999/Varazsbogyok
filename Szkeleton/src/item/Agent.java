@@ -30,13 +30,27 @@ public abstract class Agent implements IStorable, Steppable, Comparable<Agent> {
     /**
      * A virológusra van felkenve az ágens.
      */
-    private Virologist virologist;
+    protected Virologist virologist;
+
+    /**
+     * Konstruktor
+     */
+    public Agent(int e) {
+        expire = e;
+    }
 
     /**
      * Getter - expire
      */
     public int getExpire() {
         return expire;
+    }
+
+    /**
+     * Getter - virológus
+     */
+    public Virologist getVirologist() {
+        return virologist;
     }
 
     /**
@@ -77,7 +91,7 @@ public abstract class Agent implements IStorable, Steppable, Comparable<Agent> {
     /**
      * Az ágens léptetését szimuláló fügvény.
      */
-    public abstract void step();
+    public abstract void step() throws ItemNotFoundException;
 
     /**
      * A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni az ágens típust.

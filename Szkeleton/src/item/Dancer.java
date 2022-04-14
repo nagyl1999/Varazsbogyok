@@ -23,10 +23,24 @@ import java.util.Random;
  */
 public class Dancer extends Agent {
     /**
+     * Ágnes élettartama
+     */
+    public static int EXPIRE = 10;
+
+    /**
+     * Konstruktor
+     */
+    public Dancer() {
+        super(Dancer.EXPIRE);
+    }
+
+    /**
      * A vitustánc ágens léptetését szimuláló fügvény.
      */
-    public void step() {
+    public void step() throws ItemNotFoundException {
         this.expire--;
+        if (expire == 0)
+            decompose(virologist);
     }
 
     /**
@@ -43,6 +57,7 @@ public class Dancer extends Agent {
     public void effect(Virologist v) {
         Tile t = getRandomTile(v, 0, v.getTile().getNeighbours().size());
         v.move(t);
+        // TODO - nem tud lépni
     }
 
     /**
@@ -50,6 +65,7 @@ public class Dancer extends Agent {
      */
     public void decompose(Virologist v) throws ItemNotFoundException {
         v.removeApplied(this);
+        virologist = null;
     }
 
     /**
@@ -78,6 +94,7 @@ public class Dancer extends Agent {
      * @param v2 Az elszenvedő
      */
     public void use(Virologist v1, Virologist v2) throws ItemNotFoundException {
+        virologist = v2;
         v2.applyAgent(v2, this);
     }
 

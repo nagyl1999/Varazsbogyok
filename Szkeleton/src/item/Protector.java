@@ -22,10 +22,24 @@ import item.Agent;
  */
 public class Protector extends Agent {
     /**
+     * Ágnes élettartama
+     */
+    public static int EXPIRE = 5;
+
+    /**
+     * Konstruktor
+     */
+    public Protector() {
+        super(Protector.EXPIRE);
+    }
+
+    /**
      * A védelem ágens léptetését szimuláló fügvény.
      */
-    public void step() {
+    public void step() throws ItemNotFoundException {
         this.expire--;
+        if(expire == 0)
+            decompose(virologist);
     }
 
     /**
@@ -39,6 +53,7 @@ public class Protector extends Agent {
      */
     public void decompose(Virologist v) throws ItemNotFoundException {
         v.removeApplied(this);
+        virologist = null;
     }
 
     /**
@@ -62,6 +77,7 @@ public class Protector extends Agent {
      * @param v2 Az elszenvedő
      */
     public void use(Virologist v1, Virologist v2) throws ItemNotFoundException {
+        virologist = v2;
         v2.applyAgent(v1, this);
     }
 

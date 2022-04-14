@@ -89,6 +89,15 @@ public abstract class Virologist implements Steppable, IInventoryHolder {
         tile = t;
     }
 
+    /** Felszerelés használata más virológuson
+     *
+     * @param g A felhasznált felszerelés
+     * @param v A megtámadott virológus
+     */
+    public void useGear(Gear g, Virologist v) {
+        g.use(v);
+    }
+
     /**
      * Ágens felkenése a virológusra, ágensek rendezése a konzisztens
      * állapot fenttartása érdekében, mielőtt

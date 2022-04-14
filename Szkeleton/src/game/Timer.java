@@ -13,34 +13,49 @@ package game;
 
 import java.util.ArrayList;
 
-/** Időzítő osztály, a léptethető dolgok léptetéséért felel */
+/**
+ * Időzítő osztály, a léptethető dolgok léptetéséért felel
+ */
 public class Timer {
-	/** Léptethető objektumok listája */
-	private ArrayList<Steppable> steppables;
+    /**
+     * Léptethető objektumok listája
+     */
+    private ArrayList<Steppable> steppables;
 
-	/** Konstruktor */
-	public Timer(){
-		steppables = new ArrayList<Steppable>();
-	}
-	
-	/** A léptethető objektumokon egyszer
-	 * meghívjuk a lépést */
-	public void tick() {
-		System.out.println("Timer.tick");
-		for(Steppable s : steppables){
-			s.step();
-		}
-	}
-	
-	/** Léptethető objektum hozzáadása */
-	public void addSteppable(Steppable s) {
-		System.out.println("Timer.addSteppable");
-		steppables.add(s);
-	}
-	
-	/** Léptethető objektum törlése */
-	public void removeSteppable(Steppable s) {
-		System.out.println("Timer.removeSteppable");
-		steppables.remove(s);
-	}
+    /**
+     * Konstruktor
+     */
+    public Timer() {
+        steppables = new ArrayList<Steppable>();
+    }
+
+    /**
+     * A léptethető objektumokon egyszer
+     * meghívjuk a lépést
+     */
+    public void tick() {
+        System.out.println("Timer.tick");
+        for (Steppable s : steppables) {
+            try {
+                s.step();
+            } catch (Exception ignored) {
+            }
+        }
+    }
+
+    /**
+     * Léptethető objektum hozzáadása
+     */
+    public void addSteppable(Steppable s) {
+        System.out.println("Timer.addSteppable");
+        steppables.add(s);
+    }
+
+    /**
+     * Léptethető objektum törlése
+     */
+    public void removeSteppable(Steppable s) {
+        System.out.println("Timer.removeSteppable");
+        steppables.remove(s);
+    }
 }

@@ -5,16 +5,39 @@ import game.Tile;
 import inventory.IInventoryVisitor;
 import inventory.ItemNotFoundException;
 
+import java.util.Random;
+
 /**
  * Medvevírust okozó ágens
  */
 public class Bear extends Agent {
+    /**
+     * Ágnes élettartama
+     */
+    public static int EXPIRE = -1;
+
+    /**
+     * Konstruktor
+     */
+    public Bear() {
+        super(Bear.EXPIRE);
+    }
+
+    /**
+     * Véletlenszerű szomszéd index generálás
+     */
+    private Tile getRandomTile(Virologist v, int min, int max) {
+        Random r = new Random();
+        return v.getTile().getNeighbours().get(r.nextInt(max - min) + min);
+    }
 
     /**
      * Véletlenszerű lépésre kényszeríti a játékost
      */
     public void effect(Virologist v) {
-
+        Tile t = getRandomTile(v, 0, v.getTile().getNeighbours().size());
+        v.move(t);
+        // TODO - nem tud többet lépni
     }
 
     /**
@@ -38,6 +61,8 @@ public class Bear extends Agent {
      * @throws ItemNotFoundException Ha nem található az ágens a játékos inventory-jában
      */
     public void use(Virologist v1, Virologist v2) throws ItemNotFoundException {
+        // TODO - hogy védekezünk ellene, kire ken a kesztyű
+        virologist = v2;
         v2.applyAgent(v1, this);
     }
 
@@ -45,7 +70,7 @@ public class Bear extends Agent {
      * Az ágens mezőre kifejtett hatása, a medveágens kiüríti a rálépett mező inventory-ját
      */
     public void effect(Tile t) {
-        // TODO
+        // TODO - inventory ürítése
     }
 
     /**

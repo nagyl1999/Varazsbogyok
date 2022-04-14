@@ -30,6 +30,13 @@ public abstract class Gear implements IStorable {
     protected int durability;
 
     /**
+     * Konstruktor
+     */
+    public Gear(int d) {
+        durability = d;
+    }
+
+    /**
      * A paraméterben kapott virológust megvédi a paraméterben kapott ágens ellen.
      */
     public abstract void protect(Virologist v1, Virologist v2, Agent a);
@@ -49,7 +56,9 @@ public abstract class Gear implements IStorable {
      */
     public abstract void accept(IInventoryVisitor i);
 
-    /** A felszerelés használata, ezt a felszerelések külön definiálják */
+    /**
+     * A felszerelés használata, ezt a felszerelések külön definiálják
+     */
     public abstract void use(Virologist v);
 
 }

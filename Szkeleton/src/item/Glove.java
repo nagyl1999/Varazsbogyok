@@ -20,6 +20,18 @@ import inventory.Inventory;
  */
 public class Glove extends Gear {
     /**
+     * Hátralévő használatok száma
+     */
+    public static int DURABILITY = 3;
+
+    /**
+     * Konstruktor
+     */
+    public Glove() {
+        super(Glove.DURABILITY);
+    }
+
+    /**
      * A paraméterben kapott virológust megvédi a paraméterben kapott ágens ellen.
      *
      * @param v1 A Virológus aki az ágenst keni
@@ -42,14 +54,7 @@ public class Glove extends Gear {
      * @param v A Virológus aki felveszi a kesztyűt
      */
     public void equip(Virologist v) {
-        Inventory inventory = v.getInventory();
-        try {
-            inventory.addItem(this);
-            this.accept((IInventoryVisitor) inventory);
-        } catch (Exception e) {
-            System.out.println("Nem lehet a kesztyűt felvenni!");
-        }
-
+        equipped = true;
     }
 
     /**
@@ -64,13 +69,7 @@ public class Glove extends Gear {
      * @param v A Virológus aki leadja a kesztyűt
      */
     public void unequip(Virologist v) {
-        Inventory inventory = v.getInventory();
-        try {
-            inventory.removeItem(this);
-        } catch (Exception e) {
-            System.out.println("Nem lehet a kesztyűt leadni mert az nincs a virológusnál");
-        }
-
+        equipped = false;
     }
 
     /**
