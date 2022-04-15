@@ -12,23 +12,27 @@ package game;
 */
 
 import entity.Virologist;
+import inventory.IInventoryHolder;
 import inventory.NotEnoughSpaceException;
-
 import java.util.ArrayList;
+import inventory.Inventory;
 
 /** Mező ősosztály */
-public abstract class Tile {
+public abstract class Tile implements IInventoryHolder  {
 	/** A mezőn tartózkodó virológusok */
 	protected ArrayList<Virologist> virologists;
 	/** A mező szomszédai */
 	protected ArrayList<Tile> neighbours;
+	protected Inventory inventory;
+	private int inventorySize = 3;
 
 	/** Konstruktor */
 	public Tile() {
 		virologists = new ArrayList<Virologist>();
 		neighbours = new ArrayList<Tile>();
+		inventory = new Inventory(inventorySize);
 	}
-
+	
 	/** Getter - szomszédok */
 	public ArrayList<Tile> getNeighbours() {
 		System.out.println("Tile.getNeighbours");
@@ -62,5 +66,7 @@ public abstract class Tile {
 	
 	/** A virológus így nézi meg, hogy mi található a mezőn */
 	public abstract void interactedWith(Virologist v) throws NotEnoughSpaceException;
+	/**/
+	public abstract void fillInventory() throws NotEnoughSpaceException;
 	
 }

@@ -12,6 +12,8 @@ package game;
 */
 
 import entity.Virologist;
+import inventory.Inventory;
+import inventory.ItemNotFoundException;
 import inventory.NotEnoughSpaceException;
 import item.*;
 import java.util.Random;
@@ -24,11 +26,23 @@ public class Storage extends Tile {
 	/** Itt generálunk egy véletlenszerű anyagot. */
 	public void interactedWith(Virologist v) throws NotEnoughSpaceException {
 		System.out.println("Storage.interactedWith");
-		Random r = new Random();
-		int n = r.nextInt(2);
-		System.out.println("v.getInventory");
-		if(n == 0) v.getInventory().addItem(new Aminoacid());
-		if(n == 1) v.getInventory().addItem(new Nucleoid());
 		System.out.println("i.addItem");
+	}
+	
+	/**/
+	@Override
+	public Inventory getInventory() {
+		return inventory;
+	}
+	
+	/**/
+	@Override
+	public void fillInventory() throws NotEnoughSpaceException {
+		Random r = new Random();
+		for(int i=0;i<inventory.size();i++) {
+		int n = r.nextInt(2);
+		if(n == 0)inventory.addItem(new Aminoacid());
+		if(n == 1)inventory.addItem(new Nucleoid());
+		}
 	}
 }

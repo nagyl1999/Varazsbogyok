@@ -90,11 +90,12 @@ public class Game {
 	/** Egy véletlenszeru pályaelemet generál */
 	public static Tile randomTile(){
 		Random r = new Random();
-		int n = r.nextInt(3);
+		int n = r.nextInt(4);
 		switch(n){
-			case 0: return new Laboratory();
+			case 0: return new SafeLaboratory();
 			case 1: return new Safehouse();
 			case 2: return new Storage();
+			case 3: return new BearLaboratory();
 			default: return new Town();
 		}
 	}

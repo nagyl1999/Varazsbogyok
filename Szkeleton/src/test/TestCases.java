@@ -67,7 +67,7 @@ public class TestCases {
      */
     public static void virologistMoves() {
         Virologist v = new Player();
-        Tile t1 = new Laboratory();
+        Tile t1 = new SafeLaboratory();
         Tile t2 = new Town();
         t1.addVirologist(v); // Szimuláljuk, hogy már rajta áll a mezőn
         v.move(t2);
@@ -102,7 +102,7 @@ public class TestCases {
      */
     public static void pickUpRecipe() {
         Virologist v = new Bot();
-        Tile t1 = new Laboratory();
+        Tile t1 = new SafeLaboratory();
         t1.addVirologist(v);
         System.out.println("Inventenroy.size: " + v.getInventory().size());
         v.pickUp(new RDancer());
@@ -186,7 +186,7 @@ public class TestCases {
         // TODO - ennek igazából van értelme?
         Virologist v1 = new Player();
         Virologist v2 = new Bot();
-        Tile t1 = new Laboratory();
+        Tile t1 = new SafeLaboratory();
         Tile t2 = new Town();
         t1.addVirologist(v1);
         t2.addVirologist(v2);

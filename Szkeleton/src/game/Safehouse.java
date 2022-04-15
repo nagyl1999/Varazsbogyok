@@ -12,6 +12,8 @@ package game;
 */
 
 import entity.Virologist;
+import inventory.Inventory;
+import inventory.NotEnoughSpaceException;
 import item.*;
 import java.util.Random;
 
@@ -22,21 +24,33 @@ public class Safehouse extends Tile {
 	/** Itt generálunk egy véletlenszerű védőfelszerelést. */
 	public void interactedWith(Virologist v) {
 		System.out.println("Safehouse.interactedWith");
+		
+	}
+
+	@Override
+	public Inventory getInventory() {
+		// TODO Auto-generated method stub
+		return inventory;
+	}
+
+	@Override
+	public void fillInventory() throws NotEnoughSpaceException {
 		Random r = new Random();
-		int n = r.nextInt(2);
-		switch (n) {
-			case 0:
-				Bag bag = new Bag();
-				bag.equip(v);
-				break;
-			case 1:
-				Jacket jacket = new Jacket();
-				jacket.equip(v);
-				break;
-			default:
-				Glove glove = new Glove();
-				glove.equip(v);
-				break;
+		for(int i=0;i<inventory.size();i++) {
+			int n = r.nextInt(3);
+			switch (n) {
+				case 0:
+					inventory.addItem(new Bag());
+					break;
+				case 1:
+					inventory.addItem(new Jacket());
+					break;
+				case 2:
+					inventory.addItem(new Glove());
+					break;
+				default:
+					inventory.addItem(new Axe());
+			}
 		}
 	}
 }

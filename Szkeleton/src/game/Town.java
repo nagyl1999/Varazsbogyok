@@ -12,6 +12,8 @@ package game;
 */
 
 import entity.Virologist;
+import inventory.Inventory;
+import inventory.NotEnoughSpaceException;
 
 /** Város mező, általános célú terep, nincs
  * konkrét funkciója */
@@ -20,5 +22,17 @@ public class Town extends Tile {
 	/** A virológus így nézi meg, hogy mi található a mezőn */
 	public void interactedWith(Virologist v) {
 		System.out.println("Town.interactedWith");
+	}
+
+	@Override
+	public Inventory getInventory() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void fillInventory() throws NotEnoughSpaceException {
+		// TODO Auto-generated method stub
+		
 	}
 }
