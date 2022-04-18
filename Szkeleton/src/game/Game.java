@@ -17,44 +17,39 @@ import entity.Virologist;
 import java.util.ArrayList;
 import java.util.Random;
 
-/** Játék objektum, felelőssége a játék elindítása, kiléptetése */
-public class Game {
-	/** Játéktér */
+/** JÃ¡tÃ©k objektum, felelÅssÃ©ge a jÃ¡tÃ©k elindÃ­tÃ¡sa, kilÃ©ptetÃ©se */
+public final class Game {
+	/** JÃ¡tÃ©ktÃ©r */
 	public static Map map;
-	/** Ennek segitségével állitunk be szomszédokat az egyes pályaelemeknek. */
-	public static ArrayList<Integer> neighbours;
-	/** A játékban a pályaelemek száma */
+	/** A jÃ¡tÃ©kban a pÃ¡lyaelemek szÃ¡ma */
 	public static int tileCount = 50;
-	/** A játékban a botok száma */
+	/** A jÃ¡tÃ©kban a botok szÃ¡ma */
 	public static int botCount = 3;
-	/** A játékban az egyes pályaelemek maximális szomszéda */
+	/** A jÃ¡tÃ©kban az egyes pÃ¡lyaelemek maximÃ¡lis szomszÃ©da */
 	public static int maxNeighbours = 4;
-	/** A játékban az időzítő*/
+	/** A jÃ¡tÃ©kban az idÅzÃ­tÅ*/
 	public static  Timer timer;
 
 	/** Konstruktor */
 	public Game(){
-		//neighbours = new ArrayList<>();
-		//timer = new Timer();
-		//map = new Map();
-	}
-
-	/** Új játék indítása, pályagenerálás  */
-	public static void newGame() {
-		System.out.println("Game.newGame");
-		neighbours = new ArrayList<>();
 		map = new Map();
-		timer = new Timer();
-		//itt generálunk valamely konkrét pályaelemet
+		timer = timer.getInstance();
+	}
+	/** Ãj jÃ¡tÃ©k indÃ­tÃ¡sa, pÃ¡lyagenerÃ¡lÃ¡s  */
+	public static void newGame() {}
+	
+	/** Még nem biztos, hogy kell*/
+	public static void generateRandomMap() {
+		ArrayList<Integer> neighbours = new ArrayList<Integer>();
 		for (int i = 0; i < tileCount; i++) map.addTile(randomTile());
 		for (int i = 0; i < tileCount; i++) {
 			neighbours.clear();
-			// itt felépitjuk az esetleges szomszédok listáját, kivéve a soron lévo elemet
+			// itt felÃ©pitjuk az esetleges szomszÃ©dok listÃ¡jÃ¡t, kivÃ©ve a soron lÃ©vo elemet
 			for (int j = 0; j < tileCount; j++) if(i != j) neighbours.add(j);
-			/** Itt fogjuk a szomszédokat beállitani, egy pályaelemnek legfeljebb
-			 * maxNeighbours szomszédja lehet, ezután hozzáadunk a neighbours listábol egyet,
-			 * miután hozzáadtuk kivesszük a neighbours listábol az elemet, igy a listában
-			 * csak olyan elemek maradnak amik még nem szomszédosak az adott pályaelemmek*/
+			/** Itt fogjuk a szomszÃ©dokat beÃ¡llitani, egy pÃ¡lyaelemnek legfeljebb
+			 * maxNeighbours szomszÃ©dja lehet, ezutÃ¡n hozzÃ¡adunk a neighbours listÃ¡bol egyet,
+			 * miutÃ¡n hozzÃ¡adtuk kivesszÃ¼k a neighbours listÃ¡bol az elemet, igy a listÃ¡ban
+			 * csak olyan elemek maradnak amik mÃ©g nem szomszÃ©dosak az adott pÃ¡lyaelemmek*/
 			Random r = new Random();
 			for (int j = 0; j < r.nextInt(maxNeighbours); j++) {
 				int n = r.nextInt(tileCount-j-1);
@@ -62,32 +57,29 @@ public class Game {
 				neighbours.remove(n);
 				}
 			}
-		//játékos létrehozása, és hozzáadaása a léptethető osztályhoz
+		//jÃ¡tÃ©kos lÃ©trehozÃ¡sa, Ã©s hozzÃ¡adaÃ¡sa a lÃ©ptethetÅ osztÃ¡lyhoz
 		map.getTiles().get(0).addVirologist(new Player());
 		timer.addSteppable(map.getTiles().get(0).getVirologist().get(0));
-		//botok létrehozása és hozzáadása a léptethető dolgokhoz
+		//botok lÃ©trehozÃ¡sa Ã©s hozzÃ¡adÃ¡sa a lÃ©ptethetÅ dolgokhoz
 		for (int i = 1; i <= botCount; i++) {
 			map.getTiles().get(i).addVirologist(new Bot());
 			timer.addSteppable(map.getTiles().get(i).getVirologist().get(0));
 		}
-		//timer elindítása
-		//while(true) timer.tick(); // TODO - szerintem ez így nem fog működni a grafikus felülettel
-	}
+		//timer elindÃ­tÃ¡sa
+		//while(true) timer.tick(); // TODO - szerintem ez Ã­gy nem fog mÅ±kÃ¶dni a grafikus felÃ¼lettel
+	} 
 
-	/** Játékból való kilépés */
+	/** JÃ¡tÃ©kbÃ³l valÃ³ kilÃ©pÃ©s */
 	public static void exitGame() {
-		System.out.println("Game.exitGame");
-		map = null;
-		System.out.println("A játéknak vége :/");
+		System.out.println("A jÃ¡tÃ©knak vÃ©ge :/");
 	}
 	
-	/** Egy virológus megnyerte a játékot */
+	/** Egy virolÃ³gus megnyerte a jÃ¡tÃ©kot */
 	public static void winGame(Virologist v) {
-		System.out.println("Game.winGame");
-		System.out.println("A játékot " + v.toString() + " nyerte");
+		System.out.println("A jÃ¡tÃ©kot " + v.toString() + " nyerte");
 	}
 
-	/** Egy véletlenszeru pályaelemet generál */
+	/** Egy vÃ©letlenszeru pÃ¡lyaelemet generÃ¡l */
 	public static Tile randomTile(){
 		Random r = new Random();
 		int n = r.nextInt(4);
@@ -99,7 +91,4 @@ public class Game {
 			default: return new Town();
 		}
 	}
-	
-
-
 }

@@ -17,15 +17,21 @@ import java.util.ArrayList;
  * Időzítő osztály, a léptethető dolgok léptetéséért felel
  */
 public class Timer {
+	private static Timer timer = null;
     /**
      * Léptethető objektumok listája
      */
-    private ArrayList<Steppable> steppables;
+    public static ArrayList<Steppable> steppables;
     /**
      * Konstruktor
      */
-    public Timer() {
-        steppables = new ArrayList<Steppable>();
+    private Timer() {
+        steppables  = new ArrayList<Steppable>();
+    }
+    
+    public static Timer getInstance() {
+    	if(timer == null) timer= new Timer();
+    	return timer;
     }
 
     /**
@@ -33,7 +39,6 @@ public class Timer {
      * meghívjuk a lépést
      */
     public void tick() {
-        System.out.println("Timer.tick");
         for (Steppable s : steppables) {
             try {
                 s.step();
@@ -46,7 +51,6 @@ public class Timer {
      * Léptethető objektum hozzáadása
      */
     public void addSteppable(Steppable s) {
-        System.out.println("Timer.addSteppable");
         steppables.add(s);
     }
 
@@ -54,7 +58,6 @@ public class Timer {
      * Léptethető objektum törlése
      */
     public void removeSteppable(Steppable s) {
-        System.out.println("Timer.removeSteppable");
         steppables.remove(s);
     }
 }

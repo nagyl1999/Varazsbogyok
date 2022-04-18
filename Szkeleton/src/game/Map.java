@@ -25,24 +25,21 @@ public class Map {
 	/** Konstruktor */
 	public Map(){
 		tiles = new ArrayList<Tile>();
-		timer = new Timer();
+		timer = timer.getInstance();
 	}
 	
 	/** Mező hozzáadása a páylához */
 	public void addTile(Tile t) {
-		System.out.println("Map.addTile");
 		tiles.add(t);
 	}
 
 	/** Timer hozzáadása a páylához */
 	public void setTimer(Timer t){
-		System.out.println("Map.setTimer");
 		timer = t;
 	}
 
 	/** Visszaadja a pálya mezőit. */
 	public ArrayList<Tile> getTiles(){
-		System.out.println("Map.getTiles");
 		return tiles;
 	}
 

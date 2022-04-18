@@ -25,8 +25,16 @@ public class Storage extends Tile {
 
 	/** Itt generálunk egy véletlenszerű anyagot. */
 	public void interactedWith(Virologist v) throws NotEnoughSpaceException {
-		System.out.println("Storage.interactedWith");
-		System.out.println("i.addItem");
+		try {
+			Material m = (Material) inventory.at(0);
+			v.getInventory().addItem(m);
+			inventory.removeItem(m);
+		} catch (NotEnoughSpaceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ItemNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**/
@@ -39,7 +47,7 @@ public class Storage extends Tile {
 	@Override
 	public void fillInventory() throws NotEnoughSpaceException {
 		Random r = new Random();
-		for(int i=0;i<inventory.size();i++) {
+		while(inventory.hasSpace()) {
 		int n = r.nextInt(2);
 		if(n == 0)inventory.addItem(new Aminoacid());
 		if(n == 1)inventory.addItem(new Nucleoid());

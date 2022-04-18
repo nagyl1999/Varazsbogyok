@@ -4,17 +4,27 @@ import java.util.Random;
 
 import entity.Virologist;
 import inventory.Inventory;
+import inventory.ItemNotFoundException;
 import inventory.NotEnoughSpaceException;
+import item.Agent;
 import item.RDancer;
 import item.RForgetter;
 import item.RParalyzer;
 import item.RProtector;
+import item.Recipe;
 
 public class SafeLaboratory extends Laboratory {
 	
 	public void interactedWith(Virologist v) throws NotEnoughSpaceException {
-		System.out.println("Laboratory.interactedWith");
-		System.out.println("i.addItem");
+		try {
+			Recipe r = (Recipe) inventory.at(0);
+			v.getInventory().addItem(r);
+			inventory.removeItem(r);
+		} catch (NotEnoughSpaceException e) {
+			e.printStackTrace();
+		} catch (ItemNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -27,7 +37,7 @@ public class SafeLaboratory extends Laboratory {
 	@Override
 	public void fillInventory() throws NotEnoughSpaceException {
 		Random r = new Random();
-		for(int i=0;i<inventory.size();i++) {
+		while(inventory.hasSpace()) {
 			int n = r.nextInt(3);
 			switch (n) {
 				case 0:
