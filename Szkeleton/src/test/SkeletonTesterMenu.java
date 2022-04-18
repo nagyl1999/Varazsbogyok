@@ -37,6 +37,7 @@ public class SkeletonTesterMenu implements Runnable {
      */
     private void init() {
         commands.put(0, TestCases::newGame);
+        // TODO - parancsok létrehozása
     }
 
     /**
@@ -52,7 +53,15 @@ public class SkeletonTesterMenu implements Runnable {
      * Konzolról bekérendő adat, majd a megfelelő metódus futtatása
      */
     public void run() {
-
+        while (true) {
+            cmd = new Scanner(System.in).next();
+            try {
+                // TODO - parancsfeldolgozás
+                System.out.println(cmd.split(" ")[0] + " executed");
+            } catch (Exception e) {
+                System.out.println(cmd.split(" ")[0] + " failed");
+            }
+        }
     }
 
 }

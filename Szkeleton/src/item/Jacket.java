@@ -22,7 +22,7 @@ public class Jacket extends Gear {
     /**
      * Sikeres védekezés valószínűsége
      */
-    private double success = 0.823;
+    public double success = 0.823;
     /**
      * Hátralévő használatok száma
      */

@@ -30,7 +30,7 @@ public class Timer {
     }
     
     public static Timer getInstance() {
-    	if(timer == null) timer= new Timer();
+    	if(timer == null) timer = new Timer();
     	return timer;
     }
 
