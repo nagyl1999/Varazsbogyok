@@ -6,8 +6,11 @@ import entity.Virologist;
 import game.*;
 import inventory.IStorable;
 import inventory.Inventory;
+import inventory.ItemNotFoundException;
+import inventory.NotEnoughSpaceException;
 import item.*;
 
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -28,11 +31,25 @@ public class TestCases {
 
     /**
      * √öj j√°t√©k l√©trehoz√°sa
+     * alapÈrtelmezetten a tileid az "tile"+sz·m, hogy Èppen melyik mezot generalta le, pl tile5 az a 6. tile 
      */
     public static void newGame() {
         int tileCount = Integer.parseInt(SkeletonTesterMenu.cmd.split(" ")[1]);
         Game.newGame();
-        // TODO - tile gener√°l√°s
+        for(int i = 0; i < tileCount;i++) Game.map.addTile(getTile("tile" + i));
+        
+        // TODO - ·tnÈzni jÛ-e
+    }
+    private static Tile getTile(String tileId) {
+    	Random r = new Random();
+		int n = r.nextInt(4);
+		switch(n) {
+		 case 0: Town town = (Town) SkeletonTesterMenu.objects.get(tileId); return town;
+	     case 1: BearLaboratory bearlabor = (BearLaboratory) SkeletonTesterMenu.objects.get(tileId); return bearlabor;
+	     case 2: SafeLaboratory safelabor = (SafeLaboratory) SkeletonTesterMenu.objects.get(tileId); return safelabor;	
+	     case 3: Storage storage = (Storage) SkeletonTesterMenu.objects.get(tileId); return storage;
+	     default: Safehouse safehouse = (Safehouse) SkeletonTesterMenu.objects.get(tileId); return safehouse;
+		}
     }
 
     /**
@@ -51,7 +68,17 @@ public class TestCases {
     public static void createTile() {
         String tileId = SkeletonTesterMenu.cmd.split(" ")[1];
         int type = Integer.parseInt(SkeletonTesterMenu.cmd.split(" ")[2]);
-        // TODO - tile l√©trehoz√°sa
+        switch(type) {
+        case 0: 
+        		Game.map.addTile(getTile(tileId));   
+        		break;
+        case 1: Town town = (Town) SkeletonTesterMenu.objects.get(tileId); Game.map.addTile(town); break;
+        case 2: BearLaboratory bearlabor = (BearLaboratory) SkeletonTesterMenu.objects.get(tileId); Game.map.addTile(bearlabor); break;
+        case 3: SafeLaboratory safelabor = (SafeLaboratory) SkeletonTesterMenu.objects.get(tileId); Game.map.addTile(safelabor); break;	
+        case 4: Storage storage = (Storage) SkeletonTesterMenu.objects.get(tileId); Game.map.addTile(storage); break;
+        case 5: Safehouse safehouse = (Safehouse) SkeletonTesterMenu.objects.get(tileId); Game.map.addTile(safehouse); break;
+        }
+        // TODO - ·tnÈzni jÛ-e
     }
 
     /**
@@ -65,7 +92,41 @@ public class TestCases {
      * √Ågens l√©trehoz√°sa
      */
     public static void createAgent() {
-        // TODO -
+    	String ageId = SkeletonTesterMenu.cmd.split(" ")[1];
+        String virId = SkeletonTesterMenu.cmd.split(" ")[2];
+        int type = Integer.parseInt(SkeletonTesterMenu.cmd.split(" ")[3]);
+        int life = Integer.parseInt(SkeletonTesterMenu.cmd.split(" ")[4]);
+        Virologist v = (Virologist) SkeletonTesterMenu.objects.get(virId);
+        try {
+        switch(type) {
+        case 0: 
+        		//TODO
+        case 1: 
+        		Forgetter f = (Forgetter) SkeletonTesterMenu.objects.get(ageId);
+				v.getInventory().addItem(f);
+        		break;
+        case 2:
+	    		Dancer d = (Dancer) SkeletonTesterMenu.objects.get(ageId);
+				v.getInventory().addItem(d);
+	    		break;
+        case 3:
+	    		Paralyzer pa = (Paralyzer) SkeletonTesterMenu.objects.get(ageId);
+				v.getInventory().addItem(pa);
+	    		break;
+        case 4:
+	    		Protector po = (Protector) SkeletonTesterMenu.objects.get(ageId);
+				v.getInventory().addItem(po);
+	    		break;
+        case 5:
+	    		Bear b = (Bear) SkeletonTesterMenu.objects.get(ageId);
+				v.getInventory().addItem(b);
+	    		break;
+        
+        }
+        } catch(NotEnoughSpaceException e) {
+        	e.printStackTrace();
+        }
+        // TODO - ·tnÈzni jÛ e
     }
 
     /**
@@ -221,9 +282,14 @@ public class TestCases {
 
     /**
      * Felszerel√©s eldob√°sa
+     * @throws ItemNotFoundException 
      */
-    public static void throwGear() {
-        // TODO -
+    public static void throwGear() throws ItemNotFoundException {
+    	  String virId = SkeletonTesterMenu.cmd.split(" ")[1];
+          String gearId = SkeletonTesterMenu.cmd.split(" ")[2];
+          Virologist v = (Virologist) SkeletonTesterMenu.objects.get(virId);
+          v.getInventory().removeItem((Gear) SkeletonTesterMenu.objects.get(gearId));
+        // TODO ·tnÈzni jÛ-e
     }
 
     /**

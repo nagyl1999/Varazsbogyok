@@ -21,7 +21,6 @@ public class Timer {
      * Léptethető objektumok listája
      */
     private ArrayList<Steppable> steppables;
-
     /**
      * Konstruktor
      */

@@ -20,7 +20,7 @@ import java.util.Random;
 /** Játék objektum, felelőssége a játék elindítása, kiléptetése */
 public class Game {
 	/** Játéktér */
-	private static Map map;
+	public static Map map;
 	/** Ennek segitségével állitunk be szomszédokat az egyes pályaelemeknek. */
 	public static ArrayList<Integer> neighbours;
 	/** A játékban a pályaelemek száma */
@@ -99,6 +99,7 @@ public class Game {
 			default: return new Town();
 		}
 	}
+	
 
 
 }
