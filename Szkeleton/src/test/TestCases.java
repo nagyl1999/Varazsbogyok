@@ -5,6 +5,7 @@ import entity.Player;
 import entity.Virologist;
 import game.*;
 import inventory.IStorable;
+import inventory.Inventory;
 import item.*;
 
 import java.util.Scanner;
@@ -13,207 +14,119 @@ import java.util.Scanner;
  * Tesztesetek osztálya
  */
 public class TestCases {
+    // TODO - executed / failed
 
     /**
-     * Bemenet olvasása, feltétel szerinti szűrés
+     * Kulcs kikeresése objektum szerint
      */
-    public static int read(int max) {
-        while (true) {
-            try {
-                System.out.print("Kategória: ");
-                int cmd = new Scanner(System.in).nextInt();
-                if (cmd > max || cmd < 0) {
-                    System.out.println("Kívül esik a megengedett tartományon!");
-                    continue;
-                }
-                return cmd;
-            } catch (Exception e) {
-                System.out.println("Helytelen bemenet!");
-            }
-        }
+    private static String getKeyByObj(Object o) {
+        for (String s : SkeletonTesterMenu.objects.keySet())
+            if (SkeletonTesterMenu.objects.get(s).equals(o))
+                return s;
+        return null;
     }
 
     /**
-     * Kilépés
-     */
-    public static void exit() {
-        System.exit(0);
-    }
-
-    /**
-     * Új játék indítása
+     * Új játék létrehozása
      */
     public static void newGame() {
+        int tileCount = Integer.parseInt(SkeletonTesterMenu.cmd.split(" ")[1]);
         Game.newGame();
+        // TODO - tile generálás
     }
 
     /**
-     * Játék befejezése
+     * Játék vége
      */
     public static void endGame() {
-        Game.exitGame();
+        // Game.map = null;
+        // TODO - Game map static
+        for (String key : SkeletonTesterMenu.objects.keySet())
+            SkeletonTesterMenu.objects.remove(key);
     }
 
     /**
-     * Játék vége, mert egy virológus nyert
+     * Mező létrehozása
      */
-    public static void winGame() {
-        Virologist v = new Player();
-        Game.winGame(v);
+    public static void createTile() {
+        String tileId = SkeletonTesterMenu.cmd.split(" ")[1];
+        int type = Integer.parseInt(SkeletonTesterMenu.cmd.split(" ")[2]);
+        // TODO - tile létrehozása
     }
 
     /**
-     * A virológus két mező között mozog
+     * Két szomszédos mező hozzáadása
      */
-    public static void virologistMoves() {
-        Virologist v = new Player();
-        Tile t1 = new SafeLaboratory();
-        Tile t2 = new Town();
-        t1.addVirologist(v); // Szimuláljuk, hogy már rajta áll a mezőn
-        v.move(t2);
+    public static void addNeighbour() {
+        String tile1 = SkeletonTesterMenu.cmd.split(" ")[1];
+        String tile2 = SkeletonTesterMenu.cmd.split(" ")[2];
+
+        Tile t1 = (Tile) SkeletonTesterMenu.objects.get(tile1);
+        Tile t2 = (Tile) SkeletonTesterMenu.objects.get(tile2);
+
+        t1.addNeighbour(t2);
+        t2.addNeighbour(t1);
     }
 
     /**
-     * A virológus anyagot vesz fel
+     * Játékállás mentése
      */
-    public static void pickUpMaterial() {
-        Virologist v = new Bot();
-        Tile t1 = new Storage();
-        t1.addVirologist(v);
-        System.out.println("Inventenroy.size: " + v.getInventory().size());
-        v.pickUp(new Nucleoid());
-        System.out.println("Inventenroy.size: " + v.getInventory().size());
+    public static void saveGame() {
+        // TODO - játék mentése
     }
 
     /**
-     * A virológus védőfelszerelést vesz fel
+     * Játék betöltése
      */
-    public static void pickUpGear() {
-        Virologist v = new Bot();
-        Tile t1 = new Town();
-        Tile t2 = new Safehouse();
-        t1.addVirologist(v);
-        v.move(t2);
-        System.out.println(v.getInventory().size());
+    public static void loadGame() {
+        // TODO - játék betöltése
     }
 
     /**
-     * A virológus receptet vesz fel
+     * Mezők kilistázása
      */
-    public static void pickUpRecipe() {
-        Virologist v = new Bot();
-        Tile t1 = new SafeLaboratory();
-        t1.addVirologist(v);
-        System.out.println("Inventenroy.size: " + v.getInventory().size());
-        v.pickUp(new RDancer());
-        System.out.println("Inventenroy.size: " + v.getInventory().size());
-    }
-
-    /**
-     * A virológus ágenst ken fel
-     */
-    public static void useAgent() {
-        Agent a;
-        Virologist v1 = new Player();
-        Virologist v2 = new Bot();
-        switch (TestCases.read(3)) {
-            case 0:
-                a = new Paralyzer();
-            case 1:
-                a = new Forgetter();
-            case 2:
-                a = new Dancer();
-            default:
-                a = new Protector();
-        }
+    public static void listTiles() {
         try {
-            v1.getInventory().addItem(a);
-            v1.useAgent(v2, a);
-        } catch (Exception ignored) {
+            for (String key : SkeletonTesterMenu.objects.keySet())
+                System.out.println(getKeyByObj((Tile) SkeletonTesterMenu.objects.get(key)));
+        } catch (Exception ignore) {
         }
     }
 
     /**
-     * A virológus ágenst készít
+     * Szomszédok kilistázása
      */
-    public static void createAgent() {
-        Virologist v = new Player();
-        Recipe r;
-        for (int i = 0; i < 5; i++) {
-            try {
-                v.getInventory().addItem(new Aminoacid());
-                v.getInventory().addItem(new Nucleoid());
-            } catch (Exception ignored) {
-            }
-        }
-        switch (TestCases.read(3)) {
-            case 0:
-                r = new RParalyzer();
-            case 1:
-                r = new RForgetter();
-            case 2:
-                r = new RDancer();
-            default:
-                r = new RProtector();
-        }
-        try {
-            v.makeAgent(r);
-        } catch (Exception ignored) {
-        }
+    public static void listNeighbours() {
+        String tileId = SkeletonTesterMenu.cmd.split(" ")[1];
+        Tile t = (Tile) SkeletonTesterMenu.objects.get(tileId);
+
+        for (Tile n : t.getNeighbours())
+            System.out.println(getKeyByObj(n));
+
     }
 
     /**
-     * Egy virológus kirabol egy másik virológust
+     * Virológusok kilistázása
      */
-    public static void rob() {
-        Virologist v1 = new Player();
-        Virologist v2 = new Bot();
-        v2.setParalyzed(true);
-        IStorable s1 = new Jacket();
-        IStorable s2 = new Aminoacid();
-        try {
-            v2.getInventory().addItem(s1);
-            v2.getInventory().addItem(s2);
-        } catch (Exception ignored) {
-        }
-        v1.robVirologist(v2);
+    public static void listVirologist() {
+        String tileId = SkeletonTesterMenu.cmd.split(" ")[1];
+        Tile t = (Tile) SkeletonTesterMenu.objects.get(tileId);
+
+        for (Virologist v : t.getVirologist())
+            System.out.println(getKeyByObj(v));
     }
 
     /**
-     * Két virológus találkozik
+     * Inventory kilistázása
      */
-    public static void meet() {
-        // TODO - ennek igazából van értelme?
-        Virologist v1 = new Player();
-        Virologist v2 = new Bot();
-        Tile t1 = new SafeLaboratory();
-        Tile t2 = new Town();
-        t1.addVirologist(v1);
-        t2.addVirologist(v2);
-        v1.move(t2);
-    }
+    public static void listInventory() {
+        String virId = SkeletonTesterMenu.cmd.split(" ")[1];
+        Virologist v = (Virologist) SkeletonTesterMenu.objects.get(virId);
+        Inventory i = v.getInventory();
 
-    /**
-     * Ágens elbomlása
-     */
-    public static void decompose() {
-        Agent a;
-        Virologist v = new Player();
-        switch (TestCases.read(3)) {
-            case 0:
-                a = new Paralyzer();
-            case 1:
-                a = new Forgetter();
-            case 2:
-                a = new Dancer();
-            default:
-                a = new Protector();
-        }
-        v.getApplied().add(a);
-        try {
-            a.decompose(v);
-        } catch (Exception ignored) {
-        }
+        i.reset();
+        while(i.hasNext())
+            System.out.println(getKeyByObj(i.next()));
     }
 
 }

@@ -45,7 +45,7 @@ public class Bot extends Virologist {
      */
     public void die() {
         tile.removeVirologist(this);
-        // TODO - steppable-k közül kiszedni
+        // TODO - steppable-k közül kiszedni (?)
     }
 
 }

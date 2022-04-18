@@ -3,6 +3,7 @@ package item;
 import entity.Virologist;
 import game.Tile;
 import inventory.IInventoryVisitor;
+import inventory.Inventory;
 import inventory.ItemNotFoundException;
 
 import java.util.Random;
@@ -61,16 +62,21 @@ public class Bear extends Agent {
      * @throws ItemNotFoundException Ha nem található az ágens a játékos inventory-jában
      */
     public void use(Virologist v1, Virologist v2) throws ItemNotFoundException {
-        // TODO - hogy védekezünk ellene, kire ken a kesztyű
         virologist = v2;
-        v2.applyAgent(v1, this);
+        v2.applyAgent(null, this);
     }
 
     /**
      * Az ágens mezőre kifejtett hatása, a medveágens kiüríti a rálépett mező inventory-ját
      */
     public void effect(Tile t) {
-        // TODO - inventory ürítése
+        Inventory i = t.getInventory();
+        i.reset();
+        try {
+            while (i.hasNext())
+                i.removeItem(i.next());
+        } catch (Exception ignore) {
+        }
     }
 
     /**
@@ -79,7 +85,9 @@ public class Bear extends Agent {
     public void step() {
     }
 
-    /** Visitor minta */
+    /**
+     * Visitor minta
+     */
     public void accept(IInventoryVisitor i) {
         i.visit(this);
     }

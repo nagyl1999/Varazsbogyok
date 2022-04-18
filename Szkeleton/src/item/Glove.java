@@ -45,8 +45,9 @@ public class Glove extends Gear {
             v1.getApplied().add(a);
             v1.getInventory().removeItem(this);
         } catch (ItemNotFoundException ignore) {
-        } catch (Exception e) {
             System.out.println("Nincs ilyen felkent ágens a virológuson");
+        } catch (Exception e) {
+            System.out.println("Nem lehet visszakenni");
         }
     }
 
