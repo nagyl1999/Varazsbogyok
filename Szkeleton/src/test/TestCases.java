@@ -55,6 +55,41 @@ public class TestCases {
     }
 
     /**
+     * Virológus létrehozása
+     */
+    public static void createVirologist() {
+        // TODO -
+    }
+
+    /**
+     * Ágens létrehozása
+     */
+    public static void createAgent() {
+        // TODO -
+    }
+
+    /**
+     * Recept létrehozása
+     */
+    public static void createRecipe() {
+        // TODO -
+    }
+
+    /**
+     * Felszerelés létrehozása
+     */
+    public static void createGear() {
+        // TODO -
+    }
+
+    /**
+     * Felszerelés létrehozása
+     */
+    public static void createMaterial() {
+        // TODO -
+    }
+
+    /**
      * Két szomszédos mező hozzáadása
      */
     public static void addNeighbour() {
@@ -125,8 +160,79 @@ public class TestCases {
         Inventory i = v.getInventory();
 
         i.reset();
-        while(i.hasNext())
+        while (i.hasNext())
             System.out.println(getKeyByObj(i.next()));
+    }
+
+    /**
+     * Ágens használata
+     */
+    public static void useAgent() {
+        // TODO -
+    }
+
+    /**
+     * Felszerelés használata
+     */
+    public static void useGear() {
+        // TODO -
+    }
+
+    /**
+     * Ágens létrehozása
+     */
+    public static void craftAgent() {
+        // TODO -
+    }
+
+    /**
+     * Virológus léptetése
+     */
+    public static void move() {
+        // TODO -
+    }
+
+    /**
+     * Léptethető dolgok léptetése
+     */
+    public static void step() {
+        // TODO -
+    }
+
+    /**
+     * Virológus kirablása
+     */
+    public static void rob() {
+        String vir1 = SkeletonTesterMenu.cmd.split(" ")[1];
+        String vir2 = SkeletonTesterMenu.cmd.split(" ")[2];
+
+        Virologist v1 = (Virologist) SkeletonTesterMenu.objects.get(vir1);
+        Virologist v2 = (Virologist) SkeletonTesterMenu.objects.get(vir2);
+
+        v1.robVirologist(v2);
+    }
+
+    /**
+     * Kabát Determinisztikájának állítása
+     */
+    public static void setJacket() {
+        // TODO -
+    }
+
+    /**
+     * Felszerelés eldobása
+     */
+    public static void throwGear() {
+        // TODO -
+    }
+
+    /**
+     * Virológus meghal
+     */
+    public static void virologistDie() {
+        String virId = SkeletonTesterMenu.cmd.split(" ")[1];
+        Virologist v = (Virologist) SkeletonTesterMenu.objects.get(virId);
+        v.die();
     }
 
 }
