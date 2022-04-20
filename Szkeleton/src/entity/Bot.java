@@ -15,6 +15,7 @@ package entity;
 import game.Game;
 import game.Timer;
 import inventory.IStorable;
+import inventory.VisitorManager;
 import item.Agent;
 
 /**
@@ -34,6 +35,8 @@ public class Bot extends Virologist {
      * A Bot egy item felvételéről dönt
      */
     public void pickUp(IStorable s) {
+        if (VisitorManager.hasBear(this) ||VisitorManager.hasDancer(this) ||VisitorManager.hasParalyzer(this))
+            return;
         try {
             tile.interactedWith(this);
         } catch (Exception ignored) {

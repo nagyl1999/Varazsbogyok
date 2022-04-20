@@ -14,6 +14,7 @@ package entity;
 
 import game.Game;
 import inventory.IStorable;
+import inventory.VisitorManager;
 import item.Agent;
 
 /**
@@ -33,6 +34,8 @@ public class Player extends Virologist {
      * A játékos egy item felvételéről döntő függvény
      */
     public void pickUp(IStorable s) {
+        if (VisitorManager.hasBear(this) ||VisitorManager.hasDancer(this) ||VisitorManager.hasParalyzer(this))
+            return;
         try {
             tile.interactedWith(this);
         } catch (Exception ignored) {
