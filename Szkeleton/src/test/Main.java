@@ -1,5 +1,7 @@
 package test;
 
+import java.io.IOException;
+
 /*
 
   @ Project : Varazsbogyok
@@ -12,7 +14,12 @@ public class Main {
     public static SkeletonTesterMenu menu;
 
     public static void main(String[] args) {
-        menu = new SkeletonTesterMenu();
+        try {
+			menu = new SkeletonTesterMenu();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         menu.run();
     }
 }

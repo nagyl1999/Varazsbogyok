@@ -18,12 +18,13 @@ import inventory.*;
 import item.*;
 import item.AgentComparator;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Egy közös entitás működését szimuláló osztály
  */
-public abstract class Virologist implements Steppable, IInventoryHolder {
+public abstract class Virologist implements Steppable, IInventoryHolder , Serializable {
     /**
      * Mező, amelyen a virológus jelenleg áll
      */

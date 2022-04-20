@@ -15,13 +15,14 @@ package inventory;
 import inventory.IInventoryVisitor;
 import item.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Visitor, amely a kapott inventory szétválogatásáért,
  * illetve a kapott objektumokon végzett műveletekért felel
  */
-public class InventorySorterVisitor implements IInventoryVisitor {
+public class InventorySorterVisitor implements IInventoryVisitor , Serializable {
 
     //region Attributes
 

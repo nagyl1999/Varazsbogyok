@@ -14,11 +14,13 @@ package game;
 import entity.Virologist;
 import inventory.IInventoryHolder;
 import inventory.NotEnoughSpaceException;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import inventory.Inventory;
 
 /** Mező ősosztály */
-public abstract class Tile implements IInventoryHolder  {
+public abstract class Tile implements IInventoryHolder, Serializable {
 	/** A mezőn tartózkodó virológusok */
 	protected ArrayList<Virologist> virologists;
 	/** A mező szomszédai */

@@ -15,7 +15,7 @@ package game;
 import inventory.ItemNotFoundException;
 
 /** Léptethető dolgokat összefoglalő interfész */
-public interface Steppable {
+public interface Steppable  {
 	/** A lépést szimuláló függvény */
 	public void step() throws ItemNotFoundException;
 }

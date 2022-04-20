@@ -14,11 +14,13 @@ package game;
 import entity.Bot;
 import entity.Player;
 import entity.Virologist;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
 /** JÃ¡tÃ©k objektum, felelÅssÃ©ge a jÃ¡tÃ©k elindÃ­tÃ¡sa, kilÃ©ptetÃ©se */
-public final class Game {
+public final class Game implements Serializable {
 	/** JÃ¡tÃ©ktÃ©r */
 	public static Map map;
 	/** A jÃ¡tÃ©kban a pÃ¡lyaelemek szÃ¡ma */
@@ -31,12 +33,12 @@ public final class Game {
 	public static  Timer timer;
 
 	/** Konstruktor */
-	public Game(){
+	public Game(){}
+	/** Ãj jÃ¡tÃ©k indÃ­tÃ¡sa, pÃ¡lyagenerÃ¡lÃ¡s  */
+	public static void newGame() {
 		map = new Map();
 		timer = timer.getInstance();
 	}
-	/** Ãj jÃ¡tÃ©k indÃ­tÃ¡sa, pÃ¡lyagenerÃ¡lÃ¡s  */
-	public static void newGame() {}
 	
 	/** Még nem biztos, hogy kell*/
 	public static void generateRandomMap() {
@@ -72,6 +74,7 @@ public final class Game {
 	/** JÃ¡tÃ©kbÃ³l valÃ³ kilÃ©pÃ©s */
 	public static void exitGame() {
 		System.out.println("A jÃ¡tÃ©knak vÃ©ge :/");
+		
 	}
 	
 	/** Egy virolÃ³gus megnyerte a jÃ¡tÃ©kot */

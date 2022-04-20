@@ -7,6 +7,13 @@ import game.*;
 import inventory.*;
 import item.*;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.HashMap;
 import java.util.Random;
 
 /**
@@ -165,6 +172,7 @@ public class TestCases {
      * alap�rtelmezetten a tileid az "tile"+sz�m, hogy �ppen melyik mezot generalta le, pl tile5 az a 6. tile
      */
     public static void newGame() {
+    	System.out.println(SkeletonTesterMenu.cmd);
         int tileCount = Integer.parseInt(SkeletonTesterMenu.cmd.split(" ")[1]);
         Game.newGame();
         for (int i = 0; i < tileCount; i++) {
@@ -284,15 +292,37 @@ public class TestCases {
 
     /**
      * Játékállás mentése
+     * @throws IOException 
      */
-    public static void saveGame() {
+    public static void saveGame() throws IOException {
+    	String fileName = SkeletonTesterMenu.cmd.split(" ")[1];
+    	
+    	FileOutputStream file = new FileOutputStream(fileName);
+        ObjectOutputStream out = new ObjectOutputStream(file);
+        out.writeObject(SkeletonTesterMenu.objects);
+        out.close();
+        file.close();
         // TODO - játék mentése
     }
 
     /**
      * Játék betöltése
+     * @throws IOException 
+     * @throws ClassNotFoundException 
      */
-    public static void loadGame() {
+    public static void loadGame() throws IOException, ClassNotFoundException {
+    	String fileName = SkeletonTesterMenu.cmd.split(" ")[1];
+    	
+    	FileInputStream file = new FileInputStream(fileName);
+        ObjectInputStream in = new ObjectInputStream(file);
+         
+
+         SkeletonTesterMenu.objects = (HashMap<String, Object>)in.readObject();
+        
+         
+        in.close();
+        file.close();
+         
         // TODO - játék betöltése
     }
 
@@ -304,6 +334,7 @@ public class TestCases {
             for (String key : SkeletonTesterMenu.objects.keySet())
                 System.out.println(getKeyByObj((Tile) SkeletonTesterMenu.objects.get(key)));
         } catch (Exception ignore) {
+        	
         }
     }
 
@@ -451,7 +482,7 @@ public class TestCases {
      *
      * @throws ItemNotFoundException teszt
      */
-    public static void throwGear() throws ItemNotFoundException {
+    public static void throwGear() throws ItemNotFoundException   {
         String virId = SkeletonTesterMenu.cmd.split(" ")[1];
         String gearId = SkeletonTesterMenu.cmd.split(" ")[2];
 
