@@ -131,4 +131,14 @@ public class VisitorManager {
         return i.getParalyzerItems().size() > 0;
     }
 
+    /**
+     * A virológusunk táncoságenssel fertőzött-e
+     */
+    public static boolean hasDancer(Virologist v) {
+        InventorySorterVisitor i = new InventorySorterVisitor();
+        for (Agent a : v.getApplied())
+            a.accept(i);
+        return i.getDancerItems().size() > 0;
+    }
+
 }

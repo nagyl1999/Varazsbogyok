@@ -97,6 +97,8 @@ public abstract class Virologist implements Steppable, IInventoryHolder , Serial
      * @param v A megtámadott virológus
      */
     public void useGear(Gear g, Virologist v) {
+        if (VisitorManager.hasBear(this) ||VisitorManager.hasDancer(this) ||VisitorManager.hasParalyzer(this))
+            return;
         g.use(v);
     }
 
@@ -153,6 +155,8 @@ public abstract class Virologist implements Steppable, IInventoryHolder , Serial
      * Egy másik virológus kirablása
      */
     public void robVirologist(Virologist v) {
+        if (VisitorManager.hasBear(this) ||VisitorManager.hasDancer(this) ||VisitorManager.hasParalyzer(this))
+            return;
         if (!VisitorManager.hasParalyzer(v))
             return;
         for (IStorable i : VisitorManager.getStealable(v)) {
@@ -163,13 +167,14 @@ public abstract class Virologist implements Steppable, IInventoryHolder , Serial
             } catch (Exception ignore) {
             }
         }
-
     }
 
     /**
      * Egy ágens recept alapján való létrehozása
      */
     public void makeAgent(Recipe r) throws ItemNotFoundException, NotEnoughSpaceException {
+        if (VisitorManager.hasBear(this) ||VisitorManager.hasDancer(this) ||VisitorManager.hasParalyzer(this))
+            return;
         if (!VisitorManager.craftRecipe(this, r))
             return;
         InventorySorterVisitor i = VisitorManager.sortInventory(this);
@@ -189,7 +194,7 @@ public abstract class Virologist implements Steppable, IInventoryHolder , Serial
      * @param a A felhasználni kívánt ágens
      */
     public void useAgent(Virologist v, Agent a) throws ItemNotFoundException {
-        if (VisitorManager.hasParalyzer(this))
+        if (VisitorManager.hasBear(this) ||VisitorManager.hasDancer(this) ||VisitorManager.hasParalyzer(this))
             return;
         getInventory().removeItem(a);
         a.use(this, v);
