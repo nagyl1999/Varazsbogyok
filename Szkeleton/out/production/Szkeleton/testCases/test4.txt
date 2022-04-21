@@ -4,7 +4,7 @@ createTile V2 1
 createTile L1 2
 addNeighbour V1 L1
 addNeighbour L1 V2
-saveGame filename
+saveGame save.txt
 endGame
-loadGame filename
+loadGame save.txt
 listNeighbours V1
