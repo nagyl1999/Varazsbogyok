@@ -154,9 +154,9 @@ public class SkeletonTesterMenu implements Runnable {
             	String s = cmd.split(" ")[0];
             	if(commands.containsKey(s)) commands.get(s).run();
             	else continue;
-                System.out.println(cmd.split(" ")[0] + " executed");
+				System.out.println(cmd + " executed");
             } catch (Exception e) {
-                System.out.println(cmd.split(" ")[0] + " failed");
+				System.out.println(cmd + " failed");
                 e.printStackTrace();
             }
         }while (sc.hasNextLine());
