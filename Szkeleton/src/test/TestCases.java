@@ -216,8 +216,8 @@ public class TestCases {
         Agent a = getAgent(type);
         SkeletonTesterMenu.objects.put(ageId, a);
 
-        IInventoryHolder v = (IInventoryHolder) SkeletonTesterMenu.objects.get(virId);
-        v.getInventory().addItem(a);
+        IInventoryHolder h = (IInventoryHolder) SkeletonTesterMenu.objects.get(virId);
+        h.getInventory().addItem(a);
     }
 
     /**
@@ -229,8 +229,8 @@ public class TestCases {
         int type = Integer.parseInt(SkeletonTesterMenu.cmd.split(" ")[3]);
 
         Recipe r = getRecipe(type);
-        Virologist v = (Virologist) SkeletonTesterMenu.objects.get(virId);
-        v.getInventory().addItem(r);
+        IInventoryHolder h = (IInventoryHolder) SkeletonTesterMenu.objects.get(virId);
+        h.getInventory().addItem(r);
         SkeletonTesterMenu.objects.put(recId, r);
     }
 
@@ -243,8 +243,8 @@ public class TestCases {
         int type = Integer.parseInt(SkeletonTesterMenu.cmd.split(" ")[3]);
 
         Gear g = getGear(type);
-        Virologist v = (Virologist) SkeletonTesterMenu.objects.get(virId);
-        v.getInventory().addItem(g);
+        IInventoryHolder h = (IInventoryHolder) SkeletonTesterMenu.objects.get(virId);
+        h.getInventory().addItem(g);
         SkeletonTesterMenu.objects.put(grId, g);
     }
 
@@ -257,8 +257,8 @@ public class TestCases {
         int type = Integer.parseInt(SkeletonTesterMenu.cmd.split(" ")[3]);
 
         Material m = getMaterial(type);
-        Virologist v = (Virologist) SkeletonTesterMenu.objects.get(virId);
-        v.getInventory().addItem(m);
+        IInventoryHolder h = (IInventoryHolder) SkeletonTesterMenu.objects.get(virId);
+        h.getInventory().addItem(m);
         SkeletonTesterMenu.objects.put(matId, m);
     }
 
@@ -302,7 +302,6 @@ public class TestCases {
         out.writeObject(SkeletonTesterMenu.objects);
         out.close();
         file.close();
-        // TODO - játék mentése
     }
 
     /**
@@ -322,8 +321,6 @@ public class TestCases {
          
         in.close();
         file.close();
-         
-        // TODO - játék betöltése
     }
 
     /**
@@ -366,8 +363,8 @@ public class TestCases {
      */
     public static void listInventory() {
         String virId = SkeletonTesterMenu.cmd.split(" ")[1];
-        Virologist v = (Virologist) SkeletonTesterMenu.objects.get(virId);
-        Inventory i = v.getInventory();
+        IInventoryHolder h = (IInventoryHolder) SkeletonTesterMenu.objects.get(virId);
+        Inventory i = h.getInventory();
 
         i.reset();
         while (i.hasNext())

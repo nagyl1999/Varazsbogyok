@@ -27,7 +27,7 @@ public class Town extends Tile {
 	@Override
 	public Inventory getInventory() {
 		// TODO Auto-generated method stub
-		return null;
+		return inventory;
 	}
 
 	@Override
