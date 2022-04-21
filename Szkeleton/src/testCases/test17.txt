@@ -1,0 +1,7 @@
+newGame 0
+createTile V1 1
+createVirologist VI1 V1 2
+createVirologist VI2 V1 2
+createAgent AG VI1 1 10
+useAgent AG VI1 VI2 
+listAgents VI1

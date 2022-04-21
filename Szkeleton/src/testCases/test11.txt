@@ -1,0 +1,10 @@
+newGame 0
+createTile V1 1
+createVirologist VI1 V1 2
+createRecipe R1 VI1 2
+createMaterial M1 VI1 1
+createMaterial M2 VI1 2
+listMaterials VI1
+craftAgent VI1 R1
+listMaterials VI1
+listAgents VI1

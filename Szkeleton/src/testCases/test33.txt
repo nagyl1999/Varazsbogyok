@@ -1,0 +1,7 @@
+newGame 0
+createTile T1 4
+createTile T2 4
+createMaterial M1 T1 1
+createMaterial M2 T2 2
+createMaterial M3 T1 2
+createMaterial M4 T2 2

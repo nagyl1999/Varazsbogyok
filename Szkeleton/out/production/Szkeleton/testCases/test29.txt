@@ -1,0 +1,3 @@
+newGame 0
+createTile V1 1
+createGear G1 V1 1
