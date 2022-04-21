@@ -147,9 +147,9 @@ public class SkeletonTesterMenu implements Runnable {
     public void run() {
     	System.out.println("Üdvözöllek tesztelő! Te most a legendás V A R Á Z S B O G Y Ó K csapat ''A világtalan virológusok világa'' című játékát készülsz tesztelni.\n"
     			+ "A program egymás után dolgozza fel a parancsokat, helyes lefutás után executed, különben failed kimenet jelenik meg.  Várom a parancsokat!\n");
-        while (true) {
-        	System.out.println("Parancs:");
-            cmd = new Scanner(System.in).nextLine();
+		Scanner sc=new Scanner(System.in);
+		do {
+			cmd=sc.nextLine();
             try {
             	String s = cmd.split(" ")[0];
             	if(commands.containsKey(s)) commands.get(s).run();
@@ -159,6 +159,6 @@ public class SkeletonTesterMenu implements Runnable {
                 System.out.println(cmd.split(" ")[0] + " failed");
                 e.printStackTrace();
             }
-        }
+        }while (sc.hasNextLine());
     }
 }
