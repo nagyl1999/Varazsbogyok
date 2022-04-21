@@ -2,4 +2,4 @@ newGame 0
 createTile V1 1
 createVirologist VI1 V1 1
 createAgent A1 VI1 3 5
-step
+step A1

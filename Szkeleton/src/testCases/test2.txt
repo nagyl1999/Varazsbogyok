@@ -4,4 +4,4 @@ createTile V2 1
 createTile L1 2
 addNeighbour V1 L1
 addNeighbour L1 V2
-endGame
+endGame 0

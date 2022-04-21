@@ -6,5 +6,5 @@ createMaterial M1 VI2 1
 createAgent A1 VI1 3 5
 useAgent A1 VI1 VI2
 rob VI1 VI2
-listMaterials VI1
-listMaterials VI2
+listInventory VI1
+listInventory VI2
