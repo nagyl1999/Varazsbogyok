@@ -162,6 +162,7 @@ public abstract class Virologist implements Steppable, IInventoryHolder , Serial
         for (IStorable i : VisitorManager.getStealable(v)) {
             try {
                 getInventory().addItem(i);
+                v.getInventory().removeItem(i);
             } catch (NotEnoughSpaceException n) {
                 return; // Elfogyott a hely a mi inventory-nkban
             } catch (Exception ignore) {

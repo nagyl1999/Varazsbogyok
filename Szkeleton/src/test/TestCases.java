@@ -383,7 +383,7 @@ public class TestCases {
         Virologist v1 = (Virologist) SkeletonTesterMenu.objects.get(vir1);
         Virologist v2 = (Virologist) SkeletonTesterMenu.objects.get(vir2);
 
-        v1.applyAgent(v2, a);
+        v1.useAgent(v2, a);
     }
 
     /**
