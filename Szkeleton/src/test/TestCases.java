@@ -15,6 +15,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.Set;
 
 /**
  * Tesztesetek oszt�lya
@@ -186,8 +187,7 @@ public class TestCases {
      */
     public static void endGame() {
         Game.map = null;
-        for (String key : SkeletonTesterMenu.objects.keySet())
-            SkeletonTesterMenu.objects.remove(key);
+        SkeletonTesterMenu.objects.clear();
     }
 
     /**
@@ -291,12 +291,13 @@ public class TestCases {
 
     /**
      * Játékállás mentése
-     * @throws IOException 
+     *
+     * @throws IOException
      */
     public static void saveGame() throws IOException {
-    	String fileName = SkeletonTesterMenu.cmd.split(" ")[1];
-    	
-    	FileOutputStream file = new FileOutputStream(fileName);
+        String fileName = SkeletonTesterMenu.cmd.split(" ")[1];
+
+        FileOutputStream file = new FileOutputStream(fileName);
         ObjectOutputStream out = new ObjectOutputStream(file);
         out.writeObject(SkeletonTesterMenu.objects);
         out.close();
@@ -305,19 +306,20 @@ public class TestCases {
 
     /**
      * Játék betöltése
-     * @throws IOException 
-     * @throws ClassNotFoundException 
+     *
+     * @throws IOException
+     * @throws ClassNotFoundException
      */
     public static void loadGame() throws IOException, ClassNotFoundException {
-    	String fileName = SkeletonTesterMenu.cmd.split(" ")[1];
-    	
-    	FileInputStream file = new FileInputStream(fileName);
-        ObjectInputStream in = new ObjectInputStream(file);
-         
+        String fileName = SkeletonTesterMenu.cmd.split(" ")[1];
 
-         SkeletonTesterMenu.objects = (HashMap<String, Object>)in.readObject();
-        
-         
+        FileInputStream file = new FileInputStream(fileName);
+        ObjectInputStream in = new ObjectInputStream(file);
+
+
+        SkeletonTesterMenu.objects = (HashMap<String, Object>) in.readObject();
+
+
         in.close();
         file.close();
     }
@@ -330,7 +332,7 @@ public class TestCases {
             for (String key : SkeletonTesterMenu.objects.keySet())
                 System.out.println(getKeyByObj((Tile) SkeletonTesterMenu.objects.get(key)));
         } catch (Exception ignore) {
-        	
+
         }
     }
 
@@ -368,6 +370,17 @@ public class TestCases {
         i.reset();
         while (i.hasNext())
             System.out.println(getKeyByObj(i.next()));
+    }
+
+    /**
+     * Felkent ágensek listázása
+     */
+    public static void listApplied() {
+        String vir1 = SkeletonTesterMenu.cmd.split(" ")[2];
+
+        Virologist v = (Virologist) SkeletonTesterMenu.objects.get(vir1);
+        for (Agent a : v.getApplied())
+            System.out.println(getKeyByObj(a));
     }
 
     /**
@@ -478,7 +491,7 @@ public class TestCases {
      *
      * @throws ItemNotFoundException teszt
      */
-    public static void throwGear() throws ItemNotFoundException   {
+    public static void throwGear() throws ItemNotFoundException {
         String virId = SkeletonTesterMenu.cmd.split(" ")[1];
         String gearId = SkeletonTesterMenu.cmd.split(" ")[2];
 

@@ -128,7 +128,8 @@ public class SkeletonTesterMenu implements Runnable {
         commands.put("listNeighbours", TestCases::listNeighbours);
         commands.put("listVirologist", TestCases::listVirologist);
         commands.put("listInventory", TestCases::listInventory); 
-    	
+        commands.put("listApplied", TestCases::listApplied);
+
     }
     
     /**

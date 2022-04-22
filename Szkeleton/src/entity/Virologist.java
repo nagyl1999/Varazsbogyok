@@ -145,7 +145,9 @@ public abstract class Virologist implements Steppable, IInventoryHolder , Serial
      * A virológus másik mezőre léptetése
      */
     public void move(Tile t) {
-        if (VisitorManager.hasParalyzer(this))
+        if (VisitorManager.hasParalyzer(this) || VisitorManager.hasBear(this) ||VisitorManager.hasDancer(this))
+            return;
+        if (!tile.getNeighbours().contains(t))
             return;
         tile.removeVirologist(this);
         t.addVirologist(this);
@@ -158,6 +160,8 @@ public abstract class Virologist implements Steppable, IInventoryHolder , Serial
         if (VisitorManager.hasBear(this) ||VisitorManager.hasDancer(this) ||VisitorManager.hasParalyzer(this))
             return;
         if (!VisitorManager.hasParalyzer(v))
+            return;
+        if (tile != v.getTile())
             return;
         for (IStorable i : VisitorManager.getStealable(v)) {
             try {
