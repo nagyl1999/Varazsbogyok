@@ -172,7 +172,6 @@ public class TestCases {
      * alap�rtelmezetten a tileid az "tile"+sz�m, hogy �ppen melyik mezot generalta le, pl tile5 az a 6. tile
      */
     public static void newGame() {
-    	System.out.println(SkeletonTesterMenu.cmd);
         int tileCount = Integer.parseInt(SkeletonTesterMenu.cmd.split(" ")[1]);
         Game.newGame();
         for (int i = 0; i < tileCount; i++) {
