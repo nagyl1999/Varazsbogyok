@@ -11,6 +11,10 @@ createAgent A3 VI3 1 10
 createAgent A4 VI4 1 10
 createGear G1 VI5 2
 useAgent A1 VI1 VI5
+listApplied VI5
 useAgent A2 VI2 VI5
+listApplied VI5
 useAgent A3 VI3 VI5
+listApplied VI5
 useAgent A4 VI4 VI5
+listApplied VI5
