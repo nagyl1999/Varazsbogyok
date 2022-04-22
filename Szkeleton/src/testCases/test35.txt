@@ -13,13 +13,14 @@ createVirologist VI2 V1 2
 createVirologist VI3 V3 2
 createVirologist VI4 V3 2
 createVirologist VI5 V2 2
-createAgent A1 VI3 3
+createAgent A1 VI3 3 100
 createGear G2 VI4 2
+listInventory VI4
 move VI1 V2 
 move VI2 V4
 useAgent A1 VI3 VI4
 move VI2 V3
 rob VI2 VI4
-listGears VI2
-listGears VI3
-listGears VI4
+listInventory VI2
+listInventory VI3
+listInventory VI4
