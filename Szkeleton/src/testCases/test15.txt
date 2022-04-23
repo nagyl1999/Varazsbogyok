@@ -8,3 +8,5 @@ createMaterial M1 VI2 1
 createAgent A1 VI1 3 5
 useAgent A1 VI1 VI2
 move VI2 V2
+listVirologist V1
+listVirologist V2

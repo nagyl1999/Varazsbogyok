@@ -6,3 +6,4 @@ createAgent A1 VI1 6 10
 useAgent A1 VI1 VI1
 createAgent A2 VI2 1 10
 useAgent A2 VI2 VI1
+listApplied VI1
