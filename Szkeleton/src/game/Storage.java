@@ -30,7 +30,6 @@ public class Storage extends Tile {
 			v.getInventory().addItem(m);
 			inventory.removeItem(m);
 		} catch (NotEnoughSpaceException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ItemNotFoundException e) {
 			e.printStackTrace();

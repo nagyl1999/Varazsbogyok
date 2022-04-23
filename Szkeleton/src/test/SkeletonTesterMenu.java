@@ -17,26 +17,26 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 /**
- * A szkeleton mÅ±kÃ¶dÃ©sÃ©re lÃ©trehozott teszter menÃ¼
+ * A szkeleton működésére létrehozott teszter menü
  */
 public class SkeletonTesterMenu implements Runnable {
     /**
-     * Parancsok, Ã©s a hozzÃ¡ tartozÃ³ azonosÃ­tÃ³k,
-     * kÃ©sÅ‘bb ez alapjÃ¡n hÃ­vjuk Å‘ket
+     * Parancsok, és a hozzá tartozó azonosítók,
+     * késöbb ez alapján hívjuk őket
      */
     private final HashMap<String, Runnable> commands;
     /**
-     * Objektum - ID hozzÃ¡rendelÃ©s
+     * Objektum - ID hozzárendelés
      */
     public static HashMap<String, Object> objects;
     /**
-     * A beÃ­rt parancs
+     * A beírt parancs
      */
     public static String cmd;
 
 
     /**
-     * MenÃ¼pontok hozzÃ¡adÃ¡sa
+     * Menüpontok hozzáadása
      */
     private void init() throws IOException   {
     	
@@ -135,6 +135,7 @@ public class SkeletonTesterMenu implements Runnable {
         commands.put("listVirologist", TestCases::listVirologist);
         commands.put("listInventory", TestCases::listInventory); 
         commands.put("listApplied", TestCases::listApplied);
+        commands.put("help", TestCases::help);
 
     }
     

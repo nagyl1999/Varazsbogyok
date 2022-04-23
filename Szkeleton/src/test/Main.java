@@ -16,8 +16,7 @@ public class Main {
     public static void main(String[] args) {
         try {
 			menu = new SkeletonTesterMenu();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (IOException e){
 			e.printStackTrace();
 		}
         menu.run();

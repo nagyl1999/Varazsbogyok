@@ -33,7 +33,7 @@ public class TestCases {
     }
 
     /**
-     * V�letlenszer? mez? gener�l�sa
+     * Véletlenszerű mező generálása
      */
     private static Tile getTile(int n) {
         if (n == 0)
@@ -60,7 +60,7 @@ public class TestCases {
     }
 
     /**
-     * V�letlenszer? mez? gener�l�sa
+     * Véletlenszerű ágens generálása
      */
     private static Agent getAgent(int n) {
         if (n == 0)
@@ -87,7 +87,7 @@ public class TestCases {
     }
 
     /**
-     * V�letlenszer? recept gener�l�sa
+     * V�letlenszerű recept generálása
      */
     private static Recipe getRecipe(int n) {
         if (n == 0)
@@ -111,7 +111,7 @@ public class TestCases {
     }
 
     /**
-     * V�letlenszer? felszerelés gener�l�sa
+     * Véletlenszerű felszerelés generálása
      */
     private static Gear getGear(int n) {
         if (n == 0)
@@ -135,7 +135,7 @@ public class TestCases {
     }
 
     /**
-     * V�letlenszer? anyag gener�l�sa
+     * Véletlenszerű anyag generálása
      */
     private static Material getMaterial(int n) {
         if (n == 0)
@@ -152,7 +152,7 @@ public class TestCases {
     }
 
     /**
-     * V�letlenszer? virológus gener�l�sa
+     * Véletlenszerű virológus generálása
      */
     private static Virologist getVirologist(int n) {
         if (n == 0)
@@ -170,7 +170,7 @@ public class TestCases {
 
     /**
      * Új játék létrehozása
-     * alap�rtelmezetten a tileid az "tile"+sz�m, hogy �ppen melyik mezot generalta le, pl tile5 az a 6. tile
+     * alapértelmezetten a tileid az "tile"+szám, hogy éppen melyik mezot generalta le, pl tile5 az a 6. tile
      */
     public static void newGame() {
         int tileCount = Integer.parseInt(SkeletonTesterMenu.cmd.split(" ")[1]);
@@ -507,6 +507,17 @@ public class TestCases {
         Virologist v = (Virologist) SkeletonTesterMenu.objects.get(virId);
 
         v.die();
+    }
+    
+    /**
+     * Az összes beírható parancsról ad egy rövid tájékoztatást.
+     */
+    public static void help() {
+    	System.out.println("newGame param1: Létrehoz egy új játékot, a játékhoz ad param1 mennyiségű véletlenszerű pályaelemet.");
+    	System.out.println("endGame : Kitörli az eddig létrehozott játékot.");
+    	System.out.println("createTile param1 param2 : Létrehoz egy új mezőt. param1 az új mező azonosítója, param2 a mező típusa.");
+    	System.out.println("createAgent param1 param2 param3 param4 : Létrehoz egy új ágenst. param1 az új ágens azonosítója, param2 virológus inventoryjába kerül, param3 a típusa, param4 az elbomásig visszamaradt idő");
+    	
     }
 
 }

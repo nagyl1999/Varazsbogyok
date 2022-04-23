@@ -23,16 +23,12 @@ public class Town extends Tile {
 	public void interactedWith(Virologist v) {
 		System.out.println("Town.interactedWith");
 	}
-
+	/***/
 	@Override
 	public Inventory getInventory() {
-		// TODO Auto-generated method stub
 		return inventory;
 	}
-
+	/***/
 	@Override
-	public void fillInventory() throws NotEnoughSpaceException {
-		// TODO Auto-generated method stub
-		
-	}
+	public void fillInventory() throws NotEnoughSpaceException {}
 }

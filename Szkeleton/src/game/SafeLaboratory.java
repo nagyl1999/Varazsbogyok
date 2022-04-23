@@ -29,11 +29,10 @@ public class SafeLaboratory extends Laboratory {
 
 	@Override
 	public Inventory getInventory() {
-		// TODO Auto-generated method stub
 		return inventory;
 	}
 	
-	/* TODO Auto-generated method stub */
+	/**  */
 	@Override
 	public void fillInventory() throws NotEnoughSpaceException {
 		Random r = new Random();

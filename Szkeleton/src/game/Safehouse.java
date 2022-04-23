@@ -37,7 +37,6 @@ public class Safehouse extends Tile {
 
 	@Override
 	public Inventory getInventory() {
-		// TODO Auto-generated method stub
 		return inventory;
 	}
 
