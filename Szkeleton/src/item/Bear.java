@@ -5,6 +5,7 @@ import game.Tile;
 import inventory.IInventoryVisitor;
 import inventory.Inventory;
 import inventory.ItemNotFoundException;
+import inventory.NotEnoughSpaceException;
 
 import java.util.Random;
 
@@ -35,10 +36,12 @@ public class Bear extends Agent {
     /**
      * Véletlenszerű lépésre kényszeríti a játékost
      */
-    public void effect(Virologist v) {
+    public void effect(Virologist v) throws NotEnoughSpaceException {
         Tile t = getRandomTile(v, 0, v.getTile().getNeighbours().size());
-        v.move(t);
-        // TODO - nem tud többet lépni
+        v.getTile().removeVirologist(v);
+        t.addVirologist(v);
+        v.setTile(t);
+        t.interactedWith(v);
     }
 
     /**

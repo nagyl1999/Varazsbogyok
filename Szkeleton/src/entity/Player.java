@@ -14,6 +14,7 @@ package entity;
 
 import game.Game;
 import inventory.IStorable;
+import inventory.NotEnoughSpaceException;
 import inventory.VisitorManager;
 import item.Agent;
 
@@ -26,8 +27,12 @@ public class Player extends Virologist {
      * A játékos döntéseit végrehajtó függvény
      */
     public void step() {
-        for (Agent a : applied)
-            a.effect(this);
+        for (Agent a : applied) {
+            try {
+                a.effect(this);
+            } catch (NotEnoughSpaceException ignore) {
+            }
+        }
     }
 
     /**

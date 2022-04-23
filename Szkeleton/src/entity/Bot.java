@@ -28,14 +28,17 @@ public class Bot extends Virologist {
      */
     public void step() {
         for (Agent a : applied)
-            a.effect(this);
+            try {
+                a.effect(this);
+            } catch (Exception ignore) {
+            }
     }
 
     /**
      * A Bot egy item felvételéről dönt
      */
     public void pickUp(IStorable s) {
-        if (VisitorManager.hasBear(this) ||VisitorManager.hasDancer(this) ||VisitorManager.hasParalyzer(this))
+        if (VisitorManager.hasBear(this) || VisitorManager.hasDancer(this) || VisitorManager.hasParalyzer(this))
             return;
         try {
             tile.interactedWith(this);

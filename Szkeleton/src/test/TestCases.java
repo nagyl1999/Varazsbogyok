@@ -376,7 +376,7 @@ public class TestCases {
      * Felkent ágensek listázása
      */
     public static void listApplied() {
-        String vir1 = SkeletonTesterMenu.cmd.split(" ")[2];
+        String vir1 = SkeletonTesterMenu.cmd.split(" ")[1];
 
         Virologist v = (Virologist) SkeletonTesterMenu.objects.get(vir1);
         for (Agent a : v.getApplied())
@@ -429,7 +429,7 @@ public class TestCases {
     /**
      * Virológus léptetése
      */
-    public static void move() {
+    public static void move() throws NotEnoughSpaceException {
         String virId = SkeletonTesterMenu.cmd.split(" ")[1];
         String tileId = SkeletonTesterMenu.cmd.split(" ")[2];
 

@@ -19,6 +19,7 @@ import game.Tile;
 import inventory.IInventoryVisitor;
 import inventory.IStorable;
 import inventory.ItemNotFoundException;
+import inventory.NotEnoughSpaceException;
 
 /**
  * A játékban található ágensek őosztálya. A virológusok ezeket használhatják fel egymás gyengítése illetve
@@ -65,7 +66,7 @@ public abstract class Agent implements IStorable, Steppable, Comparable<Agent> ,
     /**
      * A paraméterben kapott virológuson hajtja végre a hatást.
      */
-    public abstract void effect(Virologist v);
+    public abstract void effect(Virologist v) throws NotEnoughSpaceException;
 
     /**
      * Egyel csökkenti az expire értékét.

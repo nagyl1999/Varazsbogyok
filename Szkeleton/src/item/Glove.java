@@ -35,15 +35,14 @@ public class Glove extends Gear {
     /**
      * A paraméterben kapott virológust megvédi a paraméterben kapott ágens ellen.
      *
-     * @param v1 A Virológus aki az ágenst keni
-     * @param v2 A Virológus akire az ágenst kenik
+     * @param v1 A Virológus akire az ágenst kenik
+     * @param v2 A Virológus aki az ágenst keni
      * @param a  Az Ágens amit kennek a virológusra
      */
     public void protect(Virologist v1, Virologist v2, Agent a) {
         try {
-            v2.removeApplied(a);
-            v1.getApplied().add(a);
-            v1.getInventory().removeItem(this);
+            v1.removeApplied(a);
+            v2.getApplied().add(a);
         } catch (ItemNotFoundException ignore) {
             System.out.println("Nincs ilyen felkent ágens a virológuson");
         } catch (Exception e) {

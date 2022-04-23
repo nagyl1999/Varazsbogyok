@@ -144,13 +144,14 @@ public abstract class Virologist implements Steppable, IInventoryHolder , Serial
     /**
      * A virológus másik mezőre léptetése
      */
-    public void move(Tile t) {
+    public void move(Tile t) throws NotEnoughSpaceException {
         if (VisitorManager.hasParalyzer(this) || VisitorManager.hasBear(this) ||VisitorManager.hasDancer(this))
             return;
         if (!tile.getNeighbours().contains(t))
             return;
         tile.removeVirologist(this);
         t.addVirologist(this);
+        t.interactedWith(this);
     }
 
     /**

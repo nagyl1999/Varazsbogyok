@@ -17,53 +17,79 @@ import inventory.NotEnoughSpaceException;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
 import inventory.Inventory;
 
-/** Mező ősosztály */
+/**
+ * Mező ősosztály
+ */
 public abstract class Tile implements IInventoryHolder, Serializable {
-	/** A mezőn tartózkodó virológusok */
-	protected ArrayList<Virologist> virologists;
-	/** A mező szomszédai */
-	protected ArrayList<Tile> neighbours;
-	protected Inventory inventory;
-	private int inventorySize = 3;
+    /**
+     * A mezőn tartózkodó virológusok
+     */
+    protected ArrayList<Virologist> virologists;
+    /**
+     * A mező szomszédai
+     */
+    protected ArrayList<Tile> neighbours;
+    protected Inventory inventory;
+    private int inventorySize = 3;
 
-	/** Konstruktor */
-	public Tile() {
-		virologists = new ArrayList<Virologist>();
-		neighbours = new ArrayList<Tile>();
-		inventory = new Inventory(inventorySize);
-	}
-	
-	/** Getter - szomszédok */
-	public ArrayList<Tile> getNeighbours() {
-		return neighbours;
-	}
+    /**
+     * Konstruktor
+     */
+    public Tile() {
+        virologists = new ArrayList<Virologist>();
+        neighbours = new ArrayList<Tile>();
+        inventory = new Inventory(inventorySize);
+        try {
+            fillInventory();
+        } catch (Exception ignore) {
+        }
+    }
 
-	/** Getter - virológusok */
-	public ArrayList<Virologist> getVirologist() {
-		return virologists;
-	}
+    /**
+     * Getter - szomszédok
+     */
+    public ArrayList<Tile> getNeighbours() {
+        return neighbours;
+    }
 
-	/** Virológus hozzáadása a mezőhöz */
-	public void addVirologist(Virologist v) {
-		virologists.add(v);
-		v.setTile(this);
-	}
-	
-	/** Virológus törlése a mezőről */
-	public void removeVirologist(Virologist v) {
-		virologists.remove(v);
-	}
-	
-	/** Szomszéd hozzáadása */
-	public void addNeighbour(Tile t) {
-		neighbours.add(t);
-	}
-	
-	/** A virológus így nézi meg, hogy mi található a mezőn */
-	public abstract void interactedWith(Virologist v) throws NotEnoughSpaceException;
-	/**/
-	public abstract void fillInventory() throws NotEnoughSpaceException;
-	
+    /**
+     * Getter - virológusok
+     */
+    public ArrayList<Virologist> getVirologist() {
+        return virologists;
+    }
+
+    /**
+     * Virológus hozzáadása a mezőhöz
+     */
+    public void addVirologist(Virologist v) {
+        virologists.add(v);
+        v.setTile(this);
+    }
+
+    /**
+     * Virológus törlése a mezőről
+     */
+    public void removeVirologist(Virologist v) {
+        virologists.remove(v);
+    }
+
+    /**
+     * Szomszéd hozzáadása
+     */
+    public void addNeighbour(Tile t) {
+        neighbours.add(t);
+    }
+
+    /**
+     * A virológus így nézi meg, hogy mi található a mezőn
+     */
+    public abstract void interactedWith(Virologist v) throws NotEnoughSpaceException;
+
+    /**/
+    public abstract void fillInventory() throws NotEnoughSpaceException;
+
 }

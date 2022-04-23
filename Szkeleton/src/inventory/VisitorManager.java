@@ -66,6 +66,7 @@ public class VisitorManager {
     public static ArrayList<IStorable> getStealable(Virologist v) {
         InventorySorterVisitor i = sortInventory(v);
         ArrayList<IStorable> items = new ArrayList<>();
+        items.addAll(i.getAxeItems());
         items.addAll(i.getBagItems());
         items.addAll(i.getGloveItems());
         items.addAll(i.getJacketItems());

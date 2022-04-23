@@ -3,7 +3,6 @@ createTile V1 1
 createTile V2 3
 createTile V3 3
 createTile V4 4
-createRecipe R1 V2 2
 addNeighbour V1 V2
 addNeighbour V2 V3
 addNeighbour V3 V4
@@ -20,6 +19,8 @@ move VI1 V2
 move VI2 V4
 createMaterial M1 VI1 1
 useAgent A1 VI3 VI4
+listInventory VI3
+listInventory VI4
 rob VI3 VI4
 listInventory VI3
 listInventory VI4

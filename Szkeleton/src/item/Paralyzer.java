@@ -85,7 +85,7 @@ public class Paralyzer extends Agent {
      */
     public void use(Virologist v1, Virologist v2) throws ItemNotFoundException {
         virologist = v2;
-        v2.applyAgent(v2, this);
+        v2.applyAgent(v1, this);
     }
 
 }

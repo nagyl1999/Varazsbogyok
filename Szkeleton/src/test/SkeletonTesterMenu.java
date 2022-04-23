@@ -105,7 +105,13 @@ public class SkeletonTesterMenu implements Runnable {
 				e.printStackTrace();
 			}
 		});
-        commands.put("move", TestCases::move);
+        commands.put("move", () -> {
+			try {
+				TestCases.move();
+			} catch (NotEnoughSpaceException e) {
+				e.printStackTrace();
+			}
+		});
         commands.put("step", () -> {
 			try {
 				TestCases.step();

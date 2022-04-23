@@ -15,6 +15,7 @@ import entity.Virologist;
 import game.Tile;
 import inventory.IInventoryVisitor;
 import inventory.ItemNotFoundException;
+import inventory.NotEnoughSpaceException;
 
 import java.util.Random;
 
@@ -54,10 +55,12 @@ public class Dancer extends Agent {
     /**
      * A függvény paraméterben kapott virológuson fogja kifejteni a hatását az ágens.
      */
-    public void effect(Virologist v) {
+    public void effect(Virologist v) throws NotEnoughSpaceException {
         Tile t = getRandomTile(v, 0, v.getTile().getNeighbours().size());
-        v.move(t);
-        // TODO - nem tud lépni
+        v.getTile().removeVirologist(v);
+        t.addVirologist(v);
+        v.setTile(t);
+        t.interactedWith(v);
     }
 
     /**
@@ -95,7 +98,7 @@ public class Dancer extends Agent {
      */
     public void use(Virologist v1, Virologist v2) throws ItemNotFoundException {
         virologist = v2;
-        v2.applyAgent(v2, this);
+        v2.applyAgent(v1, this);
     }
 
 }

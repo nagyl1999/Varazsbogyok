@@ -6,3 +6,5 @@ createAgent A1 VI1 3 5
 useAgent A1 VI1 VI2
 createAgent A1 VI2 3 5
 useAgent A1 VI2 VI1
+listInventory VI2
+listApplied VI1

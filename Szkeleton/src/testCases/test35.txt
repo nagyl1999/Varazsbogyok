@@ -3,7 +3,6 @@ createTile V1 1
 createTile V2 3
 createTile V3 3
 createTile V4 4
-createRecipe R1 V2 2
 addNeighbour V1 V2
 addNeighbour V2 V3
 addNeighbour V3 V4
