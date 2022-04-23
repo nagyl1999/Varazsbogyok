@@ -67,7 +67,8 @@ public class Protector extends Agent {
      * A paraméterben kapott ágenst eltávolítjuk a paraméterben kapott virológusról.
      */
     public void protect(Virologist v, Agent a) throws ItemNotFoundException {
-        v.removeApplied(a);
+        if(a!=this)
+            v.removeApplied(a);
     }
 
     /**

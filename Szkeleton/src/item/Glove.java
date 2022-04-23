@@ -23,7 +23,7 @@ public class Glove extends Gear {
     /**
      * Hátralévő használatok száma
      */
-    public static int DURABILITY = 3;
+    public static final int DURABILITY = 3;
 
     /**
      * Konstruktor
@@ -43,6 +43,9 @@ public class Glove extends Gear {
         try {
             v1.removeApplied(a);
             v2.getApplied().add(a);
+            durability--;
+            if(durability==0)
+                v1.getInventory().removeItem(this);
         } catch (ItemNotFoundException ignore) {
             System.out.println("Nincs ilyen felkent ágens a virológuson");
         } catch (Exception e) {
