@@ -1,8 +1,8 @@
 newGame 0
 createTile V1 1
-createTile V2 3
-createTile V3 3
-createTile V4 4
+createTile V2 1
+createTile V3 1
+createTile V4 1
 addNeighbour V1 V2
 addNeighbour V2 V3
 addNeighbour V3 V4
