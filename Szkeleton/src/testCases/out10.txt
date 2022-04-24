@@ -1,0 +1,12 @@
+�dv�z�llek tesztel�! Te most a legend�s V A R � Z S B O G Y � K csapat ''A vil�gtalan virol�gusok vil�ga'' c�m� j�t�k�t k�sz�lsz tesztelni.
+A program egym�s ut�n dolgozza fel a parancsokat, helyes lefut�s ut�n executed, k�l�nben failed kimenet jelenik meg.  V�rom a parancsokat!
+
+newGame 0 executed
+createTile V1 1 executed
+createVirologist VI1 V1 2 executed
+createVirologist VI2 V1 2 executed
+createMaterial M1 VI2 1  executed
+rob VI1 VI2 failed
+listInventory VI1 executed
+M1
+listInventory VI2 executed
