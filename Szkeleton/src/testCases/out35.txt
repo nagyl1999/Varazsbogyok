@@ -3,9 +3,9 @@ A program egym�s ut�n dolgozza fel a parancsokat, helyes lefut�s ut�n ex
 
 newGame 0 executed
 createTile V1 1 executed
-createTile V2 3 executed
-createTile V3 3 executed
-createTile V4 4 executed
+createTile V2 1 executed
+createTile V3 1 executed
+createTile V4 1 executed
 addNeighbour V1 V2 executed
 addNeighbour V2 V3 executed
 addNeighbour V3 V4 executed
@@ -24,8 +24,6 @@ move VI2 V4 executed
 useAgent A1 VI3 VI4 executed
 move VI2 V3 executed
 rob VI2 VI4 executed
-null
-null
 G2
 listInventory VI2 executed
 listInventory VI3 executed
