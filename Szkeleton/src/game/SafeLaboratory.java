@@ -12,9 +12,9 @@ import item.RForgetter;
 import item.RParalyzer;
 import item.RProtector;
 import item.Recipe;
-
+/**A játékbna a biztonságos laboratórium, itt tud a virológus recepteket felvenni.*/
 public class SafeLaboratory extends Laboratory {
-	
+	/**Itt adjuk hozzá a virológus inventoryjához a felvenni kivánt receptet.*/
 	public void interactedWith(Virologist v) throws NotEnoughSpaceException {
 		try {
 			Recipe r = (Recipe) inventory.at(0);
@@ -26,13 +26,13 @@ public class SafeLaboratory extends Laboratory {
 			e.printStackTrace();
 		}
 	}
-
+	/**Visszaadja a mező inventoryját.*/
 	@Override
 	public Inventory getInventory() {
 		return inventory;
 	}
 	
-	/**  */
+	/**Itt töltjük meg a mező inventoryját véletlenszerű receptekkel.*/
 	@Override
 	public void fillInventory() throws NotEnoughSpaceException {
 		Random r = new Random();

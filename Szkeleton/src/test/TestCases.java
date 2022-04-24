@@ -505,7 +505,7 @@ public class TestCases {
     public static void virologistDie() {
         String virId = SkeletonTesterMenu.cmd.split(" ")[1];
         Virologist v = (Virologist) SkeletonTesterMenu.objects.get(virId);
-
+        
         v.die();
     }
     
@@ -513,11 +513,35 @@ public class TestCases {
      * Az összes beírható parancsról ad egy rövid tájékoztatást.
      */
     public static void help() {
-    	System.out.println("newGame param1: Létrehoz egy új játékot, a játékhoz ad param1 mennyiségű véletlenszerű pályaelemet.");
-    	System.out.println("endGame : Kitörli az eddig létrehozott játékot.");
-    	System.out.println("createTile param1 param2 : Létrehoz egy új mezőt. param1 az új mező azonosítója, param2 a mező típusa.");
-    	System.out.println("createAgent param1 param2 param3 param4 : Létrehoz egy új ágenst. param1 az új ágens azonosítója, param2 virológus inventoryjába kerül, param3 a típusa, param4 az elbomásig visszamaradt idő");
+    	HashMap<String, String> helps = new HashMap<>();
+    	String command = SkeletonTesterMenu.cmd.split(" ")[1];
     	
+    	helps.put("newGame", "newGame param1: Létrehoz egy új játékot, a játékhoz ad param1 mennyiségű véletlenszerű pályaelemet.");
+    	helps.put("endGame", "endGame : Kitörli az eddig létrehozott játékot.");
+    	helps.put("createTile", "createTile param1 param2 : Létrehoz egy új mezőt. param1 az új mező azonosítója, param2 a mező típusa.");
+    	helps.put("createAgent", "createAgent param1 param2 param3 param4 : Létrehoz egy új ágenst. param1 az új ágens azonosítója, param2  inventoryjába kerül, param3 a típusa, param4 az elbomásig visszamaradt idő");
+    	helps.put("createRecipe", "createRecipe param1 param2 param3: Létrehoz egy új receptet.param1 a recept azonosítója, param2 inventoryjába kerül, param3 a recept típusa.");
+    	helps.put("createGear", "createGear param1 param2 param3: Létrehoz egy új védőfelszerelést.param1 a védőfelszerelés azonosítója, param2 inventoryjába kerül, param3 a védőfelszerelés típusa.");
+    	helps.put("createMaterial", "createMaterial param1 param2 param3: Létrehoz egy új anyagot. param1 az anyag azonosítója, param2 inventoryjába kerül, param3 a védőfelszerelés típusa.");
+    	helps.put("createVirologist", "createVirologist param1 param2 param3: Létrehoz egy új virológust. param1 a virológus azonosítója, param2 tile-ra kerül, param3 a virológus típusa.");
+    	helps.put("addNeighbour", "addNeighbour param1 param2: param1 és param2 tile mostantól szomszédosak.");
+    	helps.put("saveGame", "saveGame param1: Elmenti a parancs kiadásáig felépített játékot. param1 néven fogja szerializált formában.");
+    	helps.put("loadGame", "loadGame param1: Betölt egy param1 nevű szerializált játékot.");
+    	helps.put("listTiles", "listTiles : Kilistázza a játékban lévő összes tile-t.");
+    	helps.put("listNeighbours", "listNeighbours param1: kilistázza param1 azonosítójú tile összes szomszédját.");
+    	helps.put("listVirologist", "listVirologist param1: Kilistázza param1 azonosítójú tile-on tartozkodó virológusokat.");
+    	helps.put("listInventory", "listInventory param1: Kilistázza param1 azonosítójú dolog inventoryját.");
+    	helps.put("listApplied", "listApplied param1: kilistázza param1 virológusra kent minden ágenst.");
+    	helps.put("useAgent", "useAgent param1 param2 param3: Felhasználja a param1 azonosítójú ágenst a param2 virológus és rákeni az ágenst param3 virológusra.");
+    	helps.put("useGear", "useGear param1 param2 param3: Felhasználja a param1 azonosítójú védőfelszerelést a param2 virológus és használja a param3 virológuson.");
+    	helps.put("craftAgent", "craftAgent param1 param2: param1 virológus létrehoz egy param2 receptet.");
+    	helps.put("move", "move param1 param2: param1 virológus átmozog param2 tile-ra.");
+    	helps.put("step", "step param1: param1 azonosítójú dolgon lefut a step metódus.");
+    	helps.put("rob", "rob param1 param2: param1 azonosítójú virológus kirabolja param2 virológust.");
+    	helps.put("setJacket", "setJacket param1 param2: param1 azonosítójú köpenynek param2 állapotot állít be.");
+    	helps.put("throwGear", "throwGear param1 param2: .param1 azonosítójú virológus eldobja param2 azonosítójú védőfelszerelését..");
+    	helps.put("virologistDie", "virologistDie param1: param1 azonosítójú virológus meghal.");	
+    	
+    	if(helps.containsKey(command))System.out.println(helps.get(command));
     }
-
 }

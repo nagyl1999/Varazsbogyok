@@ -22,7 +22,7 @@ import java.util.Random;
  * kínál a virológusoknak */
 public class Safehouse extends Tile {
 
-	/** Itt generálunk egy véletlenszerű védőfelszerelést. */
+	/** Itt addjuk hozzá a védőfelszerelést a virológus inventoryjához. */
 	public void interactedWith(Virologist v) {
 		try {
 			Gear g = (Gear) inventory.at(0); 
@@ -35,11 +35,12 @@ public class Safehouse extends Tile {
 		}
 	}
 
+	/**Visszaadja mező inventoryját.*/
 	@Override
 	public Inventory getInventory() {
 		return inventory;
 	}
-
+	/**Megtölti a mező inventoryját véletlenszerű védőfelszerelésekkel.*/
 	@Override
 	public void fillInventory() throws NotEnoughSpaceException {
 		Random r = new Random();

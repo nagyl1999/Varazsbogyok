@@ -16,12 +16,11 @@ import inventory.NotEnoughSpaceException;
 import item.*;
 import java.util.Random;
 
-/** Laboratórium mező, rálépéskor egy receptet kínál
- * fel a virológus számára
+/** Laboratóriumok ősosztálya, egy laboratórium lehet biztonságos ahol a virológus receptet kap és lhet medvevírussal fertőzött.
  * */
 public abstract class Laboratory extends Tile {
 
-	/** Itt generálunk egy véletlenszerű receptet. 
+	/** Itt addjuk hozzá a virológus inventoryjához a mező által generált dolgot.
 	 * @throws NotEnoughSpaceException */
 	public abstract void interactedWith(Virologist v) throws NotEnoughSpaceException;
 

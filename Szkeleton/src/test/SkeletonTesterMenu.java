@@ -39,7 +39,6 @@ public class SkeletonTesterMenu implements Runnable {
      * Menüpontok hozzáadása
      */
     private void init() throws IOException   {
-    	
         commands.put("newGame", TestCases::newGame);
         commands.put("endGame", TestCases::endGame);
         commands.put("saveGame", () -> {
@@ -136,7 +135,6 @@ public class SkeletonTesterMenu implements Runnable {
         commands.put("listInventory", TestCases::listInventory); 
         commands.put("listApplied", TestCases::listApplied);
         commands.put("help", TestCases::help);
-
     }
     
     /**
@@ -154,7 +152,8 @@ public class SkeletonTesterMenu implements Runnable {
      */
     public void run() {
     	System.out.println("Üdvözöllek tesztelő! Te most a legendás V A R Á Z S B O G Y Ó K csapat ''A világtalan virológusok világa'' című játékát készülsz tesztelni.\n"
-    			+ "A program egymás után dolgozza fel a parancsokat, helyes lefutás után executed, különben failed kimenet jelenik meg.  Várom a parancsokat!\n");
+    			+ "A program egymás után dolgozza fel a parancsokat, helyes lefutás után executed, különben failed kimenet jelenik meg.\nA help + tesztparancs neve információt ad"
+    			+ " a parancsról és a paramétereiről pl:help newGame  \nVárom a parancsokat:");
 		Scanner sc=new Scanner(System.in);
 		do {
 			cmd=sc.nextLine();
