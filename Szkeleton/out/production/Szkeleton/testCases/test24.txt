@@ -1,8 +1,0 @@
-newGame 0
-createTile V1 1
-createVirologist VI1 V1 2
-createVirologist VI2 V1 2
-createGear G1 VI2 4
-createAgent A1 VI2 5 100
-useAgent A1 VI2 VI1
-useGear G1 VI2 VI1
