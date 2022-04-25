@@ -2,5 +2,5 @@ newGame 0
 createTile V1 1
 createTile V2 1
 createVirologist VI1 V1 2
-move VI1 V2 
-ListVirologist V1
+move VI1 V2
+listVirologist V1

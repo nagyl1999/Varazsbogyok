@@ -95,10 +95,11 @@ public abstract class Virologist implements Steppable, IInventoryHolder , Serial
      *
      * @param g A felhasznált felszerelés
      * @param v A megtámadott virológus
+     * @throws StateDoesNotAllowActionException
      */
-    public void useGear(Gear g, Virologist v) {
+    public void useGear(Gear g, Virologist v) throws StateDoesNotAllowActionException {
         if (VisitorManager.hasBear(this) ||VisitorManager.hasDancer(this) ||VisitorManager.hasParalyzer(this))
-            return;
+            throw new StateDoesNotAllowActionException("Virologist is not allowed to take action");
         g.use(v);
     }
 
@@ -143,12 +144,13 @@ public abstract class Virologist implements Steppable, IInventoryHolder , Serial
 
     /**
      * A virológus másik mezőre léptetése
+     * @throws StateDoesNotAllowActionException
      */
-    public void move(Tile t) throws NotEnoughSpaceException {
-        if (VisitorManager.hasParalyzer(this) || VisitorManager.hasBear(this) ||VisitorManager.hasDancer(this))
-            return;
+    public void move(Tile t) throws NotEnoughSpaceException, StateDoesNotAllowActionException {
+        if (VisitorManager.hasBear(this) ||VisitorManager.hasDancer(this) ||VisitorManager.hasParalyzer(this))
+            throw new StateDoesNotAllowActionException("Virologist is not allowed to take action");
         if (!tile.getNeighbours().contains(t))
-            return;
+            throw new StateDoesNotAllowActionException("Not neighbouring tiles");
         tile.removeVirologist(this);
         t.addVirologist(this);
         t.interactedWith(this);
@@ -156,33 +158,35 @@ public abstract class Virologist implements Steppable, IInventoryHolder , Serial
 
     /**
      * Egy másik virológus kirablása
+     * @throws StateDoesNotAllowActionException
+     * @throws ItemNotFoundException
      */
-    public void robVirologist(Virologist v) {
+    public void robVirologist(Virologist v) throws StateDoesNotAllowActionException, ItemNotFoundException {
         if (VisitorManager.hasBear(this) ||VisitorManager.hasDancer(this) ||VisitorManager.hasParalyzer(this))
-            return;
+            throw new StateDoesNotAllowActionException("Virologist is not allowed to take action");
         if (!VisitorManager.hasParalyzer(v))
-            return;
+            throw new StateDoesNotAllowActionException("Virologist to be robbed is not paralyzed");
         if (tile != v.getTile())
-            return;
+        throw new StateDoesNotAllowActionException("Virologists are not on the same tile");
         for (IStorable i : VisitorManager.getStealable(v)) {
             try {
                 getInventory().addItem(i);
                 v.getInventory().removeItem(i);
             } catch (NotEnoughSpaceException n) {
                 return; // Elfogyott a hely a mi inventory-nkban
-            } catch (Exception ignore) {
             }
         }
     }
 
     /**
      * Egy ágens recept alapján való létrehozása
+     * @throws StateDoesNotAllowActionException
      */
-    public void makeAgent(Recipe r) throws ItemNotFoundException, NotEnoughSpaceException {
+    public void makeAgent(Recipe r) throws ItemNotFoundException, NotEnoughSpaceException, StateDoesNotAllowActionException {
         if (VisitorManager.hasBear(this) ||VisitorManager.hasDancer(this) ||VisitorManager.hasParalyzer(this))
-            return;
+            throw new StateDoesNotAllowActionException("Virologist is not allowed to take action");
         if (!VisitorManager.craftRecipe(this, r))
-            return;
+            throw new StateDoesNotAllowActionException("Virologist does not have enough material");
         InventorySorterVisitor i = VisitorManager.sortInventory(this);
         for (int j = 0; j < r.getNumberOfAminoacid(); j++) {
             inventory.removeItem(i.getAminoacidItems().get(j));
@@ -198,10 +202,11 @@ public abstract class Virologist implements Steppable, IInventoryHolder , Serial
      *
      * @param v A célpont
      * @param a A felhasználni kívánt ágens
+     * @throws StateDoesNotAllowActionException
      */
-    public void useAgent(Virologist v, Agent a) throws ItemNotFoundException {
+    public void useAgent(Virologist v, Agent a) throws ItemNotFoundException, StateDoesNotAllowActionException {
         if (VisitorManager.hasBear(this) ||VisitorManager.hasDancer(this) ||VisitorManager.hasParalyzer(this))
-            return;
+            throw new StateDoesNotAllowActionException("Virologist is not allowed to take action");
         getInventory().removeItem(a);
         a.use(this, v);
     }

@@ -3,6 +3,7 @@ createTile V1 1
 createVirologist VI1 V1 2
 createVirologist VI2 V1 2
 createGear G1 VI2 3
+setJacket G1 1
 createAgent A1 VI1 3 5
 useAgent A1 VI1 VI2
 listApplied VI2

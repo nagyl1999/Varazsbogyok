@@ -1,6 +1,0 @@
-newGame 0
-createTile T1 2
-createVirologist VI1 T1 2
-createAgent A1 VI1 5 100
-useAgent A1 VI1 VI1
-listApplied VI1

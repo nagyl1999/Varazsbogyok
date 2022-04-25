@@ -1,0 +1,14 @@
+�dv�z�llek tesztel�! Te most a legend�s V A R � Z S B O G Y � K csapat ''A vil�gtalan virol�gusok vil�ga'' c�m� j�t�k�t k�sz�lsz tesztelni.
+A program egym�s ut�n dolgozza fel a parancsokat, helyes lefut�s ut�n executed, k�l�nben failed kimenet jelenik meg.  V�rom a parancsokat!
+
+newGame 0 executed
+createTile V1 1 executed
+createTile V2 1 executed
+createTile L1 2 executed
+addNeighbour V1 L1 executed
+addNeighbour L1 V2 executed
+saveGame save.txt executed
+endGame executed
+loadGame save.txt executed
+L1
+listNeighbours V1 executed

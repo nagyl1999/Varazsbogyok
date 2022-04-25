@@ -6,4 +6,4 @@ createGear G1 VI2 2
 createAgent A1 VI1 3 10
 useAgent A1 VI1 VI2
 listInventory VI1
-listApplied VI2
+listApplied VI1

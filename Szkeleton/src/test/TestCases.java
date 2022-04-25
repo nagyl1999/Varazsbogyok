@@ -2,6 +2,7 @@ package test;
 
 import entity.Bot;
 import entity.Player;
+import entity.StateDoesNotAllowActionException;
 import entity.Virologist;
 import game.*;
 import inventory.*;
@@ -385,8 +386,9 @@ public class TestCases {
 
     /**
      * Ágens használata
+     * @throws StateDoesNotAllowActionException
      */
-    public static void useAgent() throws ItemNotFoundException {
+    public static void useAgent() throws ItemNotFoundException, StateDoesNotAllowActionException {
         String age1 = SkeletonTesterMenu.cmd.split(" ")[1];
         String vir1 = SkeletonTesterMenu.cmd.split(" ")[2];
         String vir2 = SkeletonTesterMenu.cmd.split(" ")[3];
@@ -400,8 +402,9 @@ public class TestCases {
 
     /**
      * Felszerelés használata
+     * @throws StateDoesNotAllowActionException
      */
-    public static void useGear() {
+    public static void useGear() throws StateDoesNotAllowActionException {
         String gear = SkeletonTesterMenu.cmd.split(" ")[1];
         String vir1 = SkeletonTesterMenu.cmd.split(" ")[2];
         String vir2 = SkeletonTesterMenu.cmd.split(" ")[3];
@@ -415,8 +418,9 @@ public class TestCases {
 
     /**
      * Ágens létrehozása
+     * @throws StateDoesNotAllowActionException
      */
-    public static void craftAgent() throws NotEnoughSpaceException, ItemNotFoundException {
+    public static void craftAgent() throws NotEnoughSpaceException, ItemNotFoundException, StateDoesNotAllowActionException {
         String vir = SkeletonTesterMenu.cmd.split(" ")[1];
         String rec = SkeletonTesterMenu.cmd.split(" ")[2];
 
@@ -428,8 +432,9 @@ public class TestCases {
 
     /**
      * Virológus léptetése
+     * @throws StateDoesNotAllowActionException
      */
-    public static void move() throws NotEnoughSpaceException {
+    public static void move() throws NotEnoughSpaceException, StateDoesNotAllowActionException {
         String virId = SkeletonTesterMenu.cmd.split(" ")[1];
         String tileId = SkeletonTesterMenu.cmd.split(" ")[2];
 
@@ -451,8 +456,10 @@ public class TestCases {
 
     /**
      * Virológus kirablása
+     * @throws ItemNotFoundException
+     * @throws StateDoesNotAllowActionException
      */
-    public static void rob() {
+    public static void rob() throws StateDoesNotAllowActionException, ItemNotFoundException {
         String vir1 = SkeletonTesterMenu.cmd.split(" ")[1];
         String vir2 = SkeletonTesterMenu.cmd.split(" ")[2];
 

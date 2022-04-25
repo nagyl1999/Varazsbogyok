@@ -11,6 +11,7 @@ package test;
 import game.Game;
 import inventory.ItemNotFoundException;
 import inventory.NotEnoughSpaceException;
+import utils.RunnableWithException;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -24,7 +25,7 @@ public class SkeletonTesterMenu implements Runnable {
      * Parancsok, és a hozzá tartozó azonosítók,
      * késöbb ez alapján hívjuk őket
      */
-    private final HashMap<String, Runnable> commands;
+    private final HashMap<String, RunnableWithException> commands;
     /**
      * Objektum - ID hozzárendelés
      */
@@ -41,92 +42,22 @@ public class SkeletonTesterMenu implements Runnable {
     private void init() throws IOException   {
         commands.put("newGame", TestCases::newGame);
         commands.put("endGame", TestCases::endGame);
-        commands.put("saveGame", () -> {
-			try {
-				TestCases.saveGame();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		});
-        commands.put("loadGame", () -> {
-			try {
-				TestCases.loadGame();
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		});
+        commands.put("saveGame", TestCases::saveGame);
+        commands.put("loadGame", TestCases::loadGame);
         commands.put("createTile", TestCases::createTile);
         commands.put("createVirologist", TestCases::createVirologist);
-        commands.put("createAgent", () -> {
-			try {
-				TestCases.createAgent();
-			} catch (NotEnoughSpaceException e) {
-				e.printStackTrace();
-			}
-		});
-        commands.put("createRecipe", () -> {
-			try {
-				TestCases.createRecipe();
-			} catch (NotEnoughSpaceException e) {
-				e.printStackTrace();
-			}
-		});
-        commands.put("createGear", () -> {
-			try {
-				TestCases.createGear();
-			} catch (NotEnoughSpaceException e) {
-				e.printStackTrace();
-			}
-		});
-        commands.put("createMaterial", () -> {
-			try {
-				TestCases.createMaterial();
-			} catch (NotEnoughSpaceException e) {
-				e.printStackTrace();
-			}
-		});
-        commands.put("useAgent", () -> {
-			try {
-				TestCases.useAgent();
-			} catch (ItemNotFoundException e) {
-				e.printStackTrace();
-			}
-		});
+        commands.put("createAgent", TestCases::createAgent);
+        commands.put("createRecipe", TestCases::createRecipe);
+        commands.put("createGear", TestCases::createGear);
+        commands.put("createMaterial", TestCases::createMaterial);
+        commands.put("useAgent", TestCases::useAgent);
         commands.put("useGear", TestCases::useGear);
-        commands.put("craftAgent", () -> {
-			try {
-				TestCases.craftAgent();
-			} catch (NotEnoughSpaceException e) {
-				e.printStackTrace();
-			} catch (ItemNotFoundException e) {
-				e.printStackTrace();
-			}
-		});
-        commands.put("move", () -> {
-			try {
-				TestCases.move();
-			} catch (NotEnoughSpaceException e) {
-				e.printStackTrace();
-			}
-		});
-        commands.put("step", () -> {
-			try {
-				TestCases.step();
-			} catch (ItemNotFoundException e) {
-				e.printStackTrace();
-			}
-		});
+        commands.put("craftAgent", TestCases::craftAgent);
+        commands.put("move", TestCases::move);
+        commands.put("step", TestCases::step);
         commands.put("rob", TestCases::rob);
         commands.put("setJacket", TestCases::setJacket);
-        commands.put("throwGear", () -> {
-			try {
-				TestCases.throwGear();
-			} catch (ItemNotFoundException e) {
-				e.printStackTrace();
-			}
-		});
+        commands.put("throwGear", TestCases::throwGear);
         commands.put("virologistDie", TestCases::virologistDie);
         commands.put("addNeighbour", TestCases::addNeighbour);
         commands.put("listTiles", TestCases::listTiles);
@@ -164,7 +95,7 @@ public class SkeletonTesterMenu implements Runnable {
 				System.out.println(cmd + " executed");
             } catch (Exception e) {
 				System.out.println(cmd + " failed");
-                e.printStackTrace();
+                //e.printStackTrace(); //nem standard outputra ír, hanem standard hibakimentre, szóval akár maradhat is 
             }
         }while (sc.hasNextLine());
     }
