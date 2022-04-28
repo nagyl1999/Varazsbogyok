@@ -48,7 +48,7 @@ public class Jacket extends Gear {
 
         if (d < success)
             try {
-                v2.removeApplied(a);
+                v1.removeApplied(a);
             } catch (Exception e) {
                 System.out.println("Már nincs rajta az ágens.");
             }

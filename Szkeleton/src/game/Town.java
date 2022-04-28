@@ -19,20 +19,16 @@ import inventory.NotEnoughSpaceException;
  * konkrét funkciója */
 public class Town extends Tile {
 
-	/** A virológus így nézi meg, hogy mi található a mezőn */
+	/** város mező, nem tud semmit sem felvenni. */
 	public void interactedWith(Virologist v) {
 		System.out.println("Town.interactedWith");
 	}
-
+	/**Visszaadja a mező inventoryját.*/
 	@Override
 	public Inventory getInventory() {
-		// TODO Auto-generated method stub
 		return inventory;
 	}
-
+	/**Város mező, nem generálunk neki semmi felvehetőt sem.*/
 	@Override
-	public void fillInventory() throws NotEnoughSpaceException {
-		// TODO Auto-generated method stub
-		
-	}
+	public void fillInventory() throws NotEnoughSpaceException {}
 }

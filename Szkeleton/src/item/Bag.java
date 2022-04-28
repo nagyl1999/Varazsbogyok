@@ -17,19 +17,19 @@ import inventory.IInventoryVisitor;
 import inventory.Inventory;
 
 /**
- * A játékban a zsák tipusú védõfelszerelés. Egy zsákban nem lehet még egy zsák.
+ * A jÃ¡tÃ©kban a zsÃ¡tipusÃº vÃ©dÅ‘felszerelÃ©s. Egy zsÃ¡kban nem lehet mÃ©g egy zsÃ¡k.
  */
 public class Bag extends Gear implements IInventoryHolder {
     /**
-     * A zsákhoz tartozó inventory
+     * A zsÃ¡khoz tartozÃ³ inventory
      */
     protected Inventory inventory;
     /**
-     * Inventory méret
+     * Inventory mÃ©ret
      */
     public static int inventorySize = 25;
     /**
-     * Hátralévõ használatok száma
+     * HÃ¡tralÃ©vÅ‘ hasznÃ¡latok szÃ¡ma, a zsÃ¡k nem bomlik le. -1 mivel akkor bomlik el egy tÃ¡rgy ha elÃ©ri a 0-t, nem ha kisebb mint 0. 
      */
     public static int DURABILITY = -1;
 
@@ -42,45 +42,45 @@ public class Bag extends Gear implements IInventoryHolder {
     }
 
     /**
-     * A paraméterben kapott virológust megvédi a paraméterben kapott ágens ellen.
+     * A paramÃ©terben kapott virolÃ³gust megvÃ©di a paramÃ©terben kapott Ã¡gens ellen.
      */
     public void protect(Virologist v1, Virologist v2, Agent a) {
-        // Nem védi meg
+        // Nem vÃ©di meg
     }
 
     /**
-     * A paraméterben kapott virológus kiválasztja a zsákot.
+     * A paramÃ©terben kapott virolÃ³gus kivÃ¡lasztja a zsÃ¡kot.
      *
-     * @param v A Virológus aki felveszi a zsákot
+     * @param v A Virolï¿½gus aki felveszi a zsÃ¡kot
      */
     public void equip(Virologist v) {
         equipped = true;
     }
 
     /**
-     * A paraméterben kapott virológus másik védõfelszerelésre vált.
+     * A paramÃ©terben kapott virolÃ³gus mÃ¡sik vÃ©dÅ‘felszerelÃ©sre vÃ¡lt.
      *
-     * @param v A Virológus aki leadja a zsákot
+     * @param v A Virolï¿½gus aki leadja a zsÃ¡kot
      */
     public void unequip(Virologist v) {
         equipped = false;
     }
 
     /**
-     * A felszerelést nem lehet használni
+     * A felszerelÃ©st nem lehet hasznÃ¡lni
      */
     public void use(Virologist v) {
     }
 
     /**
-     * A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a zsák típust.
+     * A visitor tervezÃ©si mintÃ¡t ez a fÃ¼ggvï¿½ny valÃ³sÃ­tja meg, ez fogja fogadni a zsÃ¡k tÃ­pust.
      */
     public void accept(IInventoryVisitor i) {
         i.visit(this);
     }
 
     /**
-     * Visszaadja a zsák tartalmát.
+     * Visszaadja a zsÃ¡k tartalmÃ¡t.
      */
     public Inventory getInventory() {
         return inventory;

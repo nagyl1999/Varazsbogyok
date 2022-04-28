@@ -1,6 +1,0 @@
-newGame 0
-createTile V1 1
-createVirologist VI1 V1 2
-createGear G1 VI1 4
-throwGear VI1 G1
-listInventory VI1

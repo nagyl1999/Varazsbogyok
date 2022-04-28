@@ -85,11 +85,11 @@ public abstract class Tile implements IInventoryHolder, Serializable {
     }
 
     /**
-     * A virológus így nézi meg, hogy mi található a mezőn
+     * A virológus itt fog tudni felvenni egy mezőn található dolgot.
      */
     public abstract void interactedWith(Virologist v) throws NotEnoughSpaceException;
 
-    /**/
+    /**itt töltjük meg az adott mező inventoryját véletlenszerű dolgokkal.*/
     public abstract void fillInventory() throws NotEnoughSpaceException;
 
 }

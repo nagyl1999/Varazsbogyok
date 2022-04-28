@@ -1,0 +1,30 @@
+�dv�z�llek tesztel�! Te most a legend�s V A R � Z S B O G Y � K csapat ''A vil�gtalan virol�gusok vil�ga'' c�m� j�t�k�t k�sz�lsz tesztelni.
+A program egym�s ut�n dolgozza fel a parancsokat, helyes lefut�s ut�n executed, k�l�nben failed kimenet jelenik meg.  V�rom a parancsokat!
+
+newGame 0 executed
+createTile V1 1 executed
+createTile V2 1 executed
+createTile V3 1 executed
+createTile V4 1 executed
+addNeighbour V1 V2 executed
+addNeighbour V2 V3 executed
+addNeighbour V3 V4 executed
+addNeighbour V1 V4 executed
+createVirologist VI1 V1 2 executed
+createVirologist VI2 V1 2 executed
+createVirologist VI3 V3 2 executed
+createVirologist VI4 V3 2 executed
+createVirologist VI5 V2 2 executed
+createAgent A1 VI3 3 100 executed
+createGear G2 VI4 1 executed
+G2
+listInventory VI4 executed
+move VI1 V2  executed
+move VI2 V4 executed
+useAgent A1 VI3 VI4 executed
+move VI2 V3 executed
+rob VI2 VI4 executed
+G2
+listInventory VI2 executed
+listInventory VI3 executed
+listInventory VI4 executed

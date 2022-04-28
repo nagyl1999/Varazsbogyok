@@ -3,7 +3,10 @@ createTile V1 1
 createVirologist VI1 V1 2
 createRecipe R1 VI1 2
 createMaterial M1 VI1 1
-createMaterial M2 VI1 2
+createMaterial M2 VI1 1
+createMaterial M3 VI1 1
+createMaterial M4 VI1 2
+createMaterial M5 VI1 2
 listInventory VI1
 craftAgent VI1 R1
 listInventory VI1

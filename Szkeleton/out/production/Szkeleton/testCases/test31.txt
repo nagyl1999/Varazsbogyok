@@ -1,5 +1,0 @@
-newGame 0
-createTile V1 1
-createTile V2 1
-addNeighbour V1 V2
-listNeighbours V1

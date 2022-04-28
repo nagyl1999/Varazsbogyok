@@ -23,27 +23,26 @@ import java.util.Random;
 
 public class Storage extends Tile {
 
-	/** Itt generálunk egy véletlenszerű anyagot. */
+	/** Itt addjuk hozzá a virológus inventoryjához a felvenni kivánt anyagot.*/
 	public void interactedWith(Virologist v) throws NotEnoughSpaceException {
 		try {
 			Material m = (Material) inventory.at(0);
 			v.getInventory().addItem(m);
 			inventory.removeItem(m);
 		} catch (NotEnoughSpaceException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ItemNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	/**/
+	/**Visszaadja a mező inventoryját.*/
 	@Override
 	public Inventory getInventory() {
 		return inventory;
 	}
 	
-	/**/
+	/**Itt töltjük meg a mező inventoryját véletlenszerű anyagokkal.*/
 	@Override
 	public void fillInventory() throws NotEnoughSpaceException {
 		Random r = new Random();
