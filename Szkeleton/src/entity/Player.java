@@ -22,11 +22,23 @@ import item.Agent;
  * Játékos döntéseit reprezentáló osztály
  */
 public class Player extends Virologist {
+    /**
+     * Ikon elérési út
+     */
+    protected String iconPath = "";
+
+    /**
+     * Getter - Ikon elérési út
+     */
+    public String getIconPath() {
+        return iconPath;
+    }
 
     /**
      * A játékos döntéseit végrehajtó függvény
      */
     public void step() {
+        Game.activeVirologist = this;
         for (Agent a : applied) {
             try {
                 a.effect(this);

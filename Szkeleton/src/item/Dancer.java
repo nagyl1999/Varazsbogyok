@@ -24,6 +24,10 @@ import java.util.Random;
  */
 public class Dancer extends Agent {
     /**
+     * Ikon elérési út
+     */
+    protected String iconPath = "";
+    /**
      * Ágnes élettartama
      */
     public static int EXPIRE = 10;
@@ -33,6 +37,13 @@ public class Dancer extends Agent {
      */
     public Dancer() {
         super(Dancer.EXPIRE);
+    }
+
+    /**
+     * Getter - Ikon elérési út
+     */
+    public String getIconPath() {
+        return iconPath;
     }
 
     /**

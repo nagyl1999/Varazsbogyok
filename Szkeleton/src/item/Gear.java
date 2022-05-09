@@ -14,6 +14,7 @@ import java.io.Serializable;
 */
 
 import entity.Virologist;
+import graphics.IIcon;
 import inventory.IInventoryVisitor;
 import inventory.IStorable;
 import item.Agent;
@@ -37,6 +38,11 @@ public abstract class Gear implements IStorable , Serializable {
     public Gear(int d) {
         durability = d;
     }
+
+    /**
+     * Getter - Ikon elérési út
+     */
+    public abstract String getIconPath();
 
     /**
      * A paraméterben kapott virológust megvédi a paraméterben kapott ágens ellen.

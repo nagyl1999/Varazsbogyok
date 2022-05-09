@@ -22,11 +22,16 @@ import item.Agent;
  * A Bot döntéseit megvalósító osztály
  */
 public class Bot extends Virologist {
+    /**
+     * Ikon elérési út
+     */
+    protected String iconPath = "";
 
     /**
      * A Bot lépését szimuláló függvény
      */
     public void step() {
+        Game.activeVirologist = this;
         for (Agent a : applied)
             try {
                 a.effect(this);
@@ -44,6 +49,13 @@ public class Bot extends Virologist {
             tile.interactedWith(this);
         } catch (Exception ignored) {
         }
+    }
+
+    /**
+     * Getter - Ikon elérési út
+     */
+    public String getIconPath() {
+        return iconPath;
     }
 
     /**

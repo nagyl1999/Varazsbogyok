@@ -14,6 +14,10 @@ import java.util.Random;
  */
 public class Bear extends Agent {
     /**
+     * Ikon elérési út
+     */
+    protected String iconPath = "";
+    /**
      * Ágnes élettartama
      */
     public static int EXPIRE = -1;
@@ -23,6 +27,13 @@ public class Bear extends Agent {
      */
     public Bear() {
         super(Bear.EXPIRE);
+    }
+
+    /**
+     * Getter - Ikon elérési út
+     */
+    public String getIconPath() {
+        return iconPath;
     }
 
     /**

@@ -16,6 +16,7 @@ import java.io.Serializable;
 import entity.Virologist;
 import game.Steppable;
 import game.Tile;
+import graphics.IIcon;
 import inventory.IInventoryVisitor;
 import inventory.IStorable;
 import inventory.ItemNotFoundException;
@@ -41,6 +42,11 @@ public abstract class Agent implements IStorable, Steppable, Comparable<Agent> ,
     public Agent(int e) {
         expire = e;
     }
+
+    /**
+     * Getter - Ikon elérési út
+     */
+    public abstract String getIconPath();
 
     /**
      * Getter - expire

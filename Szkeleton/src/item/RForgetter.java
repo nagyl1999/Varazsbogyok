@@ -18,7 +18,10 @@ import inventory.InventorySorterVisitor;
  * A felejtést okozó ágens receptje.
  */
 public class RForgetter extends Recipe {
-
+    /**
+     * Ikon elérési út
+     */
+    protected String iconPath = "";
     /**
      * A vitustáncot okozó ágenshez szükséges anyagok számai.
      */
@@ -30,6 +33,13 @@ public class RForgetter extends Recipe {
      */
     public RForgetter() {
         super(RForgetter.numberOfAminoAcid, RForgetter.numberOfNucleoid);
+    }
+
+    /**
+     * Getter - Ikon elérési út
+     */
+    public String getIconPath() {
+        return iconPath;
     }
 
     /**

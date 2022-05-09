@@ -18,9 +18,19 @@ import inventory.IInventoryVisitor;
  */
 public class Nucleoid extends Material {
     /**
+     * Ikon elérési út
+     */
+    protected String iconPath = "";
+    /**
      * A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a nukleotid típust.
      */
     public void accept(IInventoryVisitor i) {
         i.visit(this);
+    }
+    /**
+     * Getter - Ikon elérési út
+     */
+    public String getIconPath() {
+        return iconPath;
     }
 }

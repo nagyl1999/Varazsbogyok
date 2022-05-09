@@ -14,6 +14,7 @@ package entity;
 
 import game.Steppable;
 import game.Tile;
+import graphics.IIcon;
 import inventory.*;
 import item.*;
 import item.AgentComparator;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 /**
  * Egy közös entitás működését szimuláló osztály
  */
-public abstract class Virologist implements Steppable, IInventoryHolder , Serializable {
+public abstract class Virologist implements Steppable, IInventoryHolder , Serializable, IIcon {
     /**
      * Mező, amelyen a virológus jelenleg áll
      */
@@ -54,6 +55,11 @@ public abstract class Virologist implements Steppable, IInventoryHolder , Serial
         applied = new ArrayList<>();
         paralyzed = false;
     }
+
+    /**
+     * Getter - Ikon elérési út
+     */
+    public abstract String getIconPath();
 
     /**
      * Getter - Inventory

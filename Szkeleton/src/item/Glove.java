@@ -21,6 +21,10 @@ import inventory.ItemNotFoundException;
  */
 public class Glove extends Gear {
     /**
+     * Ikon elérési út
+     */
+    protected String iconPath = "";
+    /**
      * Hátralévő használatok száma
      */
     public static final int DURABILITY = 3;
@@ -30,6 +34,13 @@ public class Glove extends Gear {
      */
     public Glove() {
         super(Glove.DURABILITY);
+    }
+
+    /**
+     * Getter - Ikon elérési út
+     */
+    public String getIconPath() {
+        return iconPath;
     }
 
     /**
