@@ -53,11 +53,11 @@ public class Game {
         
         JButton vir1, bot1, bot2, agens;
         
-        vir1 = new JButton(getIcon("vir.PNG"));
+        vir1 = new JButton(getIcon("player.png"));
         
-        bot1 = new JButton(getIcon("bot.PNG"));
-        bot2 = new JButton(getIcon("bot.PNG"));
-        agens = new JButton(getIcon("teddy-bear.png")); 
+        bot1 = new JButton(getIcon("bot.png"));
+        bot2 = new JButton(getIcon("bot.png"));
+        agens = new JButton(getIcon("bear.png"));
         
         rightTopPanel.setLayout(new GridLayout(0,1));
         
@@ -82,10 +82,10 @@ public class Game {
         rightPanel.add(actionsPanel);
         
         JButton glove, jacket, bag, axe;
-        glove = new JButton(getIcon("glove.PNG"));
-        jacket = new JButton(getIcon("jacket.PNG"));
-        bag = new JButton(getIcon("bag.PNG"));
-        axe = new JButton(getIcon("axe.PNG"));
+        glove = new JButton(getIcon("glove.png"));
+        jacket = new JButton(getIcon("jacket.png"));
+        bag = new JButton(getIcon("bag.png"));
+        axe = new JButton(getIcon("unusedAxe.ong"));
         
         inventoryPanel.add(glove);
         inventoryPanel.add(jacket);
@@ -95,11 +95,11 @@ public class Game {
         
         JButton move, vaccine, rob, craft, place;
 
-        move = new JButton(getIcon("move.PNG"));       
-        vaccine = new JButton(getIcon("vaccine.PNG"));
-        rob = new JButton(getIcon("rob.PNG"));
-        craft = new JButton(getIcon("craft.PNG"));
-        place = new JButton(getIcon("place.PNG"));
+        move = new JButton(getIcon("move.png"));
+        vaccine = new JButton(getIcon("vaccine.png"));
+        rob = new JButton(getIcon("rob.png"));
+        craft = new JButton(getIcon("craft.png"));
+        place = new JButton(getIcon("drop.png"));
         
         /*
         actionsPanel.setLayout(new GridBagLayout());
