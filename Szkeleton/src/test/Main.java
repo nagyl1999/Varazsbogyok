@@ -1,5 +1,7 @@
 package test;
 
+import graphics.VarazsbogyokFrame;
+
 import java.io.IOException;
 
 /*
@@ -14,11 +16,6 @@ public class Main {
     public static SkeletonTesterMenu menu;
 
     public static void main(String[] args) {
-        try {
-			menu = new SkeletonTesterMenu();
-		} catch (IOException e){
-			e.printStackTrace();
-		}
-        menu.run();
+        VarazsbogyokFrame f = new VarazsbogyokFrame();
     }
 }
