@@ -13,6 +13,7 @@ package item;
 
 import entity.Virologist;
 import game.Tile;
+import game.Timer;
 import inventory.IInventoryVisitor;
 import inventory.ItemNotFoundException;
 import item.Agent;
@@ -51,6 +52,7 @@ public class Paralyzer extends Agent {
         this.expire--;
         if(expire == 0)
             decompose(virologist);
+        Timer.getInstance().tick();
     }
 
     /**

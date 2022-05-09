@@ -129,7 +129,6 @@ public class VarazsbogyokFrame extends JFrame {
         setSize(1000, 800);
         setResizable(false);
         setTitle("Varazsbogyok");
-        //setLayout(new BorderLayout());
 
         /* Game panel */
         gamePanel = new JPanel();

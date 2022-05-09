@@ -1,6 +1,7 @@
 package game;
 
 import graphics.VarazsbogyokFrame;
+import inventory.IStorable;
 
 import java.io.Serializable;
 
@@ -27,14 +28,21 @@ public class Timer implements Serializable {
      */
     public static ArrayList<Steppable> steppables;
     /**
+     *
+     */
+    private static Steppable active;
+
+    /**
      * Konstruktor
      */
     private Timer() {
         steppables  = new ArrayList<Steppable>();
+        active = null;
     }
     
     public static Timer getInstance() {
-    	if(timer == null) timer = new Timer();
+    	if(timer == null)
+            timer = new Timer();
     	return timer;
     }
 
@@ -43,12 +51,18 @@ public class Timer implements Serializable {
      * meghívjuk a lépést
      */
     public void tick() {
-        for (Steppable s : steppables) {
-            try {
-                s.step();
-                VarazsbogyokFrame.getInstance().redraw();
-            } catch (Exception ignored) {
-            }
+        if (active == null)
+            active = steppables.get(steppables.size() - 1);
+        int index = steppables.indexOf(active);
+        if (index + 1 == steppables.size())
+            index = 0;
+        active = steppables.get(++index);
+        try {
+            active.step();
+        } catch (Exception ignore) {
+            System.out.println("Error in steppable");
+        } finally {
+            VarazsbogyokFrame.getInstance().redraw();
         }
     }
 

@@ -1,5 +1,4 @@
-package test;
-
+import game.Game;
 import graphics.VarazsbogyokFrame;
 
 import java.io.IOException;
@@ -15,6 +14,7 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) {
+        Game.newGame();
         VarazsbogyokFrame f = VarazsbogyokFrame.getInstance();
     }
 
