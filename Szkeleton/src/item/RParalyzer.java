@@ -18,7 +18,10 @@ import inventory.InventorySorterVisitor;
  * A bénulást okozó ágens receptje.
  */
 public class RParalyzer extends Recipe {
-
+    /**
+     * Ikon elérési út
+     */
+    protected String iconPath = "";
     /**
      * A vitustáncot okozó ágenshez szükséges anyagok számai.
      */
@@ -30,6 +33,13 @@ public class RParalyzer extends Recipe {
      */
     public RParalyzer() {
         super(RParalyzer.numberOfAminoAcid, RParalyzer.numberOfNucleoid);
+    }
+
+    /**
+     * Getter - Ikon elérési út
+     */
+    public String getIconPath() {
+        return iconPath;
     }
 
     /**

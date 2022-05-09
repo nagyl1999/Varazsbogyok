@@ -25,6 +25,10 @@ public class Bag extends Gear implements IInventoryHolder {
      */
     protected Inventory inventory;
     /**
+     * Ikon elérési út
+     */
+    protected String iconPath = "";
+    /**
      * Inventory méret
      */
     public static int inventorySize = 25;
@@ -39,6 +43,13 @@ public class Bag extends Gear implements IInventoryHolder {
     public Bag() {
         super(Bag.DURABILITY);
         inventory = new Inventory(Bag.inventorySize);
+    }
+
+    /**
+     * Getter - Ikon elérési út
+     */
+    public String getIconPath() {
+        return iconPath;
     }
 
     /**

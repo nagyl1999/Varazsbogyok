@@ -7,6 +7,10 @@ import inventory.VisitorManager;
 
 public class Axe extends Gear {
     /**
+     * Ikon elérési út
+     */
+    protected String iconPath = "";
+    /**
      * Hátralévő használatok száma
      */
     public static int DURABILITY = -1;
@@ -16,6 +20,13 @@ public class Axe extends Gear {
      */
     public Axe() {
         super(Axe.DURABILITY);
+    }
+
+    /**
+     * Getter - Ikon elérési út
+     */
+    public String getIconPath() {
+        return iconPath;
     }
 
     /**
@@ -48,10 +59,11 @@ public class Axe extends Gear {
     /**
      * Amennyiben a virológus medvevírussal fertőzött
      * a kapott játékost a baltával megölhetjük
+     *
      * @param v A fertőzöttnek gondolt játékos
      */
     public void use(Virologist v) {
-        if(durability == 0 || !VisitorManager.hasBear(v))
+        if (durability == 0 || !VisitorManager.hasBear(v))
             return;
         v.die();
         durability--;

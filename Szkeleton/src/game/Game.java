@@ -14,82 +14,118 @@ package game;
 import entity.Bot;
 import entity.Player;
 import entity.Virologist;
+import graphics.VarazsbogyokFrame;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-/** Játék objektum, felelőssége a játék elindítása, időzitő beállítása. A pálya generálása. */
+/**
+ * Játék objektum, felelőssége a játék elindítása, időzitő beállítása. A pálya generálása.
+ */
 public final class Game implements Serializable {
-	/** JÃtéktér */
-	public static Map map;
-	/** A játékban a pályaelemek száma */
-	public static int tileCount = 50;
-	/** A játékban a botok száma */
-	public static int botCount = 3;
-	/** A játékban az egyes pályaelemek maximális szomszédjaa */
-	public static int maxNeighbours = 4;
-	/** A játékban az idÅőzítő*/
-	public static  Timer timer;
+    /**
+     * JÃtéktér
+     */
+    public static Map map;
+    /**
+     * A játékban a pályaelemek száma
+     */
+    public static int tileCount = 50;
+    /**
+     * A játékban a botok száma
+     */
+    public static int botCount = 3;
+    /**
+     * A játékban az egyes pályaelemek maximális szomszédjaa
+     */
+    public static int maxNeighbours = 4;
+    /**
+     * A játékban az idÅőzítő
+     */
+    public static Timer timer;
+    /**
+     * Aktív virológus
+     */
+    public static Virologist activeVirologist;
 
-	/** Konstruktor */
-	public Game(){}
-	/**pálya és timer létrehozása.  */
-	public static void newGame() {
-		map = new Map();
-		timer = timer.getInstance();
-	}
-	
-	/** Pályagenerálás, beállít egy véletenszerű pályát.*/
-	public static void generateRandomMap() {
-		ArrayList<Integer> neighbours = new ArrayList<Integer>();
-		for (int i = 0; i < tileCount; i++) map.addTile(randomTile());
-		for (int i = 0; i < tileCount; i++) {
-			neighbours.clear();
-			//itt felépitjuk az esetleges szomszédok listáját, kivéve a soron lévő elemet 
-			for (int j = 0; j < tileCount; j++) if(i != j) neighbours.add(j);
-			/* Itt fogjuk a szomszédokat beállitani, egy pályaelemnek legfeljebb
-			 * maxNeighbours szomszéja lehet, ezutÃ¡n hozzÃ¡adunk a neighbours listÃ¡bol egyet,
-			 * miutÃ¡n hozzÃ¡adtuk kivesszÃ¼k a neighbours listÃ¡bol az elemet, igy a listÃ¡ban
-			 * csak olyan elemek maradnak amik mÃ©g nem szomszÃ©dosak az adott pÃ¡lyaelemmek*/
-			Random r = new Random();
-			for (int j = 0; j < r.nextInt(maxNeighbours); j++) {
-				int n = r.nextInt(tileCount-j-1);
-				map.getTiles().get(i).addNeighbour(map.getTiles().get(n));
-				neighbours.remove(n);
-				}
-			}
-		//játékos létrehozása és hozzáadaása a léptethető osztályhoz
-		map.getTiles().get(0).addVirologist(new Player());
-		timer.addSteppable(map.getTiles().get(0).getVirologist().get(0));
-		//botok létrehozása és hozzáadása a léptethető dolgokhoz
-		for (int i = 1; i <= botCount; i++) {
-			map.getTiles().get(i).addVirologist(new Bot());
-			timer.addSteppable(map.getTiles().get(i).getVirologist().get(0));
-		}
-	} 
+    /**
+     * Konstruktor
+     */
+    public Game() {
+    }
 
-	/** Játékból való kilépés */
-	public static void exitGame() {
-		System.out.println("A jÃ¡tÃ©knak vÃ©ge :/");
-		
-	}
-	
-	/** Egy virológus megnyerte a játékot */
-	public static void winGame(Virologist v) {
-		System.out.println("A játékot " + v.toString() + " nyerte");
-	}
+    /**
+     * pálya és timer létrehozása.
+     */
+    public static void newGame() {
+        map = new Map();
+        timer = timer.getInstance();
+    }
 
-	/** Egy véletlenszeru pályaelemet generál */
-	public static Tile randomTile(){
-		Random r = new Random();
-		int n = r.nextInt(4);
-		switch(n){
-			case 0: return new SafeLaboratory();
-			case 1: return new Safehouse();
-			case 2: return new Storage();
-			case 3: return new BearLaboratory();
-			default: return new Town();
-		}
-	}
+    /**
+     * Pályagenerálás, beállít egy véletenszerű pályát.
+     */
+    public static void generateRandomMap() {
+        ArrayList<Integer> neighbours = new ArrayList<Integer>();
+        for (int i = 0; i < tileCount; i++) map.addTile(randomTile());
+        for (int i = 0; i < tileCount; i++) {
+            neighbours.clear();
+            //itt felépitjuk az esetleges szomszédok listáját, kivéve a soron lévő elemet
+            for (int j = 0; j < tileCount; j++) if (i != j) neighbours.add(j);
+            /* Itt fogjuk a szomszédokat beállitani, egy pályaelemnek legfeljebb
+             * maxNeighbours szomszéja lehet, ezutÃ¡n hozzÃ¡adunk a neighbours listÃ¡bol egyet,
+             * miutÃ¡n hozzÃ¡adtuk kivesszÃ¼k a neighbours listÃ¡bol az elemet, igy a listÃ¡ban
+             * csak olyan elemek maradnak amik mÃ©g nem szomszÃ©dosak az adott pÃ¡lyaelemmek*/
+            Random r = new Random();
+            for (int j = 0; j < r.nextInt(maxNeighbours); j++) {
+                int n = r.nextInt(tileCount - j - 1);
+                map.getTiles().get(i).addNeighbour(map.getTiles().get(n));
+                neighbours.remove(n);
+            }
+        }
+        //játékos létrehozása és hozzáadaása a léptethető osztályhoz
+        map.getTiles().get(0).addVirologist(new Player());
+        timer.addSteppable(map.getTiles().get(0).getVirologist().get(0));
+        //botok létrehozása és hozzáadása a léptethető dolgokhoz
+        for (int i = 1; i <= botCount; i++) {
+            map.getTiles().get(i).addVirologist(new Bot());
+            timer.addSteppable(map.getTiles().get(i).getVirologist().get(0));
+        }
+    }
+
+    /**
+     * Játékból való kilépés
+     */
+    public static void exitGame() {
+        System.out.println("A jÃ¡tÃ©knak vÃ©ge :/");
+
+    }
+
+    /**
+     * Egy virológus megnyerte a játékot
+     */
+    public static void winGame(Virologist v) {
+        System.out.println("A játékot " + v.toString() + " nyerte");
+    }
+
+    /**
+     * Egy véletlenszeru pályaelemet generál
+     */
+    public static Tile randomTile() {
+        Random r = new Random();
+        int n = r.nextInt(4);
+        switch (n) {
+            case 0:
+                return new SafeLaboratory();
+            case 1:
+                return new Safehouse();
+            case 2:
+                return new Storage();
+            case 3:
+                return new BearLaboratory();
+            default:
+                return new Town();
+        }
+    }
 }

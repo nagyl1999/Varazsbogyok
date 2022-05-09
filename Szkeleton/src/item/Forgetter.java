@@ -21,6 +21,10 @@ import item.Agent;
  */
 public class Forgetter extends Agent {
     /**
+     * Ikon elérési út
+     */
+    protected String iconPath = "";
+    /**
      * Ágnes élettartama
      */
     public static int EXPIRE = 12;
@@ -30,6 +34,13 @@ public class Forgetter extends Agent {
      */
     public Forgetter() {
         super(Forgetter.EXPIRE);
+    }
+
+    /**
+     * Getter - Ikon elérési út
+     */
+    public String getIconPath() {
+        return iconPath;
     }
 
     /**

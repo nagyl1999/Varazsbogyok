@@ -1,5 +1,7 @@
 package game;
 
+import graphics.VarazsbogyokFrame;
+
 import java.io.Serializable;
 
 /*
@@ -44,6 +46,7 @@ public class Timer implements Serializable {
         for (Steppable s : steppables) {
             try {
                 s.step();
+                VarazsbogyokFrame.getInstance().redraw();
             } catch (Exception ignored) {
             }
         }

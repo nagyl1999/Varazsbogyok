@@ -13,9 +13,9 @@ import java.io.IOException;
 */
 
 public class Main {
-    public static SkeletonTesterMenu menu;
 
     public static void main(String[] args) {
-        VarazsbogyokFrame f = new VarazsbogyokFrame();
+        VarazsbogyokFrame f = VarazsbogyokFrame.getInstance();
     }
+
 }

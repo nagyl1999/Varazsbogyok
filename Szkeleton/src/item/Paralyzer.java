@@ -22,6 +22,10 @@ import item.Agent;
  */
 public class Paralyzer extends Agent {
     /**
+     * Ikon elérési út
+     */
+    protected String iconPath = "";
+    /**
      * Ágnes élettartama
      */
     public static int EXPIRE = 8;
@@ -31,6 +35,13 @@ public class Paralyzer extends Agent {
      */
     public Paralyzer() {
         super(Paralyzer.EXPIRE);
+    }
+
+    /**
+     * Getter - Ikon elérési út
+     */
+    public String getIconPath() {
+        return iconPath;
     }
 
     /**

@@ -24,6 +24,10 @@ public class Jacket extends Gear {
      */
     public double success = 0.823;
     /**
+     * Ikon elérési út
+     */
+    protected String iconPath = "";
+    /**
      * Hátralévő használatok száma
      */
     public static int DURABILITY = -1;
@@ -33,6 +37,13 @@ public class Jacket extends Gear {
      */
     public Jacket() {
         super(Jacket.DURABILITY);
+    }
+
+    /**
+     * Getter - Ikon elérési út
+     */
+    public String getIconPath() {
+        return iconPath;
     }
 
     /**

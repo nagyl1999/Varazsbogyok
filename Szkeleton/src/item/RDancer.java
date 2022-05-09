@@ -18,7 +18,10 @@ import inventory.InventorySorterVisitor;
  * A vitustáncot okozó ágens receptje.
  */
 public class RDancer extends Recipe {
-
+    /**
+     * Ikon elérési út
+     */
+    protected String iconPath = "";
     /**
      * A vitustáncot okozó ágenshez szükséges anyagok számai.
      */
@@ -30,6 +33,13 @@ public class RDancer extends Recipe {
      */
     public RDancer() {
         super(RDancer.numberOfAminoAcid, RDancer.numberOfNucleoid);
+    }
+
+    /**
+     * Getter - Ikon elérési út
+     */
+    public String getIconPath() {
+        return iconPath;
     }
 
     /**

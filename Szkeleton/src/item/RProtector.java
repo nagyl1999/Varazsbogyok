@@ -18,7 +18,10 @@ import inventory.InventorySorterVisitor;
  * A védelem  ágens receptje.
  */
 public class RProtector extends Recipe {
-
+    /**
+     * Ikon elérési út
+     */
+    protected String iconPath = "";
     /**
      * A vitustáncot okozó ágenshez szükséges anyagok számai.
      */
@@ -30,6 +33,13 @@ public class RProtector extends Recipe {
      */
     public RProtector() {
         super(RProtector.numberOfAminoAcid, RProtector.numberOfNucleoid);
+    }
+
+    /**
+     * Getter - Ikon elérési út
+     */
+    public String getIconPath() {
+        return iconPath;
     }
 
     /**

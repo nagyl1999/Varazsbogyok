@@ -13,6 +13,7 @@ import java.io.Serializable;
 
 */
 
+import graphics.IIcon;
 import inventory.IInventoryVisitor;
 import inventory.IStorable;
 import inventory.InventorySorterVisitor;
@@ -37,6 +38,11 @@ public abstract class Recipe implements IStorable , Serializable {
         aminoacid = a;
         nucleoid = n;
     }
+
+    /**
+     * Getter - Ikon elérési út
+     */
+    public abstract String getIconPath();
 
     /**
      * Getter - aminosav
