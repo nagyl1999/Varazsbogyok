@@ -60,7 +60,9 @@ public final class Game implements Serializable {
      */
     public static void newGame() {
         map = new Map();
-        timer = timer.getInstance();
+        // TODO - map generálás
+        timer = Timer.getInstance();
+        //timer.tick();
     }
 
     /**

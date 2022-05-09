@@ -2,6 +2,7 @@ package item;
 
 import entity.Virologist;
 import game.Tile;
+import game.Timer;
 import inventory.IInventoryVisitor;
 import inventory.Inventory;
 import inventory.ItemNotFoundException;
@@ -97,6 +98,7 @@ public class Bear extends Agent {
      * A medvevírus nem romlik meg
      */
     public void step() {
+        Timer.getInstance().tick();
     }
 
     /**

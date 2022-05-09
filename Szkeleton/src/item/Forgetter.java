@@ -13,6 +13,7 @@ package item;
 
 import entity.Virologist;
 import game.Tile;
+import game.Timer;
 import inventory.*;
 import item.Agent;
 
@@ -50,6 +51,7 @@ public class Forgetter extends Agent {
         this.expire--;
         if(expire == 0)
             decompose(virologist);
+        Timer.getInstance().tick();
     }
 
     /**
