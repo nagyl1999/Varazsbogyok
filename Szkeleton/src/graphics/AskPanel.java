@@ -21,11 +21,12 @@ public class AskPanel extends JPanel {
      * Komponensek létrehozása
      */
     private void init() {
+
         JButton ok, cancel;
         JLabel tile, bot;
         JSpinner tileTF, botTF;
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridBagLayout());
+        setLayout(new GridBagLayout());
+        setPreferredSize(new Dimension(1000, 800));
 
         tile = new JLabel("<html> <div style='text-align:center;'> Hány mezõ legyen <br> a pályán: </div></html>", SwingConstants.CENTER);
         tile.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
@@ -40,6 +41,7 @@ public class AskPanel extends JPanel {
 
         cancel = new JButton("Cancel");
         cancel.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
+        cancel.addActionListener(e -> VarazsbogyokFrame.getInstance().show("menu"));
 
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -48,29 +50,29 @@ public class AskPanel extends JPanel {
 
         c.gridx = 0;
         c.gridy = 0;
-        panel.add(tile,c);
+        add(tile,c);
 
         c.gridx = 1;
         c.gridy = 0;
-        panel.add(tileTF,c);
+        add(tileTF,c);
 
         c.gridx = 0;
         c.gridy = 1;
-        panel.add(bot,c);
+        add(bot,c);
 
         c.gridx = 1;
         c.gridy = 1;
-        panel.add(botTF,c);
+        add(botTF,c);
 
         c.gridx = 0;
         c.gridy = 2;
-        panel.add(ok,c);
+        add(ok,c);
 
         c.gridx = 1;
         c.gridy = 2;
-        panel.add(cancel,c);
+        add(cancel,c);
 
-        panel.setBackground(Color.pink);
+        setBackground(Color.pink);
         setVisible(true);
     }
 

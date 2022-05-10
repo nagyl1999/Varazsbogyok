@@ -70,7 +70,7 @@ public class MenuPanel extends JPanel {
 
         newGameBtn.setBackground(new Color(255, 0, 82));
         newGameBtn.setBorder(BorderFactory.createLineBorder(new Color(191, 255, 0), 10));
-        newGameBtn.addActionListener(e -> VarazsbogyokFrame.getInstance().show("jatek"));
+        newGameBtn.addActionListener(e -> VarazsbogyokFrame.getInstance().show("adat"));
 
         loadGameBtn.setBackground(new Color(255, 0, 82));
         loadGameBtn.setBorder(BorderFactory.createLineBorder(new Color(191, 255, 0), 10));
