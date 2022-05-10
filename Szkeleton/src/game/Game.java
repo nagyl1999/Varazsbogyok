@@ -143,9 +143,6 @@ public final class Game implements Serializable {
                 if(Math.abs(t1-t2)>linethickness) map.getTiles().get(choosen).getPolygon().addPoint(x, y);
     		}
     	}
-        System.out.println(map.getTiles().size());
-        System.out.println(Arrays.toString(map.getTiles().get(10).getPolygon().xpoints));
-        System.out.println(Arrays.toString(map.getTiles().get(10).getPolygon().ypoints));
     }
 
     /**
