@@ -30,13 +30,12 @@ public class Game {
 	}
 	
 	public Game() {
-		
-		System.out.println("sd");
+
 		
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Game");
-		frame.setSize(800,800);
+		frame.setSize(1000,800);
 		
 		JPanel mainPanel = new JPanel();
 		
@@ -82,10 +81,10 @@ public class Game {
         rightPanel.add(actionsPanel);
         
         JButton glove, jacket, bag, axe;
-        glove = new JButton(getIcon("glove.png"));
+        glove = new JButton(getIcon("glove3.png"));
         jacket = new JButton(getIcon("jacket.png"));
         bag = new JButton(getIcon("bag.png"));
-        axe = new JButton(getIcon("unusedAxe.ong"));
+        axe = new JButton(getIcon("unusedAxe.png"));
         
         inventoryPanel.add(glove);
         inventoryPanel.add(jacket);
