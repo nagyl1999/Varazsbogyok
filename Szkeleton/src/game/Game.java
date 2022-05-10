@@ -19,6 +19,7 @@ import graphics.VarazsbogyokFrame;
 import java.awt.Color;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Random;
 /**
@@ -32,7 +33,7 @@ public final class Game implements Serializable {
     /**
      * A játékban a pályaelemek száma
      */
-    public static int tileCount = 50;
+    public static int tileCount = 10;
     /**
      * A játékban a botok száma
      */
@@ -52,7 +53,7 @@ public final class Game implements Serializable {
     
     public static int minDistance = 20;
     
-    public static int linethickness = 2;
+    public static int linethickness = 5;
     
 
     /**
@@ -66,28 +67,36 @@ public final class Game implements Serializable {
      */
     public static void newGame() {
         map = new Map();
-        // TODO - map generálás
+        generateRandomMap();
         timer = Timer.getInstance();
         //timer.tick();
     }
     
     public static void randomTilePoints() {
     	//TODO
+        int x, y;
     	ArrayList<Vec2> exceptions = new ArrayList<>();
-        int x = 0;
-        int y = 0;
-        for (int i =0; i< tileCount;i++){
+        for (int i =0; i< tileCount;i++) {
             do{
-                x = randInt(0, (int)VarazsbogyokFrame.getInstance().getSize().getHeight()-20,2);
-                y = randInt(0,(int)VarazsbogyokFrame.getInstance().getSize().getWidth()-20,2);
+                double dx = VarazsbogyokFrame.getInstance().getSize().getHeight();
+                double dy = VarazsbogyokFrame.getInstance().getSize().getWidth();
+                x = randInt(0, (int)dx, 2);
+                y = randInt(0, (int)dy, 2);
             }
-            while(exceptions.contains(x) || exceptions.contains(y) || accept(new Vec2(x,y)));
+            while(equals(exceptions, new Vec2(x, y)) || accept(new Vec2(x,y)));
             exceptions.add(new Vec2(x,y));
-            map.addTile(randomTile());
-            map.getTiles().get(i).setX(x);
-            map.getTiles().get(i).setY(y);
-        
+            Tile t = randomTile();
+            t.setX(x);
+            t.setY(y);
+            map.addTile(t);
         }
+    }
+
+    public static boolean equals(ArrayList<Vec2> e, Vec2 a) {
+        for (Vec2 v : e)
+            if (v.getX() == a.getX() && v.getY() == a.getY())
+                return true;
+        return false;
     }
     
     public static boolean accept(Vec2 a){
@@ -105,18 +114,28 @@ public final class Game implements Serializable {
     public static void generateRandomMap() {
     	//TODO
     	randomTilePoints();
-    	for(int x = 0; x < 50;x++) {
-    		for(int y =0; y <50;y++ ) {
-    			double distance = 60;
+    	for(int x = 0; x < 500;x++) {
+    		for(int y =0; y < 800;y++ ) {
+    			double distance = 800*500;
     			int choosen = 0;
     			int choosen2 = 0;
     			for(int i = 0; i < tileCount;i++) {
     				double temp = new Vec2(x, y).getDistance(new Vec2(map.getTiles().get(i).getX(),map.getTiles().get(i).getY()));
                     if(temp < distance){
                         distance = temp;
-                        choosen2 = choosen;
-                        choosen = i;}
+                        choosen = i;
+                    }
     			}
+                distance = 800*500;
+                for(int i = 0; i < tileCount;i++) {
+                    if (i == choosen)
+                        continue;
+                    double temp = new Vec2(x, y).getDistance(new Vec2(map.getTiles().get(i).getX(),map.getTiles().get(i).getY()));
+                    if(temp < distance){
+                        distance = temp;
+                        choosen2 = i;
+                    }
+                }
     			
     			double t1 = new Vec2(x,y).getDistance( new Vec2(map.getTiles().get(choosen).getX(),map.getTiles().get(choosen).getY() ));
                 double t2 = new Vec2(x,y).getDistance( new Vec2(map.getTiles().get(choosen2).getX(),map.getTiles().get(choosen2).getY() ));
@@ -124,6 +143,9 @@ public final class Game implements Serializable {
                 if(Math.abs(t1-t2)>linethickness) map.getTiles().get(choosen).getPolygon().addPoint(x, y);
     		}
     	}
+        System.out.println(map.getTiles().size());
+        System.out.println(Arrays.toString(map.getTiles().get(10).getPolygon().xpoints));
+        System.out.println(Arrays.toString(map.getTiles().get(10).getPolygon().ypoints));
     }
 
     /**

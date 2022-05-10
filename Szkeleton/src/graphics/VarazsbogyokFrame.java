@@ -133,22 +133,20 @@ public class VarazsbogyokFrame extends JFrame {
         setSize(1000, 800);
         setResizable(false);
         setTitle("Varazsbogyok");
+        setLayout(new GridLayout(0, 1));
 
         /* Game panel */
         gamePanel = new JPanel();
         gamePanel.setLayout(new GridLayout(0, 2));
 
         /* Map panel */
-        mapPanel = new JPanel();
-        mapPanel.setPreferredSize(new Dimension(500, 800));
-        setMapPanel();
-        add(mapPanel);
+        mapPanel = new VoronoiPanel();
+        mapPanel.setBackground(Color.BLACK);
 
         /* Segédpanel */
         dataPanel = new JPanel();
         dataPanel.setPreferredSize(new Dimension(500, 800));
         dataPanel.setLayout(new BoxLayout(dataPanel, BoxLayout.Y_AXIS));
-        add(dataPanel);
 
         /* Virológus panel */
         virologistPanel = new JPanel(new BorderLayout());
@@ -254,7 +252,7 @@ public class VarazsbogyokFrame extends JFrame {
 
     /* Grafikus elemek */
     private JPanel gamePanel;
-    private JPanel mapPanel;
+    private VoronoiPanel mapPanel;
     private JPanel dataPanel;
     private JPanel inventoryPanel;
     private JPanel virologistPanel;

@@ -16,6 +16,7 @@ public class ReferenceButton extends JButton {
      * Konstruktor
      */
     public ReferenceButton(IIcon r) {
+        super();
         reference = r;
         init();
     }
