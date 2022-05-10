@@ -165,93 +165,51 @@ public class VarazsbogyokFrame extends JFrame {
 
         /* Move gomb */
         JButton mb = new JButton();
-        mb.setIcon(new ImageIcon("resource\\move.png"));
+        mb.setIcon(new ImageIcon("Szkeleton/resources/move.jpg"));
         mb.setPreferredSize(new Dimension(50, 50));
         mb.addActionListener(mc);
         mb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        mb.addActionListener( new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                //activeVirologist.move();
-            }
-        });
+
 
         /* Use gomb */
         JButton ub = new JButton();
-        ub.setIcon(new ImageIcon("resource\\use.png"));
+        ub.setIcon(new ImageIcon("Szkeleton/resources/use.png"));
         ub.setPreferredSize(new Dimension(50, 50));
         ub.addActionListener(new UseController());
         ub.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        ub.addActionListener( new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
 
-            }
-        });
 
         /* Rob gomb */
         JButton rb = new JButton();
-        rb.setIcon(new ImageIcon("resource\\rob.png"));
+        rb.setIcon(new ImageIcon("Szkeleton/resources/rob.jpg"));
         rb.setPreferredSize(new Dimension(50, 50));
         rb.addActionListener(new RobController());
         rb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        rb.addActionListener( new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
 
-            }
-        });
 
         /* Craft gomb */
         JButton cb = new JButton();
-        cb.setIcon(new ImageIcon("resource\\craft.png"));
+        cb.setIcon(new ImageIcon("Szkeleton/resources/craft.jpg"));
         cb.setPreferredSize(new Dimension(50, 50));
         cb.addActionListener(new CraftController());
         cb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        cb.addActionListener( new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
 
-            }
-        });
 
         /* Drop gomb */
         JButton db = new JButton();
-        db.setIcon(new ImageIcon("resource\\drop.png"));
+        db.setIcon(new ImageIcon("Szkeleton/resources/drop.jpg"));
         db.setPreferredSize(new Dimension(50, 50));
         db.addActionListener(new DropController());
         db.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        db.addActionListener( new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
 
-            }
-        });
 
         /* Körlépés gomb */
         JButton sb = new JButton();
-        sb.setIcon(new ImageIcon("resource\\arrow.png"));
+        sb.setIcon(new ImageIcon("Szkeleton/resources/arrow.png"));
         sb.setPreferredSize(new Dimension(50, 50));
         sb.addActionListener(new StepController());
         sb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        sb.addActionListener( new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                
-            }
-        });
+        
 
 
         /* Parancsgombok hozzáadása */
