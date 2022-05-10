@@ -16,6 +16,9 @@ import inventory.Inventory;
 import inventory.ItemNotFoundException;
 import inventory.NotEnoughSpaceException;
 import item.*;
+
+import java.awt.Color;
+import java.awt.Polygon;
 import java.util.Random;
 
 /** Raktár mező, a rálépő virológusnak egy
@@ -51,5 +54,29 @@ public class Storage extends Tile {
 		if(n == 0)inventory.addItem(new Aminoacid());
 		if(n == 1)inventory.addItem(new Nucleoid());
 		}
+	}
+
+	@Override
+	public int getX() {
+		// TODO Auto-generated method stub
+		return posx;
+	}
+
+	@Override
+	public int getY() {
+		// TODO Auto-generated method stub
+		return posy;
+	}
+
+	@Override
+	public Color getColor() {
+		// TODO Auto-generated method stub
+		return c;
+	}
+
+	@Override
+	public Polygon getPolygon() {
+		// TODO Auto-generated method stub
+		return  polly;
 	}
 }

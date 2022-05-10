@@ -120,6 +120,10 @@ public class VarazsbogyokFrame extends JFrame {
         }
         inventoryPanel.add(ip, BorderLayout.CENTER);
     }
+    
+    private void setMapPanel() {
+    	//Game.generateRandomMap();
+    }
 
     /**
      * Komponsensek létrehozása
@@ -137,6 +141,7 @@ public class VarazsbogyokFrame extends JFrame {
         /* Map panel */
         mapPanel = new JPanel();
         mapPanel.setPreferredSize(new Dimension(500, 800));
+        setMapPanel();
         add(mapPanel);
 
         /* Segédpanel */

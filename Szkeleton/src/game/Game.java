@@ -16,10 +16,11 @@ import entity.Player;
 import entity.Virologist;
 import graphics.VarazsbogyokFrame;
 
+import java.awt.Color;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
-
+import java.util.Random;
 /**
  * Játék objektum, felelőssége a játék elindítása, időzitő beállítása. A pálya generálása.
  */
@@ -48,6 +49,11 @@ public final class Game implements Serializable {
      * Aktív virológus
      */
     public static Virologist activeVirologist;
+    
+    public static int minDistance = 20;
+    
+    public static int linethickness = 2;
+    
 
     /**
      * Konstruktor
@@ -64,11 +70,66 @@ public final class Game implements Serializable {
         timer = Timer.getInstance();
         //timer.tick();
     }
+    
+    public static void randomTilePoints() {
+    	//TODO
+    	ArrayList<Vec2> exceptions = new ArrayList<>();
+        int x = 0;
+        int y = 0;
+        for (int i =0; i< tileCount;i++){
+            do{
+                x = randInt(0, (int)VarazsbogyokFrame.getInstance().getSize().getHeight()-20,2);
+                y = randInt(0,(int)VarazsbogyokFrame.getInstance().getSize().getWidth()-20,2);
+            }
+            while(exceptions.contains(x) || exceptions.contains(y) || accept(new Vec2(x,y)));
+            exceptions.add(new Vec2(x,y));
+            map.addTile(randomTile());
+            map.getTiles().get(i).setX(x);
+            map.getTiles().get(i).setY(y);
+        
+        }
+    }
+    
+    public static boolean accept(Vec2 a){
+        for(int i = 0;i< map.getTiles().size();i++){
+            if(a.getDistance(new Vec2(map.getTiles().get(i).getX(),map.getTiles().get(i).getY())) <minDistance) return true;
+        }
+        return false;
+    }
+    public static int randInt(int first, int last, int step) {
+    	//TODO
+        int nsteps = (last+1-first) / step;
+        return first + step*(int)(nsteps*Math.random());
+    }
+    
+    public static void generateRandomMap() {
+    	//TODO
+    	randomTilePoints();
+    	for(int x = 0; x < 50;x++) {
+    		for(int y =0; y <50;y++ ) {
+    			double distance = 60;
+    			int choosen = 0;
+    			int choosen2 = 0;
+    			for(int i = 0; i < tileCount;i++) {
+    				double temp = new Vec2(x, y).getDistance(new Vec2(map.getTiles().get(i).getX(),map.getTiles().get(i).getY()));
+                    if(temp < distance){
+                        distance = temp;
+                        choosen2 = choosen;
+                        choosen = i;}
+    			}
+    			
+    			double t1 = new Vec2(x,y).getDistance( new Vec2(map.getTiles().get(choosen).getX(),map.getTiles().get(choosen).getY() ));
+                double t2 = new Vec2(x,y).getDistance( new Vec2(map.getTiles().get(choosen2).getX(),map.getTiles().get(choosen2).getY() ));
+
+                if(Math.abs(t1-t2)>linethickness) map.getTiles().get(choosen).getPolygon().addPoint(x, y);
+    		}
+    	}
+    }
 
     /**
      * Pályagenerálás, beállít egy véletenszerű pályát.
      */
-    public static void generateRandomMap() {
+    public static void generateRandomMap2() {
         ArrayList<Integer> neighbours = new ArrayList<Integer>();
         for (int i = 0; i < tileCount; i++) map.addTile(randomTile());
         for (int i = 0; i < tileCount; i++) {
@@ -119,15 +180,25 @@ public final class Game implements Serializable {
         int n = r.nextInt(4);
         switch (n) {
             case 0:
-                return new SafeLaboratory();
+            	SafeLaboratory safelaboratory = new SafeLaboratory();
+            	safelaboratory.setColor(Color.red);
+                return  safelaboratory;
             case 1:
-                return new Safehouse();
+            	Safehouse safehouse = new Safehouse();
+            	safehouse.setColor(Color.blue);
+                return safehouse;
             case 2:
-                return new Storage();
+            	Storage storage = new Storage();
+            	storage.setColor(Color.yellow);
+                return  storage;
             case 3:
-                return new BearLaboratory();
+            	BearLaboratory bearlaboratory = new BearLaboratory();
+                bearlaboratory.setColor(Color.red);
+            	return bearlaboratory;
             default:
-                return new Town();
+            	Town town = new Town();
+            	town.setColor(Color.green);
+                return town;
         }
     }
 }

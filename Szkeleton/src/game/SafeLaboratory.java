@@ -1,5 +1,7 @@
 package game;
 
+import java.awt.Color;
+import java.awt.Polygon;
 import java.util.Random;
 
 import entity.Virologist;
@@ -52,5 +54,25 @@ public class SafeLaboratory extends Laboratory {
 					inventory.addItem(new RProtector());
 			}
 		}
+	}
+	@Override
+	public int getX() {
+		// TODO Auto-generated method stub
+		return posx;
+	}
+	@Override
+	public int getY() {
+		// TODO Auto-generated method stub
+		return posy;
+	}
+	@Override
+	public Color getColor() {
+		// TODO Auto-generated method stub
+		return c;
+	}
+	@Override
+	public Polygon getPolygon() {
+		// TODO Auto-generated method stub
+		return polly;
 	}
 }

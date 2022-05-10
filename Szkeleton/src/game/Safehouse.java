@@ -16,6 +16,9 @@ import inventory.Inventory;
 import inventory.ItemNotFoundException;
 import inventory.NotEnoughSpaceException;
 import item.*;
+
+import java.awt.Color;
+import java.awt.Polygon;
 import java.util.Random;
 
 /** Óvóhely típusú mező, védőfelszerelést
@@ -60,5 +63,29 @@ public class Safehouse extends Tile {
 					inventory.addItem(new Axe());
 			}
 		}
+	}
+
+	@Override
+	public int getX() {
+		// TODO Auto-generated method stub
+		return posx;
+	}
+
+	@Override
+	public int getY() {
+		// TODO Auto-generated method stub
+		return posy;
+	}
+
+	@Override
+	public Color getColor() {
+		// TODO Auto-generated method stub
+		return c;
+	}
+
+	@Override
+	public Polygon getPolygon() {
+		// TODO Auto-generated method stub
+		return polly;
 	}
 }

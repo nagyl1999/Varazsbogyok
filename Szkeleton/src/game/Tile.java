@@ -12,9 +12,12 @@ package game;
 */
 
 import entity.Virologist;
+import graphics.IDrawable;
 import inventory.IInventoryHolder;
 import inventory.NotEnoughSpaceException;
 
+import java.awt.Color;
+import java.awt.Polygon;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -23,7 +26,7 @@ import inventory.Inventory;
 /**
  * Mező ősosztály
  */
-public abstract class Tile implements IInventoryHolder, Serializable {
+public abstract class Tile implements IInventoryHolder, Serializable , IDrawable {
     /**
      * A mezőn tartózkodó virológusok
      */
@@ -34,6 +37,10 @@ public abstract class Tile implements IInventoryHolder, Serializable {
     protected ArrayList<Tile> neighbours;
     protected Inventory inventory;
     private int inventorySize = 3;
+    protected Color c;
+    protected Polygon polly;
+    protected int posx;
+    protected int posy;
 
     /**
      * Konstruktor
@@ -42,6 +49,10 @@ public abstract class Tile implements IInventoryHolder, Serializable {
         virologists = new ArrayList<Virologist>();
         neighbours = new ArrayList<Tile>();
         inventory = new Inventory(inventorySize);
+        c = Color.black;
+        polly = new Polygon();
+        posx = 0;
+        posy = 0;
         try {
             fillInventory();
         } catch (Exception ignore) {
@@ -82,6 +93,34 @@ public abstract class Tile implements IInventoryHolder, Serializable {
      */
     public void addNeighbour(Tile t) {
         neighbours.add(t);
+    }
+    
+    /**
+     * Szomszéd hozzáadása
+     */
+    public void setColor(Color c) {
+        this.c = c;
+    }
+    
+    /**
+     * Szomszéd hozzáadása
+     */
+    public void setPolly(Polygon p) {
+        polly = p;
+    }
+    
+    /**
+     * Szomszéd hozzáadása
+     */
+    public void setX(int x) {
+        posx = x;
+    }
+    
+    /**
+     * Szomszéd hozzáadása
+     */
+    public void setY(int y) {
+        posy = y;
     }
 
     /**
