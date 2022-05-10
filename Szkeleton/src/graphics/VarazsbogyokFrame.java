@@ -169,6 +169,14 @@ public class VarazsbogyokFrame extends JFrame {
         mb.setPreferredSize(new Dimension(50, 50));
         mb.addActionListener(mc);
         mb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        mb.addActionListener( new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                //activeVirologist.move();
+            }
+        });
 
         /* Use gomb */
         JButton ub = new JButton();
@@ -176,6 +184,14 @@ public class VarazsbogyokFrame extends JFrame {
         ub.setPreferredSize(new Dimension(50, 50));
         ub.addActionListener(new UseController());
         ub.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        ub.addActionListener( new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+
+            }
+        });
 
         /* Rob gomb */
         JButton rb = new JButton();
@@ -183,6 +199,14 @@ public class VarazsbogyokFrame extends JFrame {
         rb.setPreferredSize(new Dimension(50, 50));
         rb.addActionListener(new RobController());
         rb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        rb.addActionListener( new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+
+            }
+        });
 
         /* Craft gomb */
         JButton cb = new JButton();
@@ -190,6 +214,14 @@ public class VarazsbogyokFrame extends JFrame {
         cb.setPreferredSize(new Dimension(50, 50));
         cb.addActionListener(new CraftController());
         cb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        cb.addActionListener( new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+
+            }
+        });
 
         /* Drop gomb */
         JButton db = new JButton();
@@ -197,6 +229,14 @@ public class VarazsbogyokFrame extends JFrame {
         db.setPreferredSize(new Dimension(50, 50));
         db.addActionListener(new DropController());
         db.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        db.addActionListener( new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+
+            }
+        });
 
         /* Körlépés gomb */
         JButton sb = new JButton();
@@ -204,6 +244,14 @@ public class VarazsbogyokFrame extends JFrame {
         sb.setPreferredSize(new Dimension(50, 50));
         sb.addActionListener(new StepController());
         sb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        sb.addActionListener( new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                
+            }
+        });
 
 
         /* Parancsgombok hozzáadása */
