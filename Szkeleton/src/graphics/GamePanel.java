@@ -36,21 +36,33 @@ public class GamePanel extends JPanel {
     }
 
     /**
+     * Képfrissítés
+     */
+    public void redraw() {
+        virologistPanel.invalidate();
+        inventoryPanel.invalidate();
+        virologistPanel.repaint();
+        inventoryPanel.repaint();
+    }
+
+    /**
      * Aktív mező virológusainak beállítása
      */
     public void setVirologistPanel() {
         /* Virológusok */
+        virologistPanel.removeAll();
         ArrayList<Virologist> virologists = Game.activeVirologist.getTile().getVirologist();
-        JPanel vp = new JPanel(new FlowLayout());
+        JPanel vp = new JPanel(new FlowLayout(FlowLayout.LEFT));
         for (Virologist v : virologists) {
             ReferenceButton temp = new ReferenceButton(v);
-            temp.addActionListener(ie);
+            temp.addActionListener(ve);
+            vp.add(temp);
         }
         virologistPanel.add(vp, BorderLayout.NORTH);
 
         /* Effektek */
         ArrayList<Agent> agents = Game.activeVirologist.getApplied();
-        JPanel ap = new JPanel(new FlowLayout());
+        JPanel ap = new JPanel(new FlowLayout(FlowLayout.LEFT));
         for (Agent a : agents)
             ap.add(new ReferenceButton(a));
         virologistPanel.add(ap, BorderLayout.SOUTH);
@@ -60,12 +72,14 @@ public class GamePanel extends JPanel {
      * Aktív virológus inventory-jának listázása
      */
     public void setInventoryPanel() {
+        inventoryPanel.removeAll();
         Inventory i = Game.activeVirologist.getInventory();
         i.reset();
-        JPanel ip = new JPanel(new FlowLayout());
+        JPanel ip = new JPanel(new FlowLayout(FlowLayout.LEFT));
         while (i.hasNext()) {
             ReferenceButton temp = new ReferenceButton(i.next());
-            temp.addActionListener(ve);
+            temp.addActionListener(ie);
+            ip.add(temp);
         }
         inventoryPanel.add(ip, BorderLayout.CENTER);
     }
@@ -83,6 +97,7 @@ public class GamePanel extends JPanel {
         /* Virológus panel */
         virologistPanel = new JPanel(new BorderLayout());
         virologistPanel.setPreferredSize(new Dimension(500, 300));
+        virologistPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.black));
         dataPanel.add(virologistPanel);
 
         /* Inventory panel */
@@ -93,6 +108,7 @@ public class GamePanel extends JPanel {
         /* Parancsok panel */
         commandPanel = new JPanel(new FlowLayout());
         commandPanel.setPreferredSize(new Dimension(500, 100));
+        commandPanel.setBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, Color.black));
         dataPanel.add(commandPanel);
 
         /* Move gomb */

@@ -73,6 +73,7 @@ public class VarazsbogyokFrame extends JFrame {
     public void redraw() {
         jatek.setVirologistPanel();
         jatek.setInventoryPanel();
+        jatek.redraw();
     }
 
     /**

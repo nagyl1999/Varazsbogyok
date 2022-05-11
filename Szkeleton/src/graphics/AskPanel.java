@@ -23,12 +23,17 @@ public class AskPanel extends JPanel {
      * Komponensek létrehozása
      */
     private void init() {
+        setLayout(new CardLayout());
+
+        JPanel main = new JPanel(new GridBagLayout());
+        JPanel load = new JPanel();
 
         JButton ok, cancel;
         JLabel tile, bot;
         JSpinner tileTF, botTF;
-        setLayout(new GridBagLayout());
         setPreferredSize(new Dimension(1000, 800));
+
+        load.add(new JLabel("<html> <div style='text-align:center;'> Hány mezõ legyen <br> a pályán: </div></html>", SwingConstants.CENTER));
 
         tile = new JLabel("<html> <div style='text-align:center;'> Hány mezõ legyen <br> a pályán: </div></html>", SwingConstants.CENTER);
         tile.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
@@ -62,27 +67,30 @@ public class AskPanel extends JPanel {
 
         c.gridx = 0;
         c.gridy = 0;
-        add(tile,c);
+        main.add(tile,c);
 
         c.gridx = 1;
         c.gridy = 0;
-        add(tileTF,c);
+        main.add(tileTF,c);
 
         c.gridx = 0;
         c.gridy = 1;
-        add(bot,c);
+        main.add(bot,c);
 
         c.gridx = 1;
         c.gridy = 1;
-        add(botTF,c);
+        main.add(botTF,c);
 
         c.gridx = 0;
         c.gridy = 2;
-        add(ok,c);
+        main.add(ok,c);
 
         c.gridx = 1;
         c.gridy = 2;
-        add(cancel,c);
+        main.add(cancel,c);
+
+        add(main);
+        add(load);
 
         setBackground(Color.pink);
         setVisible(true);

@@ -51,11 +51,9 @@ public class Timer implements Serializable {
      * meghívjuk a lépést
      */
     public void tick() {
-        if (active == null)
-            active = steppables.get(steppables.size() - 1);
-        int index = steppables.indexOf(active);
+        int index = steppables.indexOf(active); // -1 if null
         if (index + 1 == steppables.size())
-            index = 0;
+            index = -1;
         active = steppables.get(++index);
         try {
             active.step();
@@ -64,6 +62,7 @@ public class Timer implements Serializable {
         } finally {
             VarazsbogyokFrame.getInstance().redraw();
         }
+        System.out.println(active);
     }
 
     /**

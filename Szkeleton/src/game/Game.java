@@ -15,6 +15,9 @@ import entity.Bot;
 import entity.Player;
 import entity.Virologist;
 import graphics.VarazsbogyokFrame;
+import inventory.NotEnoughSpaceException;
+import item.Glove;
+import item.Paralyzer;
 
 import java.awt.Color;
 import java.io.Serializable;
@@ -75,9 +78,28 @@ public final class Game implements Serializable {
      */
     public static void newGame() {
         map = new Map();
-        generateRandomMap();
         timer = Timer.getInstance();
-        //timer.tick();
+        generateRandomMap();
+        addRandomVirologists();
+        timer.tick();
+    }
+
+    public static void addRandomVirologists() {
+        Random r = new Random();
+        Player v = new Player();
+        Bot v2 = new Bot();
+        try {
+            v.applyAgent(v, new Paralyzer());
+            v.getInventory().addItem(new Glove());
+            v.getInventory().addItem(new Glove());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        timer.addSteppable(v);
+        timer.addSteppable(v2);
+        Tile t = map.getTiles().get(r.nextInt(map.getTiles().size()));
+        t.addVirologist(v);
+        t.addVirologist(v2);
     }
     
     public static void randomTilePoints() {

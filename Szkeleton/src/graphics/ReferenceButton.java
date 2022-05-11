@@ -25,7 +25,7 @@ public class ReferenceButton extends JButton {
      * Grafikai elemek beállítása
      */
     private void init() {
-        setPreferredSize(new Dimension(25, 25));
+        setPreferredSize(new Dimension(50, 50));
         setIcon(new ImageIcon(reference.getIconPath()));
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
