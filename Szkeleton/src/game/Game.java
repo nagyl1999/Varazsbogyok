@@ -35,9 +35,17 @@ public final class Game implements Serializable {
      */
     public static int tileCount = 200;
     /**
+     * Minimum mezők
+     */
+    public static int minTileCount = 10;
+    /**
      * A játékban a botok száma
      */
     public static int botCount = 3;
+    /**
+     * Minimum botok
+     */
+    public static int minBotCount = 3;
     /**
      * A játékban az egyes pályaelemek maximális szomszédjaa
      */
@@ -151,9 +159,6 @@ public final class Game implements Serializable {
                 if(Math.abs(t1-t2)>linethickness) map.getTiles().get(choosen).getPolygon().addPoint(x, y);
     		}
     	}
-    	
-        System.out.println(Arrays.toString(map.getTiles().get(00).getPolygon().xpoints));
-        System.out.println(Arrays.toString(map.getTiles().get(0).getPolygon().ypoints));
     }
 
     /**
