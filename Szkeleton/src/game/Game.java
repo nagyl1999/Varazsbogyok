@@ -33,7 +33,7 @@ public final class Game implements Serializable {
     /**
      * A játékban a pályaelemek száma
      */
-    public static int tileCount = 10;
+    public static int tileCount = 200;
     /**
      * A játékban a botok száma
      */
@@ -53,7 +53,7 @@ public final class Game implements Serializable {
     
     public static int minDistance = 20;
     
-    public static int linethickness = 5;
+    public static int linethickness = 1;
     
 
     /**
@@ -78,8 +78,10 @@ public final class Game implements Serializable {
     	ArrayList<Vec2> exceptions = new ArrayList<>();
         for (int i =0; i< tileCount;i++) {
             do{
-                double dx = VarazsbogyokFrame.getInstance().getSize().getHeight();
-                double dy = VarazsbogyokFrame.getInstance().getSize().getWidth();
+                //double dy = VarazsbogyokFrame.getInstance().getSize().getHeight()-40; // JPanelé kell!!
+                //double dx = VarazsbogyokFrame.getInstance().getSize().getWidth()-40;//Jppanelé kell!!!
+                double dx =460;
+                double dy = 760;
                 x = randInt(0, (int)dx, 2);
                 y = randInt(0, (int)dy, 2);
             }
@@ -89,6 +91,11 @@ public final class Game implements Serializable {
             t.setX(x);
             t.setY(y);
             map.addTile(t);
+        }
+        
+        for(int i = 0; i < map.getTiles().size();i++) {
+        	System.out.println(map.getTiles().get(i).getX() + ":" + map.getTiles().get(i).getY());
+        	
         }
     }
 
@@ -124,6 +131,7 @@ public final class Game implements Serializable {
                     if(temp < distance){
                         distance = temp;
                         choosen = i;
+                        choosen2 = i;
                     }
     			}
                 distance = 800*500;
@@ -143,9 +151,9 @@ public final class Game implements Serializable {
                 if(Math.abs(t1-t2)>linethickness) map.getTiles().get(choosen).getPolygon().addPoint(x, y);
     		}
     	}
-        System.out.println(map.getTiles().size());
-        System.out.println(Arrays.toString(map.getTiles().get(10).getPolygon().xpoints));
-        System.out.println(Arrays.toString(map.getTiles().get(10).getPolygon().ypoints));
+    	
+        System.out.println(Arrays.toString(map.getTiles().get(00).getPolygon().xpoints));
+        System.out.println(Arrays.toString(map.getTiles().get(0).getPolygon().ypoints));
     }
 
     /**
@@ -199,7 +207,7 @@ public final class Game implements Serializable {
      */
     public static Tile randomTile() {
         Random r = new Random();
-        int n = r.nextInt(4);
+        int n = r.nextInt(5);
         switch (n) {
             case 0:
             	SafeLaboratory safelaboratory = new SafeLaboratory();
