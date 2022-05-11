@@ -35,9 +35,17 @@ public final class Game implements Serializable {
      */
     public static int tileCount = 10;
     /**
+     * Minimum mezők
+     */
+    public static int minTileCount = 10;
+    /**
      * A játékban a botok száma
      */
     public static int botCount = 3;
+    /**
+     * Minimum botok
+     */
+    public static int minBotCount = 3;
     /**
      * A játékban az egyes pályaelemek maximális szomszédjaa
      */

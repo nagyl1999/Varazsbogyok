@@ -1,5 +1,7 @@
 package graphics;
 
+import game.Game;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -38,6 +40,16 @@ public class AskPanel extends JPanel {
 
         ok = new JButton("Ok");
         ok.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
+        ok.addActionListener(e -> {
+            int tiles = Integer.parseInt(tileTF.getValue().toString());
+            int bots = Integer.parseInt(botTF.getValue().toString());
+            if (tiles < Game.minTileCount || bots < Game.minBotCount)
+                return; // TODO - hibakezelés
+            Game.tileCount = tiles;
+            Game.botCount = bots;
+            Game.newGame();
+            VarazsbogyokFrame.getInstance().show("jatek");
+        });
 
         cancel = new JButton("Cancel");
         cancel.setFont(new Font("Comic Sans MS", Font.BOLD, 25));

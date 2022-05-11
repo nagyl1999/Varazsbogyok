@@ -17,10 +17,7 @@ import java.io.IOException;
 
 public class Main {
 
-    private static JFrame frame, frame2;
-
     public static void main(String[] args) {
-        Game.newGame();
         VarazsbogyokFrame f = VarazsbogyokFrame.getInstance();
     }
 
