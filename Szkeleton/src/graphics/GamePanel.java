@@ -113,42 +113,42 @@ public class GamePanel extends JPanel {
 
         /* Move gomb */
         JButton mb = new JButton();
-        mb.setIcon(new ImageIcon("resource\\move.png"));
+        mb.setIcon(new ImageIcon("Szkeleton/resources/move.png"));
         mb.setPreferredSize(new Dimension(50, 50));
         mb.addActionListener(mc);
         mb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         /* Use gomb */
         JButton ub = new JButton();
-        ub.setIcon(new ImageIcon("resource\\use.png"));
+        ub.setIcon(new ImageIcon("Szkeleton/resources/use.png"));
         ub.setPreferredSize(new Dimension(50, 50));
         ub.addActionListener(new UseController());
         ub.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         /* Rob gomb */
         JButton rb = new JButton();
-        rb.setIcon(new ImageIcon("resource\\rob.png"));
+        rb.setIcon(new ImageIcon("Szkeleton/resources/rob.png"));
         rb.setPreferredSize(new Dimension(50, 50));
         rb.addActionListener(new RobController());
         rb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         /* Craft gomb */
         JButton cb = new JButton();
-        cb.setIcon(new ImageIcon("resource\\craft.png"));
+        cb.setIcon(new ImageIcon("Szkeleton/resources/craft.png"));
         cb.setPreferredSize(new Dimension(50, 50));
         cb.addActionListener(new CraftController());
         cb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         /* Drop gomb */
         JButton db = new JButton();
-        db.setIcon(new ImageIcon("resource\\drop.png"));
+        db.setIcon(new ImageIcon("Szkeleton/resources/drop.png"));
         db.setPreferredSize(new Dimension(50, 50));
         db.addActionListener(new DropController());
         db.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         /* Körlépés gomb */
         JButton sb = new JButton();
-        sb.setIcon(new ImageIcon("resource\\arrow.png"));
+        sb.setIcon(new ImageIcon("Szkeleton/resources/arrow.png"));
         sb.setPreferredSize(new Dimension(50, 50));
         sb.addActionListener(new StepController());
         sb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
