@@ -113,7 +113,7 @@ public class GamePanel extends JPanel {
 
         /* Move gomb */
         JButton mb = new JButton();
-        mb.setIcon(new ImageIcon("Szkeleton/resources/move.png"));
+        mb.setIcon(new ImageIcon("Szkeleton/resources/move.jpg"));
         mb.setPreferredSize(new Dimension(50, 50));
         mb.addActionListener(mc);
         mb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -127,21 +127,21 @@ public class GamePanel extends JPanel {
 
         /* Rob gomb */
         JButton rb = new JButton();
-        rb.setIcon(new ImageIcon("Szkeleton/resources/rob.png"));
+        rb.setIcon(new ImageIcon("Szkeleton/resources/rob.jpg"));
         rb.setPreferredSize(new Dimension(50, 50));
         rb.addActionListener(new RobController());
         rb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         /* Craft gomb */
         JButton cb = new JButton();
-        cb.setIcon(new ImageIcon("Szkeleton/resources/craft.png"));
+        cb.setIcon(new ImageIcon("Szkeleton/resources/craft.jpg"));
         cb.setPreferredSize(new Dimension(50, 50));
         cb.addActionListener(new CraftController());
         cb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         /* Drop gomb */
         JButton db = new JButton();
-        db.setIcon(new ImageIcon("Szkeleton/resources/drop.png"));
+        db.setIcon(new ImageIcon("Szkeleton/resources/drop.jpg"));
         db.setPreferredSize(new Dimension(50, 50));
         db.addActionListener(new DropController());
         db.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

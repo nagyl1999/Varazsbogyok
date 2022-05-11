@@ -52,11 +52,11 @@ public class Game {
         
         JButton vir1, bot1, bot2, agens;
         
-        vir1 = new JButton(getIcon("player.png"));
+        vir1 = new JButton(getIcon("Szkeleton/resources/player.jpg"));
         
-        bot1 = new JButton(getIcon("bot.png"));
-        bot2 = new JButton(getIcon("bot.png"));
-        agens = new JButton(getIcon("bear.png"));
+        bot1 = new JButton(getIcon("Szkeleton/resources/bot.jpg"));
+        bot2 = new JButton(getIcon("Szkeleton/resources/bot.jpg"));
+        agens = new JButton(getIcon("Szkeleton/resources/bear.jpg"));
         
         rightTopPanel.setLayout(new GridLayout(0,1));
         
