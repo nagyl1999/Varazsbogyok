@@ -26,22 +26,24 @@ public class AskPanel extends JPanel {
         setLayout(new CardLayout());
 
         JPanel main = new JPanel(new GridBagLayout());
-        JPanel load = new JPanel();
+        //JPanel load = new JPanel();
 
         JButton ok, cancel;
         JLabel tile, bot;
         JSpinner tileTF, botTF;
         setPreferredSize(new Dimension(1000, 800));
 
-        load.add(new JLabel("<html> <div style='text-align:center;'> Hány mezõ legyen <br> a pályán: </div></html>", SwingConstants.CENTER));
+        //load.add(new JLabel("<html> <div style='text-align:center;'> Hány mezõ legyen <br> a pályán: </div></html>", SwingConstants.CENTER));
 
-        tile = new JLabel("<html> <div style='text-align:center;'> Hány mezõ legyen <br> a pályán: </div></html>", SwingConstants.CENTER);
+        tile = new JLabel("<html> <div style='text-align:center;'> Number of Fields : </div></html>", SwingConstants.CENTER);
         tile.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
-        tileTF = new JSpinner();
+        SpinnerModel model = new SpinnerNumberModel(100, Game.minTileCount, 1000, 1);
+        tileTF = new JSpinner(model);
 
-        bot = new JLabel("<html>Hány Bot legyen: </html>", SwingConstants.CENTER);
+        bot = new JLabel("<html>Number of Bots: </html>", SwingConstants.CENTER);
         bot.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
-        botTF = new JSpinner();
+        model = new SpinnerNumberModel(5, Game.minBotCount, 100, 1);
+        botTF = new JSpinner(model);
 
         ok = new JButton("Ok");
         ok.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
@@ -90,7 +92,7 @@ public class AskPanel extends JPanel {
         main.add(cancel,c);
 
         add(main);
-        add(load);
+        //add(load);
 
         setBackground(Color.pink);
         setVisible(true);
