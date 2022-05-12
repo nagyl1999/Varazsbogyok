@@ -7,6 +7,7 @@ import inventory.IStorable;
 import inventory.Inventory;
 import item.Agent;
 
+import java.io.File;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -113,42 +114,48 @@ public class GamePanel extends JPanel {
 
         /* Move gomb */
         JButton mb = new JButton();
-        mb.setIcon(new ImageIcon("Szkeleton/resources/move.jpg"));
+        ImageIcon imgMove = new ImageIcon( new File(System.getProperty("user.dir")).getParent() + "\\resources\\move.jpg");
+        mb.setIcon(imgMove);
         mb.setPreferredSize(new Dimension(50, 50));
         mb.addActionListener(mc);
         mb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         /* Use gomb */
         JButton ub = new JButton();
-        ub.setIcon(new ImageIcon("Szkeleton/resources/use.png"));
+        ImageIcon imgUse = new ImageIcon( new File(System.getProperty("user.dir")).getParent() + "\\resources\\use.png");
+        ub.setIcon(imgUse);
         ub.setPreferredSize(new Dimension(50, 50));
         ub.addActionListener(new UseController());
         ub.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         /* Rob gomb */
         JButton rb = new JButton();
-        rb.setIcon(new ImageIcon("Szkeleton/resources/rob.jpg"));
+        ImageIcon imgRob = new ImageIcon( new File(System.getProperty("user.dir")).getParent() + "\\resources\\rob.jpg");
+        rb.setIcon(imgRob);
         rb.setPreferredSize(new Dimension(50, 50));
         rb.addActionListener(new RobController());
         rb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         /* Craft gomb */
         JButton cb = new JButton();
-        cb.setIcon(new ImageIcon("Szkeleton/resources/craft.jpg"));
+        ImageIcon imgCraft = new ImageIcon( new File(System.getProperty("user.dir")).getParent() + "\\resources\\craft.jpg");
+        cb.setIcon(imgCraft);
         cb.setPreferredSize(new Dimension(50, 50));
         cb.addActionListener(new CraftController());
         cb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         /* Drop gomb */
         JButton db = new JButton();
-        db.setIcon(new ImageIcon("Szkeleton/resources/drop.jpg"));
+        ImageIcon imgDrop = new ImageIcon( new File(System.getProperty("user.dir")).getParent() + "\\resources\\drop.jpg");
+        db.setIcon(imgDrop);
         db.setPreferredSize(new Dimension(50, 50));
         db.addActionListener(new DropController());
         db.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         /* Körlépés gomb */
         JButton sb = new JButton();
-        sb.setIcon(new ImageIcon("Szkeleton/resources/arrow.png"));
+        ImageIcon imgArrow = new ImageIcon( new File(System.getProperty("user.dir")).getParent() + "\\resources\\arrow.png");
+        sb.setIcon(imgArrow);
         sb.setPreferredSize(new Dimension(50, 50));
         sb.addActionListener(new StepController());
         sb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

@@ -31,15 +31,14 @@ public class MenuPanel extends JPanel {
         panel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
-        ImageIcon img = new ImageIcon( new File(System.getProperty("user.dir")).getParent() + "\\resources\\csillag.png");
+        ImageIcon img = new ImageIcon(new File(System.getProperty("user.dir")).getParent() + "\\resources\\csillag.png");
 
-        JLabel title = new JLabel("<html> <div style='text-align:center;'> VIROLÓGUS <br> BUMBÓ </div></html>", JLabel.LEFT);
+        JLabel title = new JLabel("<html> <div style='text-align:center;'> VIROLOGY <br> BALL </div></html>", JLabel.LEFT);
         title.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
         title.setForeground(Color.black);
         JLabel kep = new JLabel("", img, JLabel.CENTER);
         topText.add(title);
         topText.add(kep);
-
 
         // Define new buttons with different regions
         JButton newGameBtn = new JButton("NEW GAME");
@@ -49,7 +48,6 @@ public class MenuPanel extends JPanel {
         btns.add(newGameBtn);
         btns.add(scoreboard);
         btns.add(exitBtn);
-
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.ipady = 30;
@@ -65,7 +63,7 @@ public class MenuPanel extends JPanel {
 
             c.gridx = 0;
             c.gridy = counter++;
-            panel.add(btn,c);
+            panel.add(btn, c);
 
         }
 
@@ -80,5 +78,4 @@ public class MenuPanel extends JPanel {
         add(panel);
         setVisible(true);
     }
-
 }
