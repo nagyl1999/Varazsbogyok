@@ -91,6 +91,7 @@ public class VarazsbogyokFrame extends JFrame {
 
         main.add(menu, "menu");
         main.add(adat, "adat");
+        main.add(scoreboard, "scoreboard");
         main.add(jatek, "jatek");
 
         add(main);
@@ -131,6 +132,7 @@ public class VarazsbogyokFrame extends JFrame {
     public MenuPanel menu = new MenuPanel();
     public AskPanel adat = new AskPanel();
     public GamePanel jatek = new GamePanel();
+    public ScorePanel scoreboard = new ScorePanel();
     /* Grafikus elemek */
 
 }

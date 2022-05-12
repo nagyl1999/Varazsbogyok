@@ -4,11 +4,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.util.ArrayList;
 
 /**
  * A Varázsbogyók játék menüje
  */
 public class MenuPanel extends JPanel {
+
+    private ArrayList<JButton> btns = new ArrayList<JButton>();
 
     /**
      * Konstruktor
@@ -27,7 +31,7 @@ public class MenuPanel extends JPanel {
         panel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
-        ImageIcon img = new ImageIcon("Szkeleton/resources/csillag.png");
+        ImageIcon img = new ImageIcon( new File(System.getProperty("user.dir")).getParent() + "\\resources\\csillag.png");
 
         JLabel title = new JLabel("<html> <div style='text-align:center;'> VIROLÓGUS <br> BUMBÓ </div></html>", JLabel.LEFT);
         title.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
@@ -39,45 +43,37 @@ public class MenuPanel extends JPanel {
 
         // Define new buttons with different regions
         JButton newGameBtn = new JButton("NEW GAME");
-        newGameBtn.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
-        newGameBtn.setForeground(Color.black);
-        JButton loadGameBtn = new JButton("LOAD GAME");
-        loadGameBtn.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
-        loadGameBtn.setForeground(Color.black);
+        JButton scoreboard = new JButton("SCOREBOARD");
         JButton exitBtn = new JButton("EXIT");
-        exitBtn.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
-        exitBtn.setForeground(Color.black);
+
+        btns.add(newGameBtn);
+        btns.add(scoreboard);
+        btns.add(exitBtn);
 
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.ipady = 30;
         c.insets = new Insets(20, 10, 20, 10);
 
-        c.gridx = 0;
-        c.gridy = 1;
-        panel.add(newGameBtn,c);
+        int counter = 1;
 
-        c.gridx = 0;
-        c.gridy = 2;
-        panel.add(loadGameBtn,c);
+        for (JButton btn : btns){
+            btn.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
+            btn.setForeground(Color.black);
+            btn.setBackground(new Color(255, 0, 82));
+            btn.setBorder(BorderFactory.createLineBorder(new Color(191, 255, 0), 10));
 
-        c.gridx = 0;
-        c.gridy = 3;
-        panel.add(exitBtn,c);
+            c.gridx = 0;
+            c.gridy = counter++;
+            panel.add(btn,c);
+
+        }
 
         panel.setBackground(new Color(255, 0, 82));
         topText.setBackground(new Color(255, 0, 82));
 
-        newGameBtn.setBackground(new Color(255, 0, 82));
-        newGameBtn.setBorder(BorderFactory.createLineBorder(new Color(191, 255, 0), 10));
         newGameBtn.addActionListener(e -> VarazsbogyokFrame.getInstance().show("adat"));
-
-        loadGameBtn.setBackground(new Color(255, 0, 82));
-        loadGameBtn.setBorder(BorderFactory.createLineBorder(new Color(191, 255, 0), 10));
-        loadGameBtn.addActionListener(e -> System.out.println("TODO"));
-
-        exitBtn.setBackground(new Color(255, 0, 82));
-        exitBtn.setBorder(BorderFactory.createLineBorder(new Color(191, 255, 0), 10));
+        scoreboard.addActionListener(e -> VarazsbogyokFrame.getInstance().show("scoreboard"));
         exitBtn.addActionListener(e -> System.exit(0));
 
         add(topText, BorderLayout.NORTH);
