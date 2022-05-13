@@ -74,6 +74,21 @@ public class VarazsbogyokFrame extends JFrame {
         jatek.setVirologistPanel();
         jatek.setInventoryPanel();
         jatek.redraw();
+        jatek.revalidate();
+        jatek.invalidate();
+    }
+
+    public void errorMessage(String msg){
+        JOptionPane.showMessageDialog(this,msg, "Tesó...", JOptionPane.ERROR_MESSAGE);
+    }
+
+    public boolean confirmDialog(String msg){
+        int result = JOptionPane.showConfirmDialog(this, msg, "Question", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if(result == JOptionPane.YES_OPTION){
+            return true;
+        }
+        return false;
+
     }
 
     /**

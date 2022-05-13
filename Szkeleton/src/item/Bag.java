@@ -27,7 +27,7 @@ public class Bag extends Gear implements IInventoryHolder {
     /**
      * Ikon elérési út
      */
-    protected String iconPath = "";
+    protected String iconPath = "resources\\bag.jpg";
     /**
      * Inventory méret
      */

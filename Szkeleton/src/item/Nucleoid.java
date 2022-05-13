@@ -20,7 +20,7 @@ public class Nucleoid extends Material {
     /**
      * Ikon elérési út
      */
-    protected String iconPath = "";
+    protected String iconPath = "resources\\nucleotid.jpg";
     /**
      * A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni a nukleotid típust.
      */

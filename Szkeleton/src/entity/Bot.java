@@ -25,7 +25,7 @@ public class Bot extends Virologist {
     /**
      * Ikon elérési út
      */
-    protected String iconPath = "";
+    protected String iconPath = "resources\\bot.jpg";
 
     /**
      * A Bot lépését szimuláló függvény

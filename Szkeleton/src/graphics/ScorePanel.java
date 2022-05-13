@@ -42,7 +42,7 @@ public class ScorePanel extends JPanel {
         panel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
-        ImageIcon img = new ImageIcon( new File(System.getProperty("user.dir")).getParent() + "\\resources\\csillag.png");
+        ImageIcon img = new ImageIcon("resources\\csillag.png");
 
         JLabel title = new JLabel("<html> <div style='text-align:center;'> VIROLÓGUS <br> BUMBÓ</div></html>", JLabel.LEFT);
         title.setFont(new Font("Comic Sans MS", Font.BOLD, 30));

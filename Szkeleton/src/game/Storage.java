@@ -16,6 +16,7 @@ import inventory.Inventory;
 import inventory.ItemNotFoundException;
 import inventory.NotEnoughSpaceException;
 import item.*;
+import graphics.VarazsbogyokFrame;
 
 import java.awt.Color;
 import java.awt.Polygon;
@@ -32,6 +33,7 @@ public class Storage extends Tile {
 			Material m = (Material) inventory.at(0);
 			v.getInventory().addItem(m);
 			inventory.removeItem(m);
+			VarazsbogyokFrame.getInstance().errorMessage("Material");
 		} catch (NotEnoughSpaceException e) {
 			e.printStackTrace();
 		} catch (ItemNotFoundException e) {

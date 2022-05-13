@@ -25,7 +25,7 @@ public class Paralyzer extends Agent {
     /**
      * Ikon elérési út
      */
-    protected String iconPath = "";
+    protected String iconPath = "resources\\paralyzer.jpg";
     /**
      * Ágnes élettartama
      */
@@ -50,6 +50,7 @@ public class Paralyzer extends Agent {
      */
     public void step() throws ItemNotFoundException {
         this.expire--;
+        System.out.println(this.expire);
         if(expire == 0)
             decompose(virologist);
         Timer.getInstance().tick();

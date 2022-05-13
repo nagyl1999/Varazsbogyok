@@ -44,6 +44,10 @@ public class GamePanel extends JPanel {
         inventoryPanel.invalidate();
         virologistPanel.repaint();
         inventoryPanel.repaint();
+
+        repaint();
+        invalidate();
+
     }
 
     /**
@@ -55,6 +59,7 @@ public class GamePanel extends JPanel {
         ArrayList<Virologist> virologists = Game.activeVirologist.getTile().getVirologist();
         JPanel vp = new JPanel(new FlowLayout(FlowLayout.LEFT));
         for (Virologist v : virologists) {
+
             ReferenceButton temp = new ReferenceButton(v);
             temp.addActionListener(ve);
             vp.add(temp);

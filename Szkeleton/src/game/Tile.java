@@ -123,6 +123,10 @@ public abstract class Tile implements IInventoryHolder, Serializable , IDrawable
         posy = y;
     }
 
+    public void getxy(){
+        System.out.println(posx + " " + posy);
+    }
+
     /**
      * A virológus itt fog tudni felvenni egy mezőn található dolgot.
      */

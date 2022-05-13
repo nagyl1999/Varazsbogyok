@@ -24,8 +24,15 @@ public class UseController extends Controller {
         // TODO - hibakezelés
         Virologist v = VarazsbogyokFrame.getInstance().getActiveVirologist();
         IStorable s = VarazsbogyokFrame.getInstance().getActiveItem();
-        if (v == null || s == null)
+
+        if (v == null){
+            VarazsbogyokFrame.getInstance().errorMessage("Nincs kiválasztva virologus tesó....");
             return;
+        }else if(s == null){
+            VarazsbogyokFrame.getInstance().errorMessage("Nincs kiválasztva item tesó....");
+            return;
+        }
+
 
         try {
             // TODO - use gear / use agent, visitor managertől kérdezze meg, vagy függvények összevonása

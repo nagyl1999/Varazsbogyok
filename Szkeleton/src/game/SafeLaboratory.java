@@ -1,9 +1,11 @@
 package game;
 
+
 import java.awt.Color;
 import java.awt.Polygon;
 import java.util.Random;
 
+import graphics.VarazsbogyokFrame;
 import entity.Virologist;
 import inventory.Inventory;
 import inventory.ItemNotFoundException;
@@ -22,6 +24,7 @@ public class SafeLaboratory extends Laboratory {
 			Recipe r = (Recipe) inventory.at(0);
 			v.getInventory().addItem(r);
 			inventory.removeItem(r);
+			VarazsbogyokFrame.getInstance().errorMessage("Recipe");
 		} catch (NotEnoughSpaceException e) {
 			e.printStackTrace();
 		} catch (ItemNotFoundException e) {

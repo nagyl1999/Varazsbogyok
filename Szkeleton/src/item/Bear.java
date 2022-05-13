@@ -17,7 +17,7 @@ public class Bear extends Agent {
     /**
      * Ikon elérési út
      */
-    protected String iconPath = "";
+    protected String iconPath = "resources\\bear.jpg";
     /**
      * Ágnes élettartama
      */
