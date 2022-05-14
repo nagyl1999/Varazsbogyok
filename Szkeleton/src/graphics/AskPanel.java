@@ -20,6 +20,21 @@ public class AskPanel extends JPanel {
     }
 
     /**
+     * Játék indítása
+     */
+    public void startGame() {
+        int tiles = Integer.parseInt(tileTF.getValue().toString());
+        int bots = Integer.parseInt(botTF.getValue().toString());
+        if (tiles < Game.minTileCount || bots < Game.minBotCount)
+            return; // TODO - hibakezelés
+        // TODO - loading menu mutatása
+        Game.tileCount = tiles;
+        Game.botCount = bots;
+        Game.newGame();
+        VarazsbogyokFrame.getInstance().show("jatek");
+    }
+
+    /**
      * Komponensek létrehozása
      */
     private void init() {
@@ -28,12 +43,11 @@ public class AskPanel extends JPanel {
         JPanel main = new JPanel(new GridBagLayout());
         JPanel load = new JPanel();
 
+        load.add(new JLabel("<html> <div style='text-align:center;'>Loading...</div></html>", SwingConstants.CENTER));
+
         JButton ok, cancel;
         JLabel tile, bot;
-        JSpinner tileTF, botTF;
         setPreferredSize(new Dimension(1000, 800));
-
-        load.add(new JLabel("<html> <div style='text-align:center;'> Hány mezõ legyen <br> a pályán: </div></html>", SwingConstants.CENTER));
 
         tile = new JLabel("<html> <div style='text-align:center;'> Hány mezõ legyen <br> a pályán: </div></html>", SwingConstants.CENTER);
         tile.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
@@ -45,16 +59,8 @@ public class AskPanel extends JPanel {
 
         ok = new JButton("Ok");
         ok.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
-        ok.addActionListener(e -> {
-            int tiles = Integer.parseInt(tileTF.getValue().toString());
-            int bots = Integer.parseInt(botTF.getValue().toString());
-            if (tiles < Game.minTileCount || bots < Game.minBotCount)
-                return; // TODO - hibakezelés
-            Game.tileCount = tiles;
-            Game.botCount = bots;
-            Game.newGame();
-            VarazsbogyokFrame.getInstance().show("jatek");
-        });
+        ok.addActionListener(e -> startGame());
+
 
         cancel = new JButton("Cancel");
         cancel.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
@@ -89,11 +95,16 @@ public class AskPanel extends JPanel {
         c.gridy = 2;
         main.add(cancel,c);
 
-        add(main);
-        add(load);
+        main.setBackground(Color.pink);
+        load.setBackground(Color.pink);
 
-        setBackground(Color.pink);
+        add(main, "main");
+        add(load, "load");
+
         setVisible(true);
     }
+
+    private JSpinner botTF;
+    private JSpinner tileTF;
 
 }
