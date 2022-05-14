@@ -278,7 +278,7 @@ public final class Game implements Serializable {
      */
     public static Tile randomTile() {
         Random r = new Random();
-        int n = r.nextInt(10);
+        int n = r.nextInt(11);
         Town town = new Town();
         town.setColor(Color.green);
         
