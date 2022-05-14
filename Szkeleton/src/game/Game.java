@@ -61,10 +61,18 @@ public final class Game implements Serializable {
      * Aktív virológus
      */
     public static Virologist activeVirologist;
-    
+    /**
+     * voronoj pontok minimum távolsága egymástól
+     */
     public static int minDistance = 20;
-    
-    public static int linethickness = 1;
+    /**
+     * voronoj alakzatok közötti vonal szélessége
+     */
+    public static int linethickness = 2;
+    /**
+     * maximum tile-ok száma
+     */
+    public static int maxTiles = 50;
     
 
     /**
@@ -83,7 +91,10 @@ public final class Game implements Serializable {
         addRandomVirologists();
         timer.tick();
     }
-
+    /**
+     * véletlenszerűen teszi le a játékost
+     * a játéos által megadott botot generál és teszi le véletlenszerű helyre
+     */
     public static void addRandomVirologists() {
         Random r = new Random();
         Player v = new Player();
@@ -101,7 +112,9 @@ public final class Game implements Serializable {
         t.addVirologist(v);
         t.addVirologist(v2);
     }
-    
+    /**
+     * véletlenszerű voronoj pontokat generál
+     */
     public static void randomTilePoints() {
     	//TODO
         int x, y;
@@ -123,36 +136,45 @@ public final class Game implements Serializable {
             map.addTile(t);
         }
         
-        for(int i = 0; i < map.getTiles().size();i++) {
-        	System.out.println(map.getTiles().get(i).getX() + ":" + map.getTiles().get(i).getY());
-        	
-        }
+       
     }
-
+    /**
+     * összehasonlítja egy arraylist pontjait egy adott ponttal 
+     */
     public static boolean equals(ArrayList<Vec2> e, Vec2 a) {
         for (Vec2 v : e)
             if (v.getX() == a.getX() && v.getY() == a.getY())
                 return true;
         return false;
     }
-    
+    /**
+     * visszaadja, hogy a paraméterben kapott pont és  bármely eddig elkészült voronoj pont távolsága kisebb e mint mint a minDistance 
+     */
     public static boolean accept(Vec2 a){
         for(int i = 0;i< map.getTiles().size();i++){
             if(a.getDistance(new Vec2(map.getTiles().get(i).getX(),map.getTiles().get(i).getY())) <minDistance) return true;
         }
         return false;
     }
+    /**
+     * véletlenszám, kezdőérték,utolsó érték, mennyi legyen a számok között az eltérés
+     */
     public static int randInt(int first, int last, int step) {
     	//TODO
         int nsteps = (last+1-first) / step;
         return first + step*(int)(nsteps*Math.random());
     }
-    
+    /**
+     * minden pontra kiszámítja, hogy melyik voroni ponthoz tartozik , ezenfelül beállítja az egyes voronoi
+     * cellák közötti vonal vastagságot
+     * minden tile-nak beállítja a szomszédait
+     */
     public static void generateRandomMap() {
-    	//TODO
+ 
     	randomTilePoints();
-    	for(int x = 0; x < 500;x++) {
-    		for(int y =0; y < 800;y++ ) {
+
+    	for(int x = 0; x < VarazsbogyokFrame.getInstance().jatek.getWidth();x++) {
+    		for(int y =0; y < VarazsbogyokFrame.getInstance().jatek.getHeight();y++ ) {
     			double distance = 800*500;
     			int choosen = 0;
     			int choosen2 = 0;
@@ -178,9 +200,31 @@ public final class Game implements Serializable {
     			double t1 = new Vec2(x,y).getDistance( new Vec2(map.getTiles().get(choosen).getX(),map.getTiles().get(choosen).getY() ));
                 double t2 = new Vec2(x,y).getDistance( new Vec2(map.getTiles().get(choosen2).getX(),map.getTiles().get(choosen2).getY() ));
 
-                if(Math.abs(t1-t2)>linethickness) map.getTiles().get(choosen).getPolygon().addPoint(x, y);
+                if(Math.abs(t1-t2)>linethickness) { map.getTiles().get(choosen).getPolygon().addPoint(x, y);}
+                else  {map.getTiles().get(choosen).getBorderPolly().add(new Vec2(x,y));
+                }
+                
     		}
     	}
+    	
+    	for(Tile t1 : map.getTiles()) {
+    		
+    		for(Tile t2 : map.getTiles()) {
+    			if(t1 == t2) continue;
+    			if(t1.getNeighbours().contains(t2)) continue;
+    			
+    		  pont: for(Vec2 p : t1.getBorderPolly()){
+    				for(Vec2 q : t2.getBorderPolly()) {
+    					double d = p.getDistance(q);
+		    			if(d==1){
+		    			t1.addNeighbour(t2);
+		    			t2.addNeighbour(t1);
+		    			break pont;}
+		    		}
+    			}
+    		}
+    	}
+    	
     }
 
     /**
@@ -234,28 +278,30 @@ public final class Game implements Serializable {
      */
     public static Tile randomTile() {
         Random r = new Random();
-        int n = r.nextInt(5);
-        switch (n) {
-            case 0:
-            	SafeLaboratory safelaboratory = new SafeLaboratory();
-            	safelaboratory.setColor(Color.red);
-                return  safelaboratory;
-            case 1:
-            	Safehouse safehouse = new Safehouse();
-            	safehouse.setColor(Color.blue);
-                return safehouse;
-            case 2:
-            	Storage storage = new Storage();
-            	storage.setColor(Color.yellow);
-                return  storage;
-            case 3:
-            	BearLaboratory bearlaboratory = new BearLaboratory();
-                bearlaboratory.setColor(Color.red);
-            	return bearlaboratory;
-            default:
-            	Town town = new Town();
-            	town.setColor(Color.green);
-                return town;
+        int n = r.nextInt(10);
+        Town town = new Town();
+        town.setColor(Color.green);
+        
+        if(n == 4) {
+        	BearLaboratory bearlaboratory = new BearLaboratory();
+            bearlaboratory.setColor(Color.red);
+        	return bearlaboratory;
         }
+        if(n == 5 || n == 6) {
+        	SafeLaboratory safelaboratory = new SafeLaboratory();
+        	safelaboratory.setColor(Color.red);
+            return  safelaboratory;
+        }
+        if(n == 7 || n ==8) {
+        	Safehouse safehouse = new Safehouse();
+        	safehouse.setColor(Color.blue);
+            return safehouse;
+        }
+        if(n == 9 || n ==10) {
+        	Storage storage = new Storage();
+        	storage.setColor(Color.yellow);
+            return  storage;
+        }
+        return town;
     }
 }

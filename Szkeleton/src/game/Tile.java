@@ -41,7 +41,7 @@ public abstract class Tile implements IInventoryHolder, Serializable , IDrawable
     protected Polygon polly;
     protected int posx;
     protected int posy;
-
+    protected ArrayList<Vec2> borderpoints;
     /**
      * Konstruktor
      */
@@ -51,6 +51,7 @@ public abstract class Tile implements IInventoryHolder, Serializable , IDrawable
         inventory = new Inventory(inventorySize);
         c = Color.black;
         polly = new Polygon();
+        borderpoints = new ArrayList<Vec2>();
         posx = 0;
         posy = 0;
         try {
@@ -122,6 +123,8 @@ public abstract class Tile implements IInventoryHolder, Serializable , IDrawable
     public void setY(int y) {
         posy = y;
     }
+    
+    public ArrayList<Vec2> getBorderPolly() {return borderpoints;}
 
     /**
      * A virológus itt fog tudni felvenni egy mezőn található dolgot.
