@@ -26,7 +26,12 @@ public class VoronoiPanel extends JPanel {
             g.setColor(t.getColor());
             g.drawPolygon(t.getPolygon());
             g.fillPolygon(t.getPolygon());
+           
         }
+        g.setColor(Color.BLACK);
+        g.drawPolygon(Game.activeVirologist.getTile().getCircle());
+        g.fillPolygon(Game.activeVirologist.getTile().getCircle());
+        
     }
 
 }

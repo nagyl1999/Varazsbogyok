@@ -39,6 +39,7 @@ public abstract class Tile implements IInventoryHolder, Serializable , IDrawable
     private int inventorySize = 3;
     protected Color c;
     protected Polygon polly;
+    protected Polygon circle;
     protected int posx;
     protected int posy;
     protected ArrayList<Vec2> borderpoints;
@@ -51,6 +52,7 @@ public abstract class Tile implements IInventoryHolder, Serializable , IDrawable
         inventory = new Inventory(inventorySize);
         c = Color.black;
         polly = new Polygon();
+        circle = new Polygon();
         borderpoints = new ArrayList<Vec2>();
         posx = 0;
         posy = 0;
@@ -123,6 +125,10 @@ public abstract class Tile implements IInventoryHolder, Serializable , IDrawable
     public void setY(int y) {
         posy = y;
     }
+    
+    public void setCircle(Polygon p) {circle = p;}
+    
+    public Polygon getCircle() {return circle;}
     
     public ArrayList<Vec2> getBorderPolly() {return borderpoints;}
 

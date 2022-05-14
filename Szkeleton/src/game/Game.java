@@ -136,6 +136,11 @@ public final class Game implements Serializable {
             map.addTile(t);
         }
         
+        for(int i = 0; i < tileCount;i++) {
+        	Circle c = new Circle(new Vec2(map.getTiles().get(i).getX(),map.getTiles().get(i).getY()));
+        	map.getTiles().get(i).setCircle(c.getCircle());
+        }
+        
        
     }
     /**
