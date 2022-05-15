@@ -42,98 +42,104 @@ public class Bot extends Virologist {
     public void step() {
         VarazsbogyokFrame.getInstance().setDisabled(true);
         Game.activeVirologist = this;
-		
-		Inventory iv = getInventory();
-        for(int i=0;i<100;i++) {
-    		InventorySorterVisitor isv = new InventorySorterVisitor();
-    		iv.accept(isv);
-        	switch(r.nextInt(10)) {
-        	case 0:
-        		try {
-        			useGear(isv.getAxeItems().get(0), tile.getVirologist().get(r.nextInt(tile.getVirologist().size())));
-        		} catch(Exception ex) {
-        			//ex.printStackTrace();
-        		}
-        		break;
-        	case 1:
-    			ArrayList<Tile> ng = tile.getNeighbours();
-        		try {
-        			move(ng.get(r.nextInt(ng.size())), true);
-        		} catch(Exception ex) {
-        			try {
-        				move(ng.get(r.nextInt(ng.size())), false);
-        			} catch(Exception exx) {
-        				
-        			}
-        			//ex.printStackTrace();
-        		}
-        		break;
-        	case 2:
-        		try {
-        			Virologist vv = tile.getVirologist().get(r.nextInt(tile.getVirologist().size()));
-        			if(vv!=this) {
-        				this.useAgent(vv, isv.getDancerItems().get(0));
-        			}
-        		} catch(Exception ex) {
-        			
-        		}
-        	case 3:
-        		try {
-        			Virologist vv = tile.getVirologist().get(r.nextInt(tile.getVirologist().size()));
-        			if(vv!=this) {
-        				this.useAgent(vv, isv.getParalyzerItems().get(0));
-        			}
-        		} catch(Exception ex) {
-        			
-        		}
-        	case 4:
-        		try {
-        			Virologist vv = tile.getVirologist().get(r.nextInt(tile.getVirologist().size()));
-        			if(vv!=this) {
-        				this.useAgent(vv, isv.getForgetterItems().get(0));
-        			}
-        		} catch(Exception ex) {
-        			
-        		}
-        	case 5:
-        		try {
-        			Virologist vv = tile.getVirologist().get(r.nextInt(tile.getVirologist().size()));
-        			if(vv!=this) {
-        				this.useAgent(vv, isv.getForgetterItems().get(0));
-        			}
-        		} catch(Exception ex) {
-        			
-        		}
-        	case 6:
-        		try {
-        			this.makeAgent(isv.getRdancerItems().get(0));
-        		} catch(Exception ex) {
-        		}
-	    	case 7:
-	    		try {
-	    			this.makeAgent(isv.getRforgetterItems().get(0));
-	    		} catch(Exception ex) {
-	    			
-	    		}
-			case 8:
-				try {
-					this.makeAgent(isv.getRpalaryzerItems().get(0));
-				} catch(Exception ex) {
-					
+
+		try {
+
+			Inventory iv = getInventory();
+			for (int i = 0; i < 100; i++) {
+				InventorySorterVisitor isv = new InventorySorterVisitor();
+				iv.accept(isv);
+				switch (r.nextInt(10)) {
+					case 0:
+						try {
+							useGear(isv.getAxeItems().get(0), tile.getVirologist().get(r.nextInt(tile.getVirologist().size())));
+						} catch (Exception ex) {
+							//ex.printStackTrace();
+						}
+						break;
+					case 1:
+						ArrayList<Tile> ng = tile.getNeighbours();
+						try {
+							move(ng.get(r.nextInt(ng.size())), true);
+						} catch (Exception ex) {
+							try {
+								move(ng.get(r.nextInt(ng.size())), false);
+							} catch (Exception exx) {
+
+							}
+							//ex.printStackTrace();
+						}
+						break;
+					case 2:
+						try {
+							Virologist vv = tile.getVirologist().get(r.nextInt(tile.getVirologist().size()));
+							if (vv != this) {
+								this.useAgent(vv, isv.getDancerItems().get(0));
+							}
+						} catch (Exception ex) {
+
+						}
+					case 3:
+						try {
+							Virologist vv = tile.getVirologist().get(r.nextInt(tile.getVirologist().size()));
+							if (vv != this) {
+								this.useAgent(vv, isv.getParalyzerItems().get(0));
+							}
+						} catch (Exception ex) {
+
+						}
+					case 4:
+						try {
+							Virologist vv = tile.getVirologist().get(r.nextInt(tile.getVirologist().size()));
+							if (vv != this) {
+								this.useAgent(vv, isv.getForgetterItems().get(0));
+							}
+						} catch (Exception ex) {
+
+						}
+					case 5:
+						try {
+							Virologist vv = tile.getVirologist().get(r.nextInt(tile.getVirologist().size()));
+							if (vv != this) {
+								this.useAgent(vv, isv.getForgetterItems().get(0));
+							}
+						} catch (Exception ex) {
+
+						}
+					case 6:
+						try {
+							this.makeAgent(isv.getRdancerItems().get(0));
+						} catch (Exception ex) {
+						}
+					case 7:
+						try {
+							this.makeAgent(isv.getRforgetterItems().get(0));
+						} catch (Exception ex) {
+
+						}
+					case 8:
+						try {
+							this.makeAgent(isv.getRpalaryzerItems().get(0));
+						} catch (Exception ex) {
+
+						}
+					case 9:
+						try {
+							this.makeAgent(isv.getRprotectorItems().get(0));
+						} catch (Exception ex) {
+
+						}
 				}
-			case 9:
+			}
+			for (Agent a : applied)
 				try {
-					this.makeAgent(isv.getRprotectorItems().get(0));
-				} catch(Exception ex) {
-					
+					a.effect(this);
+				} catch (Exception ignore) {
 				}
-        	}
-        }
-        for (Agent a : applied)
-            try {
-                a.effect(this);
-            } catch (Exception ignore) {
-            }
+		} catch (Exception ignore) {
+		} finally {
+			Game.timer.tick();
+		}
     }
 
     /**
