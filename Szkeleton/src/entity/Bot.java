@@ -17,6 +17,7 @@ import game.Timer;
 import inventory.IStorable;
 import inventory.VisitorManager;
 import item.Agent;
+import graphics.VarazsbogyokFrame;
 
 /**
  * A Bot döntéseit megvalósító osztály
@@ -31,6 +32,7 @@ public class Bot extends Virologist {
      * A Bot lépését szimuláló függvény
      */
     public void step() {
+        VarazsbogyokFrame.getInstance().setDisabled(true);
         Game.activeVirologist = this;
         for (Agent a : applied)
             try {

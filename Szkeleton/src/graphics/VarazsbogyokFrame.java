@@ -150,4 +150,18 @@ public class VarazsbogyokFrame extends JFrame {
     public ScorePanel scoreboard = new ScorePanel();
     /* Grafikus elemek */
 
+    public void setDisabled(boolean disabled){
+        if(disabled){
+            menu.setEnabled(false);
+            adat.setEnabled(false);
+            jatek.setDisabled(true);
+            scoreboard.setEnabled(false);
+        } else {
+            menu.setEnabled(true);
+            adat.setEnabled(true);
+            jatek.setDisabled(false);
+            scoreboard.setEnabled(true);
+        }
+    }
+
 }
