@@ -21,7 +21,7 @@ public class RDancer extends Recipe {
     /**
      * Ikon elérési út
      */
-    protected String iconPath = "resources\\RDancer.jpg";
+    protected String iconPath = "resources\\RDancer.png";
     /**
      * A vitustáncot okozó ágenshez szükséges anyagok számai.
      */

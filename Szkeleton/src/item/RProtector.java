@@ -21,7 +21,7 @@ public class RProtector extends Recipe {
     /**
      * Ikon elérési út
      */
-    protected String iconPath = "resources\\RProtector.jpg";
+    protected String iconPath = "resources\\RProtector.png";
     /**
      * A vitustáncot okozó ágenshez szükséges anyagok számai.
      */
