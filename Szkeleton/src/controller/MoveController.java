@@ -3,11 +3,12 @@ package controller;
 import game.Game;
 import game.Tile;
 import graphics.VarazsbogyokFrame;
+import entity.Virologist;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.Color;
+import java.util.ArrayList;
 
 /**
  * A játékosok mozgásáért felelős kontroller
@@ -27,13 +28,9 @@ public class MoveController extends Controller implements MouseListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO - hibakezelés
         if (activeTile == null) {
-            //return;
+            return;
         }
-
-        //Game.activeVirologist.getTile().getxy();
-        Game.activeVirologist.getApplied().clear();
 
         try {
             if(Game.activeVirologist.getInventory().size() != Game.activeVirologist.inventorySize)
@@ -43,8 +40,6 @@ public class MoveController extends Controller implements MouseListener {
                 canPickup = false;
             }
             Game.activeVirologist.move(Game.map.getTiles().get(counter++), canPickup);
-
-            //Game.activeVirologist.getTile().setColor(Color.PINK);
             VarazsbogyokFrame.getInstance().redraw();
 
         } catch (Exception e1) {
@@ -59,7 +54,15 @@ public class MoveController extends Controller implements MouseListener {
      */
     @Override
     public void mouseClicked(MouseEvent e) {
-        // TODO - mező kiválasztása
+        for(int i = 0; i < activeTile.getNeighbours().size(); i++){
+            Tile temp = activeTile.getNeighbours().get(i);
+            ArrayList<int> tempA = temp.getxy();
+            if(tempA.get(0) == e.getX() && tempA.get(1) == e.getY()){
+                activeTile = temp;
+                return;
+            }
+        }
+        VarazsbogyokFrame.getInstance().errorMessage("Please choose a neighbour tile");
     }
 
     @Override

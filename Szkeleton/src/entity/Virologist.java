@@ -18,6 +18,7 @@ import graphics.IIcon;
 import inventory.*;
 import item.*;
 import item.AgentComparator;
+import entity.FVirologist;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
 /**
  * Egy közös entitás működését szimuláló osztály
  */
-public abstract class Virologist implements Steppable, IInventoryHolder , Serializable, IIcon {
+public abstract class FVirologist implements Steppable, IInventoryHolder , Serializable, IIcon {
     /**
      * Mező, amelyen a virológus jelenleg áll
      */
@@ -157,7 +158,7 @@ public abstract class Virologist implements Steppable, IInventoryHolder , Serial
             throw new StateDoesNotAllowActionException("Virologist is not allowed to take action");
         }
         if (!tile.getNeighbours().contains(t)) {
-            //throw new StateDoesNotAllowActionException("Not neighbouring tiles");
+            throw new StateDoesNotAllowActionException("Not neighbouring tiles");
         }
         tile.removeVirologist(this);
         t.addVirologist(this);
