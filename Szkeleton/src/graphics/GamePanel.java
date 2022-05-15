@@ -5,7 +5,9 @@ import entity.Virologist;
 import game.Game;
 import inventory.IStorable;
 import inventory.Inventory;
+import inventory.VisitorManager;
 import item.Agent;
+import item.Bag;
 
 import java.io.File;
 import javax.swing.*;
@@ -23,6 +25,7 @@ public class GamePanel extends JPanel {
     private JButton cb;
     private JButton db;
     private JButton sb;
+    private JButton bb;
     /**
      * Virológus event listener
      */
@@ -95,6 +98,7 @@ public class GamePanel extends JPanel {
      */
     public void setInventoryPanel() {
         inventoryPanel.removeAll();
+        /* Játékos */
         Inventory i = Game.activeVirologist.getInventory();
         i.reset();
         JPanel ip = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -106,7 +110,23 @@ public class GamePanel extends JPanel {
             temp.addActionListener(ie);
             ip.add(temp);
         }
-        inventoryPanel.add(ip, BorderLayout.CENTER);
+        inventoryPanel.add(ip, BorderLayout.NORTH);
+
+        /* Táska */
+        Bag b = VisitorManager.getBag(Game.activeVirologist);
+        if (b == null)
+            return;
+        JPanel bp = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        b.getInventory().reset();
+        while(b.getInventory().hasNext()) {
+            ReferenceButton temp = new ReferenceButton(b.getInventory().next());
+            if(isDisabled) {
+                temp.setEnabled(false);
+            }
+            temp.addActionListener(ie);
+            bp.add(temp);
+        }
+        inventoryPanel.add(bp, BorderLayout.SOUTH);
     }
 
     public void init() {
@@ -170,6 +190,13 @@ public class GamePanel extends JPanel {
         db.addActionListener(new DropController());
         db.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
+        /* Zsák gomb */
+        bb = new JButton();
+        bb.setIcon(new ImageIcon("resources/bag.jpg"));
+        bb.setPreferredSize(new Dimension(50, 50));
+        bb.addActionListener(new BagController());
+        bb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
         /* Körlépés gomb */
         sb = new JButton();
         sb.setIcon(new ImageIcon("resources/arrow.png"));
@@ -184,6 +211,7 @@ public class GamePanel extends JPanel {
         commandPanel.add(rb);
         commandPanel.add(cb);
         commandPanel.add(db);
+        commandPanel.add(bb);
         commandPanel.add(sb);
 
         add(mapPanel);

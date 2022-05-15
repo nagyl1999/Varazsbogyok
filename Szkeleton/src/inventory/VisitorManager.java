@@ -89,6 +89,16 @@ public class VisitorManager {
     }
 
     /**
+     * Van-e az inventory-ban táska
+     */
+    public static Bag getBag(Virologist v) {
+        InventorySorterVisitor i = sortInventory(v);
+        if (i.getBagItems().size() > 0)
+            return i.getBagItems().get(0);
+        return null;
+    }
+
+    /**
      * Van-e táska az inventory-ban
      */
     public static boolean containsGear(Virologist v, Bag g) {

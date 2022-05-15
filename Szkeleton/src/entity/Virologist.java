@@ -64,6 +64,7 @@ public abstract class Virologist implements Steppable, IInventoryHolder , Serial
 
     /**
      * Getter - Inventory
+     *
      */
     public Inventory getInventory() {
         return inventory;

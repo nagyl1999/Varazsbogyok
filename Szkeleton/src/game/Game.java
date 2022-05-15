@@ -102,6 +102,14 @@ public final class Game implements Serializable {
         timer.addSteppable(v);
         t.addVirologist(v);
 
+        try {
+            Bag b = new Bag();
+            b.getInventory().addItem(new Glove());
+            v.getInventory().addItem(b);
+        } catch (NotEnoughSpaceException e) {
+            e.printStackTrace();
+        }
+
         for(int i = 0; i < Game.botCount; i++) {
             Bot bot = new Bot();
             timer.addSteppable(bot);

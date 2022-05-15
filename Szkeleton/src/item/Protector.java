@@ -66,7 +66,8 @@ public class Protector extends Agent {
      * A függvény paraméterben kapott virológuson szünteti meg a felkent ágens hatását.
      */
     public void decompose(Virologist v) throws ItemNotFoundException {
-        v.removeApplied(this);
+        if (v != null)
+            v.removeApplied(this);
         virologist = null;
         Game.timer.removeSteppable(this);
     }

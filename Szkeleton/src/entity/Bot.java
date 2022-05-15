@@ -33,8 +33,10 @@ public class Bot extends Virologist {
      * Ikon elérési út
      */
     protected String iconPath = "resources\\bot.jpg";
-    
-    private static Random r = new Random();
+	/**
+	 * Véletlenszerű szám generátor
+	 */
+	private static final Random r = new Random();
     
     /**
      * A Bot lépését szimuláló függvény
@@ -166,7 +168,7 @@ public class Bot extends Virologist {
      */
     public void die() {
         tile.removeVirologist(this);
-        // TODO - steppable-k közül kiszedni (?)
+        Game.timer.removeSteppable(this);
     }
 
 }
