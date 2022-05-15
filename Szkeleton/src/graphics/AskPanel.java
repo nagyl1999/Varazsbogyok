@@ -32,9 +32,9 @@ public class AskPanel extends JPanel {
         JLabel tile, bot;
         JSpinner tileTF, botTF;
         setPreferredSize(new Dimension(1000, 800));
-        
 
-        tile = new JLabel("<html> <div style='text-align:center;'> Number of Fields : </div></html>", SwingConstants.CENTER);
+
+        tile = new JLabel("<html> <div style='text-align:center;'> Hány mezõ legyen <br> a pályán: </div></html>", SwingConstants.CENTER);
         tile.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
         SpinnerModel model = new SpinnerNumberModel(100, Game.minTileCount, 1000, 1);
         tileTF = new JSpinner(model);
