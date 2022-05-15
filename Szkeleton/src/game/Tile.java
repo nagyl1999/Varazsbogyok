@@ -50,7 +50,7 @@ public abstract class Tile implements IInventoryHolder, Serializable , IDrawable
     public Tile() {
         virologists = new ArrayList<Virologist>();
         neighbours = new ArrayList<Tile>();
-        inventory = new Inventory(inventorySize);
+        inventory = new Inventory(this, inventorySize);
         c = Color.black;
         polly = new Polygon();
         circle = new Polygon();

@@ -14,6 +14,8 @@ public class BearLaboratory extends Laboratory {
 	/**A medvevírus itt kenődik fel a virológusra. Kivédhető ha a virológuson köpeny van, vagy védelmező ágens*/
 	public void interactedWith(Virologist v) throws NotEnoughSpaceException {
 		try {
+			if (inventory.size() == 0)
+				return;
 			Bear b = (Bear)inventory.at(inventory.size()-1);
 			b.use(null, v);
 			inventory.removeItem(b);

@@ -19,6 +19,7 @@ public class VoronoiPanel extends JPanel {
 
     public void init() {
         setPreferredSize(new Dimension(500, 800));
+        setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         addMouseListener((MouseListener) GamePanel.mc);
     }
 
