@@ -21,7 +21,7 @@ public class RParalyzer extends Recipe {
     /**
      * Ikon elérési út
      */
-    protected String iconPath = "resources\\recipe.jpg";
+    protected String iconPath = "resources\\RParalyzer.jpg";
     /**
      * A vitustáncot okozó ágenshez szükséges anyagok számai.
      */
