@@ -6,6 +6,7 @@ import game.Vec2;
 import graphics.VarazsbogyokFrame;
 import entity.Virologist;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -74,6 +75,11 @@ public class MoveController extends Controller implements MouseListener {
         if (!Game.activeVirologist.getTile().getNeighbours().contains(clicked))
             VarazsbogyokFrame.getInstance().errorMessage("Please choose a neighbour tile");
         activeTile = clicked;
+        Color c = new Color(activeTile.getColor().getRed(),activeTile.getColor().getGreen(),activeTile.getColor().getBlue(),100);
+        activeTile.setColor(c);
+        VarazsbogyokFrame.getInstance().redraw();
+        /*Color c2 = new Color(activeTile.getColor().getRed(),activeTile.getColor().getGreen(),activeTile.getColor().getBlue());
+        activeTile.setColor(c2);*/
         // TODO - megjelenítés a térképen
     }
 
