@@ -150,7 +150,7 @@ public abstract class Tile implements IInventoryHolder, Serializable , IDrawable
     }
 
     public void getxy(){
-        System.out.println(posx + " " + posy);
+
     }
 
     /**

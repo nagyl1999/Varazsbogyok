@@ -34,7 +34,6 @@ public class VoronoiPanel extends JPanel {
         g.setColor(Color.BLACK);
         g.drawPolygon(Game.activeVirologist.getTile().getCircle());
         g.fillPolygon(Game.activeVirologist.getTile().getCircle());
-        System.out.println("mikor hivodsz meg");
         for(Tile t: Game.map.getTiles()) {
         	t.setColor(new Color(t.getColor().getRed(),t.getColor().getGreen(),t.getColor().getBlue()));
         	
