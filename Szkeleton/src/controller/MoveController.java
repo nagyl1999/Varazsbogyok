@@ -47,6 +47,7 @@ public class MoveController extends Controller implements MouseListener {
         } catch (Exception e1) {
             VarazsbogyokFrame.getInstance().errorMessage("You can't move here");
         }
+        VarazsbogyokFrame.getInstance().redraw();
     }
 
     /**

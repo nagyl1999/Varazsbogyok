@@ -36,7 +36,7 @@ public class DropController extends Controller {
         }catch (Exception valami){
             VarazsbogyokFrame.getInstance().errorMessage("You can't drop this");
         }
-
+        VarazsbogyokFrame.getInstance().redraw();
 
     }
 }

@@ -11,6 +11,7 @@ package item;
 
 */
 
+import game.Game;
 import inventory.IInventoryVisitor;
 import inventory.InventorySorterVisitor;
 
@@ -56,7 +57,9 @@ public class RProtector extends Recipe {
      */
     @Override
     public Agent addAgent() {
-        return new Protector();
+        Agent a = new Protector();
+        Game.timer.addSteppable(a);
+        return a;
     }
 
     /**

@@ -19,7 +19,6 @@ public class CraftController extends Controller {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO - hibakeresés, rossz típusra kattintás
         try{
             Recipe r = (Recipe) VarazsbogyokFrame.getInstance().getActiveItem();
 
@@ -29,11 +28,11 @@ public class CraftController extends Controller {
             try {
                 Game.activeVirologist.makeAgent(r);
             } catch (Exception ignore) {
-
+                VarazsbogyokFrame.getInstance().errorMessage("Not enough material");
             }
         }catch (Exception valami){
             VarazsbogyokFrame.getInstance().errorMessage("Please choose a recipe");
         }
-
+        VarazsbogyokFrame.getInstance().redraw();
     }
 }
