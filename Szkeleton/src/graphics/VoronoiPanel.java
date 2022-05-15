@@ -5,6 +5,7 @@ import game.Tile;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseListener;
 
 /**
  * Voronoi csempézett játéktér megjelentése
@@ -18,6 +19,7 @@ public class VoronoiPanel extends JPanel {
 
     public void init() {
         setPreferredSize(new Dimension(500, 800));
+        addMouseListener((MouseListener) GamePanel.mc);
     }
 
     public void paintComponent(Graphics g) {

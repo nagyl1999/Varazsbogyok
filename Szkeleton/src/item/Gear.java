@@ -22,7 +22,7 @@ import item.Agent;
 /**
  * A védőfelszerelések ősosztálya.A virológusok ezek védelem céljából veszik fel
  */
-public abstract class Gear implements IStorable , Serializable {
+public abstract class Gear implements IStorable, IUsable, Serializable {
     /**
      * Tárolja, hogy az aktuális védőfelszerelés használatban van.
      */
@@ -67,6 +67,6 @@ public abstract class Gear implements IStorable , Serializable {
     /**
      * A felszerelés használata, ezt a felszerelések külön definiálják
      */
-    public abstract void use(Virologist v);
+    public abstract void use(Virologist v1, Virologist v2);
 
 }

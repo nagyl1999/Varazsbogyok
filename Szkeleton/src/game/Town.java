@@ -24,7 +24,7 @@ public class Town extends Tile {
 
 	/** város mező, nem tud semmit sem felvenni. */
 	public void interactedWith(Virologist v) {
-		System.out.println("Town.interactedWith");
+
 	}
 	/**Visszaadja a mező inventoryját.*/
 	@Override

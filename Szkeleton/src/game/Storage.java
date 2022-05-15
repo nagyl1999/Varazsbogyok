@@ -30,7 +30,7 @@ public class Storage extends Tile {
 	/** Itt addjuk hozzá a virológus inventoryjához a felvenni kivánt anyagot.*/
 	public void interactedWith(Virologist v) throws NotEnoughSpaceException {
 		try {
-			Material m = (Material) inventory.at(0);
+			Material m = (Material) inventory.at(inventory.size()-1);
 			v.getInventory().addItem(m);
 			inventory.removeItem(m);
 			VarazsbogyokFrame.getInstance().errorMessage("Material");

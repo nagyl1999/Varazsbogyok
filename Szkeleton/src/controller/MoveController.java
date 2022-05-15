@@ -40,7 +40,7 @@ public class MoveController extends Controller implements MouseListener {
                 VarazsbogyokFrame.getInstance().errorMessage("Not enough inventory space!");
                 canPickup = false;
             }
-            Game.activeVirologist.move(Game.map.getTiles().get(counter++), canPickup);
+            Game.activeVirologist.move(activeTile, canPickup);
             VarazsbogyokFrame.getInstance().redraw();
 
         } catch (Exception e1) {
@@ -55,15 +55,24 @@ public class MoveController extends Controller implements MouseListener {
      */
     @Override
     public void mouseClicked(MouseEvent e) {
-        /*for(int i = 0; i < activeTile.getNeighbours().size(); i++){
-            Tile temp = activeTile.getNeighbours().get(i);
-            ArrayList<int> tempA = temp.getxy();
-            if(tempA.get(0) == e.getX() && tempA.get(1) == e.getY()){
-                activeTile = temp;
-                return;
+        Tile clicked = null;
+
+        for (Tile t : Game.map.getTiles()) {
+            if (t == Game.activeVirologist.getTile())
+                continue;
+            if (t.getPolygon().contains(e.getPoint())) {
+                clicked = t;
+                break;
             }
         }
-        VarazsbogyokFrame.getInstance().errorMessage("Please choose a neighbour tile");*/
+        System.out.println(clicked); // TODO - kiszedni
+
+        if (clicked == null)
+            return;
+        if (!Game.activeVirologist.getTile().getNeighbours().contains(clicked))
+            VarazsbogyokFrame.getInstance().errorMessage("Please choose a neighbour tile");
+        activeTile = clicked;
+        // TODO - megjelenítés a térképen
     }
 
     @Override
