@@ -17,6 +17,7 @@ import inventory.IStorable;
 import inventory.NotEnoughSpaceException;
 import inventory.VisitorManager;
 import item.Agent;
+import graphics.VarazsbogyokFrame;
 
 /**
  * Játékos döntéseit reprezentáló osztály
@@ -38,6 +39,7 @@ public class Player extends Virologist {
      * A játékos döntéseit végrehajtó függvény
      */
     public void step() {
+        VarazsbogyokFrame.getInstance().setDisabled(false);
         Game.activeVirologist = this;
         for (Agent a : applied) {
             try {

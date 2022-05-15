@@ -15,6 +15,14 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class GamePanel extends JPanel {
+	private boolean isDisabled = false;
+	
+    private JButton mb;
+    private JButton ub;
+    private JButton rb;
+    private JButton cb;
+    private JButton db;
+    private JButton sb;
     /**
      * Virológus event listener
      */
@@ -61,6 +69,9 @@ public class GamePanel extends JPanel {
         for (Virologist v : virologists) {
 
             ReferenceButton temp = new ReferenceButton(v);
+            if(isDisabled) {
+            	temp.setEnabled(false);
+            }
             temp.addActionListener(ve);
             vp.add(temp);
         }
@@ -69,8 +80,13 @@ public class GamePanel extends JPanel {
         /* Effektek */
         ArrayList<Agent> agents = Game.activeVirologist.getApplied();
         JPanel ap = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        for (Agent a : agents)
-            ap.add(new ReferenceButton(a));
+        for (Agent a : agents) {
+        	ReferenceButton temp = new ReferenceButton(a);
+            if(isDisabled) {
+            	temp.setEnabled(false);
+            }
+        	ap.add(temp);
+        }
         virologistPanel.add(ap, BorderLayout.SOUTH);
     }
 
@@ -84,6 +100,9 @@ public class GamePanel extends JPanel {
         JPanel ip = new JPanel(new FlowLayout(FlowLayout.LEFT));
         while (i.hasNext()) {
             ReferenceButton temp = new ReferenceButton(i.next());
+            if(isDisabled) {
+            	temp.setEnabled(false);
+            }
             temp.addActionListener(ie);
             ip.add(temp);
         }
@@ -117,43 +136,43 @@ public class GamePanel extends JPanel {
         dataPanel.add(commandPanel);
 
         /* Move gomb */
-        JButton mb = new JButton();
+        mb = new JButton();
         mb.setIcon(new ImageIcon("resources/move.jpg"));
         mb.setPreferredSize(new Dimension(50, 50));
         mb.addActionListener(mc);
         mb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         /* Use gomb */
-        JButton ub = new JButton();
-        ub.setIcon(new ImageIcon("resources/use.jpg"));
+        ub = new JButton();
+        ub.setIcon(new ImageIcon("resources/use.png"));
         ub.setPreferredSize(new Dimension(50, 50));
         ub.addActionListener(new UseController());
         ub.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         /* Rob gomb */
-        JButton rb = new JButton();
+        rb = new JButton();
         rb.setIcon(new ImageIcon("resources/rob.jpg"));
         rb.setPreferredSize(new Dimension(50, 50));
         rb.addActionListener(new RobController());
         rb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         /* Craft gomb */
-        JButton cb = new JButton();
+        cb = new JButton();
         cb.setIcon(new ImageIcon("resources/craft.jpg"));
         cb.setPreferredSize(new Dimension(50, 50));
         cb.addActionListener(new CraftController());
         cb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         /* Drop gomb */
-        JButton db = new JButton();
+        db = new JButton();
         db.setIcon(new ImageIcon("resources/drop.jpg"));
         db.setPreferredSize(new Dimension(50, 50));
         db.addActionListener(new DropController());
         db.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         /* Körlépés gomb */
-        JButton sb = new JButton();
-        sb.setIcon(new ImageIcon("resources/arrow.jpg"));
+        sb = new JButton();
+        sb.setIcon(new ImageIcon("resources/arrow.png"));
         sb.setPreferredSize(new Dimension(50, 50));
         sb.addActionListener(new StepController());
         sb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -208,5 +227,32 @@ public class GamePanel extends JPanel {
     private JPanel virologistPanel;
     private JPanel commandPanel;
     /* Grafikus elemek */
+
+    public void setDisabled(boolean disabled){
+    	isDisabled=disabled;
+        if(disabled){
+            mapPanel.setEnabled(false);
+            dataPanel.setEnabled(false);
+            inventoryPanel.setEnabled(false);
+            virologistPanel.setEnabled(false);
+
+            mb.setEnabled(false);
+            ub.setEnabled(false);
+            rb.setEnabled(false);
+            cb.setEnabled(false);
+            db.setEnabled(false);
+        } else {
+            mapPanel.setEnabled(true);
+            dataPanel.setEnabled(true);
+            inventoryPanel.setEnabled(true);
+            virologistPanel.setEnabled(true);
+            
+            mb.setEnabled(true);
+            ub.setEnabled(true);
+            rb.setEnabled(true);
+            cb.setEnabled(true);
+            db.setEnabled(true);
+        }
+    }
 
 }
