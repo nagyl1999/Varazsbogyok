@@ -23,7 +23,7 @@ public class Glove extends Gear {
     /**
      * Ikon elérési út
      */
-    protected String iconPath = "";
+    protected String iconPath = "resources\\glove" + DURABILITY + ".jpg";
     /**
      * Hátralévő használatok száma
      */

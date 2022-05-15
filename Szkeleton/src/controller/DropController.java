@@ -20,13 +20,23 @@ public class DropController extends Controller {
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO - hibakezelés
-        IStorable s = VarazsbogyokFrame.getInstance().getActiveItem();
-        if (s == null)
-            return;
-
         try {
-            Game.activeVirologist.getInventory().removeItem(s);
-        } catch (Exception ignore) {
+            IStorable s = VarazsbogyokFrame.getInstance().getActiveItem();
+            if (s == null){
+                VarazsbogyokFrame.getInstance().errorMessage("Nem választottál ki semmit tesó....");
+                return;
+            }
+
+            try {
+                Game.activeVirologist.getInventory().removeItem(s);
+                VarazsbogyokFrame.getInstance().redraw();
+                VarazsbogyokFrame.getInstance().setActiveItem(null);
+            } catch (Exception ignore) {
+            }
+        }catch (Exception valami){
+            VarazsbogyokFrame.getInstance().errorMessage("Ezt nem dobhatod el tesó....");
         }
+
+
     }
 }

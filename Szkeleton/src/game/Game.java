@@ -18,6 +18,7 @@ import graphics.VarazsbogyokFrame;
 import inventory.NotEnoughSpaceException;
 import item.Glove;
 import item.Paralyzer;
+import item.Axe;
 
 import java.awt.Color;
 import java.io.Serializable;
@@ -99,10 +100,12 @@ public final class Game implements Serializable {
         Random r = new Random();
         Player v = new Player();
         Bot v2 = new Bot();
+        Paralyzer paralyzer = new Paralyzer();
         try {
-            v.applyAgent(v, new Paralyzer());
             v.getInventory().addItem(new Glove());
             v.getInventory().addItem(new Glove());
+            v2.getInventory().addItem(new Axe());
+            v2.applyAgent(v2, paralyzer);
         } catch (Exception e) {
             e.printStackTrace();
         }

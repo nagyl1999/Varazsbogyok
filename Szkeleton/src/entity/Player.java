@@ -25,7 +25,7 @@ public class Player extends Virologist {
     /**
      * Ikon elérési út
      */
-    protected String iconPath = "";
+    protected String iconPath = "resources\\player.jpg";
 
     /**
      * Getter - Ikon elérési út

@@ -26,7 +26,7 @@ public class Jacket extends Gear {
     /**
      * Ikon elérési út
      */
-    protected String iconPath = "";
+    protected String iconPath = "resources\\jacket.jpg";
     /**
      * Hátralévő használatok száma
      */

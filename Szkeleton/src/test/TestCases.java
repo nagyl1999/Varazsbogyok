@@ -441,7 +441,7 @@ public class TestCases {
         Tile t = (Tile) SkeletonTesterMenu.objects.get(tileId);
         Virologist v = (Virologist) SkeletonTesterMenu.objects.get(virId);
 
-        v.move(t);
+        v.move(t,true);
     }
 
     /**

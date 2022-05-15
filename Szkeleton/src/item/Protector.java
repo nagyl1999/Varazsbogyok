@@ -25,7 +25,7 @@ public class Protector extends Agent {
     /**
      * Ikon elérési út
      */
-    protected String iconPath = "";
+    protected String iconPath = "resources\\protecter.jpg";
     /**
      * Ágnes élettartama
      */

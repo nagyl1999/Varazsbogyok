@@ -27,7 +27,7 @@ public class Dancer extends Agent {
     /**
      * Ikon elérési út
      */
-    protected String iconPath = "";
+    protected String iconPath = "resources\\dancer.jpg";
     /**
      * Ágnes élettartama
      */

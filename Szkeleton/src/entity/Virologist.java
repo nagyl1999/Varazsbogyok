@@ -18,6 +18,7 @@ import graphics.IIcon;
 import inventory.*;
 import item.*;
 import item.AgentComparator;
+import entity.Virologist;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -152,14 +153,17 @@ public abstract class Virologist implements Steppable, IInventoryHolder , Serial
      * A virológus másik mezőre léptetése
      * @throws StateDoesNotAllowActionException
      */
-    public void move(Tile t) throws NotEnoughSpaceException, StateDoesNotAllowActionException {
-        if (VisitorManager.hasBear(this) ||VisitorManager.hasDancer(this) ||VisitorManager.hasParalyzer(this))
+    public void move(Tile t, boolean interact) throws NotEnoughSpaceException, StateDoesNotAllowActionException {
+        if (VisitorManager.hasBear(this) ||VisitorManager.hasDancer(this) ||VisitorManager.hasParalyzer(this)) {
             throw new StateDoesNotAllowActionException("Virologist is not allowed to take action");
-        if (!tile.getNeighbours().contains(t))
+        }
+        if (!tile.getNeighbours().contains(t)) {
             throw new StateDoesNotAllowActionException("Not neighbouring tiles");
+        }
         tile.removeVirologist(this);
         t.addVirologist(this);
-        t.interactedWith(this);
+        if(interact)
+            t.interactedWith(this);
     }
 
     /**
@@ -173,7 +177,7 @@ public abstract class Virologist implements Steppable, IInventoryHolder , Serial
         if (!VisitorManager.hasParalyzer(v))
             throw new StateDoesNotAllowActionException("Virologist to be robbed is not paralyzed");
         if (tile != v.getTile())
-        throw new StateDoesNotAllowActionException("Virologists are not on the same tile");
+            throw new StateDoesNotAllowActionException("Virologists are not on the same tile");
         for (IStorable i : VisitorManager.getStealable(v)) {
             try {
                 getInventory().addItem(i);

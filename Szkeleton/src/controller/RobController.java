@@ -21,12 +21,19 @@ public class RobController extends Controller {
     public void actionPerformed(ActionEvent e) {
         // TODO - hibakezelés
         Virologist v = VarazsbogyokFrame.getInstance().getActiveVirologist();
-        if (v == null)
+        if (v == null){
+            VarazsbogyokFrame.getInstance().errorMessage("Nincs kiválasztva virologus tesó....");
             return;
+        }else if(v == Game.activeVirologist){
+            VarazsbogyokFrame.getInstance().errorMessage("Magadat nem tudod kirabolni tesó....");
+            return;
+        }
 
         try {
             Game.activeVirologist.robVirologist(v);
-        } catch (Exception ignore) {
+            VarazsbogyokFrame.getInstance().redraw();
+        } catch (Exception e1) {
+            VarazsbogyokFrame.getInstance().errorMessage("Nem tudsz lopni tesó....");
         }
 
     }

@@ -20,7 +20,7 @@ public class Aminoacid extends Material {
     /**
      * Ikon elérési út
      */
-    protected String iconPath = "";
+    protected String iconPath = "resources\\aminoacid.jpg";
     /**
      * A visitor tervezési mintát ez a függvény valósítja meg, ez fogja fogadni az aminósav típust.
      */

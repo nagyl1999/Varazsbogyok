@@ -19,14 +19,21 @@ public class CraftController extends Controller {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO - hibakeresés
-        Recipe r = (Recipe) VarazsbogyokFrame.getInstance().getActiveItem();
-        if (r == null)
-            return;
+        // TODO - hibakeresés, rossz típusra kattintás
+        try{
+            Recipe r = (Recipe) VarazsbogyokFrame.getInstance().getActiveItem();
 
-        try {
-            Game.activeVirologist.makeAgent(r);
-        } catch (Exception ignore) {
+            if (r == null)
+                return;
+
+            try {
+                Game.activeVirologist.makeAgent(r);
+            } catch (Exception ignore) {
+
+            }
+        }catch (Exception valami){
+            VarazsbogyokFrame.getInstance().errorMessage("Ez nem egy recept tesó....");
         }
+
     }
 }

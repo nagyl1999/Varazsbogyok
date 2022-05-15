@@ -9,11 +9,11 @@ public class Axe extends Gear {
     /**
      * Ikon elérési út
      */
-    protected String iconPath = "";
+    protected String iconPath = "resources\\Axe" + DURABILITY + ".jpg";
     /**
      * Hátralévő használatok száma
      */
-    public static int DURABILITY = -1;
+    public static int DURABILITY = 1;
 
     /**
      * Konstruktor
