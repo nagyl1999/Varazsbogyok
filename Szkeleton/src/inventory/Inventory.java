@@ -99,6 +99,10 @@ public class Inventory implements Iterator<IStorable> , Serializable {
         if (!hasSpace())
             throw new NotEnoughSpaceException("Nincs elég hely!");
         items.add(i);
+        try {
+            VisitorManager.hasWonTheGame((Virologist) getOwner());
+        } catch (Exception ignore) {
+        }
     }
 
     /**
