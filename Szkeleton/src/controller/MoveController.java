@@ -67,8 +67,7 @@ public class MoveController extends Controller implements MouseListener {
                 break;
             }
         }
-        System.out.println(clicked); // TODO - kiszedni
-        System.out.println(e.getX()+ ":" + e.getY());
+        
 
         if (clicked == null)
             return;
