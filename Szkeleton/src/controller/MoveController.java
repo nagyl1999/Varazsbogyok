@@ -54,7 +54,7 @@ public class MoveController extends Controller implements MouseListener {
      */
     @Override
     public void mouseClicked(MouseEvent e) {
-        for(int i = 0; i < activeTile.getNeighbours().size(); i++){
+        /*for(int i = 0; i < activeTile.getNeighbours().size(); i++){
             Tile temp = activeTile.getNeighbours().get(i);
             ArrayList<int> tempA = temp.getxy();
             if(tempA.get(0) == e.getX() && tempA.get(1) == e.getY()){
@@ -62,7 +62,7 @@ public class MoveController extends Controller implements MouseListener {
                 return;
             }
         }
-        VarazsbogyokFrame.getInstance().errorMessage("Please choose a neighbour tile");
+        VarazsbogyokFrame.getInstance().errorMessage("Please choose a neighbour tile");*/
     }
 
     @Override

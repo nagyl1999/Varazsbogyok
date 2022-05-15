@@ -18,7 +18,7 @@ import graphics.IIcon;
 import inventory.*;
 import item.*;
 import item.AgentComparator;
-import entity.FVirologist;
+import entity.Virologist;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ import java.util.ArrayList;
 /**
  * Egy közös entitás működését szimuláló osztály
  */
-public abstract class FVirologist implements Steppable, IInventoryHolder , Serializable, IIcon {
+public abstract class Virologist implements Steppable, IInventoryHolder , Serializable, IIcon {
     /**
      * Mező, amelyen a virológus jelenleg áll
      */
@@ -177,7 +177,7 @@ public abstract class FVirologist implements Steppable, IInventoryHolder , Seria
         if (!VisitorManager.hasParalyzer(v))
             throw new StateDoesNotAllowActionException("Virologist to be robbed is not paralyzed");
         if (tile != v.getTile())
-        throw new StateDoesNotAllowActionException("Virologists are not on the same tile");
+            throw new StateDoesNotAllowActionException("Virologists are not on the same tile");
         for (IStorable i : VisitorManager.getStealable(v)) {
             try {
                 getInventory().addItem(i);
