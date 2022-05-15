@@ -119,48 +119,42 @@ public class GamePanel extends JPanel {
 
         /* Move gomb */
         JButton mb = new JButton();
-        ImageIcon imgMove = new ImageIcon( new File(System.getProperty("user.dir")).getParent() + "\\resources\\move.jpg");
-        mb.setIcon(imgMove);
+        mb.setIcon(new ImageIcon("resources/move.jpg"));
         mb.setPreferredSize(new Dimension(50, 50));
         mb.addActionListener(mc);
         mb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         /* Use gomb */
         JButton ub = new JButton();
-        ImageIcon imgUse = new ImageIcon( new File(System.getProperty("user.dir")).getParent() + "\\resources\\use.png");
-        ub.setIcon(imgUse);
+        ub.setIcon(new ImageIcon("resources/use.png"));
         ub.setPreferredSize(new Dimension(50, 50));
         ub.addActionListener(new UseController());
         ub.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         /* Rob gomb */
         JButton rb = new JButton();
-        ImageIcon imgRob = new ImageIcon( new File(System.getProperty("user.dir")).getParent() + "\\resources\\rob.jpg");
-        rb.setIcon(imgRob);
+        rb.setIcon(new ImageIcon("resources/rob.jpg"));
         rb.setPreferredSize(new Dimension(50, 50));
         rb.addActionListener(new RobController());
         rb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         /* Craft gomb */
         JButton cb = new JButton();
-        ImageIcon imgCraft = new ImageIcon( new File(System.getProperty("user.dir")).getParent() + "\\resources\\craft.jpg");
-        cb.setIcon(imgCraft);
+        cb.setIcon(new ImageIcon("resources/craft.jpg"));
         cb.setPreferredSize(new Dimension(50, 50));
         cb.addActionListener(new CraftController());
         cb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         /* Drop gomb */
         JButton db = new JButton();
-        ImageIcon imgDrop = new ImageIcon( new File(System.getProperty("user.dir")).getParent() + "\\resources\\drop.jpg");
-        db.setIcon(imgDrop);
+        db.setIcon(new ImageIcon("resources/drop.jpg"));
         db.setPreferredSize(new Dimension(50, 50));
         db.addActionListener(new DropController());
         db.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         /* Körlépés gomb */
         JButton sb = new JButton();
-        ImageIcon imgArrow = new ImageIcon( new File(System.getProperty("user.dir")).getParent() + "\\resources\\arrow.png");
-        sb.setIcon(imgArrow);
+        sb.setIcon(new ImageIcon("resources/arrow.png"));
         sb.setPreferredSize(new Dimension(50, 50));
         sb.addActionListener(new StepController());
         sb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

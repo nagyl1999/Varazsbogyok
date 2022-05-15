@@ -26,14 +26,14 @@ public class AskPanel extends JPanel {
         setLayout(new CardLayout());
 
         JPanel main = new JPanel(new GridBagLayout());
-        //JPanel load = new JPanel();
+        JPanel load = new JPanel();
 
         JButton ok, cancel;
         JLabel tile, bot;
         JSpinner tileTF, botTF;
         setPreferredSize(new Dimension(1000, 800));
 
-        //load.add(new JLabel("<html> <div style='text-align:center;'> Hány mezõ legyen <br> a pályán: </div></html>", SwingConstants.CENTER));
+        load.add(new JLabel("<html> <div style='text-align:center;'> Hány mezõ legyen <br> a pályán: </div></html>", SwingConstants.CENTER));
 
         tile = new JLabel("<html> <div style='text-align:center;'> Number of Fields : </div></html>", SwingConstants.CENTER);
         tile.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
@@ -91,8 +91,11 @@ public class AskPanel extends JPanel {
         c.gridy = 2;
         main.add(cancel,c);
 
+        main.setBackground(Color.pink);
+        load.setBackground(Color.pink);
+
         add(main);
-        //add(load);
+        add(load);
 
         setBackground(Color.pink);
         setVisible(true);
