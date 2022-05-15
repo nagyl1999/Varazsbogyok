@@ -63,7 +63,6 @@ public class Timer implements Serializable {
         } finally {
             VarazsbogyokFrame.getInstance().redraw();
         }
-        System.out.println(active);
     }
 
     /**
