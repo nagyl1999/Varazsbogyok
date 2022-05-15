@@ -29,6 +29,7 @@ public class MoveController extends Controller implements MouseListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (activeTile == null) {
+            VarazsbogyokFrame.getInstance().errorMessage("Please choose a tile");
             return;
         }
 
@@ -43,7 +44,7 @@ public class MoveController extends Controller implements MouseListener {
             VarazsbogyokFrame.getInstance().redraw();
 
         } catch (Exception e1) {
-            VarazsbogyokFrame.getInstance().errorMessage("Ide nem léphetsz tesó....");
+            VarazsbogyokFrame.getInstance().errorMessage("You can't move here");
         }
     }
 

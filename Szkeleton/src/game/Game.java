@@ -98,22 +98,16 @@ public final class Game implements Serializable {
      */
     public static void addRandomVirologists() {
         Random r = new Random();
-        Player v = new Player();
-        Bot v2 = new Bot();
-        Paralyzer paralyzer = new Paralyzer();
-        try {
-            v.getInventory().addItem(new Glove());
-            v.getInventory().addItem(new Glove());
-            v2.getInventory().addItem(new Axe());
-            v2.applyAgent(v2, paralyzer);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        timer.addSteppable(v);
-        timer.addSteppable(v2);
         Tile t = map.getTiles().get(r.nextInt(map.getTiles().size()));
+        Player v = new Player();
+        timer.addSteppable(v);
         t.addVirologist(v);
-        t.addVirologist(v2);
+
+        for(int i = 0; i < Game.botCount; i++) {
+            Bot bot = new Bot();
+            timer.addSteppable(bot);
+            t.addVirologist(bot);
+        }
     }
     /**
      * véletlenszerű voronoj pontokat generál
