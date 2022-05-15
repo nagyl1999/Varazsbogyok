@@ -15,6 +15,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class GamePanel extends JPanel {
+	private boolean isDisabled = false;
+	
     private JButton mb;
     private JButton ub;
     private JButton rb;
@@ -67,6 +69,9 @@ public class GamePanel extends JPanel {
         for (Virologist v : virologists) {
 
             ReferenceButton temp = new ReferenceButton(v);
+            if(isDisabled) {
+            	temp.setEnabled(false);
+            }
             temp.addActionListener(ve);
             vp.add(temp);
         }
@@ -75,8 +80,13 @@ public class GamePanel extends JPanel {
         /* Effektek */
         ArrayList<Agent> agents = Game.activeVirologist.getApplied();
         JPanel ap = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        for (Agent a : agents)
-            ap.add(new ReferenceButton(a));
+        for (Agent a : agents) {
+        	ReferenceButton temp = new ReferenceButton(a);
+            if(isDisabled) {
+            	temp.setEnabled(false);
+            }
+        	ap.add(temp);
+        }
         virologistPanel.add(ap, BorderLayout.SOUTH);
     }
 
@@ -90,6 +100,9 @@ public class GamePanel extends JPanel {
         JPanel ip = new JPanel(new FlowLayout(FlowLayout.LEFT));
         while (i.hasNext()) {
             ReferenceButton temp = new ReferenceButton(i.next());
+            if(isDisabled) {
+            	temp.setEnabled(false);
+            }
             temp.addActionListener(ie);
             ip.add(temp);
         }
@@ -216,11 +229,11 @@ public class GamePanel extends JPanel {
     /* Grafikus elemek */
 
     public void setDisabled(boolean disabled){
+    	isDisabled=disabled;
         if(disabled){
             mapPanel.setEnabled(false);
             dataPanel.setEnabled(false);
             inventoryPanel.setEnabled(false);
-            virologistPanel.setEnabled(false);
             virologistPanel.setEnabled(false);
 
             mb.setEnabled(false);
@@ -233,7 +246,7 @@ public class GamePanel extends JPanel {
             dataPanel.setEnabled(true);
             inventoryPanel.setEnabled(true);
             virologistPanel.setEnabled(true);
-            virologistPanel.setEnabled(true);
+            
             mb.setEnabled(true);
             ub.setEnabled(true);
             rb.setEnabled(true);
