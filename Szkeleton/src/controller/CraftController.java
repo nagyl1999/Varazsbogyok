@@ -32,7 +32,7 @@ public class CraftController extends Controller {
 
             }
         }catch (Exception valami){
-            VarazsbogyokFrame.getInstance().errorMessage("Ez nem egy recept tesó....");
+            VarazsbogyokFrame.getInstance().errorMessage("Please choose a recipe");
         }
 
     }

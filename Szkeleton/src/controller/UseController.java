@@ -26,10 +26,10 @@ public class UseController extends Controller {
         IStorable s = VarazsbogyokFrame.getInstance().getActiveItem();
 
         if (v == null){
-            VarazsbogyokFrame.getInstance().errorMessage("Nincs kiválasztva virologus tesó....");
+            VarazsbogyokFrame.getInstance().errorMessage("Please choose a virologist");
             return;
         }else if(s == null){
-            VarazsbogyokFrame.getInstance().errorMessage("Nincs kiválasztva item tesó....");
+            VarazsbogyokFrame.getInstance().errorMessage("Please choose an item");
             return;
         }
 

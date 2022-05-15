@@ -23,7 +23,7 @@ public class DropController extends Controller {
         try {
             IStorable s = VarazsbogyokFrame.getInstance().getActiveItem();
             if (s == null){
-                VarazsbogyokFrame.getInstance().errorMessage("Nem választottál ki semmit tesó....");
+                VarazsbogyokFrame.getInstance().errorMessage("Pleae choose something");
                 return;
             }
 
@@ -34,7 +34,7 @@ public class DropController extends Controller {
             } catch (Exception ignore) {
             }
         }catch (Exception valami){
-            VarazsbogyokFrame.getInstance().errorMessage("Ezt nem dobhatod el tesó....");
+            VarazsbogyokFrame.getInstance().errorMessage("You can't drop this");
         }
 
 

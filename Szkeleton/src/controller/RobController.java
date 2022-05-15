@@ -22,10 +22,10 @@ public class RobController extends Controller {
         // TODO - hibakezelés
         Virologist v = VarazsbogyokFrame.getInstance().getActiveVirologist();
         if (v == null){
-            VarazsbogyokFrame.getInstance().errorMessage("Nincs kiválasztva virologus tesó....");
+            VarazsbogyokFrame.getInstance().errorMessage("Please choose a virologist");
             return;
         }else if(v == Game.activeVirologist){
-            VarazsbogyokFrame.getInstance().errorMessage("Magadat nem tudod kirabolni tesó....");
+            VarazsbogyokFrame.getInstance().errorMessage("You can't rob yourself");
             return;
         }
 
@@ -33,7 +33,7 @@ public class RobController extends Controller {
             Game.activeVirologist.robVirologist(v);
             VarazsbogyokFrame.getInstance().redraw();
         } catch (Exception e1) {
-            VarazsbogyokFrame.getInstance().errorMessage("Nem tudsz lopni tesó....");
+            VarazsbogyokFrame.getInstance().errorMessage("You can't rob");
         }
 
     }
