@@ -40,7 +40,7 @@ public class MoveController extends Controller implements MouseListener {
                 VarazsbogyokFrame.getInstance().errorMessage("Not enough inventory space!");
                 canPickup = false;
             }
-            Game.activeVirologist.move(Game.map.getTiles().get(counter++), canPickup);
+            Game.activeVirologist.move(activeTile, canPickup);
             VarazsbogyokFrame.getInstance().redraw();
 
         } catch (Exception e1) {
