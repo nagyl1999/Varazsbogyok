@@ -21,6 +21,8 @@ public class SafeLaboratory extends Laboratory {
 	/**Itt adjuk hozzá a virológus inventoryjához a felvenni kivánt receptet.*/
 	public void interactedWith(Virologist v) throws NotEnoughSpaceException {
 		try {
+			if (inventory.size() == 0)
+				return;
 			Recipe r = (Recipe) inventory.at(inventory.size()-1);
 			v.getInventory().addItem(r);
 			inventory.removeItem(r);

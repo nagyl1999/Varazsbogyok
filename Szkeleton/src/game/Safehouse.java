@@ -30,6 +30,8 @@ public class Safehouse extends Tile {
 	/** Itt addjuk hozzá a védőfelszerelést a virológus inventoryjához. */
 	public void interactedWith(Virologist v) {
 		try {
+			if (inventory.size() == 0)
+				return;
 			Gear g = (Gear) inventory.at(inventory.size()-1);
 			v.getInventory().addItem(g);
 			inventory.removeItem(g);
