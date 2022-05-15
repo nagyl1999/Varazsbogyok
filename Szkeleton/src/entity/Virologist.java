@@ -104,10 +104,11 @@ public abstract class Virologist implements Steppable, IInventoryHolder , Serial
      * @param v A megtámadott virológus
      * @throws StateDoesNotAllowActionException
      */
+    @Deprecated
     public void useGear(Gear g, Virologist v) throws StateDoesNotAllowActionException {
         if (VisitorManager.hasBear(this) ||VisitorManager.hasDancer(this) ||VisitorManager.hasParalyzer(this))
             throw new StateDoesNotAllowActionException("Virologist is not allowed to take action");
-        g.use(v);
+        g.use(this, v);
     }
 
     /**
@@ -214,11 +215,24 @@ public abstract class Virologist implements Steppable, IInventoryHolder , Serial
      * @param a A felhasználni kívánt ágens
      * @throws StateDoesNotAllowActionException
      */
+    @Deprecated
     public void useAgent(Virologist v, Agent a) throws ItemNotFoundException, StateDoesNotAllowActionException {
         if (VisitorManager.hasBear(this) ||VisitorManager.hasDancer(this) ||VisitorManager.hasParalyzer(this))
             throw new StateDoesNotAllowActionException("Virologist is not allowed to take action");
         getInventory().removeItem(a);
         a.use(this, v);
+    }
+
+    /**
+     * Használható dolog felhasználása
+     *
+     * @param v A célpont
+     * @param i A felhasználni kívánt dolog
+     */
+    public void use(Virologist v, IUsable i) throws StateDoesNotAllowActionException, ItemNotFoundException {
+        if (VisitorManager.hasBear(this) ||VisitorManager.hasDancer(this) ||VisitorManager.hasParalyzer(this))
+            throw new StateDoesNotAllowActionException("Virologist is not allowed to take action");
+        i.use(this, v);
     }
 
     /**

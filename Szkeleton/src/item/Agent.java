@@ -26,7 +26,7 @@ import inventory.NotEnoughSpaceException;
  * A játékban található ágensek őosztálya. A virológusok ezeket használhatják fel egymás gyengítése illetve
  * saját maguk megsegítése céljából.
  */
-public abstract class Agent implements IStorable, Steppable, Comparable<Agent> , Serializable {
+public abstract class Agent implements IStorable, Steppable, IUsable, Comparable<Agent>, Serializable {
     /**
      * Az ágens elbomlásáig visszamaradt idő.
      */

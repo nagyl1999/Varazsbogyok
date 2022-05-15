@@ -80,7 +80,7 @@ public class Bag extends Gear implements IInventoryHolder {
     /**
      * A felszerelést nem lehet használni
      */
-    public void use(Virologist v) {
+    public void use(Virologist v1, Virologist v2) {
     }
 
     /**
