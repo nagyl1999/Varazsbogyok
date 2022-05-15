@@ -21,7 +21,7 @@ public class RForgetter extends Recipe {
     /**
      * Ikon elérési út
      */
-    protected String iconPath = "resources\\RForgotter.png";
+    protected String iconPath = "resources\\RForgotter.jpg";
     /**
      * A vitustáncot okozó ágenshez szükséges anyagok számai.
      */
