@@ -125,7 +125,7 @@ public class GamePanel extends JPanel {
 
         /* Use gomb */
         JButton ub = new JButton();
-        ub.setIcon(new ImageIcon("resources/use.jpgF"));
+        ub.setIcon(new ImageIcon("resources/use.jpg"));
         ub.setPreferredSize(new Dimension(50, 50));
         ub.addActionListener(new UseController());
         ub.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
