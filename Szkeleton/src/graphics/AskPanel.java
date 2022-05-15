@@ -92,8 +92,8 @@ public class AskPanel extends JPanel {
         main.setBackground(Color.pink);
         load.setBackground(Color.pink);
 
-        add(main);
-        add(load);
+        add(main, "main");
+        add(load, "load");
 
         setBackground(Color.pink);
         setVisible(true);
