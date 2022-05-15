@@ -202,11 +202,15 @@ public final class Game implements Serializable {
     			double t1 = new Vec2(x,y).getDistance( new Vec2(map.getTiles().get(choosen).getX(),map.getTiles().get(choosen).getY() ));
                 double t2 = new Vec2(x,y).getDistance( new Vec2(map.getTiles().get(choosen2).getX(),map.getTiles().get(choosen2).getY() ));
 
-                if(Math.abs(t1-t2)>linethickness) { map.getTiles().get(choosen).getPolygon().addPoint(x, y);}
+                if(Math.abs(t1-t2)>linethickness) { map.getTiles().get(choosen).getPoints().add(new Vec2(x,y));}
                 else  {map.getTiles().get(choosen).getBorderPolly().add(new Vec2(x,y));
-                }
-                
+                } 
     		}
+    	}
+    	
+    	for(int i = 0; i < tileCount;i++) {
+    		map.getTiles().get(i).makePolly();
+    		
     	}
     	
     	for(Tile t1 : map.getTiles()) {
@@ -214,7 +218,6 @@ public final class Game implements Serializable {
     		for(Tile t2 : map.getTiles()) {
     			if(t1 == t2) continue;
     			if(t1.getNeighbours().contains(t2)) continue;
-    			
     		  pont: for(Vec2 p : t1.getBorderPolly()){
     				for(Vec2 q : t2.getBorderPolly()) {
     					double d = p.getDistance(q);
@@ -226,7 +229,6 @@ public final class Game implements Serializable {
     			}
     		}
     	}
-    	
     }
 
     /**

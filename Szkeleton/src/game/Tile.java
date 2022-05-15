@@ -43,6 +43,7 @@ public abstract class Tile implements IInventoryHolder, Serializable , IDrawable
     protected int posx;
     protected int posy;
     protected ArrayList<Vec2> borderpoints;
+    protected ArrayList<Vec2> points;
     /**
      * Konstruktor
      */
@@ -54,6 +55,7 @@ public abstract class Tile implements IInventoryHolder, Serializable , IDrawable
         polly = new Polygon();
         circle = new Polygon();
         borderpoints = new ArrayList<Vec2>();
+        points = new ArrayList<Vec2>();
         posx = 0;
         posy = 0;
         try {
@@ -131,6 +133,21 @@ public abstract class Tile implements IInventoryHolder, Serializable , IDrawable
     public Polygon getCircle() {return circle;}
     
     public ArrayList<Vec2> getBorderPolly() {return borderpoints;}
+    
+    public ArrayList<Vec2> getPoints(){return points;}
+    
+    public void makePolly() {
+    	for(Vec2 p : points) {
+    		polly.addPoint(p.getX(), p.getY());
+    	}
+    }
+    
+    public boolean contains(Vec2 p) {
+    	for(Vec2 q : points) {
+    		if(p.x == q.x && p.y==q.y)return true;
+    	}
+    	return false;
+    }
 
     public void getxy(){
         System.out.println(posx + " " + posy);

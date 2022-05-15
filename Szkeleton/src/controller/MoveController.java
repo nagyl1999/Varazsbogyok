@@ -2,6 +2,7 @@ package controller;
 
 import game.Game;
 import game.Tile;
+import game.Vec2;
 import graphics.VarazsbogyokFrame;
 import entity.Virologist;
 
@@ -60,12 +61,13 @@ public class MoveController extends Controller implements MouseListener {
         for (Tile t : Game.map.getTiles()) {
             if (t == Game.activeVirologist.getTile())
                 continue;
-            if (t.getPolygon().contains(e.getPoint())) {
+            if (t.contains(new Vec2((int)e.getPoint().getX(),(int)e.getPoint().getY()))) {
                 clicked = t;
                 break;
             }
         }
         System.out.println(clicked); // TODO - kiszedni
+        System.out.println(e.getX()+ ":" + e.getY());
 
         if (clicked == null)
             return;
