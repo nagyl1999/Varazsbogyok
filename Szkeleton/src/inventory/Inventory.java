@@ -46,6 +46,20 @@ public class Inventory implements Iterator<IStorable> , Serializable {
     }
 
     /**
+     * Getter - tulajdonos
+     */
+    public IInventoryHolder getOwner() {
+        return owner;
+    }
+
+    /**
+     * Inventory ürítése
+     */
+    public void clear() {
+        items.clear();
+    }
+
+    /**
      * Inventory jelenlegi mérete
      */
     public int size() {
@@ -71,15 +85,20 @@ public class Inventory implements Iterator<IStorable> , Serializable {
     }
 
     /**
+     * Benne van-e az inventory-ban
+     */
+    public boolean contains(IStorable i) {
+        return items.contains(i);
+    }
+
+    /**
      * Tárolandó dolog hozzáfűzése a listához, amennyiben
      * van elég hely
      */
     public void addItem(IStorable i) throws NotEnoughSpaceException {
-        // TODO - jelenleg nem tudunk a zsák inventory-jába rakni, lehet visitor intézze
         if (!hasSpace())
             throw new NotEnoughSpaceException("Nincs elég hely!");
         items.add(i);
-        VisitorManager.hasWonTheGame(owner);
     }
 
     /**
@@ -119,7 +138,7 @@ public class Inventory implements Iterator<IStorable> , Serializable {
      */
     @Override
     public boolean hasNext() {
-        return pos < size() ;
+        return pos < size();
     }
 
     /**
