@@ -7,6 +7,7 @@ import inventory.IInventoryVisitor;
 import inventory.Inventory;
 import inventory.ItemNotFoundException;
 import inventory.NotEnoughSpaceException;
+import graphics.VarazsbogyokFrame;
 
 import java.util.Random;
 
@@ -53,7 +54,10 @@ public class Bear extends Agent {
         v.getTile().removeVirologist(v);
         t.addVirologist(v);
         v.setTile(t);
-        t.interactedWith(v);
+        VarazsbogyokFrame.getInstance().disableMovement(false);
+        if(v.getInventory().hasSpace()){
+            t.interactedWith(v);
+        }
     }
 
     /**

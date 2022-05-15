@@ -168,4 +168,8 @@ public class VarazsbogyokFrame extends JFrame {
         }
     }
 
+    public void disableMovement(boolean disable){
+        jatek.disableMovement(disable);
+    }
+
 }

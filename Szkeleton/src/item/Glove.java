@@ -23,17 +23,17 @@ public class Glove extends Gear {
     /**
      * Ikon elérési út
      */
-    protected String iconPath = "resources\\glove" + DURABILITY + ".jpg";
+    protected String iconPath = "resources\\glove3" + "" + ".jpg";
     /**
      * Hátralévő használatok száma
      */
-    public static final int DURABILITY = 3;
+    public int DURABILITY = 3;
 
     /**
      * Konstruktor
      */
     public Glove() {
-        super(Glove.DURABILITY);
+        super(3);
     }
 
     /**
@@ -51,16 +51,20 @@ public class Glove extends Gear {
      * @param a  Az Ágens amit kennek a virológusra
      */
     public void protect(Virologist v1, Virologist v2, Agent a) {
+        System.out.println("Durability " + durability);
         try {
             v1.removeApplied(a);
             v2.getApplied().add(a);
-            durability--;
-            if(durability==0)
+            DURABILITY--;
+            iconPath = "resources\\glove" + DURABILITY + ".jpg";
+            if(DURABILITY==0)
                 v1.getInventory().removeItem(this);
         } catch (ItemNotFoundException ignore) {
             System.out.println("Nincs ilyen felkent ágens a virológuson");
         } catch (Exception e) {
             System.out.println("Nem lehet visszakenni");
+            //DURABILITY--;
+            //iconPath = "resources\\glove" + DURABILITY + ".jpg";
         }
     }
 

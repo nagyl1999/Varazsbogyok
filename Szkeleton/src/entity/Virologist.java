@@ -19,6 +19,7 @@ import inventory.*;
 import item.*;
 import item.AgentComparator;
 import entity.Virologist;
+import graphics.VarazsbogyokFrame;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -120,10 +121,21 @@ public abstract class Virologist implements Steppable, IInventoryHolder , Serial
      */
     public void applyAgent(Virologist v, Agent a) throws ItemNotFoundException {
         applied.add(a);
-        for (Gear g : VisitorManager.getGear(this))
+
+
+        for(int i = 0; i < v.getInventory().size(); i++){
+            try {
+                ((Gear)v.getInventory().at(i)).protect(this, v, a);
+            }catch (Exception e){}
+        }
+
+
+        for (Gear g : VisitorManager.getGear(this)){
             g.protect(this, v, a);
-        for (Agent g : getApplied())
+        }
+        for (Agent g : getApplied()){
             g.protect(this, a);
+        }
         sortApplied();
     }
 
@@ -163,6 +175,7 @@ public abstract class Virologist implements Steppable, IInventoryHolder , Serial
         }
         tile.removeVirologist(this);
         t.addVirologist(this);
+        VarazsbogyokFrame.getInstance().disableMovement(false);
         if(interact)
             t.interactedWith(this);
     }
