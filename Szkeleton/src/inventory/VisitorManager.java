@@ -43,11 +43,11 @@ public class VisitorManager {
      * receptel rendelkezik-e, amennyiben igen, meghívjuk
      * a Game.WinGame függvényt
      */
-    public static void hasWonTheGame(Virologist e) {
+    public static void hasWonTheGame(IInventoryHolder e) {
         InventorySorterVisitor i = sortInventory(e);
-        if (i.getRdancerItems().size() > 0 && i.getRforgetterItems().size() > 0 && i.getRpalaryzerItems().size() > 0 && i.getRprotectorItems().size() > 0)
-            Game.winGame(e);
-
+        if (i.getRdancerItems().size() > 0 && i.getRforgetterItems().size() > 0 && i.getRpalaryzerItems().size() > 0 && i.getRprotectorItems().size() > 0) {
+            Game.winGame((Virologist) e);
+        }
     }
 
     /**

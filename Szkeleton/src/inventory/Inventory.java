@@ -1,5 +1,7 @@
 package inventory;
 
+import entity.Virologist;
+
 import java.io.Serializable;
 
 /*
@@ -37,8 +39,9 @@ public class Inventory implements Iterator<IStorable> , Serializable {
     /**
      * Konstruktor
      */
-    public Inventory(int size) {
+    public Inventory(IInventoryHolder e, int size) {
         maxSize = size;
+        owner = e;
         items = new ArrayList<>();
     }
 
@@ -76,6 +79,7 @@ public class Inventory implements Iterator<IStorable> , Serializable {
         if (!hasSpace())
             throw new NotEnoughSpaceException("Nincs elég hely!");
         items.add(i);
+        VisitorManager.hasWonTheGame(owner);
     }
 
     /**

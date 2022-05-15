@@ -87,7 +87,7 @@ public class Jacket extends Gear {
     /**
      * A felszerelést nem lehet használni
      */
-    public void use(Virologist v) {
+    public void use(Virologist v1, Virologist v2) {
     }
 
     /**

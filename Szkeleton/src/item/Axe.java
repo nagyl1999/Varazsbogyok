@@ -60,12 +60,12 @@ public class Axe extends Gear {
      * Amennyiben a virológus medvevírussal fertőzött
      * a kapott játékost a baltával megölhetjük
      *
-     * @param v A fertőzöttnek gondolt játékos
+     * @param v2 A fertőzöttnek gondolt játékos
      */
-    public void use(Virologist v) {
-        if (durability == 0 || !VisitorManager.hasBear(v))
+    public void use(Virologist v1, Virologist v2) {
+        if (durability == 0 || !VisitorManager.hasBear(v2))
             return;
-        v.die();
+        v2.die();
         durability--;
     }
 }

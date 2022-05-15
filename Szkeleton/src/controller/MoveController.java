@@ -2,6 +2,7 @@ package controller;
 
 import game.Game;
 import game.Tile;
+import game.Vec2;
 import graphics.VarazsbogyokFrame;
 import entity.Virologist;
 
@@ -34,13 +35,13 @@ public class MoveController extends Controller implements MouseListener {
         }
 
         try {
-            if(Game.activeVirologist.getInventory().size() != Game.activeVirologist.inventorySize)
+            if(Game.activeVirologist.getInventory().size() != Virologist.inventorySize)
                 canPickup = VarazsbogyokFrame.getInstance().confirmDialog("Do you want to interact with this tile?");
             else {
                 VarazsbogyokFrame.getInstance().errorMessage("Not enough inventory space!");
                 canPickup = false;
             }
-            Game.activeVirologist.move(Game.map.getTiles().get(counter++), canPickup);
+            Game.activeVirologist.move(activeTile, canPickup);
             VarazsbogyokFrame.getInstance().redraw();
 
         } catch (Exception e1) {
@@ -55,15 +56,25 @@ public class MoveController extends Controller implements MouseListener {
      */
     @Override
     public void mouseClicked(MouseEvent e) {
-        /*for(int i = 0; i < activeTile.getNeighbours().size(); i++){
-            Tile temp = activeTile.getNeighbours().get(i);
-            ArrayList<int> tempA = temp.getxy();
-            if(tempA.get(0) == e.getX() && tempA.get(1) == e.getY()){
-                activeTile = temp;
-                return;
+        Tile clicked = null;
+
+        for (Tile t : Game.map.getTiles()) {
+            if (t == Game.activeVirologist.getTile())
+                continue;
+            if (t.contains(new Vec2((int)e.getPoint().getX(),(int)e.getPoint().getY()))) {
+                clicked = t;
+                break;
             }
         }
-        VarazsbogyokFrame.getInstance().errorMessage("Please choose a neighbour tile");*/
+        System.out.println(clicked); // TODO - kiszedni
+        System.out.println(e.getX()+ ":" + e.getY());
+
+        if (clicked == null)
+            return;
+        if (!Game.activeVirologist.getTile().getNeighbours().contains(clicked))
+            VarazsbogyokFrame.getInstance().errorMessage("Please choose a neighbour tile");
+        activeTile = clicked;
+        // TODO - megjelenítés a térképen
     }
 
     @Override
