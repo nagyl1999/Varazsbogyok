@@ -35,7 +35,6 @@ public class Storage extends Tile {
 			Material m = (Material) inventory.at(inventory.size()-1);
 			v.getInventory().addItem(m);
 			inventory.removeItem(m);
-			VarazsbogyokFrame.getInstance().errorMessage("Material");
 		} catch (NotEnoughSpaceException e) {
 			e.printStackTrace();
 		} catch (ItemNotFoundException e) {

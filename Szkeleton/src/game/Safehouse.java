@@ -35,7 +35,6 @@ public class Safehouse extends Tile {
 			Gear g = (Gear) inventory.at(inventory.size()-1);
 			v.getInventory().addItem(g);
 			inventory.removeItem(g);
-			VarazsbogyokFrame.getInstance().errorMessage("Gear");
 		} catch (NotEnoughSpaceException e) {
 			e.printStackTrace();
 		} catch (ItemNotFoundException e) {

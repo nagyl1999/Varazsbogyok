@@ -52,7 +52,7 @@ public abstract class Virologist implements Steppable, IInventoryHolder , Serial
      * Konstruktor
      */
     public Virologist() {
-        inventory = new Inventory(Virologist.inventorySize);
+        inventory = new Inventory(this, Virologist.inventorySize);
         applied = new ArrayList<>();
         paralyzed = false;
     }

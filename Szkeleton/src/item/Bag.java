@@ -42,7 +42,7 @@ public class Bag extends Gear implements IInventoryHolder {
      */
     public Bag() {
         super(Bag.DURABILITY);
-        inventory = new Inventory(Bag.inventorySize);
+        inventory = new Inventory(this, Bag.inventorySize);
     }
 
     /**
