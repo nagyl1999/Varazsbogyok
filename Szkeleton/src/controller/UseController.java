@@ -34,10 +34,11 @@ public class UseController extends Controller {
             return;
         }
 
-
         try {
             Game.activeVirologist.use(v, s);
         } catch (Exception ignore) {
         }
+
+        VarazsbogyokFrame.getInstance().redraw();
     }
 }

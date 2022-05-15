@@ -15,10 +15,9 @@ import entity.Bot;
 import entity.Player;
 import entity.Virologist;
 import graphics.VarazsbogyokFrame;
+import inventory.ItemNotFoundException;
 import inventory.NotEnoughSpaceException;
-import item.Glove;
-import item.Paralyzer;
-import item.Axe;
+import item.*;
 
 import java.awt.Color;
 import java.io.Serializable;

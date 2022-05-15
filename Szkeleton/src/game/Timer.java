@@ -58,6 +58,7 @@ public class Timer implements Serializable {
         try {
             active.step();
         } catch (Exception ignore) {
+            ignore.printStackTrace();
             System.out.println("Error in steppable");
         } finally {
             VarazsbogyokFrame.getInstance().redraw();

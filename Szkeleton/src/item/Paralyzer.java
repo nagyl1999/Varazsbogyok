@@ -12,6 +12,7 @@ package item;
 */
 
 import entity.Virologist;
+import game.Game;
 import game.Tile;
 import game.Timer;
 import inventory.IInventoryVisitor;
@@ -50,7 +51,6 @@ public class Paralyzer extends Agent {
      */
     public void step() throws ItemNotFoundException {
         this.expire--;
-        System.out.println(this.expire);
         if(expire == 0)
             decompose(virologist);
         Timer.getInstance().tick();
@@ -70,6 +70,7 @@ public class Paralyzer extends Agent {
         v.setParalyzed(false);
         v.removeApplied(this);
         virologist = null;
+        Game.timer.removeSteppable(this);
     }
 
     /**
@@ -98,6 +99,7 @@ public class Paralyzer extends Agent {
      * @param v2 Az elszenvedő
      */
     public void use(Virologist v1, Virologist v2) throws ItemNotFoundException {
+        v1.getInventory().removeItem(this);
         virologist = v2;
         v2.applyAgent(v1, this);
     }

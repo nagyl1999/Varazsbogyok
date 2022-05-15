@@ -12,6 +12,7 @@ package item;
 */
 
 import entity.Virologist;
+import game.Game;
 import game.Tile;
 import game.Timer;
 import inventory.IInventoryVisitor;
@@ -82,6 +83,7 @@ public class Dancer extends Agent {
     public void decompose(Virologist v) throws ItemNotFoundException {
         v.removeApplied(this);
         virologist = null;
+        Game.timer.removeSteppable(this);
     }
 
     /**
@@ -110,6 +112,7 @@ public class Dancer extends Agent {
      * @param v2 Az elszenvedő
      */
     public void use(Virologist v1, Virologist v2) throws ItemNotFoundException {
+        v1.getInventory().removeItem(this);
         virologist = v2;
         v2.applyAgent(v1, this);
     }

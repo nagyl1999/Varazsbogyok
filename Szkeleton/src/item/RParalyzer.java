@@ -11,6 +11,7 @@ package item;
 
 */
 
+import game.Game;
 import inventory.IInventoryVisitor;
 import inventory.InventorySorterVisitor;
 
@@ -26,7 +27,7 @@ public class RParalyzer extends Recipe {
      * A vitustáncot okozó ágenshez szükséges anyagok számai.
      */
     public static int numberOfAminoAcid = 4;
-    public static int numberOfNucleoid = 2;
+    public static int numberOfNucleoid = 3;
 
     /**
      * Konstruktor
@@ -62,6 +63,8 @@ public class RParalyzer extends Recipe {
      */
     @Override
     public Agent addAgent() {
-        return new Paralyzer();
+        Agent a = new Paralyzer();
+        Game.timer.addSteppable(a);
+        return a;
     }
 }

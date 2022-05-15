@@ -35,6 +35,6 @@ public class RobController extends Controller {
         } catch (Exception e1) {
             VarazsbogyokFrame.getInstance().errorMessage("You can't rob");
         }
-
+        VarazsbogyokFrame.getInstance().redraw();
     }
 }

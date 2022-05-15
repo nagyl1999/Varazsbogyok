@@ -11,6 +11,7 @@ package item;
 
 */
 
+import game.Game;
 import inventory.IInventoryVisitor;
 import inventory.InventorySorterVisitor;
 
@@ -63,6 +64,8 @@ public class RDancer extends Recipe {
      */
     @Override
     public Agent addAgent() {
-        return new Dancer();
+        Agent a = new Dancer();
+        Game.timer.addSteppable(a);
+        return a;
     }
 }

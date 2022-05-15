@@ -11,6 +11,7 @@ package item;
 
 */
 
+import game.Game;
 import inventory.IInventoryVisitor;
 import inventory.InventorySorterVisitor;
 
@@ -62,7 +63,9 @@ public class RForgetter extends Recipe {
      */
     @Override
     public Agent addAgent() {
-        return new Forgetter();
+        Agent a = new Forgetter();
+        Game.timer.addSteppable(a);
+        return a;
     }
 
 }
