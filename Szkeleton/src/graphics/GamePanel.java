@@ -125,7 +125,7 @@ public class GamePanel extends JPanel {
 
         /* Use gomb */
         JButton ub = new JButton();
-        ub.setIcon(new ImageIcon("resources/use.png"));
+        ub.setIcon(new ImageIcon("resources/use.jpgF"));
         ub.setPreferredSize(new Dimension(50, 50));
         ub.addActionListener(new UseController());
         ub.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -153,7 +153,7 @@ public class GamePanel extends JPanel {
 
         /* Körlépés gomb */
         JButton sb = new JButton();
-        sb.setIcon(new ImageIcon("resources/arrow.png"));
+        sb.setIcon(new ImageIcon("resources/arrow.jpg"));
         sb.setPreferredSize(new Dimension(50, 50));
         sb.addActionListener(new StepController());
         sb.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
