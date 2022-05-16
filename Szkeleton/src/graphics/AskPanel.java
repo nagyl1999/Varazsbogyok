@@ -1,6 +1,7 @@
 package graphics;
 
 import game.Game;
+import game.Tile;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +11,7 @@ import java.awt.*;
  * bekéréséért felelős panel
  */
 public class AskPanel extends JPanel {
-
+	
     /**
      * Konstruktor
      */
@@ -28,8 +29,10 @@ public class AskPanel extends JPanel {
         if (tiles < Game.minTileCount || bots < Game.minBotCount)
             return; // TODO - hibakezelés
         // TODO - loading menu mutatása
+
         Game.tileCount = tiles;
         Game.botCount = bots;
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         Game.newGame();
         VarazsbogyokFrame.getInstance().show("jatek");
     }
@@ -39,7 +42,6 @@ public class AskPanel extends JPanel {
      */
     private void init() {
         setLayout(new CardLayout());
-
         JPanel main = new JPanel(new GridBagLayout());
         JPanel load = new JPanel();
 
@@ -62,8 +64,7 @@ public class AskPanel extends JPanel {
         ok = new JButton("Ok");
         ok.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
         ok.addActionListener(e -> startGame());
-
-
+     
         cancel = new JButton("Cancel");
         cancel.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
         cancel.addActionListener(e -> VarazsbogyokFrame.getInstance().show("menu"));
@@ -96,15 +97,15 @@ public class AskPanel extends JPanel {
         c.gridx = 1;
         c.gridy = 2;
         main.add(cancel,c);
-
         main.setBackground(Color.pink);
         load.setBackground(Color.pink);
-
+        
         add(main, "main");
         add(load, "load");
-
         setVisible(true);
     }
+    
+   
 
     private JSpinner botTF;
     private JSpinner tileTF;

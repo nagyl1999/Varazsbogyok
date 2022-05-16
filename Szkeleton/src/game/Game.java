@@ -125,6 +125,15 @@ public final class Game implements Serializable {
     	//TODO
         int x, y;
     	ArrayList<Vec2> exceptions = new ArrayList<>();
+    	int a = (int)Math.floor(tileCount / 10);
+    
+    	int town = 5;
+    	int storage = 2;
+    	int safehouse = 1;
+    	int safelab = 1;
+    	int bearlab = 1;
+    	int random = tileCount - (a*(town+storage+safehouse+safelab+bearlab));
+    
         for (int i =0; i< tileCount;i++) {
             do{
                 //double dy = VarazsbogyokFrame.getInstance().getSize().getHeight()-40; // JPanelé kell!!
@@ -136,11 +145,14 @@ public final class Game implements Serializable {
             }
             while(equals(exceptions, new Vec2(x, y)) || accept(new Vec2(x,y)));
             exceptions.add(new Vec2(x,y));
+          
+           
             Tile t = randomTile();
             t.setX(x);
             t.setY(y);
             map.addTile(t);
         }
+       
         
         for(int i = 0; i < tileCount;i++) {
         	Circle c = new Circle(new Vec2(map.getTiles().get(i).getX(),map.getTiles().get(i).getY()));
@@ -215,6 +227,7 @@ public final class Game implements Serializable {
                 else  {map.getTiles().get(choosen).getBorderPolly().add(new Vec2(x,y));
                 } 
     		}
+    	//VarazsbogyokFrame.getInstance().adat.repaint();
     	}
     	
     	for(int i = 0; i < tileCount;i++) {
