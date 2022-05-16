@@ -19,6 +19,7 @@ import inventory.*;
 import item.*;
 import item.AgentComparator;
 import entity.Virologist;
+import graphics.VarazsbogyokFrame;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -164,6 +165,7 @@ public abstract class Virologist implements Steppable, IInventoryHolder , Serial
         }
         tile.removeVirologist(this);
         t.addVirologist(this);
+        VarazsbogyokFrame.getInstance().disableMovement(false);
         if(interact)
             t.interactedWith(this);
     }

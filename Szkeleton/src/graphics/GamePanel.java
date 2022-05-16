@@ -283,4 +283,8 @@ public class GamePanel extends JPanel {
         }
     }
 
+    public void disableMovement(boolean disable){
+        mb.setEnabled(disable);
+    }
+
 }

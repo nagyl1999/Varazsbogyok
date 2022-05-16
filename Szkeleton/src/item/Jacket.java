@@ -14,6 +14,7 @@ package item;
 import entity.Virologist;
 import inventory.IInventoryVisitor;
 import inventory.Inventory;
+import inventory.VisitorManager;
 
 /**
  * A játékban a kabát tipusú védőfelszerelés.
@@ -97,5 +98,7 @@ public class Jacket extends Gear {
         i.visit(this);
     }
 
-
+    public boolean contains(Virologist v1){
+        return VisitorManager.containsGear(v1, this);
+    }
 }

@@ -15,6 +15,7 @@ import entity.Virologist;
 import inventory.IInventoryHolder;
 import inventory.IInventoryVisitor;
 import inventory.Inventory;
+import inventory.VisitorManager;
 
 /**
  * A játékban a zsátipusú védőfelszerelés. Egy zsákban nem lehet még egy zsák.
@@ -95,5 +96,9 @@ public class Bag extends Gear implements IInventoryHolder {
      */
     public Inventory getInventory() {
         return inventory;
+    }
+
+    public boolean contains(Virologist v1){
+        return VisitorManager.containsGear(v1, this);
     }
 }

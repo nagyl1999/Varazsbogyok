@@ -62,7 +62,11 @@ public class Bot extends Virologist {
 					case 1:
 						ArrayList<Tile> ng = tile.getNeighbours();
 						try {
-							move(ng.get(r.nextInt(ng.size())), true);
+							if(getInventory().hasSpace()){
+								move(ng.get(r.nextInt(ng.size())), true);
+							}else{
+								move(ng.get(r.nextInt(ng.size())), false);
+							}
 						} catch (Exception ex) {
 							try {
 								move(ng.get(r.nextInt(ng.size())), false);

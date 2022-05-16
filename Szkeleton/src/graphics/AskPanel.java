@@ -49,14 +49,14 @@ public class AskPanel extends JPanel {
         JLabel tile, bot;
         setPreferredSize(new Dimension(1000, 800));
 
-        tile = new JLabel("<html> <div style='text-align:center;'> Hány mezõ legyen <br> a pályán: </div></html>", SwingConstants.CENTER);
+        tile = new JLabel("<html> <div style='text-align:center;'> Number of Fields: </div></html>", SwingConstants.CENTER);
         tile.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
-        SpinnerModel model = new SpinnerNumberModel(100, Game.minTileCount, 1000, 1);
+        SpinnerModel model = new SpinnerNumberModel(Game.minTileCount, Game.minTileCount, 1000, 1);
         tileTF = new JSpinner(model);
 
         bot = new JLabel("<html>Number of Bots: </html>", SwingConstants.CENTER);
         bot.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
-        model = new SpinnerNumberModel(5, Game.minBotCount, 100, 1);
+        model = new SpinnerNumberModel(Game.minBotCount, Game.minBotCount, 100, 1);
         botTF = new JSpinner(model);
 
         ok = new JButton("Ok");

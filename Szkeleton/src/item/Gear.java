@@ -69,4 +69,6 @@ public abstract class Gear implements IStorable, IUsable, Serializable {
      */
     public abstract void use(Virologist v1, Virologist v2);
 
+    public abstract boolean contains(Virologist v1);
+
 }

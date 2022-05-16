@@ -15,6 +15,7 @@ import entity.Virologist;
 import inventory.IInventoryVisitor;
 import inventory.Inventory;
 import inventory.ItemNotFoundException;
+import inventory.VisitorManager;
 
 /**
  * A játékban a kesztyű tipusú védőfelszerelés.
@@ -23,11 +24,11 @@ public class Glove extends Gear {
     /**
      * Ikon elérési út
      */
-    protected String iconPath = "resources\\glove" + DURABILITY + ".jpg";
+    protected String iconPath = "resources\\glove3.jpg";
     /**
      * Hátralévő használatok száma
      */
-    public static final int DURABILITY = 3;
+    public static int DURABILITY = 3;
 
     /**
      * Konstruktor
@@ -54,8 +55,9 @@ public class Glove extends Gear {
         try {
             v1.removeApplied(a);
             v2.getApplied().add(a);
-            durability--;
-            if(durability==0)
+            DURABILITY--;
+            iconPath = "resources\\glove" + DURABILITY + ".jpg";
+            if(DURABILITY==0)
                 v1.getInventory().removeItem(this);
         } catch (ItemNotFoundException ignore) {
             System.out.println("Nincs ilyen felkent ágens a virológuson");
@@ -93,6 +95,10 @@ public class Glove extends Gear {
      */
     public void accept(IInventoryVisitor i) {
         i.visit(this);
+    }
+
+    public boolean contains(Virologist v1){
+        return VisitorManager.containsGear(v1, this);
     }
 
 }

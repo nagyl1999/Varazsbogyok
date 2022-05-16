@@ -68,4 +68,9 @@ public class Axe extends Gear {
         v2.die();
         durability--;
     }
+
+    public boolean contains(Virologist v1){
+        return false;
+    }
+
 }

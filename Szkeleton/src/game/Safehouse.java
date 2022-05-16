@@ -33,8 +33,10 @@ public class Safehouse extends Tile {
 			if (inventory.size() == 0)
 				return;
 			Gear g = (Gear) inventory.at(inventory.size()-1);
-			v.getInventory().addItem(g);
-			inventory.removeItem(g);
+			if(!g.contains(v)){
+				v.getInventory().addItem(g);
+				inventory.removeItem(g);
+			}
 		} catch (NotEnoughSpaceException e) {
 			e.printStackTrace();
 		} catch (ItemNotFoundException e) {
