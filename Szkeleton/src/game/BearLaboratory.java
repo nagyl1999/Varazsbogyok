@@ -20,7 +20,8 @@ public class BearLaboratory extends Laboratory {
 			b.use(null, v);
 			inventory.removeItem(b);
 		} catch (ItemNotFoundException e) {
-			e.printStackTrace();}
+			e.printStackTrace();
+		}
 	}
 	
 	/**Visszaadja  amező inventoryját.*/

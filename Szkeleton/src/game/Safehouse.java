@@ -16,12 +16,14 @@ import entity.Virologist;
 import inventory.Inventory;
 import inventory.ItemNotFoundException;
 import inventory.NotEnoughSpaceException;
+import inventory.VisitorManager;
 import item.*;
 import graphics.VarazsbogyokFrame;
 
 import java.awt.Color;
 import java.awt.Polygon;
 import java.util.Random;
+
 
 /** Óvóhely típusú mező, védőfelszerelést
  * kínál a virológusoknak */
@@ -33,8 +35,10 @@ public class Safehouse extends Tile {
 			if (inventory.size() == 0)
 				return;
 			Gear g = (Gear) inventory.at(inventory.size()-1);
-			v.getInventory().addItem(g);
-			inventory.removeItem(g);
+			if(!g.contains(v)){
+				v.getInventory().addItem(g);
+				inventory.removeItem(g);
+			}
 		} catch (NotEnoughSpaceException e) {
 			e.printStackTrace();
 		} catch (ItemNotFoundException e) {

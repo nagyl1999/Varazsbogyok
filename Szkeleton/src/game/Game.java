@@ -101,9 +101,10 @@ public final class Game implements Serializable {
         Player v = new Player();
         timer.addSteppable(v);
         t.addVirologist(v);
+
         try {
-            for (int j = 0; j < 10; j++)
-                v.getInventory().addItem(new Jacket());
+            for (int j = 0; j < 1; j++)
+                v.getInventory().addItem(new Bag());
         }catch(Exception e) {
             e.printStackTrace();
         }
@@ -291,7 +292,7 @@ public final class Game implements Serializable {
         Town town = new Town();
         town.setColor(Color.green);
         
-        if(n == 4 || true) {
+        if(n == 4) {
         	BearLaboratory bearlaboratory = new BearLaboratory();
             bearlaboratory.setColor(Color.red);
         	return bearlaboratory;
@@ -301,7 +302,7 @@ public final class Game implements Serializable {
         	safelaboratory.setColor(Color.red);
             return  safelaboratory;
         }
-        if(n == 7 || n ==8) {
+        if(n == 7 || n ==8 || true) {
         	Safehouse safehouse = new Safehouse();
         	safehouse.setColor(Color.blue);
             return safehouse;

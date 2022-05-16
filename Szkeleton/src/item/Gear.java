@@ -39,6 +39,8 @@ public abstract class Gear implements IStorable, IUsable, Serializable {
         durability = d;
     }
 
+    public abstract boolean contains(Virologist v1);
+
     /**
      * Getter - Ikon elérési út
      */

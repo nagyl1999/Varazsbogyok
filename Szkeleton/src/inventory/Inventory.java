@@ -76,6 +76,9 @@ public class Inventory implements Iterator<IStorable> , Serializable {
      */
     public void addItem(IStorable i) throws NotEnoughSpaceException {
         // TODO - jelenleg nem tudunk a zsák inventory-jába rakni, lehet visitor intézze
+
+
+
         if (!hasSpace())
             throw new NotEnoughSpaceException("Nincs elég hely!");
         items.add(i);

@@ -14,6 +14,7 @@ package item;
 import entity.Virologist;
 import inventory.IInventoryVisitor;
 import inventory.Inventory;
+import inventory.VisitorManager;
 import inventory.ItemNotFoundException;
 
 /**
@@ -97,6 +98,10 @@ public class Glove extends Gear {
      */
     public void accept(IInventoryVisitor i) {
         i.visit(this);
+    }
+
+    public boolean contains(Virologist v1){
+        return VisitorManager.containsGear(v1, this);
     }
 
 }

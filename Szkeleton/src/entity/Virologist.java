@@ -122,12 +122,13 @@ public abstract class Virologist implements Steppable, IInventoryHolder , Serial
     public void applyAgent(Virologist v, Agent a) throws ItemNotFoundException {
         applied.add(a);
 
-
+        /*
         for(int i = 0; i < v.getInventory().size(); i++){
             try {
                 ((Gear)v.getInventory().at(i)).protect(this, v, a);
             }catch (Exception e){}
         }
+         */
 
 
         for (Gear g : VisitorManager.getGear(this)){

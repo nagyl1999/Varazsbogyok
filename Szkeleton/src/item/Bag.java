@@ -14,6 +14,7 @@ package item;
 import entity.Virologist;
 import inventory.IInventoryHolder;
 import inventory.IInventoryVisitor;
+import inventory.VisitorManager;
 import inventory.Inventory;
 
 /**
@@ -95,5 +96,9 @@ public class Bag extends Gear implements IInventoryHolder {
      */
     public Inventory getInventory() {
         return inventory;
+    }
+
+    public boolean contains(Virologist v1){
+        return VisitorManager.containsGear(v1, this);
     }
 }
