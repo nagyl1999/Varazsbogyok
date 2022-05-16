@@ -152,6 +152,7 @@ public abstract class Tile implements IInventoryHolder, Serializable , IDrawable
     public void getxy(){
 
     }
+    
 
     /**
      * A virológus itt fog tudni felvenni egy mezőn található dolgot.

@@ -34,6 +34,7 @@ public class MoveController extends Controller implements MouseListener {
             VarazsbogyokFrame.getInstance().errorMessage("Please choose a tile");
             return;
         }
+        
 
         try {
             if(Game.activeVirologist.getInventory().size() != Virologist.inventorySize)
@@ -78,8 +79,7 @@ public class MoveController extends Controller implements MouseListener {
         Color c = new Color(activeTile.getColor().getRed(),activeTile.getColor().getGreen(),activeTile.getColor().getBlue(),100);
         activeTile.setColor(c);
         VarazsbogyokFrame.getInstance().redraw();
-        /*Color c2 = new Color(activeTile.getColor().getRed(),activeTile.getColor().getGreen(),activeTile.getColor().getBlue());
-        activeTile.setColor(c2);*/
+        
         // TODO - megjelenítés a térképen
     }
 
