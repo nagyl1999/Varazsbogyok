@@ -62,7 +62,17 @@ public class Glove extends Gear {
         } catch (ItemNotFoundException ignore) {
             System.out.println("Nincs ilyen felkent ágens a virológuson");
         } catch (Exception e) {
-            System.out.println("Nem lehet visszakenni");
+            //System.out.println("Nem lehet visszakenni");
+
+            DURABILITY--;
+            iconPath = "resources\\glove" + DURABILITY + ".jpg";
+            try{
+                System.out.println(DURABILITY);
+                if(DURABILITY==0){
+                    v1.getInventory().removeItem(this);
+                }
+            }catch (Exception ignore){}
+
         }
     }
 

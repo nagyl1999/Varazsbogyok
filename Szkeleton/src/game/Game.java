@@ -102,13 +102,15 @@ public final class Game implements Serializable {
         timer.addSteppable(v);
         t.addVirologist(v);
 
+
         try {
-            Bag b = new Bag();
-            b.getInventory().addItem(new Glove());
-            v.getInventory().addItem(b);
+            //Bag b = new Bag();
+            v.getInventory().addItem(new Glove());
+            //v.getInventory().addItem(b);
         } catch (NotEnoughSpaceException e) {
             e.printStackTrace();
         }
+
 
         for(int i = 0; i < Game.botCount; i++) {
             Bot bot = new Bot();
@@ -259,10 +261,10 @@ public final class Game implements Serializable {
                 neighbours.remove(n);
             }
         }
-        //játékos létrehozása és hozzáadaása a léptethető osztályhoz
+        //játékos létrehozása és hozzáadaása a léptethető osztályhoz
         map.getTiles().get(0).addVirologist(new Player());
         timer.addSteppable(map.getTiles().get(0).getVirologist().get(0));
-        //botok létrehozása és hozzáadása a léptethető dolgokhoz
+        //botok létrehozása és hozzáadása a léptethető dolgokhoz
         for (int i = 1; i <= botCount; i++) {
             map.getTiles().get(i).addVirologist(new Bot());
             timer.addSteppable(map.getTiles().get(i).getVirologist().get(0));
@@ -273,7 +275,7 @@ public final class Game implements Serializable {
      * Játékból való kilépés
      */
     public static void exitGame() {
-        System.out.println("A jÃ¡tÃ©knak vÃ©ge :/");
+        System.out.println("The game ended :/");
 
     }
 
@@ -281,7 +283,7 @@ public final class Game implements Serializable {
      * Egy virológus megnyerte a játékot
      */
     public static void winGame(Virologist v) {
-        System.out.println("A játékot " + v.toString() + " nyerte");
+        System.out.println(v.toString() + " has won!");
     }
 
     /**
